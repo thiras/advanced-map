@@ -1,0 +1,66 @@
+label.radioLayers{
+  position: relative;
+  display: block;
+
+  cursor: pointer;
+
+
+
+  input{
+
+    position: absolute;
+    z-index:2;
+    left:-9999px;
+
+
+  }
+
+  .span1{
+    border:1px solid #fff;
+    position: relative;
+    background:transparent;
+    border-radius:5%;
+    width: 20px;
+    height: 16px;
+    display: inline-block;
+    content:"";
+    transition:all 0.25s;
+  }
+
+  .span2{
+
+    background:#e0e0e0;
+    height: 16px;
+    width:16px;
+    top:-2px;
+    position: absolute;
+    display:inline-block;
+    border-radius:100%;
+    transition:all .25s;
+    left:-2px;
+  }
+
+  input[type="radio"]:checked +.span1{
+
+
+
+  }
+
+  input[type="radio"]:checked +.span1>.span2{
+
+
+    background: #63afc9;
+    box-shadow: 0 0 15px #63afc9;
+    border: 2px solid rgb(250,250,250);
+    box-sizing: border-box;
+  }
+
+
+
+
+
+
+}
+
+
+

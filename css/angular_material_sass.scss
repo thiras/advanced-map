@@ -1,0 +1,490 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import "../node_modules/sass-autoprefixer/scss/prefixes";
+$clouds: #ecf0f1;
+$greensea: #16a085;
+$bgSearchColor: $clouds;
+$midnightblue: #2c3e50;
+$peterriver: #3498db;
+$silver: #bdc3c7;
+$belizehole: #2980b9;
+$alizarin: #e74c3c;
+$amethyst: #9b59b6;
+$white: #ffffff;
+$wetasphalt: #34495e;
+$midngightblue: #34495e;
+$asbestos: #7f8c8d;
+$concrete: #95a5a6;
+$f1f1: #747474;
+$white: #ffffff;
+$searchTextBGColor: $clouds;
+$searchTextHeight: 40px;
+$searchTextPlaceHolderColor: #8a8a8a;
+$searchTextWidth: 240px !important;
+$iconEditColor:#D9B70D;
+
+/*mixins */
+
+@mixin saydamsiyah($deger) {
+
+  background: rgba(0, 0, 0, $deger);
+}
+
+/*  mixins son */
+
+$md-iconBGColorHover: $clouds;
+
+
+.deneme{
+
+  @include vp-align-content(strech);
+
+  @include vp-display(flex);
+}
+* {
+
+
+
+  @include vp-box-sizing(border-box);
+  font-family: 'Roboto', sans-serif;
+}
+
+.searchtext {
+
+  background: $white;
+  height: $searchTextHeight !important;
+  width: 100%;
+  min-width: $searchTextWidth;
+
+  color: $midnightblue;
+  border: 0 !important;
+  outline: 0 !important;
+
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: $searchTextPlaceHolderColor;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: $searchTextPlaceHolderColor;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: $searchTextPlaceHolderColor;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: $searchTextPlaceHolderColor;
+  }
+
+}
+
+#searchbox {
+  top: 8px;
+  left: 8px;
+  position: fixed;
+  z-index: 60;
+  border-radius: 5px;
+
+  md-icon {
+    cursor: pointer;
+    text-align: center;
+    background: $white !important;
+    color: $midnightblue;
+    border: 0 !important;
+    outline: 0 !important;
+    height: $searchTextHeight !important;
+    border-left: 1px solid $clouds !important;
+    transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+    &:hover {
+      background-color: $md-iconBGColorHover !important;
+
+    }
+
+    md-menu-bar {
+
+      padding: 0;
+    }
+  }
+
+  md-input-container {
+
+    height: 40px !important;
+    display: inline-block;
+    padding: 0 !important;
+    margin: 0 !important;
+    vertical-align: middle;
+
+    input {
+
+      background: $white;
+    }
+  }
+
+}
+
+i {
+
+  line-height: $searchTextHeight;
+  position: relative;
+  color: $midnightblue;
+}
+
+left-menu {
+
+  position: fixed;
+  left: .25em;
+  bottom: 2em;
+  z-index: 60;
+  border-radius: 5%;
+
+
+
+  #top1{
+
+
+    transition-delay: 3s !important;
+  }
+}
+
+
+right-top-menu {
+
+  position: fixed;
+  right: .25em;
+  top: .25em;
+  z-index: 4;
+}
+
+.fabSpeedDialdemoBasicUsage .text-capitalize {
+  text-transform: capitalize;
+}
+
+.fabSpeedDialdemoBasicUsage .md-fab:hover, .fabSpeedDialdemoBasicUsage .md-fab.md-focused {
+  background-color: #000 !important;
+}
+
+.fabSpeedDialdemoBasicUsage p.note {
+  font-size: 1.2rem;
+}
+
+.fabSpeedDialdemoBasicUsage .lock-size {
+  min-width: 300px;
+  min-height: 300px;
+  width: 300px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+md-sidenav {
+
+  background: $clouds !important;
+  width: 410px !important;
+  md-content {
+
+    background: $clouds !important;
+  }
+
+}
+
+.md-toolbar-tools {
+
+  background: #2196f3; /*#2980b9;    */
+
+}
+
+
+#plus{
+
+  background:$white;
+}
+button.md-fab:not(#plus) {
+
+  background: $white !important;
+
+  md-icon {
+
+    border: 0 !important;
+  }
+  md-icon:hover {
+
+    background: inherit !important;
+  }
+
+}
+
+
+.denemetoggle{
+
+  border:4px solid rebeccapurple;
+}
+
+md-tooltip {
+
+  color: white !important;
+
+  font-size: 1em;
+  border-radius: 5px;
+}
+
+.dialogdemoThemeInheritance .container {
+  text-align: center;
+}
+
+md-dialog {
+  width: 50%;
+
+}
+
+md-menu-item {
+
+  md-icon {
+
+    background: none !important;
+    border: none !important;
+  }
+}
+
+/*
+
+grid destekliyorsa baslangıç
+
+
+ */
+@supports (display: grid) {
+
+  .gridMain {
+
+    display: grid;
+
+    grid-gap: 1em;
+
+
+  }
+
+  @for $a from 1 through 11 {
+
+    .grid-#{$a} {
+
+      @extend .gridMain;
+
+      grid-template-columns: repeat($a, 1fr);
+
+      &:before {
+
+        position: absolute;
+        height: 15px;
+        width: 15px;
+        background: white;
+        content: "";
+        right: 30px;
+        transform: rotate(45deg);
+        top: -7.5px;
+      }
+
+    }
+
+  }
+
+}
+/*
+
+
+grid destek son
+ */
+
+/*
+
+
+grid destek vermiyorsa baslangıc
+ */
+
+
+
+
+@supports not (display: grid) {
+
+
+  @for $a from 1 through 12 {
+
+    .grid-#{$a} {
+
+
+
+
+      width:calc(100%/#{$a} - #{$a}*1em) ;
+      margin:1em;
+      display: inline-block;
+
+
+      &:before {
+
+        position: absolute;
+        height: 15px;
+        width: 15px;
+        background: white;
+        content: "";
+        right: 30px;
+        transform: rotate(45deg);
+        top: -7.5px;
+      }
+
+    }
+
+  }
+
+
+
+
+}
+
+/*
+
+
+grid destek vermiyorsa son
+ */
+
+
+drop-down-menu {
+
+  md-menu-content {
+
+    md-icon {
+
+      border-left: none !important;
+      background: red !important;
+    }
+
+  }
+
+}
+
+.modulButon {
+  padding: 5px;
+  margin: 2px;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+  text-align: center;
+
+}
+
+.modulButon:hover {
+  border: 1px solid #f2f2f2;
+}
+
+page-login {
+
+  .md-button {
+    line-height: 0 !important;
+  }
+}
+
+md-contextmenu {
+
+  position: fixed;
+
+  z-index: 65;
+
+  height: auto;
+
+  text-align: center;
+
+  md-button {
+
+    line-height: 0;
+  }
+
+}
+
+
+.deneme{
+
+  background:cadetblue;
+  color: #ffffff;
+  height:60px;
+  width:150px;
+
+  position: absolute;
+
+  z-index:99;
+  top:150px;
+  left:150px;
+}
+
+md-custom-toast{
+
+  position: fixed;
+  bottom:1em;
+  right:1em;
+
+
+ width: 250px;
+  z-index:61;
+  background:#e91e63;
+  color: $clouds;
+  line-height:1em;
+  transition: all 1s;
+
+
+  i{
+    cursor: pointer;
+    position: relative;
+    top:-10px;
+    color: $clouds;
+  }
+}
+
+.mdCustomToastHide{
+  opacity: 0.5;
+
+  bottom:-100px !important;
+}
+
+
+.md-myfab{
+  z-index:21;
+  position:absolute;
+  left:0.3em;
+  height:4em;
+  width:4em;
+border-radius:100%;
+  bottom: 0.25em;
+  outline: 0;
+border:1px dashed $clouds;
+
+  &>div{
+
+
+  }
+}
+
+all-fab-dials{
+
+  position: absolute;
+bottom:0;
+left:5em;
+}
+
+
+
+@import "mobile";
+
+@import "animation";
+
+@import "scrollbar";
+
+@import "disabled";
+
+@import "mdslider";
+
+@import "fabdialstoggleborder";
+
+@import "plugins";
+
+@import "colors";
+
+@import "customformelements";
+@import "vectorLayerBox";
+@import "newvectorlayer";
+@import "mdtoast";
+@import "filters";
+
+/*
+
+ */

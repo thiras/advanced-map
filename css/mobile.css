@@ -1,0 +1,30 @@
+@media screen and (max-width: 600px) {
+  #searchbox {
+    width: calc(100% - 1em); }
+    #searchbox md-icon {
+      width: 50px; }
+
+  md-input-container {
+    width: calc(90% - 40px) !important;
+    overflow: hidden; }
+
+  left-menu #plus {
+    height: 45px;
+    width: 45px; }
+  left-menu .md-button.md-fab:not(#plus) {
+    padding: 0;
+    height: 25px !important;
+    width: 35px !important; } }
+@media screen and (max-width: 360px) {
+  #searchbox {
+    left: 2px;
+    width: 98%; }
+    #searchbox md-icon {
+      width: 15%;
+      min-width: 40px; }
+
+  md-input-container {
+    width: calc(90% - 40px) !important;
+    overflow: hidden; } }
+
+/*# sourceMappingURL=mobile.css.map */

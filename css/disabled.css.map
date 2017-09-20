@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,mBAAmB;EAGjB,MAAM,EAAE,sBAAsB",
+"sources": ["disabled.scss"],
+"names": [],
+"file": "disabled.css"
+}

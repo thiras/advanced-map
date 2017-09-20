@@ -1,0 +1,10 @@
+{
+  "close":"close444",
+  "title":"BalistaGIS Software",
+  "searchBox":{
+    "btnMenuOnOff":"Menü Aç/Kapat",
+    "inptSearchBox":"İlçe, Mahalle, Hastane, Okul ...",
+    "btnSearch":"Arama Yap",
+    "btnLayer":"Katman Kutusunu Aç"
+  }
+}

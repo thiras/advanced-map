@@ -1,0 +1,50 @@
+<md-toast>
+ <span class="md-toast-text" flex>{{lang.toolEdit.label}}</span>
+<md-menu-bar style="padding: 0;">
+    <md-menu>
+        <!-- Trigger element is a md-button with an icon -->
+        <md-button ng-click="$mdOpenMenu()"  aria-label="Open sample menu">
+            tıkla
+        </md-button>
+        <md-menu-content style="min-width:auto !important;">
+            <md-menu-item><md-button ng-click="doSomething()">Do Something</md-button></md-menu-item>
+            <md-menu-item>
+                <md-menu>
+                    <md-button ng-click="$mdOpenMenu()">Link2</md-button>
+                    <md-menu-content style="min-width:auto !important;">
+                        <md-menu-item>
+                            <md-button>Document</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button>File</md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </md-menu-item>
+            <md-menu-item>
+                <md-menu>
+                    <md-button ng-click="$mdOpenMenu()">Link2</md-button>
+                    <md-menu-content>
+                        <md-menu-item>
+                            <md-button>Document</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button>File</md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </md-menu-item>
+            <md-menu-item><md-button ng-click="doSomething()">Do Something</md-button></md-menu-item>
+            <md-menu-item><md-button ng-click="doSomething()">Do Something</md-button></md-menu-item>
+            <md-menu-item><md-button ng-click="doSomething()">Do Something</md-button></md-menu-item>
+        </md-menu-content>
+    </md-menu>
+</md-menu-bar>
+    <md-button style="padding: 0; margin: 0;" ng-repeat="(ozellik, deger) in icons" class="md-icon-button test-tooltip" aria-label="Refresh">
+        <md-tooltip md-direction="bottom">{{deger.label}}</md-tooltip>
+    <md-icon style="padding: 3px; margin-left:3px;" ng-class="{'grayfilter':!deger.active}" ng-click="factoryMethod(deger.function)" md-svg-src="{{deger.img}}">
+
+    </md-icon>
+    </md-button>
+    <md-button style="margin-left:3px;" ng-click="closeToast()" md-svg-src="img/icons/plus.svg">kapat</md-button>
+</md-toast>

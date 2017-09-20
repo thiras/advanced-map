@@ -1,0 +1,32 @@
+<button  ng-click="showFabDials=!showFabDials" md-whiteframe="14"  fabmenuopendirective id="plus" class="md-fab md-myfab">
+    <md-tooltip md-direction="up">{{lang.leftmenu.label}}</md-tooltip>
+    <md-icon wave md-svg-src="img/icons/plus.svg">+</md-icon>
+</button>
+<all-fab-dials layout="row" ng-if="showFabDials"  layout-align="center end">
+    <div ng-repeat="fabdialjson in leftmenujson.layerBox"  ng-class="{' animated3 fadeInLeft':showFabDials}"  ng-controller="DemoCtrl as demo" layout="column" ng-cloak >        <div ng-class="{' animated3 fadeInLeft':showFabDials}" ng-if="fabdialjson.active" ng-controller="DemoCtrl as demo" layout="column" ng-cloak>
+            <div class="lock-size" layout="row" layout-align="center center">
+                <md-fab-speed-dial md-open="demo.isOpen" md-direction="up" ng-class="demo.selectedMode">
+                    <md-fab-trigger>
+                        <md-button md-fling aria-label="menu" class="md-fab md-warn">
+                            <md-tooltip md-direction="up">{{fabdialjson.id=="base" ? lang.leftmenu.basemap:fabdialjson.id=="uydu" ? lang.leftmenu.satallite:fabdialjson.id=="analiz" ? lang.leftmenu.analysis:fabdialjson.id=="freeMap" ? lang.leftmenu.freemaps:"İsimsiz"}}</md-tooltip>
+                            <md-icon md-svg-src="{{fabdialjson.img}}"></md-icon>
+                        </md-button>
+                    </md-fab-trigger>
+                    <md-fab-actions>
+                        <div class="md-fab-action-item" ng-repeat="nestedjsonData in fabdialjson.layers">
+                        <md-button  ng-class="{'borderFabdial_active2':lastActiveColor(nestedjsonData.id)}" click="{{nestedjsonData.id}}" aria-label="{{nestedjsonData.label}}" ng-if="nestedjsonData.active" class="md-fab md-raised md-mini">
+                            <md-tooltip md-direction="up">{{nestedjsonData.label}}</md-tooltip>
+                            <div class="md-ripple-container" ng-style="{'background':'url('+nestedjsonData.img+')','background-size':'cover'}"></div>
+                        </md-button>
+                        </div>
+                    </md-fab-actions>
+                </md-fab-speed-dial>
+            </div>
+        </div>
+    </div>
+    <md-slider-container ng-controller="mdsliderctrl"  flex>
+        <h5>{{lang.leftmenu.opacity}} {{bass}}</h5>
+        <md-slider ng-change="changeSliderValue(bass)" id="mdslider" data-value="bass" md-discrete ng-model="bass" min="0" max="100" step="1" aria-label="bass" class="md-primary"
+                   md-vertical></md-slider>
+        </md-slider>
+    </md-slider-container></all-fab-dials>

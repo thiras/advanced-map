@@ -1,0 +1,70 @@
+
+
+@mixin setPadding {
+
+padding: 0.5em;
+
+}
+
+.vectorLayerBox{
+
+    width:100%;
+    min-width:350px;
+
+
+  thead{
+
+    width:100%;
+
+    tr{
+
+      @include setPadding;
+
+      background:deepskyblue;
+    }
+
+
+
+    th{}
+
+
+    td{}
+
+
+  }
+  tbody{
+
+
+    tr{}
+
+
+    td{
+
+
+
+
+    }
+  }
+}
+
+.vectorLayerIcons{
+  width: 1em;
+  opacity: 0.7;
+  cursor: pointer;
+  outline: none;
+
+  &:hover{
+    opacity: 1;
+  }
+}
+.iconActive{
+  filter: grayscale(100%);
+}
+.vectorLayerName{
+  font-size: 13px;
+  color: #2c3e50;
+
+  td{
+    width:22px;
+  }
+}

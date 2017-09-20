@@ -1,0 +1,67 @@
+<span ng-controller="vectorLayerBox">
+    <table width="100%" border="0" cellspacing="0">
+        <thead>
+            <tr>
+                <th class="md-body-2" colspan="{{vectorLayerListNum}}">{{lang.vlList.label}}</th>
+            </tr>
+        <tr>
+            <td colspan="{{vectorLayerListNum}}">
+                <table width="100%">
+                    <tr style="height: 40px;">
+                        <td title="{{lang.vlList.iconAdLayer}}" md-ink-ripple>
+                            <img ng-click="showTabDialog($event)" class="vectorLayerIcons"
+                                 src="img/icons/vectorLayers.svg"></td>
+                        <td title="{{lang.vlList.iconConnectDB}}"><img class="vectorLayerIcons" ng-click="showToDbDialog($event)" src="img/icons/addDB.svg"></td>
+                        <td title="{{lang.vlList.iconSearchDB}}"><img class="vectorLayerIcons" src="img/icons/searchDB.svg"></td>
+                        <td title="{{lang.vlList.iconRefresh}}"><img class="vectorLayerIcons" src="img/icons/refresh.svg"></td>
+                        <td title="{{lang.vlList.iconEdit}}">
+                            <img class="vectorLayerIcons" md-prevent-menu-close="md-prevent-menu-close" ng-click="openEditTool();" src="img/icons/vectorEdit.svg">
+                        </td>
+                        <td title="{{lang.vlList.iconDown}}"><img class="vectorLayerIcons" ng-click="moveDown()"
+                                 md-prevent-menu-close="md-prevent-menu-close" src="img/icons/arrowDown1.svg"></td>
+                        <td title="{{lang.vlList.iconUp}}"><img class="vectorLayerIcons" md-prevent-menu-close="md-prevent-menu-close" ng-click="moveUp()"
+                                 md-prevent-menu-close="md-prevent-menu-close" src="img/icons/arrowUp1.svg"></td>
+                        <td title="{{lang.vlList.iconBottom}}"><img md-prevent-menu-close="md-prevent-menu-close" ng-click="moveLast()"
+                                 class="vectorLayerIcons" src="img/icons/arrowDown2.svg"></td>
+                        <td title="{{lang.vlList.iconTop}}">
+                            <img ng-click="moveFirst()" md-prevent-menu-close="md-prevent-menu-close" class="vectorLayerIcons" src="img/icons/arrowUp2.svg"></td>
+                        <td title="{{lang.vlList.iconSettings}}"><img class="vectorLayerIcons" src="img/icons/vectorSettings.svg"></td>
+                        <td title="{{lang.vlList.iconCloudDown}}"><img class="vectorLayerIcons" src="img/icons/cloudDown.svg"></td>
+                        <td title="{{lang.vlList.iconCloudUp}}"><img class="vectorLayerIcons" src="img/icons/cloudUp.svg"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="(ozellik, deger) in vectorLayerList">
+            <td valign="center" align="left" style="width: 15px;" class="vectorLayerName">{{$index+1}}</td>
+            <td style="width: 25px;">
+                <label class="radioLayers">
+                <input  ng-click="layerActive(deger.id);" type="radio" name="activeVectorLayer" ng-checked="deger.active"
+                       md-prevent-menu-close="md-prevent-menu-close">
+                     <span class="span1">
+                     <span class="span2"></span>
+                     </span>
+                </label>
+            </td>
+            <td class="vectorLayerName">{{deger.label}}</td>
+            <td align="right"  title="{{lang.vlList.iconZoom}}"><img class="vectorLayerIcons" ng-click="setProp('show',deger.id);"
+                                   ng-class="{'iconActive':deger.show}" src="img/icons/vecorView.svg"
+                                   md-prevent-menu-close="md-prevent-menu-close"></td>
+            <td align="right"  title="{{lang.vlList.iconSnap}}">
+                <img md-ink-ripple class="vectorLayerIcons" preventcloselayer="" ng-click="setProp('snap',deger.id);"
+                     ng-class="{'iconActive':deger.snap}" src="img/icons/snap.svg"
+                     md-prevent-menu-close="md-prevent-menu-close">
+            </td>
+            <td align="right"  title="{{lang.vlList.iconLayerSetting}}">
+                <img class="vectorLayerIcons" preventcloselayer="" ng-click="layerSettings(deger.id);openSettingsDialog($event)"
+                     ng-class="true" src="img/icons/vectorSetting.svg"></td>
+            <td align="right"  title="{{lang.vlList.iconRemove}}">
+                <img class="vectorLayerIcons" preventcloselayer="" ng-click="layerDeleteToList(ozellik);"
+                     ng-class="true" src="img/icons/garbage.svg"
+                     md-prevent-menu-close="md-prevent-menu-close"></td>
+        </tr>
+        </tbody>
+    </table>
+</span>

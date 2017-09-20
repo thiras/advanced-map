@@ -1,0 +1,23 @@
+{
+  "name": "balistamap",
+  "version": "1.0.0",
+  "description": "this a map system for advanced map",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/berxudar/haritabeyaz.git"
+  },
+  "author": "dılo sürücü",
+  "license": "MIT",
+  "homepage": "https://bitbucket.org/berxudar/haritabeyaz#readme",
+  "dependencies": {
+    "leaflet.pm": "^0.19.0",
+    "sass-autoprefixer": "^1.0.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.7.1"
+  }
+}

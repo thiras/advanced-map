@@ -1,0 +1,8 @@
+.grayfilter{
+  filter:grayscale(100%);
+  @include vp-transition(.3s all);
+  &:hover{
+    filter:grayscale(0%);
+  }
+}
+

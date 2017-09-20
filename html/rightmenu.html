@@ -1,0 +1,60 @@
+<drop-down-menu hide-xs>
+
+
+
+    <md-list-item>
+        <md-menu  md-offset="18 74" class="md-secondary">
+            <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
+                <md-tooltip md-direction="down">{{lang.general.moduls}}</md-tooltip>
+                <md-icon md-svg-src="img/icons/modul.svg" aria-label="Modüller"></md-icon>
+            </md-button>
+            <md-menu-content  class="grid-4" layout-padding md-whiteframe="14" width="2">
+                <div ng-click="hide()" layout-padding layout="column" class="modulButon">
+                    <img src="img/icons/imar.svg" width="40">
+                    title
+                </div>
+                <div ng-click="hide()" layout-padding layout="column" class="modulButon">
+                    <img src="img/icons/announcement.svg" width="40">
+                    title1
+                </div>
+                <div ng-click="hide()" layout-padding layout="column" class="modulButon">
+                    <img src="img/icons/user.svg" width="40">
+                    title2
+                </div>
+                <div ng-click="hide()" layout-padding layout="column" class="modulButon">
+                    <img src="img/icons/uydu.svg" width="40">
+                    title3
+                </div>
+                <div ng-click="hide()" layout-padding layout="column" class="modulButon">
+                    <img src="img/icons/imar.svg" width="40">
+                    title
+                </div>
+                <div ng-click="hide()" layout-padding layout="column" class="modulButon">
+                    <img src="img/icons/settings.svg" width="40">
+                    title
+                </div>
+                <div ng-click="hide()" layout-padding layout="column" class="modulButon">
+                    <img src="img/icons/user.svg" width="40">
+                    title
+                </div>
+                <div ng-click="hide()" layout-padding layout="column" class="modulButon">
+                    <img src="img/icons/uydu.svg" width="40">
+                    title
+                </div>
+
+            </md-menu-content>
+        </md-menu>
+    </md-list-item>
+</drop-down-menu>
+
+
+<my-dialog hide-xs>
+    <div ng-controller="AppCtrl" ng-cloak md-theme="{{theme}}" class="container">
+        <md-button ng-click="showAdvanced($event)" aria-label="Google Hangout" class="md-fab md-raised md-mini">
+            <md-tooltip md-direction="down">
+                {{lang.general.signin}}
+            </md-tooltip>
+            <md-icon md-svg-src="img/icons/user1.svg" aria-label="Profil"></md-icon>
+        </md-button>
+    </div>
+</my-dialog>

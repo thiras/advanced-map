@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACA,qBAAqB;EACnB,UAAU,EAAE,uBAAuB;EACnC,MAAM,EAAE,iBAAiB;;AAE3B,sBAAsB;EACpB,UAAU,EAAE,uBAAuB;EACnC,MAAM,EAAE,iBAAiB",
+"sources": ["fabdialstoggleborder.scss"],
+"names": [],
+"file": "fabdialstoggleborder.css"
+}

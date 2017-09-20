@@ -1,0 +1,37 @@
+.ng-leave {
+  transition:  .45s cubic-bezier(0.4, 0, 0.2, 1) all;
+  opacity: 1;
+}
+
+.ng-leave-active {
+  opacity: 0;
+  left:-10em;
+}
+.ripple-effect{
+
+  transition:all ease-out 0.5s;
+
+  background:radial-gradient(rgba(0,0,0,.4),rgba(0,0,0,.2));
+  position: absolute;
+  padding: 1em;
+  height: 15px;
+  width: 15px;
+  border-radius:100%;
+  animation-name:myanime;
+  animation-duration:0.5s;
+
+
+}
+
+
+
+@keyframes myanime {
+  0% {
+    opactiy:0;
+    transform:scale(0.1);}
+  100% {
+    opacity:.1; transform:scale(5);
+  }
+
+}
+
