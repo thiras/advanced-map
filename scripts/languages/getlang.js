@@ -1,14 +1,14 @@
-app.service("$getlang",function ($http) {
+app.service("$getlang", function ($http, $rootScope) {
+
+    var deger="";
+    var url = "scripts/languages/lang-en.json";
+
+
+    return $http.get(url).then(function (a) {
+        return a;
+    })
 
 
 
-    var $a=$http.jsonp("scripts/languages/lang-en.json").then(function (d) {
-
-        return d;
-
-    });
-
-
-  return $a;
 
 })

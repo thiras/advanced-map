@@ -1,21 +1,10 @@
 var app = angular.module("app", ['ngMaterial', 'ngAnimate','ngAria','ngMessages']);
 
-app.controller("controller", function ($scope, $http,$timeout, $mdSidenav, $rootScope, $window, $storage, $leftmenujson,$leafletFonk,$getlang) {
+app.controller("controller", async function ($scope, $http,$timeout, $mdSidenav, $rootScope, $window, $storage, $leftmenujson,$leafletFonk,$getlang) {
 
 
-
-
- /*   $timeout(function () {
-
-        $getlang.then(function (a) {
-
-            $rootScope.lang=a.data;
-        })
-    })
-*/
-
-
-
+   var lang = await $getlang;
+   $rootScope.lang=lang.data;
 
     $rootScope.db = new Dexie('balistam');
     $rootScope.db.version(1).stores({
@@ -34,11 +23,11 @@ app.controller("controller", function ($scope, $http,$timeout, $mdSidenav, $root
         .each (function (friend) {
             console.log (friend.name);
         });
-
+/*
     $rootScope.language = navigator.languages[1] || navigator.language || "tr";
     $rootScope.language="en";
-    $rootScope.lang = lang[$rootScope.language];
-    document.querySelector('title').innerText=$rootScope.lang.general.title;
+    $rootScope.lang = lang[$rootScope.language];*/
+    document.querySelector('title').innerText=$rootScope.lang.general.title ;
     $showFabDials = false;
     $scope.contextMenuShow = 0;
     $scope.mouseX = 0 + "px";
