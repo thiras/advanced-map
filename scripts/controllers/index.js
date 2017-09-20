@@ -1,17 +1,42 @@
 var app = angular.module("app", ['ngMaterial', 'ngAnimate','ngAria','ngMessages']);
 
-app.controller("controller", function ($scope, $http,$timeout, $mdSidenav, $rootScope, $window, $storage, $leftmenujson,$leafletFonk,ajax) {
+app.controller("controller", function ($scope, $http,$timeout, $mdSidenav, $rootScope, $window, $storage, $leftmenujson,$leafletFonk,$getlang) {
 
 
 
-    var sonuc=ajax.then(function (b) {
-        return b;
-        $scope.son=b.data;
 
+ /*   $timeout(function () {
+
+        $getlang.then(function (a) {
+
+            $rootScope.lang=a.data;
+        })
+    })
+*/
+
+
+
+
+    $rootScope.db = new Dexie('balistam');
+    $rootScope.db.version(1).stores({
+        friendsa: 'name, age'
     });
+    $rootScope.db.open().catch(function(error) {
+        alert('Uh oh : ' + error);
+    });
+    $rootScope.db.friendsa.add({
+        name: 'Camilla',
+        age: 25
+    });
+    var a = $rootScope.db.friendsa
+        .where('age')
+        .above(75)
+        .each (function (friend) {
+            console.log (friend.name);
+        });
 
     $rootScope.language = navigator.languages[1] || navigator.language || "tr";
-    $rootScope.language="tr";
+    $rootScope.language="en";
     $rootScope.lang = lang[$rootScope.language];
     document.querySelector('title').innerText=$rootScope.lang.general.title;
     $showFabDials = false;

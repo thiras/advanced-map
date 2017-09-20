@@ -167,4 +167,154 @@ lang.tr={
 
 };
 
+lang.en={
+    general : {
+        title:"BalistaGIS Software",
+        close:"Close",
+        save:"Save",
+        have:"Available",
+        add:"Add",
+        createLayer:"Create Layer",
+        leafletAttr:"Balista Bilişim Yazılım A.Ş",
+        moduls:"Moduls",
+        signup:"Sign Up",
+        ignore:"Ignore",
+        cancel:"Cancel",
+        smallint:"Small Integer",
+        integer:"Integer",
+        bigint:"Big Integer",
+        real:"Small Real Number",
+        double:"Big Real Number",
+        text:"Text",
+        date:"Date",
+        timestamp:"Date - Time",
+        boolean:"Mantıksal Değer 1/0",
+        delete:"Delete"
+
+    },
+    toolEdit:{
+        label:"Edit",
+        draw:{
+            polygon:"Draw a New Polygon",
+            polyRectangle:"Draw a New Polygon Rectangle",
+            polyCircile:"Draw a New Circle",
+            polyEllips:"Draw a New Polygon",
+            polyArc:"Draw a New Arc",
+            polyLineBezier:"Draw a New Bezier",
+            line:"Draw a New Line",
+            lineRectangle:"Draw a New Line Rectangle",
+            lineCircle:"Draw a New Line Circle",
+            lineArc:"Draw a New Line Arc",
+            lineBezier:"Draw a New Line Bezier",
+            point:"Draw a New Point",
+            marker:"Draw a New Marker",
+            edit:"Edit Drawing Geometries",
+            delete:"Delete Drawing Geometry"
+        }
+    },
+    login:{
+        login:"Sign In",
+        signin:"User Login",
+        signinForm:"User Login Form",
+        signUpForm:"User Sign Up Form",
+        name:"Name Surname",
+        phoneNumber:"Phone Number",
+        email:"Email Adress",
+        adress:"Adress",
+        contract:"I agree to read the <a href='#' accept-agreement>Contract</a>"
+    },
+    searchBox:{
+        btnMenuOnOff:"Menu Open/Close",
+        inptSearchBox:"District, Neighborhood, Hospital, School ...",
+        btnSearch:"Search",
+        btnLayer:"Open Layer Box"
+    },
+    leftmenu:{
+        label:"Basemaps & Analysis",
+        basemap:"Basemaps",
+        satallite:"Satellite Views",
+        analysis:"Analysis",
+        freemaps:"Free Basemaps",
+        opacity:"Opacity"
+    },
+    vlList:{
+        label:"Vector Layer List",
+        iconAdLayer:"Add New Layer",
+        iconConnectDB:"Connect Database",
+        iconSearchDB:"View Database Tables",
+        iconRefresh:"Refresh Selected Layer",
+        iconEdit:"Edit Selected Layer",
+        iconDown:"Layer Move To Down",
+        iconUp:"Layer Move To Up",
+        iconBottom:"Layer Move To Bottom",
+        iconTop:"Layer Move To Top",
+        iconSettings:"Open Settings Panel of Selected Layer",
+        iconCloudDown:"Download Selected Layer",
+        iconCloudUp:"Send Selected Layer to System",
+        iconZoom:"Zoom To Layer",
+        iconSnap:"Set Active Snap Of Layer",
+        iconLayerSetting:"Open Settings Layer's Panel",
+        iconRemove:"Remove Layer from List",
+        dialogs:{
+            laySet : {
+                label:"Layer Settings",
+                tab1:{
+                    label:"Datas"
+                },
+                tab2:{
+                    label:"General",
+                    h1:"General Info of Layer",
+                    inptLayNam:"Layer Name",
+                    inptLayDesc:"Layer Description",
+                    inptMinZoom:"Minimum Zoom",
+                    inptMaxZoom:"Maximum Zoom",
+                    inptAutoSave:"Auto Saving Time (mn)"
+                },
+                tab3:{
+                    label:"View",
+                    h11:"WHEN OPEN DEFAULT VİEWS OF LAYER STYLE",
+                    h12:"WHEN MOUSE OVER OF LAYER VİEWS STYLE",
+                    h13:"WHEN MOUSE OVER OF LAYER VİEWS STYLE",
+                    layObj:"LAYER OBJECT",
+                    layStatus:"STATUS",
+                    layColor:"COLOR",
+                    layHex:"HEX",
+                    layWidth:"WEIGHT",
+                    layOpacity:"OPACITY",
+                    layLineStyle:"Line Attributes",
+                    layFillStyle:"Fill Attributes"
+                },
+                tab4:{
+                    label:"Queries"
+                }
+
+            },
+            addNewVecLay:{
+                label:"New Layer Insertion Panel",
+                createNewLayer:"Create New Layer",
+                tab1:{
+                    label:"Existing Layers"
+                },
+                tab2:{
+                    label:"Created Layers"
+                }
+            },
+            createNewVecLay:{
+                label:"CREATE NEW LAYER",
+                layname:"Write Layer Name",
+                descrpt:"Write Layer Description",
+                type:"Select To Layer Type",
+                crs:"Select To Coordinate System EPSG Code",
+                layerMainInfo:"Layers Information Input Form",
+                layTabProp:"Layer's Table Field Input Form",
+                select : "Select a Type",
+                alreadyHavefile:"Existing Table fields",
+                writeFieldName:"Write Field Name"
+
+            }
+        }
+    }
+
+};
+
 
