@@ -31,7 +31,6 @@ app.controller("editTool",function ($scope,$mdToast,$rootScope,$toolEdit,$layers
     //$rootScope.leaflet.pm.enableDraw('Marker', $scope.options);
     //$rootScope.leaflet.pm.enableDraw('Circle', $scope.options);
     $rootScope.leaflet.on('pm:create', function(e) {
-        debugger;
         var layer = e.layer;
         var layerid = layer._leaflet_id;
         $scope.layer.feature.featureId.push('feature'+layerid);
@@ -119,7 +118,6 @@ app.controller("editTool",function ($scope,$mdToast,$rootScope,$toolEdit,$layers
     }
 
     $scope.drawPolygon=function () {
-        debugger;
         var lastActive = $toolEdit.lastActive;
         $toolEdit.activeType="Polygon";
         $toolEdit.activeButton="polygon";
