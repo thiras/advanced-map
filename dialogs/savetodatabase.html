@@ -18,17 +18,47 @@
                 <md-list>
 
 
-                    <md-list-item flex md-ink-ripple>
-
-
-
+                    <md-list-item flex >
+                        <md-input-container layout-fill>
+                            <input md-autofocus type="text" placeholder="host">
+                        </md-input-container>
                     </md-list-item>
-                    <md-list-item flex md-ink-ripple>
-
-
-
+                    <md-list-item flex >
+                        <md-input-container layout-fill>
+                            <input  type="text" placeholder="port">
+                        </md-input-container>
                     </md-list-item>
 
+                    <md-list-item flex >
+                        <md-input-container layout-fill>
+                            </md-icon><input type="text" placeholder="schema name">
+                        </md-input-container>
+                    </md-list-item>
+
+                    <md-list-item flex>
+                        <md-input-container layout-fill>
+                            <input type="text" placeholder="database name">
+                        </md-input-container>
+                    </md-list-item>
+
+                    <md-list-item flex >
+
+                        <md-input-container layout-fill>
+                            <input type="text" placeholder="username">
+                        </md-input-container>
+                    </md-list-item>
+
+                   <md-list-item flex >
+                       <md-input-container layout-fill>
+                            <input type="password" placeholder="password">
+                        </md-input-container>
+                    </md-list-item>
+
+
+                  <md-list-item>
+
+                      <div ng-class="resultDbclass">{{resultDbConnect}}</div>
+                  </md-list-item>
 
                 </md-list>
             </div>
@@ -37,9 +67,9 @@
         <md-dialog-actions layout="row">
 
             <span flex></span>
-            <!--<md-button ng-click="answer('not useful')">
-                Not Useful
-            </md-button>-->
+            <md-button class="md-raised md-primary md-button md-ink-ripple" layout-align="center center" flex layout="row">
+               <md-icon flex="25" md-svg-src="img/icons/database.svg"></md-icon><span flex="50">Bağlan</span>
+            </md-button>
             <md-button class="md-raised md-warn md-button md-ink-ripple" ng-click="answer('useful')">
               Kapat
             </md-button>
