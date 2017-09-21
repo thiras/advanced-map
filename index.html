@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title></title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css">
@@ -11,8 +10,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/stylee.css">
     <link rel="stylesheet" href="css/angular_material_sass.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.pm@0.19.0/dist/leaflet.pm.css" />
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.pm@0.19.0/dist/leaflet.pm.css"/>
     <script type="text/babel" src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/6.1.19/browser.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
@@ -21,82 +19,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet.pm@0.19.0/dist/leaflet.pm.min.js"></script>
-
-
-
 </head>
 <body ng-click="!contextMenuShow" ng-app="app" ng-controller="controller" ng-contextmenu="rightclick()">
 <nav ng-include="'html/navbar.html'"></nav>
-<searchbox layout-align="center start" layout="row" ng-include="'html/searchbox.html'" flex id="searchbox" layout="row"
-           md-whiteframe="6"></searchbox>
+<searchbox layout-align="center start" layout="row" ng-include="'html/searchbox.html'" flex id="searchbox" layout="row" md-whiteframe="6">
+</searchbox>
 <right-top-menu ng-include="'html/rightmenu.html'" layout="row"></right-top-menu>
 <slider-wrap></slider-wrap>
 <left-menu ng-include="'html/leftmenu.html'" layout="row">
 </left-menu>
-<leaflet ng-click="contextMenuShow=0" right-click="openrightmenu()" data-lat="35" data-lng="30" zoom="12"
-         id="map"></leaflet>
-<md-contextmenu ng-if="contextMenuShow" ng-style="{'left':mouseX,'top':mouseY}">
-    <md-menu-bar>
-        <md-menu>
-            <button style="opacity: 0" id="rightMenuOpen" id="openMenu" class="md-button md-raised md-default"
-                    ng-click="$mdOpenMenu()">
-                menu aç
-            </button>
-            <md-menu-content>
-                <md-menu-item>
-                    <md-menu>
-                        <md-button ng-click="$mdOpenMenu()">Link1</md-button>
-                        <md-menu-content>
-                            <md-menu-item>
-                                <md-button>Document</md-button>
-                            </md-menu-item>
-                            <md-menu-item>
-                                <md-button>File</md-button>
-                            </md-menu-item>
-                        </md-menu-content>
-                    </md-menu>
-                </md-menu-item>
-                <md-menu-item>
-                    <md-menu>
-                        <md-button ng-click="$mdOpenMenu()">Link2</md-button>
-                        <md-menu-content>
-                            <md-menu-item>
-                                <md-button>Document</md-button>
-                            </md-menu-item>
-                            <md-menu-item>
-                                <md-button>File</md-button>
-                            </md-menu-item>
-                        </md-menu-content>
-                    </md-menu>
-                </md-menu-item>
-                <md-menu-item>
-                    <md-menu>
-                        <md-button ng-click="$mdOpenMenu()">Link3</md-button>
-                        <md-menu-content>
-                            <md-menu-item>
-                                <md-button>Document</md-button>
-                            </md-menu-item>
-                        </md-menu-content>
-                    </md-menu>
-                </md-menu-item>
-                <md-menu-item>
-                    <md-menu>
-                        <md-button ng-click="$mdOpenMenu()">Link4</md-button>
-                        <md-menu-content>
-                            <md-menu-item>
-                                <md-button>Document</md-button>
-                            </md-menu-item>
-                        </md-menu-content>
-                    </md-menu>
-                </md-menu-item>
-            </md-menu-content>
-        </md-menu>
-    </md-menu-bar>
-</md-contextmenu>
+<leaflet ng-click="contextMenuShow=0" right-click="openrightmenu()" data-lat="35" data-lng="30" zoom="12" id="map"></leaflet>
+<md-contextmenu ng-include="'html/contextmenu.html'" ng-if="contextMenuShow" ng-style="{'left':mouseX,'top':mouseY}"></md-contextmenu>
 <md-custom-toast wave class="mdCustomToastHide" id="ethernetAlert" layout="row" md-whiteframe="6" layout-padding>
     internet bağlantısı kesildi!! <i onclick="closeMdCustomToast()" class="material-icons">close</i>
 </md-custom-toast>
-<script src="scripts/languages/languages.js"></script>
 <script src="scripts/controllers/index.js"></script>
 <script src="scripts/controllers/democtrl.js"></script>
 <script src="scripts/controllers/mdsliderctrl.js"></script>
@@ -121,7 +57,6 @@
 <script src="scripts/directives/myclick.js"></script>
 <script src="scripts/directives/borderradius.js"></script>
 <script src="scripts/which/whichcontroller.js "></script>
-<script src="scripts/services/ajax.js"></script>
 <script src="database/dexie.js"></script>
 <script src="scripts/languages/getlang.js"></script>
 </body>

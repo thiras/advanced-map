@@ -99,7 +99,7 @@ app.controller("editTool",function ($scope,$mdToast,$rootScope,$toolEdit,$layers
 
     $scope.factoryMethod=function (fn) {
         $scope[fn]();
-    }
+    };
     $scope.allButtonChange = function ($a,lastActive) {
         for(prop in $a.type[$a.activeType].icons){
             if(prop==$a.activeButton){
@@ -115,7 +115,7 @@ app.controller("editTool",function ($scope,$mdToast,$rootScope,$toolEdit,$layers
             }
         }
         return $a;
-    }
+    };
 
     $scope.drawPolygon=function () {
         var lastActive = $toolEdit.lastActive;

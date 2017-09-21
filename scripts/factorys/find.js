@@ -1,6 +1,4 @@
 app.factory("$fonks",function ($leftmenujson) {
-
-
     this.findLeftBottomLayerBoxLayer=function(jsonData,id) {
         var obj = jsonData;
         var layerBox = obj.layerBox;
@@ -14,15 +12,9 @@ app.factory("$fonks",function ($leftmenujson) {
                         sonuc.layers=i;
                         sonuc.layer=j;
                     }
-                }
-
-            }
+                }            }
         }
         sonuc.data = $leftmenujson.jsonData.layerBox[parseInt(sonuc.layers)].layers[parseInt(sonuc.layer)];
         return sonuc;
     };
-
-
-    return this;
-
-});
+    return this;});

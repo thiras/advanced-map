@@ -1,14 +1,30 @@
-app.service("$getlang", function ($http, $rootScope) {
+app.service("$getlang", function ($http) {
 
-    var deger="";
-    var url = "scripts/languages/lang-en.json";
+    var $supportLang = ["tr", "en"];
+
+    var $lang =(function () {
 
 
-    return $http.get(url).then(function (a) {
+        var $userLang = navigator.languages[1];
+
+
+        $existLang = $supportLang.find(function (a) {
+            return a == $userLang;
+
+        });
+
+        return $existLang ? $existLang : "en";
+
+
+    })();
+
+
+    var $url = "scripts/languages/lang-" + $lang + ".json";
+
+
+    return $http.get($url).then(function (a) {
         return a;
     })
 
 
-
-
-})
+});

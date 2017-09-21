@@ -13,4 +13,4 @@ app.directive("acceptAgreement",function () {
         }
     }
 
-})
+});

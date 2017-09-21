@@ -71,7 +71,7 @@ app.controller("vectorLayerBox", function ($scope, $layersJson, $mdDialog,$rootS
 
 
 
-    }
+    };
 
 
     $scope.moveLast=function () {
@@ -105,7 +105,7 @@ app.controller("vectorLayerBox", function ($scope, $layersJson, $mdDialog,$rootS
 
 
 
-    }
+    };
 
 
     $scope.moveDown = function () {
@@ -139,7 +139,7 @@ app.controller("vectorLayerBox", function ($scope, $layersJson, $mdDialog,$rootS
 
         $rootScope.refresh();
 
-    }
+    };
 
 
     $scope.moveUp = function () {
@@ -171,7 +171,7 @@ app.controller("vectorLayerBox", function ($scope, $layersJson, $mdDialog,$rootS
         //$rootScope.vectorLayerList={};
 
         $rootScope.refresh();
-    }
+    };
 
 
     $scope.showTabDialog = function (event) {
@@ -206,7 +206,7 @@ app.controller("vectorLayerBox", function ($scope, $layersJson, $mdDialog,$rootS
                 $scope.status = 'You cancelled the dialog.';
             });
 
-    }
+    };
 
     $rootScope.refresh=function () {
 
@@ -220,7 +220,7 @@ app.controller("vectorLayerBox", function ($scope, $layersJson, $mdDialog,$rootS
         }
         $rootScope.vectorLayerList=newList;
 
-    }
+    };
 
 
 /* dilogcontroller başlangıcı */
@@ -251,7 +251,7 @@ app.controller("vectorLayerBox", function ($scope, $layersJson, $mdDialog,$rootS
                         elm.remove();
                     });
           elm.remove();
-        }
+        };
         $scope.createNewVectorLayer=function(event){
             $mdDialog.show({
                 controller: DialogController,
@@ -266,7 +266,7 @@ app.controller("vectorLayerBox", function ($scope, $layersJson, $mdDialog,$rootS
                 }, function () {
                     $scope.status = 'You cancelled the dialog.';
                 });
-        }
+        };
         $scope.getVectorLayersInfo = function (obj) {
             var json = {};
             for(prop in obj){
@@ -275,7 +275,7 @@ app.controller("vectorLayerBox", function ($scope, $layersJson, $mdDialog,$rootS
                 json[id] = layer;
             }
             return json;
-        }
+        };
         $scope.vectorLayers = $scope.getVectorLayersInfo($layersJson.data.vectorLayers);
 
 
@@ -317,7 +317,7 @@ app.controller("vectorLayerBox", function ($scope, $layersJson, $mdDialog,$rootS
             $layersJson.data.info[gelen].atlist=true;
             $rootScope.refresh();
 
-        }
+        };
         $scope.readyFields={id:{name:"id",type:"bigint"}};
         if(typeof $scope.id !=="undefined"){
             debugger;
@@ -344,7 +344,7 @@ app.controller("vectorLayerBox", function ($scope, $layersJson, $mdDialog,$rootS
                     }
                 }
             }
-        }
+        };
         $scope.addNewField=function (id) {
             var fieldType = $scope.fieldType;
             var fieldName = $scope.fieldName;
@@ -369,7 +369,7 @@ app.controller("vectorLayerBox", function ($scope, $layersJson, $mdDialog,$rootS
             }else{
                 alert("Bu Tip Geçerli Değildir");
             }
-        }
+        };
 
 
         $scope.confirmNewVectorLayer=function () {
@@ -527,7 +527,7 @@ app.controller("vectorLayerBox", function ($scope, $layersJson, $mdDialog,$rootS
 
     $scope.layerSettings=function (id) {
         $rootScope.clickSettings=$layersJson.data.info[id];
-    }
+    };
 
     $scope.layerDeleteToList = function (layerName) {
 
@@ -547,7 +547,7 @@ app.controller("vectorLayerBox", function ($scope, $layersJson, $mdDialog,$rootS
         $rootScope.vectorLayerList = newLayerList;
         $layersJson.data.zindex = lnarray;
 
-    }
+    };
 
 
 

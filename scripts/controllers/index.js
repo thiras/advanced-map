@@ -1,16 +1,16 @@
-var app = angular.module("app", ['ngMaterial', 'ngAnimate','ngAria','ngMessages']);
+var app = angular.module("app", ['ngMaterial', 'ngAnimate', 'ngAria', 'ngMessages']);
 
-app.controller("controller", async function ($scope, $http,$timeout, $mdSidenav, $rootScope, $window, $storage, $leftmenujson,$leafletFonk,$getlang) {
+app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav, $rootScope, $window, $storage, $leftmenujson, $leafletFonk, $getlang) {
 
 
-   var lang = await $getlang;
-   $rootScope.lang=lang.data;
+    var lang = await $getlang;
+    $rootScope.lang = lang.data;
 
     $rootScope.db = new Dexie('balistam');
     $rootScope.db.version(1).stores({
         friendsa: 'name, age'
     });
-    $rootScope.db.open().catch(function(error) {
+    $rootScope.db.open().catch(function (error) {
         alert('Uh oh : ' + error);
     });
     $rootScope.db.friendsa.add({
@@ -20,14 +20,11 @@ app.controller("controller", async function ($scope, $http,$timeout, $mdSidenav,
     var a = $rootScope.db.friendsa
         .where('age')
         .above(75)
-        .each (function (friend) {
-            console.log (friend.name);
+        .each(function (friend) {
+            console.log(friend.name);
         });
-/*
-    $rootScope.language = navigator.languages[1] || navigator.language || "tr";
-    $rootScope.language="en";
-    $rootScope.lang = lang[$rootScope.language];*/
-    document.querySelector('title').innerText=$rootScope.lang.general.title ;
+
+    document.querySelector('title').innerText = $rootScope.lang.general.title;
     $showFabDials = false;
     $scope.contextMenuShow = 0;
     $scope.mouseX = 0 + "px";
@@ -60,7 +57,7 @@ app.controller("controller", async function ($scope, $http,$timeout, $mdSidenav,
 
     };
 
-    $leafletFonk.createMap(35.3540039,38.891032);
+    $leafletFonk.createMap(35.3540039, 38.891032);
 
     $scope.toggleLeft = buildToggler('left');
     $scope.toggleRight = buildToggler('right');
@@ -98,8 +95,6 @@ app.controller("controller", async function ($scope, $http,$timeout, $mdSidenav,
         $scope.mouseX = pozx - 50 + "px";
         $scope.mouseY = pozy - 40 + "px";
     }
-
-
 
 
 });
