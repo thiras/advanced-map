@@ -2,11 +2,9 @@ app.service("$getlang", function ($http) {
 
     var $supportLang = ["tr", "en"];
 
-    var $lang =(function () {
-
+    var $lang = (function () {
 
         var $userLang = navigator.languages[1];
-
 
         $existLang = $supportLang.find(function (a) {
             return a == $userLang;

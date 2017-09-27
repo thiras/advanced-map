@@ -87,7 +87,7 @@
     "iconLayerSetting":"Open Settings Layer's Panel",
     "iconRemove":"Remove Layer from List",
     "dialogs":{
-      "laySet ": {
+      "laySet": {
         "label":"Layer Settings",
         "tab1":{
           "label":"Datas"

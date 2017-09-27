@@ -1,6 +1,4 @@
 app.controller('DemoCtrl', function ($scope) {
-
-
     $scope.bass=60;
 
     this.topDirections = ['left', 'up'];

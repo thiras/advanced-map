@@ -1,4 +1,4 @@
-app.controller("vectorLayerBox", function ($scope, $layersJson, $mdDialog,$rootScope,$mdToast) {
+app.controller("vectorLayerBox", function ($scope, $layersJson, $mdDialog,$rootScope,$mdToast,$indexedDB) {
 
     $scope.clickSettings="";
 
@@ -288,6 +288,7 @@ app.controller("vectorLayerBox", function ($scope, $layersJson, $mdDialog,$rootS
         $rootScope.vectorLayerList=$rootScope.vectorLayerList;
 
 
+
         $scope.layers=[];
         for(prop in $layersJson.data.layers){
             var lynrName = $layersJson.data.layers[prop];
@@ -320,7 +321,7 @@ app.controller("vectorLayerBox", function ($scope, $layersJson, $mdDialog,$rootS
         };
         $scope.readyFields={id:{name:"id",type:"bigint"}};
         if(typeof $scope.id !=="undefined"){
-            debugger;
+
             $scope.readyFieldsInfo = $layersJson.data.info[$scope.id].fields;
             $scope.createdFeatures = $layersJson.data.info[$scope.id].feature.features;
         }
@@ -497,6 +498,54 @@ app.controller("vectorLayerBox", function ($scope, $layersJson, $mdDialog,$rootS
     $rootScope.vectorLayerListNum = 7;
 
 
+/* başlangıç  */
+
+    var db=new Dexie("balistagis");
+
+
+    for(prop in $rootScope.vectorLayerList){
+        var tablename = $rootScope.vectorLayerList[prop].id;
+        var fields = "";
+        var i=0;
+        for(let prp in $rootScope.vectorLayerList[prop].fields){
+            var name = $rootScope.vectorLayerList[prop].fields[prp].name;
+            if(i==0){
+                fields=name;
+                i++;
+            }else{
+                fields=fields+','+name;
+                console.log(fields)
+                i++;
+            }
+        }
+        var obj = {};
+        obj[tablename]=fields;
+        db.version(prop).stores(obj);
+    }
+    for(prop in $rootScope.vectorLayerList){
+        var tablename = $rootScope.vectorLayerList[prop].id;
+
+        db[tablename].add({
+            id:"denemem"
+        });
+    }
+
+
+  /*  db.version(1).stores({
+        yol:"ali,veli,deli"
+    });
+
+    db.yol.add({
+
+        ali:"alifewfe",
+        veli:"efffew",
+        deli:"efwfwfe1222"
+    })
+    
+    db.yol.each(function (a) {
+        
+    });*/
+
     $scope.layerActive = function (layerName) {
 
 
@@ -544,7 +593,9 @@ app.controller("vectorLayerBox", function ($scope, $layersJson, $mdDialog,$rootS
                 $layersJson.data.info[ln].atlist=false;
             }
         }
+
         $rootScope.vectorLayerList = newLayerList;
+
         $layersJson.data.zindex = lnarray;
 
     }

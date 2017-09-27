@@ -1,9 +1,4 @@
-app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav, $rootScope, $window, $storage, $leftmenujson, $leafletFonk, $getlang,) {
-
-
-
-
-
+app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav, $rootScope, $window, $storage, $leftmenujson, $leafletFonk, $getlang) {
     var lang = await $getlang;
     $rootScope.lang = lang.data;
 
@@ -23,14 +18,6 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
     };
     $scope.mapType = "default";
     $scope.opacity = 1;
-
-
-    $rootScope.$emit("updateMdSliderValue", function (a, b) {
-
-
-        console.log(b)
-    });
-
 
     $scope.searchAdress = function (data) {
 

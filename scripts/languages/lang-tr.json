@@ -87,7 +87,7 @@
     "iconLayerSetting":"Katmanın Ayar Panelini Aç",
     "iconRemove":"Katmanı Listeden Kaldır",
     "dialogs":{
-      "laySet ": {
+      "laySet": {
         "label":"Katman Ayarı",
         "tab1":{
           "label":"Veriler"
