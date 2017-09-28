@@ -1,4 +1,4 @@
-<section layout="row">
+<section layout="row" ng-controller="navbar">
     <md-sidenav class="md-sidenav-left" md-component-id="left"
                 md-whiteframe="4">
         <md-content>
@@ -10,13 +10,59 @@
             sistemleri
         </h1>
         </md-toolbar>
-        <md-content>
-            <p layout-padding>
-                burası açıklama
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam architecto assumenda cupiditate,
-                distinctio dolore esse hic ipsa maxime quae, sapiente velit veniam, voluptatum? Dolores id ipsum,
-                laboriosam maxime nam soluta?
-            </p>
+        <md-content ng-init="say=0">
+
+
+
+
+                <button class="accordion">Section 1</button>
+                <div class="panel">
+
+
+                    <md-list>
+                        <md-list-item md-ink-ripple>menu1</md-list-item>
+                        <md-list-item md-ink-ripple>menu1</md-list-item>
+                        <md-list-item md-ink-ripple>menu1</md-list-item>
+                        <md-list-item md-ink-ripple>menu1</md-list-item>
+                    </md-list>
+                </div>
+               <md-divider></md-divider>
+                <button class="accordion">Section 2</button>
+                <div class="panel">
+                    <md-list>
+
+                    <md-list-item>ewfe</md-list-item>
+                    <md-list-item>mfef1</md-list-item>
+                    <md-list-item>menefwf1</md-list-item>
+                    <md-list-item>menefwfu1</md-list-item>
+                    </md-list>
+                </div>
+               <md-divider></md-divider>
+
+                <button class="accordion">Section 3</button>
+                <div class="panel">
+                    <md-list>
+                        <md-list-item>item1</md-list-item>
+                        <md-list-item>item2</md-list-item>
+                        <md-list-item>item3</md-list-item>
+                    </md-list>
+
+                </div>
+               <md-divider></md-divider>
+                 <button class="accordion">Section 4</button>
+                <div class="panel">
+                    <md-list>
+                        <md-list-item>other</md-list-item>
+                        <md-list-item>other2</md-list-item>
+                        <md-list-item>other3</md-list-item>
+                    </md-list>
+
+                </div>
+               <md-divider></md-divider>
+
+
+
+
         </md-content>
     </md-sidenav>
 </section>

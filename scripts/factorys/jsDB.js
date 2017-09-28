@@ -35,7 +35,6 @@ app.factory('$jsDB', function ($window, $q) {
     };
 
     var getData = function (tableName) {
-        debugger
         var deferred = $q.defer();
         if (db === null) {
             deferred.reject("IndexDB is not opened yet!");
