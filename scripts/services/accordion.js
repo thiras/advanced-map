@@ -1,0 +1,9 @@
+app.service("$accordion",function () {
+
+
+
+
+
+
+
+});

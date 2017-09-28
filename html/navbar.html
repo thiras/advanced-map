@@ -10,24 +10,23 @@
             sistemleri
         </h1>
         </md-toolbar>
-        <md-content ng-init="say=0">
+        <md-content>
 
 
 
 
-                <button class="accordion">Section 1</button>
+
+                <div ng-repeat="(ozellik, deger) in menuJSON">
+                    <button class="accordion"><md-icon  class="mat-icon material-icons accordion-icons" role="img" aria-hidden="true">home</md-icon> {{deger.label}}</button>
                 <div class="panel">
-
-
                     <md-list>
-                        <md-list-item md-ink-ripple>menu1</md-list-item>
-                        <md-list-item md-ink-ripple>menu1</md-list-item>
-                        <md-list-item md-ink-ripple>menu1</md-list-item>
-                        <md-list-item md-ink-ripple>menu1</md-list-item>
+                        <md-list-item ng-repeat="(prop, deg) in deger.submenu" md-ink-ripple>{{deg.label}}</md-list-item>
                     </md-list>
                 </div>
                <md-divider></md-divider>
-                <button class="accordion">Section 2</button>
+                </div>
+
+                <!--<button class="accordion">Section 2</button>
                 <div class="panel">
                     <md-list>
 
@@ -58,7 +57,7 @@
                     </md-list>
 
                 </div>
-               <md-divider></md-divider>
+               <md-divider></md-divider>-->
 
 
 
