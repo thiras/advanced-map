@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,iBAAiB;EAAC,KAAK,EAAE,gBAAgB",
+"sources": ["ngdialog.scss"],
+"names": [],
+"file": "ngdialog.css"
+}

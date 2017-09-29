@@ -1,4 +1,4 @@
-app.controller("navbar",function($scope,$accordion,$timeout,$mdDialog,$rootScope,$mdSidenav) {
+app.controller("navbar",function($scope,$accordion,$timeout,$mdDialog,$rootScope) {
 
     $scope.menuJSON =$accordion;
     /*  menu acma ayar bas*/
@@ -62,14 +62,14 @@ app.controller("navbar",function($scope,$accordion,$timeout,$mdDialog,$rootScope
 
 
 
-    $scope.parselmenu1=function (event) {
+    $scope.findAddress=function (event) {
 
 
        // $scope.toggleLeft();
 
         $mdDialog.show({
             controller: navbarCtrl,
-            templateUrl: 'dialogs/access.html',
+            templateUrl: 'dialogs/findaddress.html',
             parent: angular.element(document.body),
             targetEvent: event,
             clickOutsideToClose: true,
@@ -91,7 +91,11 @@ app.controller("navbar",function($scope,$accordion,$timeout,$mdDialog,$rootScope
     }
 
 
-    function navbarCtrl($scope){
+
+    function navbarCtrl($scope,$sahtejson){
+
+
+        console.log($sahtejson)
 
 
         $scope.cancel=function () {
@@ -99,6 +103,12 @@ app.controller("navbar",function($scope,$accordion,$timeout,$mdDialog,$rootScope
             $mdDialog.cancel();
         }
 
+
+        $scope.chng=function (a) {
+
+          $scope.ilce=a;
+
+        }
 
 
     }

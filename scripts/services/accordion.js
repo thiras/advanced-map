@@ -10,7 +10,7 @@ var json={
         submenu:{
             menu1e1:{
                 label:"İlçe, Mahalle, Yol ve Kapı Numarası Seçerek",
-                fonk:"menu"
+                fonk:"findAddress"
             },
             menu1e2:{
                 label:"Harita Üzerinde Tıklayarak ",

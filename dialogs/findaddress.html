@@ -1,0 +1,79 @@
+<md-dialog id="findaddress" aria-label="Mango (Fruit)">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Mango (Fruit)</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content style="style:100%">
+
+            <md-list>
+
+                {{deneme}}
+                <md-list-item>
+
+                    <md-input-container layout-fill>
+                        <md-select ng-model="ilce">
+                            <md-select-header>
+                                <span> Neighborhoods - </span>
+                            </md-select-header>
+                            <md-option ng-value="veri"  ng-click="chng(veri)" ng-repeat="veri in [4,8,9]">{{veri}}</md-option>
+
+                        </md-select>
+                        {{navbarCtrl.ilce}}
+                    </md-input-container>
+
+                </md-list-item>
+
+                <md-list-item ng-if="ilce">
+                <md-input-container layout-fill>
+                    <md-select   ng-model="someModel">
+                        <md-select-header>
+                            <span> Neighborhoods - </span>
+                        </md-select-header>
+                        <md-option ng-value="opt">seçenek1</md-option>
+                        <md-option ng-value="opt1">seçenek1</md-option>
+                        <md-option ng-value="opt2">seçenek1</md-option>
+                        <md-option ng-value="opt3">seçenek1</md-option>
+                    </md-select>
+                </md-input-container>
+                </md-list-item>
+
+              <!--  <md-list-item>
+                    <md-input-container layout-fill>
+                        <md-select  ng-model="someModel">
+                            <md-select-header>
+                                <span> Neighborhoods - </span>
+                            </md-select-header>
+                            <md-option ng-value="opt">seçenek1</md-option>
+                            <md-option ng-value="opt1">seçenek1</md-option>
+                            <md-option ng-value="opt2">seçenek1</md-option>
+                            <md-option ng-value="opt3">seçenek1</md-option>
+                        </md-select>
+
+                    </md-input-container>
+
+
+                </md-list-item>-->
+            </md-list>
+
+
+
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+
+            <span flex></span>
+            <md-button ng-click="answer('not useful')" >
+                Not Useful
+            </md-button>
+            <md-button class="md-raised md-warn md-button md-ink-ripple md-button" ng-click="cancel()" style="margin-right:20px;" >
+                {{lang.general.close}}
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
