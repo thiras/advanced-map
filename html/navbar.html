@@ -11,57 +11,20 @@
         </h1>
         </md-toolbar>
         <md-content>
-
-
-
-
-
-                <div ng-repeat="(ozellik, deger) in menuJSON">
-                    <button class="accordion"><md-icon  class="mat-icon material-icons accordion-icons" role="img" aria-hidden="true">home</md-icon> {{deger.label}}</button>
+            <div ng-repeat="(ozellik, deger) in menuJSON">
+                <button class="accordion">
+                    <md-icon class="mat-icon material-icons accordion-icons" role="img" aria-hidden="true">home
+                    </md-icon>
+                    {{deger.label}}
+                </button>
                 <div class="panel">
                     <md-list>
-                        <md-list-item ng-repeat="(prop, deg) in deger.submenu" md-ink-ripple>{{deg.label}}</md-list-item>
+                        <md-list-item ng-click="factoryDesign(deg)" ng-repeat="(prop, deg) in deger.submenu" md-ink-ripple>{{deg.label}}
+                        </md-list-item>
                     </md-list>
                 </div>
-               <md-divider></md-divider>
-                </div>
-
-                <!--<button class="accordion">Section 2</button>
-                <div class="panel">
-                    <md-list>
-
-                    <md-list-item>ewfe</md-list-item>
-                    <md-list-item>mfef1</md-list-item>
-                    <md-list-item>menefwf1</md-list-item>
-                    <md-list-item>menefwfu1</md-list-item>
-                    </md-list>
-                </div>
-               <md-divider></md-divider>
-
-                <button class="accordion">Section 3</button>
-                <div class="panel">
-                    <md-list>
-                        <md-list-item>item1</md-list-item>
-                        <md-list-item>item2</md-list-item>
-                        <md-list-item>item3</md-list-item>
-                    </md-list>
-
-                </div>
-               <md-divider></md-divider>
-                 <button class="accordion">Section 4</button>
-                <div class="panel">
-                    <md-list>
-                        <md-list-item>other</md-list-item>
-                        <md-list-item>other2</md-list-item>
-                        <md-list-item>other3</md-list-item>
-                    </md-list>
-
-                </div>
-               <md-divider></md-divider>-->
-
-
-
-
+                <md-divider></md-divider>
+            </div>
         </md-content>
     </md-sidenav>
 </section>

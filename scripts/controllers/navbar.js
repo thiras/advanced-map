@@ -1,66 +1,6 @@
-app.controller("navbar",function($scope,$accordion,$timeout) {
+app.controller("navbar",function($scope,$accordion,$timeout,$mdDialog) {
 
-
-
-    $scope.menuJSON = {
-        menu1:{
-            label:"Adres Bul",
-            fonk:"menu",
-            submenu:{
-                menu1e1:{
-                    label:"İlçe, Mahalle, Yol ve Kapı Numarası Seçerek",
-                    fonk:"menu"
-                },
-                menu1e2:{
-                    label:"Harita Üzerinde Tıklayarak ",
-                    fonk:"menu"
-                }
-            }
-        },
-        menu2:{
-            label:"Menü 2",
-            fonk:"menu",
-            submenu:{
-                menu2e1:{
-                    label:"Menü 2-1",
-                    fonk:"menu"
-                },
-                menu2e2:{
-                    label:"Menü 2-2",
-                    fonk:"menu"
-                }
-            }
-        },
-        menu3:{
-            label:"Menü 3",
-            fonk:"menu",
-            submenu:{
-                menu3e1:{
-                    label:"Menü 3-1",
-                    fonk:"menu"
-                },
-                menu3e2:{
-                    label:"Menü 3-2",
-                    fonk:"menu"
-                },
-                menu3e3:{
-                    label:"Menü 3-3",
-                    fonk:"menu"
-                },
-                menu4e3:{
-                    label:"Menü 3-4",
-                    fonk:"menu"
-                }
-            }
-        },
-        menu4:{
-            label:"Menü 4",
-            fonk:"menu",
-            submenu:false
-        }
-
-    };
-
+    $scope.menuJSON =$accordion;
 
     $timeout(function () {
         var acc = document.getElementsByClassName("accordion");
@@ -79,6 +19,38 @@ app.controller("navbar",function($scope,$accordion,$timeout) {
             }
         }
     });
+
+
+
+    $scope.factoryDesign=function (fn) {
+
+       $scope[fn["fonk"]]();
+    }
+
+
+
+
+    $scope.menuContact=function () {
+
+        alert = $mdDialog.alert({
+            title: 'İletişim',
+            textContent: 'Bizimle iletişim bilgileri falan filan!',
+            ok: 'Close'
+        });
+
+        $mdDialog
+            .show( alert )
+            .finally(function() {
+                alert = undefined;
+            });
+    }
+
+    $scope.parselmenu1=function () {
+
+
+        alert("parsel menu1 ")
+    }
+
 
 
 
