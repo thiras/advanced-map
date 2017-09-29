@@ -268,7 +268,8 @@ app.controller("vectorLayerBox", function ($scope, $layersJson, $mdDialog, $root
                 }, function () {
                     $scope.status = 'You cancelled the dialog.';
                 });
-        };
+        }
+
         $scope.getVectorLayersInfo = function (obj) {
             var json = {};
             for (prop in obj) {

@@ -1,7 +1,7 @@
 <section layout="row" ng-controller="navbar">
     <md-sidenav class="md-sidenav-left" md-component-id="left"
                 md-whiteframe="4">
-        <md-content>
+       <!-- <md-content>
             <img layout-fill
                  ng-src="{{streetWievImgSrc}}"
                  alt="">
@@ -9,11 +9,15 @@
         <md-toolbar class="md-theme-indigo"><h1 layout-align="center center" class="md-toolbar-tools "> Ballista map
             sistemleri
         </h1>
-        </md-toolbar>
+        </md-toolbar>-->
+
+       <button class="accordion">
+
+       </button>
         <md-content>
             <div ng-repeat="(ozellik, deger) in menuJSON">
                 <button class="accordion">
-                    <md-icon class="mat-icon material-icons accordion-icons" role="img" aria-hidden="true">home
+                    <md-icon class="mat-icon material-icons accordion-icons" role="img" aria-hidden="true">{{deger.icon}}
                     </md-icon>
                     {{deger.label}}
                 </button>

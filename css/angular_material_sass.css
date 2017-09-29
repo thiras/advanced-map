@@ -88,7 +88,7 @@ left-menu {
   position: fixed;
   left: .25em;
   bottom: 2em;
-  z-index: 60;
+  z-index: 2;
   border-radius: 5%; }
   left-menu #top1 {
     transition-delay: 3s !important; }
@@ -755,7 +755,9 @@ button.accordion {
   text-align: left;
   outline: none;
   font-size: 15px;
-  transition: 0.4s; }
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s; }
 
 button.accordion.active, button.accordion:hover {
   background: #e0e0e0; }
@@ -781,10 +783,19 @@ div.panel {
   div.panel md-list-item {
     cursor: pointer;
     background: white;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    color: #555;
+    font-size: .8em; }
 
 .accordion-icons {
   margin-top: -6.5px; }
+
+/*
+
+sidenav için açılan transparan backdrop kapatıldı
+*/
+md-backdrop.md-sidenav-backdrop {
+  display: none; }
 
 /*
 

@@ -1,6 +1,20 @@
-app.controller("navbar",function($scope,$accordion,$timeout,$mdDialog) {
+app.controller("navbar",function($scope,$accordion,$timeout,$mdDialog,$rootScope,$mdSidenav) {
 
     $scope.menuJSON =$accordion;
+    /*  menu acma ayar bas*/
+    $scope.toggleLeft = buildToggler('left');
+    $scope.toggleRight = buildToggler('right');
+
+
+
+    function buildToggler(componentId) {
+        return function () {
+            $mdSidenav(componentId).toggle();
+        };
+    }
+
+
+    /* menu acma ayar son */
 
     $timeout(function () {
         var acc = document.getElementsByClassName("accordion");
@@ -45,15 +59,49 @@ app.controller("navbar",function($scope,$accordion,$timeout,$mdDialog) {
             });
     }
 
-    $scope.parselmenu1=function () {
 
 
-        alert("parsel menu1 ")
+
+    $scope.parselmenu1=function (event) {
+
+
+       // $scope.toggleLeft();
+
+        $mdDialog.show({
+            controller: navbarCtrl,
+            templateUrl: 'dialogs/access.html',
+            parent: angular.element(document.body),
+            targetEvent: event,
+            clickOutsideToClose: true,
+            closeTo: '#closeBtn'
+        })
+            .then(function (answer) {
+                $scope.status = 'You said the information was "' + answer + '".';
+            }, function () {
+                $scope.status = 'You cancelled the dialog.';
+            });
+
     }
 
 
 
+    $scope.ulasim=function () {
 
+        alert("ulaşım methodu")
+    }
+
+
+    function navbarCtrl($scope){
+
+
+        $scope.cancel=function () {
+
+            $mdDialog.cancel();
+        }
+
+
+
+    }
 
 
 

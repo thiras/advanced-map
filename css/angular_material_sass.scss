@@ -130,7 +130,7 @@ left-menu {
   position: fixed;
   left: .25em;
   bottom: 2em;
-  z-index: 60;
+  z-index: 2;
   border-radius: 5%;
 
 
@@ -485,6 +485,7 @@ left:5em;
 @import "mdtoast";
 @import "filters";
 @import "acordion";
+@import "mdbackdrop";
 
 
 
