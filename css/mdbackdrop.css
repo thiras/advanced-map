@@ -1,4 +1,9 @@
+@charset "UTF-8";
+/*
+
+sidenav için açılan transparan backdrop kapatıldı
+*/
 md-backdrop.md-sidenav-backdrop {
-  display: none; }
+  /*display:none*/ }
 
 /*# sourceMappingURL=mdbackdrop.css.map */

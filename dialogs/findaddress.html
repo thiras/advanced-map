@@ -2,7 +2,7 @@
     <form>
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <h2>Mango (Fruit)</h2>
+                <h2>Adres Bulma Paneli</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="cancel()">
                     <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
@@ -17,11 +17,11 @@
                 <md-list-item>
 
                     <md-input-container layout-fill>
-                        <md-select ng-model="ilce">
+                        <md-select ng-model="secilenIl">
                             <md-select-header>
-                                <span> Neighborhoods - </span>
+                                <span> İller </span>
                             </md-select-header>
-                            <md-option ng-value="veri"  ng-click="chng(veri)" ng-repeat="veri in [4,8,9]">{{veri}}</md-option>
+                            <md-option ng-value="deger.id"  ng-click="changeIlce(deger.id)" ng-repeat="(ozellik, deger) in il">{{deger.label}}</md-option>
 
                         </md-select>
                         {{navbarCtrl.ilce}}
@@ -29,18 +29,27 @@
 
                 </md-list-item>
 
-                <md-list-item ng-if="ilce">
+                <md-list-item ng-if="isActiveIlce">
                 <md-input-container layout-fill>
-                    <md-select   ng-model="someModel">
+                    <md-select   ng-model="secilenIlce">
                         <md-select-header>
-                            <span> Neighborhoods - </span>
+                            <span> İlçeler - </span>
                         </md-select-header>
-                        <md-option ng-value="opt">seçenek1</md-option>
-                        <md-option ng-value="opt1">seçenek1</md-option>
-                        <md-option ng-value="opt2">seçenek1</md-option>
-                        <md-option ng-value="opt3">seçenek1</md-option>
+                        <md-option ng-value="deger.id"  ng-click="changeMahelle(deger.id)" ng-repeat="(ozellik, deger) in filterIlce">{{deger.label}}</md-option>
                     </md-select>
                 </md-input-container>
+                </md-list-item>
+
+
+                <md-list-item ng-if="isActiveMahalle">
+                    <md-input-container layout-fill>
+                        <md-select   ng-model="secilenMahalle">
+                            <md-select-header>
+                                <span> İlçeler - </span>
+                            </md-select-header>
+                            <md-option ng-value="deger.id"  ng-click="changeMahelle(deger.id)" ng-repeat="(ozellik, deger) in filterMahalle">{{deger.label}}</md-option>
+                        </md-select>
+                    </md-input-container>
                 </md-list-item>
 
               <!--  <md-list-item>

@@ -795,7 +795,7 @@ div.panel {
 sidenav için açılan transparan backdrop kapatıldı
 */
 md-backdrop.md-sidenav-backdrop {
-  display: none; }
+  /*display:none*/ }
 
 #findaddress {
   max-width: 350px; }
