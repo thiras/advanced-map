@@ -66,7 +66,8 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
             parent: angular.element(document.body),
             targetEvent: event,
             clickOutsideToClose: true,
-            closeTo: '#closeBtn'
+            closeTo: '#closeBtn',
+            hasBackdrop:false /* hasbackdrop kaldırdı  */
         })
             .then(function (answer) {
                 $scope.status = 'You said the information was "' + answer + '".';
