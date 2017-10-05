@@ -1013,7 +1013,7 @@ app.service("$sahtejson",function () {
     numaratj3:{
         id:3,
         label:"1",
-        yolid:1,
+        yolid:2,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1029,7 +1029,7 @@ app.service("$sahtejson",function () {
     numaratj4:{
         id:4,
         label:"2",
-        yolid:1,
+        yolid:2,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1045,7 +1045,7 @@ app.service("$sahtejson",function () {
     numaratj5:{
         id:5,
         label:"1",
-        yolid:1,
+        yolid:3,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1061,7 +1061,7 @@ app.service("$sahtejson",function () {
     numaratj6:{
         id:6,
         label:"2",
-        yolid:1,
+        yolid:3,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1077,7 +1077,7 @@ app.service("$sahtejson",function () {
     numaratj7:{
         id:7,
         label:"1",
-        yolid:1,
+        yolid:4,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1093,7 +1093,7 @@ app.service("$sahtejson",function () {
     numaratj8:{
         id:8,
         label:"2",
-        yolid:1,
+        yolid:4,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1109,7 +1109,7 @@ app.service("$sahtejson",function () {
     numaratj9:{
         id:9,
         label:"1",
-        yolid:1,
+        yolid:5,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1125,7 +1125,7 @@ app.service("$sahtejson",function () {
     numaratj10:{
         id:10,
         label:"2",
-        yolid:1,
+        yolid:5,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1141,7 +1141,7 @@ app.service("$sahtejson",function () {
     numaratj11:{
         id:11,
         label:"1",
-        yolid:1,
+        yolid:6,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1157,7 +1157,7 @@ app.service("$sahtejson",function () {
     numaratj12:{
         id:12,
         label:"2",
-        yolid:1,
+        yolid:6,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1173,7 +1173,7 @@ app.service("$sahtejson",function () {
     numaratj13:{
         id:13,
         label:"1",
-        yolid:1,
+        yolid:7,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1189,7 +1189,7 @@ app.service("$sahtejson",function () {
     numaratj14:{
         id:14,
         label:"2",
-        yolid:1,
+        yolid:7,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1205,7 +1205,7 @@ app.service("$sahtejson",function () {
     numaratj15:{
         id:15,
         label:"1",
-        yolid:1,
+        yolid:8,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1221,7 +1221,7 @@ app.service("$sahtejson",function () {
     numaratj16:{
         id:16,
         label:"2",
-        yolid:1,
+        yolid:8,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1237,7 +1237,7 @@ app.service("$sahtejson",function () {
     numaratj17:{
         id:17,
         label:"1",
-        yolid:1,
+        yolid:9,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1253,7 +1253,7 @@ app.service("$sahtejson",function () {
     numaratj18:{
         id:18,
         label:"2",
-        yolid:1,
+        yolid:9,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1269,7 +1269,7 @@ app.service("$sahtejson",function () {
     numaratj19:{
         id:19,
         label:"1",
-        yolid:1,
+        yolid:10,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1285,7 +1285,7 @@ app.service("$sahtejson",function () {
     numaratj20:{
         id:20,
         label:"2",
-        yolid:1,
+        yolid:10,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1301,7 +1301,7 @@ app.service("$sahtejson",function () {
     numaratj21:{
         id:21,
         label:"1",
-        yolid:1,
+        yolid:11,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1317,7 +1317,7 @@ app.service("$sahtejson",function () {
     numaratj22:{
         id:22,
         label:"2",
-        yolid:1,
+        yolid:11,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1333,7 +1333,7 @@ app.service("$sahtejson",function () {
     numaratj23:{
         id:23,
         label:"1",
-        yolid:1,
+        yolid:12,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1349,7 +1349,7 @@ app.service("$sahtejson",function () {
     numaratj24:{
         id:24,
         label:"2",
-        yolid:1,
+        yolid:12,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1365,7 +1365,7 @@ app.service("$sahtejson",function () {
     numaratj25:{
         id:25,
         label:"1",
-        yolid:1,
+        yolid:13,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1381,7 +1381,7 @@ app.service("$sahtejson",function () {
     numaratj26:{
         id:26,
         label:"2",
-        yolid:1,
+        yolid:13,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1397,7 +1397,7 @@ app.service("$sahtejson",function () {
     numaratj27:{
         id:27,
         label:"1",
-        yolid:1,
+        yolid:14,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1413,7 +1413,7 @@ app.service("$sahtejson",function () {
     numaratj28:{
         id:28,
         label:"2",
-        yolid:1,
+        yolid:14,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1429,7 +1429,7 @@ app.service("$sahtejson",function () {
     numaratj29:{
         id:29,
         label:"1",
-        yolid:1,
+        yolid:15,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1445,7 +1445,7 @@ app.service("$sahtejson",function () {
     numaratj30:{
         id:30,
         label:"2",
-        yolid:1,
+        yolid:15,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1461,7 +1461,7 @@ app.service("$sahtejson",function () {
     numaratj31:{
         id:31,
         label:"1",
-        yolid:1,
+        yolid:16,
         geojson:{
             "type": "Feature",
             "properties": {},
@@ -1477,7 +1477,7 @@ app.service("$sahtejson",function () {
     numaratj32:{
         id:32,
         label:"2",
-        yolid:1,
+        yolid:16,
         geojson:{
             "type": "Feature",
             "properties": {},

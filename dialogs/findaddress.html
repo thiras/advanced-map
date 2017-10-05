@@ -45,9 +45,33 @@
                     <md-input-container layout-fill>
                         <md-select   ng-model="secilenMahalle">
                             <md-select-header>
-                                <span> İlçeler - </span>
+                                <span> Mahalleler - </span>
                             </md-select-header>
-                            <md-option ng-value="deger.id"  ng-click="changeMahelle(deger.id)" ng-repeat="(ozellik, deger) in filterMahalle">{{deger.label}}</md-option>
+                            <md-option ng-value="deger.id"  ng-click="changeYol(deger.id)" ng-repeat="(ozellik, deger) in filterMahalle">{{deger.label}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </md-list-item>
+
+
+                <md-list-item ng-if="isActiveYol">
+                    <md-input-container layout-fill>
+                        <md-select   ng-model="secilenYol">
+                            <md-select-header>
+                                <span> Yollar - </span>
+                            </md-select-header>
+                            <md-option ng-value="deger.id"  ng-click="changeKapiNo(deger.id)" ng-repeat="(ozellik, deger) in filterYol">{{deger.label}}</md-option>
+                        </md-select>
+                    </md-input-container>
+                </md-list-item>
+
+
+                <md-list-item ng-if="isActiveNumarataj">
+                    <md-input-container layout-fill>
+                        <md-select   ng-model="secilenYol">
+                            <md-select-header>
+                                <span> Kapı No - </span>
+                            </md-select-header>
+                            <md-option ng-value="deger.id"  ng-click="showKapiNo(deger.id)" ng-repeat="(ozellik, deger) in filterNumarataj">{{deger.label}}</md-option>
                         </md-select>
                     </md-input-container>
                 </md-list-item>

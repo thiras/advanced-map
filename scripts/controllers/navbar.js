@@ -59,8 +59,7 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
     $scope.findAddress = function (event) {
 
 
-        // $scope.toggleLeft();
-
+        $rootScope.$emit("closeNavbar","closeNavbar");  // sidenav kapatmak için
         $mdDialog.show({
             controller: navbarCtrl,
             templateUrl: 'dialogs/findaddress.html',
@@ -94,15 +93,20 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
         $scope.numarataj = $sahtejson.numarataj;
         $scope.filterIlce = {};
         $scope.filterMahalle = {};
+        $scope.filterYol = {};
+        $scope.filterNumarataj = {};
         $scope.isActiveIlce = false;
         $scope.isActiveMahalle = false;
+        $scope.isActiveYol=false;
+        $scope.isActiveNumarataj=false;
 
         $scope.cancel = function () {
             $mdDialog.cancel();
         };
 
         $scope.changeIlce = function (ilid) {
-            debugger;
+
+
             $scope.filterIlce = {};
             for (i in $scope.il) {
                 if (ilid == $scope.il[i].id) {
@@ -121,29 +125,100 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
             }
         };
         $scope.changeMahelle = function (ilceid) {
-            debugger;
+
             $scope.filterMahalle = {};
             for (i in $scope.ilce) {
                 if (ilceid == $scope.ilce[i].id) {
-                    var il = L.geoJSON($scope.ilce[i].geojson, {
-                        style: {color: "#ff0000"}
+                    var ilce = L.geoJSON($scope.ilce[i].geojson, {
+                        style: {color: "#ffff00"}
                     }).bindPopup($scope.ilce[i].label).addTo($rootScope.leaflet);
-                    var ilbbox = il.getBounds();
-                    $rootScope.leaflet.fitBounds(ilbbox);
+                    var ilcebbox = ilce.getBounds();
+                    $rootScope.leaflet.fitBounds(ilcebbox);
                     $scope.isActiveMahalle = true;
                 }
             }
+
             $scope.mahalle = $sahtejson.mahalle;
             for (i in $scope.mahalle) {
-                if (ilid == $scope.mahalle[i].ilid) {
+                if (ilceid == $scope.mahalle[i].ilceid) {
+
                     $scope.filterMahalle[i] = $scope.mahalle[i];
+
                 }
             }
+
 
         }
 
 
-    }
 
+
+
+        $scope.changeYol=function (mahalleid) {
+            $scope.filterYol = {};
+            for (i in $scope.mahalle) {
+                if (mahalleid == $scope.mahalle[i].id) {
+                    var mahalle = L.geoJSON($scope.mahalle[i].geojson, {
+                        style: {color: "#ff00ff"}
+                    }).bindPopup($scope.mahalle[i].label).addTo($rootScope.leaflet);
+                    var mahallebbox = mahalle.getBounds();
+                    $rootScope.leaflet.fitBounds(mahallebbox);
+                    $scope.isActiveYol = true;
+                }
+            }
+            $scope.yol = $sahtejson.yol;
+            for (i in $scope.yol) {
+                if (mahalleid == $scope.yol[i].mahalleid) {
+
+                    $scope.filterYol[i] = $scope.yol[i];
+
+                }
+            }
+        }
+
+
+
+        $scope.changeKapiNo=function (yolid) {
+            $scope.filterNumarataj = {};
+            for (i in $scope.yol) {
+                if (yolid == $scope.yol[i].id) {
+                    var yol = L.geoJSON($scope.yol[i].geojson, {
+                        style: {color: "#ff00ff"}
+                    }).bindPopup($scope.yol[i].label).addTo($rootScope.leaflet);
+                    var yolbbox = yol.getBounds();
+                    $rootScope.leaflet.fitBounds(yolbbox);
+                    $scope.isActiveNumarataj = true;
+                }
+            }
+            $scope.numarataj = $sahtejson.numarataj;
+            for (i in $scope.numarataj) {
+                if (yolid == $scope.numarataj[i].yolid) {
+
+                    $scope.filterNumarataj[i] = $scope.numarataj[i];
+
+                }
+            }
+        }
+
+        $scope.showKapiNo=function (numaratajid) {
+
+            for (i in $scope.numarataj) {
+                if (numaratajid == $scope.numarataj[i].id) {
+                    var numarataj = L.geoJSON($scope.numarataj[i].geojson, {
+                        style: {color: "#ff00ff"}
+                    }).bindPopup($scope.numarataj[i].label).addTo($rootScope.leaflet);
+                    var yolbbox = numarataj.getBounds();
+                    $rootScope.leaflet.fitBounds(yolbbox);
+
+                }
+            }
+        }
+
+
+
+
+
+
+    }
 
 });

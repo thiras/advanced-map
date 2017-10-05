@@ -36,6 +36,14 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
 
 
 
+    $rootScope.$on("closeNavbar",function (e,a) {
+
+
+        $scope.toggleLeft();
+    });
+
+
+
     function buildToggler(componentId) {
         return function () {
             $mdSidenav(componentId).toggle();

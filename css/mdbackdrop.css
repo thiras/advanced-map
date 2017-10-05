@@ -3,7 +3,11 @@
 
 sidenav için açılan transparan backdrop kapatıldı
 */
-md-backdrop.md-sidenav-backdrop {
-  /*display:none*/ }
+/*
+md-backdrop.md-sidenav-backdrop{
+
+  display:none;
+}
+*/
 
 /*# sourceMappingURL=mdbackdrop.css.map */

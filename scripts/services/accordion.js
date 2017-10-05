@@ -340,7 +340,7 @@ var json={
             }
         }
     },
-};
+}
 
 
 return json;
