@@ -19,9 +19,41 @@
     "text":"Text",
     "date":"Date",
     "timestamp":"Date - Time",
-    "boolean":"Mantıksal Değer 1/0",
+    "boolean":"True False 1/0",
     "delete":"Delete"
 
+  },
+  "dialogs":{
+    "general":{
+      "provinceList":"Province List",
+      "countylist":"County List",
+      "neighborhoodlist":"Neighborhood List",
+      "provinces":"Provinces",
+      "counties":"Counties",
+      "neighborhoods":"Neighborhoods"
+    },
+    "findAdress":{
+     "label":"Address Finder Panel",
+      "streetlist":"Road Street List",
+      "doornumber":"Door Number List",
+      "streets":"Roads Streets",
+      "doornumbers":"Door Numbers"
+    },
+    "findParcell":{
+      "label":"Parcel Finding Panel"
+    }
+  },
+  "menu":{
+    "menu1":{
+      "label":"Find Address",
+      "menu1e1":"Selecting District, Neighborhood, Road and Door Numbers",
+      "menu1e2":"Clicking on the Map"
+    },
+    "menu2":{
+      "label":"Find Address",
+      "menu1e1":"Selecting District, Neighborhood, Road and Door Numbers",
+      "menu1e2":"Clicking on the Map"
+    }
   },
   "toolEdit":{
     "label":"Edit",

@@ -1,0 +1,100 @@
+<md-dialog id="findAdressDialog" aria-label="Mango (Fruit)">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2><md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">home</md-icon>
+                    {{lang.dialogs.findAdress.label}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content style="style:100%">
+
+            <md-list>
+
+                {{deneme}}
+                <md-list-item>
+
+                    <md-input-container layout-fill>
+                        <md-select ng-model="secilenIl" placeholder="{{lang.dialogs.general.provinceList}}">
+                            <md-select-header>
+                                <span> {{lang.dialogs.general.provinces}} </span>
+                            </md-select-header>
+                            <md-option ng-value="deger.id" ng-click="changeIlce(deger.id)"
+                                       ng-repeat="(ozellik, deger) in il">{{deger.label}}
+                            </md-option>
+
+                        </md-select>
+                        {{navbarCtrl.ilce}}
+                    </md-input-container>
+
+                </md-list-item>
+
+                <md-list-item ng-if="isActiveIlce">
+                    <md-input-container layout-fill>
+                        <md-select ng-model="secilenIlce" placeholder="{{lang.dialogs.general.countylist}}">
+                            <md-select-header>
+                                <span> {{lang.dialogs.general.counties}} </span>
+                            </md-select-header>
+                            <md-option ng-value="deger.id" ng-click="changeMahelle(deger.id)"
+                                       ng-repeat="(ozellik, deger) in filterIlce">{{deger.label}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </md-list-item>
+
+
+                <md-list-item ng-if="isActiveMahalle">
+                    <md-input-container layout-fill>
+                        <md-select ng-model="secilenMahalle" placeholder="{{lang.dialogs.general.neighborhoodlist}}">
+                            <md-select-header>
+                                <span> {{lang.dialogs.general.neighborhoods}} </span>
+                            </md-select-header>
+                            <md-option ng-value="deger.id" ng-click="changeYol(deger.id)"
+                                       ng-repeat="(ozellik, deger) in filterMahalle">{{deger.label}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </md-list-item>
+
+
+                <md-list-item ng-if="isActiveYol">
+                    <md-input-container layout-fill>
+                        <md-select ng-model="secilenYol" placeholder="{{lang.dialogs.findAdress.streetlist}}">
+                            <md-select-header>
+                                <span> {{lang.dialogs.findAdress.streets}} </span>
+                            </md-select-header>
+                            <md-option ng-value="deger.id" ng-click="changeKapiNo(deger.id)"
+                                       ng-repeat="(ozellik, deger) in filterYol">{{deger.label}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </md-list-item>
+
+
+                <md-list-item ng-if="isActiveNumarataj">
+                    <md-input-container layout-fill>
+                        <md-select ng-model="secilenYol" placeholder="{{lang.dialogs.findAdress.doornumber}}">
+                            <md-select-header>
+                                <span> {{lang.dialogs.findAdress.doornumbers}} </span>
+                            </md-select-header>
+                            <md-option ng-value="deger.id" ng-click="showKapiNo(deger.id)"
+                                       ng-repeat="(ozellik, deger) in filterNumarataj">{{deger.label}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </md-list-item>
+
+            </md-list>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button class="md-raised md-warn md-button md-ink-ripple md-button" ng-click="cancel()"
+                       style="margin-right:20px;">
+                {{lang.general.close}}
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

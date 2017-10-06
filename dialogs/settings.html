@@ -13,20 +13,20 @@
             <md-tabs md-dynamic-height md-border-bottom>
 
                 <md-tab label="{{lang.vlList.dialogs.laySet.tab1.label}}">
-                    <md-content class="md-padding">
-                        <md-list>
-                        <md-list-item >
+                    <md-content style="padding: 5px;" class="md-padding">
+                        <md-list style="padding: 0;">
+                        <md-list-item style="padding: 0;">
                             <table width="100%">
                                 <thead>
                                 <tr>
-                                    <th style="padding: 2px; margin: 2px; border: 1px solid #ccc;">#</th>
-                                    <th ng-repeat="(ozellik,deger) in readyFieldsInfo" style="padding: 2px; margin: 2px; border: 1px solid #ccc;">{{ozellik}}</th>
+                                    <th style="padding: 2px; width: 50px; margin: 2px; border: 1px solid #ccc; background-color: #ccc; color: #fff;">#</th>
+                                    <th ng-repeat="(ozellik,deger) in readyFieldsInfo" style="background-color: #ccc; color: #fff; padding: 2px; margin: 2px; border: 1px solid #ccc;">{{ozellik}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="(ozellik,deger) in createdFeatures">
-                                    <th style="padding: 2px; margin: 2px; border: 1px solid #ccc;">{{$index+1}}</th>
-                                    <td style="padding: 2px; margin: 2px; border: 1px solid #ccc;" ng-repeat="(ozellik2,deger2) in deger.dataFields">{{deger2}}</td>
+                                    <th style="padding: 2px; margin: 2px; border: 1px solid #e2e2e2; background-color: #fff;">{{$index+1}}</th>
+                                    <td style="padding: 2px; margin: 2px; border: 1px solid #e2e2e2; background-color: #fff;" ng-repeat="(ozellik2,deger2) in deger.dataFields">{{deger2}}</td>
                                 </tr>
                                 </tbody>
                             </table>

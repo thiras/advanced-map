@@ -16,6 +16,7 @@
 
        </button>
         <md-content>
+
             <div ng-repeat="(ozellik, deger) in menuJSON">
                 <button class="accordion">
                     <md-icon class="mat-icon material-icons accordion-icons" role="img" aria-hidden="true">{{deger.icon}}
@@ -24,8 +25,7 @@
                 </button>
                 <div class="panel">
                     <md-list>
-                        <md-list-item ng-click="factoryDesign(deg)" ng-repeat="(prop, deg) in deger.submenu " md-ink-ripple>{{deg.label}}
-                        </md-list-item>
+                        <md-list-item ng-click="factoryDesign(deg)" ng-repeat="(prop, deg) in deger.submenu " md-ink-ripple>{{deg.label}}</md-list-item>
                     </md-list>
                 </div>
                 <md-divider></md-divider>

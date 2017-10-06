@@ -1,7 +1,6 @@
 app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav, $rootScope, $window, $storage, $leftmenujson, $leafletFonk, $getlang) {
 
     var lang = await $getlang;
-
     $rootScope.lang = lang.data;
 
     document.querySelector('title').innerText = $rootScope.lang.general.title;

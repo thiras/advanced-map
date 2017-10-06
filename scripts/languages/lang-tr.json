@@ -23,6 +23,33 @@
     "delete":"Sil"
 
   },
+  "dialogs":{
+    "general":{
+      "provinceList":"İl Listesi",
+      "countylist":"İlçe Listesi",
+      "neighborhoodlist":"Mahalle Listesi",
+      "provinces":"İller",
+      "counties":"İlçeler",
+      "neighborhoods":"Mahalleler"
+    },
+    "findAdress":{
+      "label":"Adres Bulma Paneli",
+      "streetlist":"Cadde Sokak Listesi",
+      "doornumber":"Kapı Numarası Listesi",
+      "streets":"Cadde Sokak",
+      "doornumbers":"Kapı Numaraları"
+    },
+    "findParcell":{
+      "label":"Parsel Bulma Paneli"
+    }
+  },
+  "menu":{
+    "menu1":{
+      "label":"Adres Bul",
+      "menu1e1":"İlçe, Mahalle, Yol ve Kapı Numarası Seçerek",
+      "menu1e2":"Haritayı Tıklayarak"
+    }
+  },
   "toolEdit":{
     "label":"Edit",
     "draw":{

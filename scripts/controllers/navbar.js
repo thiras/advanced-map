@@ -4,6 +4,7 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
     /*  menu acma ayar bas*/
     $scope.toggleLeft = buildToggler('left');
     $scope.toggleRight = buildToggler('right');
+    $scope.lang = $rootScope.lang;
 
 
     function buildToggler(componentId) {
@@ -56,18 +57,34 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
     }
 
 
-    $scope.findAddress = function (event) {
+    $scope.findParcellPanel=function () {
 
+        $rootScope.$emit("closeNavbar", "closeNavbar");
 
-        $rootScope.$emit("closeNavbar","closeNavbar");  // sidenav kapatmak için
         $mdDialog.show({
             controller: navbarCtrl,
-            templateUrl: 'dialogs/findaddress.html',
+            templateUrl: 'dialogs/findParcellDialog.html',
             parent: angular.element(document.body),
             targetEvent: event,
             clickOutsideToClose: true,
             closeTo: '#closeBtn',
-            hasBackdrop:false /* hasbackdrop kaldırdı  */
+
+        })
+
+
+
+    }
+
+    $scope.findAdressPanel = function (event) {
+        $rootScope.$emit("closeNavbar", "closeNavbar");  // sidenav kapatmak için
+        $mdDialog.show({
+            controller: navbarCtrl,
+            templateUrl: 'dialogs/findAdressDialog.html',
+            parent: angular.element(document.body),
+            targetEvent: event,
+            clickOutsideToClose: true,
+            closeTo: '#closeBtn',
+            hasBackdrop: false /* hasbackdrop kaldırdı  */
         })
             .then(function (answer) {
                 $scope.status = 'You said the information was "' + answer + '".';
@@ -86,7 +103,7 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
 
     function navbarCtrl($scope, $sahtejson) {
 
-
+        $scope.lang = $rootScope.lang;
         $scope.il = $sahtejson.il;
         $scope.ilce = $sahtejson.ilce;
         $scope.mahalle = $sahtejson.mahalle;
@@ -98,23 +115,30 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
         $scope.filterNumarataj = {};
         $scope.isActiveIlce = false;
         $scope.isActiveMahalle = false;
-        $scope.isActiveYol=false;
-        $scope.isActiveNumarataj=false;
+        $scope.isActiveYol = false;
+        $scope.isActiveNumarataj = false;
+        $scope.featureIl = false;
+        $scope.featureIlce = false;
+        $scope.featureMahalle = false;
+        $scope.featureYol = false;
+        $scope.featureKapi = false;
+
 
         $scope.cancel = function () {
             $mdDialog.cancel();
         };
 
         $scope.changeIlce = function (ilid) {
-
-
             $scope.filterIlce = {};
             for (i in $scope.il) {
                 if (ilid == $scope.il[i].id) {
-                    var il = L.geoJSON($scope.il[i].geojson, {
+                    if($scope.featureIl!==false){
+                        $scope.featureIl.remove();
+                    }
+                    $scope.featureIl = L.geoJSON($scope.il[i].geojson, {
                         style: {color: "#ff0000"}
                     }).bindPopup($scope.il[i].label).addTo($rootScope.leaflet);
-                    var ilbbox = il.getBounds();
+                    var ilbbox = $scope.featureIl.getBounds();
                     $rootScope.leaflet.fitBounds(ilbbox);
                     $scope.isActiveIlce = true;
                 }
@@ -130,10 +154,14 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
             $scope.filterMahalle = {};
             for (i in $scope.ilce) {
                 if (ilceid == $scope.ilce[i].id) {
-                    var ilce = L.geoJSON($scope.ilce[i].geojson, {
+                    $scope.featureIl.remove();
+                    if($scope.featureIlce!==false){
+                        $scope.featureIlce.remove();
+                    }
+                    $scope.featureIlce = L.geoJSON($scope.ilce[i].geojson, {
                         style: {color: "#ffff00"}
                     }).bindPopup($scope.ilce[i].label).addTo($rootScope.leaflet);
-                    var ilcebbox = ilce.getBounds();
+                    var ilcebbox = $scope.featureIlce.getBounds();
                     $rootScope.leaflet.fitBounds(ilcebbox);
                     $scope.isActiveMahalle = true;
                 }
@@ -152,17 +180,18 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
         }
 
 
-
-
-
-        $scope.changeYol=function (mahalleid) {
+        $scope.changeYol = function (mahalleid) {
             $scope.filterYol = {};
             for (i in $scope.mahalle) {
                 if (mahalleid == $scope.mahalle[i].id) {
-                    var mahalle = L.geoJSON($scope.mahalle[i].geojson, {
+                    $scope.featureIlce.remove();
+                    if($scope.featureMahalle!==false){
+                        $scope.featureMahalle.remove();
+                    }
+                    $scope.featureMahalle = L.geoJSON($scope.mahalle[i].geojson, {
                         style: {color: "#ff00ff"}
                     }).bindPopup($scope.mahalle[i].label).addTo($rootScope.leaflet);
-                    var mahallebbox = mahalle.getBounds();
+                    var mahallebbox = $scope.featureMahalle.getBounds();
                     $rootScope.leaflet.fitBounds(mahallebbox);
                     $scope.isActiveYol = true;
                 }
@@ -178,15 +207,18 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
         }
 
 
-
-        $scope.changeKapiNo=function (yolid) {
+        $scope.changeKapiNo = function (yolid) {
             $scope.filterNumarataj = {};
             for (i in $scope.yol) {
                 if (yolid == $scope.yol[i].id) {
-                    var yol = L.geoJSON($scope.yol[i].geojson, {
+                    $scope.featureMahalle.remove();
+                    if($scope.featureYol!==false){
+                        $scope.featureYol.remove();
+                    }
+                    $scope.featureYol = L.geoJSON($scope.yol[i].geojson, {
                         style: {color: "#ff00ff"}
                     }).bindPopup($scope.yol[i].label).addTo($rootScope.leaflet);
-                    var yolbbox = yol.getBounds();
+                    var yolbbox = $scope.featureYol.getBounds();
                     $rootScope.leaflet.fitBounds(yolbbox);
                     $scope.isActiveNumarataj = true;
                 }
@@ -201,23 +233,23 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
             }
         }
 
-        $scope.showKapiNo=function (numaratajid) {
+        $scope.showKapiNo = function (numaratajid) {
 
             for (i in $scope.numarataj) {
                 if (numaratajid == $scope.numarataj[i].id) {
-                    var numarataj = L.geoJSON($scope.numarataj[i].geojson, {
+                    $scope.featureYol.remove();
+                    if($scope.featureKapi!==false){
+                        $scope.featureKapi.remove();
+                    }
+                    $scope.featureKapi = L.geoJSON($scope.numarataj[i].geojson, {
                         style: {color: "#ff00ff"}
                     }).bindPopup($scope.numarataj[i].label).addTo($rootScope.leaflet);
-                    var yolbbox = numarataj.getBounds();
+                    var yolbbox = $scope.featureKapi.getBounds();
                     $rootScope.leaflet.fitBounds(yolbbox);
 
                 }
             }
         }
-
-
-
-
 
 
     }
