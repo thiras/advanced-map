@@ -2,7 +2,7 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
 
     var lang = await $getlang;
     $rootScope.lang = lang.data;
-
+    $rootScope.adress={ulke:false,il:false,ilce:false,mahalle:false,yol:false,kapi:false,ulkeActive:false,ilActive:false,ilceActive:false,mahalleActive:false,yolActive:false,kapiActive:false,filterIlce:{},filterMahalle:{},filterYol:{},filterNumarataj:{}};
     document.querySelector('title').innerText = $rootScope.lang.general.title;
     $showFabDials = false;
     $scope.contextMenuShow = 0;

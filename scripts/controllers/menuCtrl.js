@@ -5,19 +5,24 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
         $scope.mahalle = $sahtejson.mahalle;
         $scope.yol = $sahtejson.yol;
         $scope.numarataj = $sahtejson.numarataj;
-        $scope.filterIlce = {};
-        $scope.filterMahalle = {};
-        $scope.filterYol = {};
-        $scope.filterNumarataj = {};
-        $scope.isActiveIlce = false;
-        $scope.isActiveMahalle = false;
-        $scope.isActiveYol = false;
-        $scope.isActiveNumarataj = false;
+        $scope.filterIlce = $rootScope.adress.filterIlce;
+        $scope.filterMahalle = $rootScope.adress.filterMahalle;
+        $scope.filterYol = $rootScope.adress.filterYol;
+        $scope.filterNumarataj = $rootScope.adress.filterNumarataj;
+        $scope.isActiveIlce = $rootScope.adress.ilceActive;
+        $scope.isActiveMahalle = $rootScope.adress.mahalleActive;
+        $scope.isActiveYol = $rootScope.adress.yolActive;
+        $scope.isActiveNumarataj = $rootScope.adress.kapiActive;
         $scope.featureIl = false;
         $scope.featureIlce = false;
         $scope.featureMahalle = false;
         $scope.featureYol = false;
         $scope.featureKapi = false;
+        $scope.secilenIl=$rootScope.adress.il;
+        $scope.secilenIlce=$rootScope.adress.ilce;
+        $scope.secilenMahalle=$rootScope.adress.mahalle;
+        $scope.secilenYol=$rootScope.adress.yol;
+        $scope.secilenKapi=$rootScope.adress.kapi;
 
 
         $scope.cancel = function () {
@@ -30,11 +35,16 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
         };
 
         $scope.changeIlce = function (ilid) {
+
             $scope.filterIlce = {};
             for (i in $scope.il) {
                 if (ilid == $scope.il[i].id) {
+                    $rootScope.adress.il=$scope.il[i].id;
+                    $scope.secilenIl=$rootScope.adress.il;
+                    $rootScope.adress.ilceActive=true;
                     if($scope.featureIl!==false){
                         $scope.featureIl.remove();
+                        $scope.featureIl=false;
                     }
                     $scope.featureIl = L.geoJSON($scope.il[i].geojson, {
                         style: {color: "#ff0000"}
@@ -47,6 +57,7 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
             for (i in $scope.ilce) {
                 if (ilid == $scope.ilce[i].ilid) {
                     $scope.filterIlce[i] = $scope.ilce[i];
+                    $rootScope.adress.filterIlce[i] = $scope.ilce[i];
                 }
             }
         };
@@ -55,9 +66,16 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
             $scope.filterMahalle = {};
             for (i in $scope.ilce) {
                 if (ilceid == $scope.ilce[i].id) {
-                    $scope.featureIl.remove();
+                    $rootScope.adress.ilce=$scope.ilce[i].id;
+                    $scope.secilenIlce=$rootScope.adress.ilce;
+                    $rootScope.adress.mahalleActive=true;
+                    if($scope.featureIl!==false){
+                        $scope.featureIl.remove();
+                        $scope.featureIl=false;
+                    }
                     if($scope.featureIlce!==false){
                         $scope.featureIlce.remove();
+                        $scope.featureIlce=false;
                     }
                     $scope.featureIlce = L.geoJSON($scope.ilce[i].geojson, {
                         style: {color: "#ffff00"}
@@ -71,9 +89,8 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
             $scope.mahalle = $sahtejson.mahalle;
             for (i in $scope.mahalle) {
                 if (ilceid == $scope.mahalle[i].ilceid) {
-
                     $scope.filterMahalle[i] = $scope.mahalle[i];
-
+                    $rootScope.adress.filterMahalle[i] = $scope.mahalle[i];
                 }
             }
 
@@ -85,9 +102,22 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
             $scope.filterYol = {};
             for (i in $scope.mahalle) {
                 if (mahalleid == $scope.mahalle[i].id) {
-                    $scope.featureIlce.remove();
+                    $rootScope.adress.mahalle=$scope.mahalle[i].id;
+                    $scope.secilenMahalle=$rootScope.adress.mahalle;
+                    $rootScope.adress.yolActive=true;
+
+                    if($scope.featureIl!==false){
+                        $scope.featureIl.remove();
+                        $scope.featureIl=false;
+
+                    }
+                    if($scope.featureIlce!==false){
+                        $scope.featureIlce.remove();
+                        $scope.featureIlce=false;
+                    }
                     if($scope.featureMahalle!==false){
                         $scope.featureMahalle.remove();
+                        $scope.featureMahalle=false;
                     }
                     $scope.featureMahalle = L.geoJSON($scope.mahalle[i].geojson, {
                         style: {color: "#ff00ff"}
@@ -102,6 +132,7 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
                 if (mahalleid == $scope.yol[i].mahalleid) {
 
                     $scope.filterYol[i] = $scope.yol[i];
+                    $rootScope.adress.filterYol[i] = $scope.yol[i];
 
                 }
             }
@@ -112,9 +143,20 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
             $scope.filterNumarataj = {};
             for (i in $scope.yol) {
                 if (yolid == $scope.yol[i].id) {
-                    $scope.featureMahalle.remove();
+                    $rootScope.adress.yol=$scope.yol[i].id;
+                    $scope.secilenYol=$rootScope.adress.yol;
+                    $rootScope.adress.kapiActive=true;
+                    if($scope.featureIl!==false){
+                        $scope.featureIl.remove();
+                        $scope.featureIl=false;
+                    }
+                    if($scope.featureIlce!==false){
+                        $scope.featureIlce.remove();
+                        $scope.featureIlce=false;
+                    }
                     if($scope.featureYol!==false){
                         $scope.featureYol.remove();
+                        $scope.featureYol=false;
                     }
                     $scope.featureYol = L.geoJSON($scope.yol[i].geojson, {
                         style: {color: "#ff00ff"}
@@ -127,8 +169,8 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
             $scope.numarataj = $sahtejson.numarataj;
             for (i in $scope.numarataj) {
                 if (yolid == $scope.numarataj[i].yolid) {
-
                     $scope.filterNumarataj[i] = $scope.numarataj[i];
+                    $rootScope.adress.filterNumarataj[i] = $scope.numarataj[i];
 
                 }
             }
@@ -138,9 +180,27 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
 
             for (i in $scope.numarataj) {
                 if (numaratajid == $scope.numarataj[i].id) {
-                    $scope.featureYol.remove();
+                    $scope.secilenKapi=$scope.numarataj[i].id;
+                    $rootScope.adress.kapi=$scope.numarataj[i].id;
+                    if($scope.featureIl!==false){
+                        $scope.featureIl.remove();
+                        $scope.featureIl=false;
+                    }
+                    if($scope.featureIlce!==false){
+                        $scope.featureIlce.remove();
+                        $scope.featureIlce=false;
+                    }
+                    if($scope.featureMahalle!==false){
+                        $scope.featureMahalle.remove();
+                        $scope.featureMahalle=false;
+                    }
+                    if($scope.featureYol!==false){
+                        $scope.featureYol.remove();
+                        $scope.featureYol=false;
+                    }
                     if($scope.featureKapi!==false){
                         $scope.featureKapi.remove();
+                        $scope.featureKapi=false;
                     }
                     $scope.featureKapi = L.geoJSON($scope.numarataj[i].geojson, {
                         style: {color: "#ff00ff"}

@@ -40,16 +40,6 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
         $scope[fn["fonk"]]();
     }
 
-    $scope.findParcellPanel=function () {
-        $rootScope.$emit("closeNavbar", "closeNavbar");
-        $mdToast.show({
-            hideDelay: 0,
-            position: 'top right',
-            controller: 'menuCtrl',
-            templateUrl: 'html/menuToast/findParcellToast.html',
-        });
-    };
-
     $scope.findAdressPanel=function () {
         $rootScope.$emit("closeNavbar", "closeNavbar");
         $mdToast.show({
@@ -57,6 +47,16 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
             position: 'top right',
             controller: 'menuCtrl',
             templateUrl: 'html/menuToast/findAdressToast.html',
+        });
+    };
+
+    $scope.findParcellPanel=function () {
+        $rootScope.$emit("closeNavbar", "closeNavbar");
+        $mdToast.show({
+            hideDelay: 0,
+            position: 'top right',
+            controller: 'menuCtrl',
+            templateUrl: 'html/menuToast/findParcellToast.html',
         });
     };
 

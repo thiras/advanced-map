@@ -24,7 +24,7 @@
                                     <span> {{lang.menuToasts.general.provinces}} </span>
                                 </md-select-header>
                                 <md-option ng-value="deger.id" ng-click="changeIlce(deger.id)"
-                                           ng-repeat="(ozellik, deger) in il">{{deger.label}}
+                                           ng-repeat="(ozellik, deger) in il" ng-selected="deger.id == secilenIl">{{deger.label}}
                                 </md-option>
 
                             </md-select>
@@ -40,7 +40,7 @@
                                     <span> {{lang.menuToasts.general.counties}} </span>
                                 </md-select-header>
                                 <md-option ng-value="deger.id" ng-click="changeMahelle(deger.id)"
-                                           ng-repeat="(ozellik, deger) in filterIlce">{{deger.label}}
+                                           ng-repeat="(ozellik, deger) in filterIlce" ng-selected="deger.id == secilenIlce">{{deger.label}}
                                 </md-option>
                             </md-select>
                         </md-input-container>
@@ -54,7 +54,7 @@
                                     <span> {{lang.menuToasts.general.neighborhoods}} </span>
                                 </md-select-header>
                                 <md-option ng-value="deger.id" ng-click="changeYol(deger.id)"
-                                           ng-repeat="(ozellik, deger) in filterMahalle">{{deger.label}}
+                                           ng-repeat="(ozellik, deger) in filterMahalle" ng-selected="deger.id == secilenMahalle">{{deger.label}}
                                 </md-option>
                             </md-select>
                         </md-input-container>
@@ -68,7 +68,7 @@
                                     <span> {{lang.menuToasts.findAdress.streets}} </span>
                                 </md-select-header>
                                 <md-option ng-value="deger.id" ng-click="changeKapiNo(deger.id)"
-                                           ng-repeat="(ozellik, deger) in filterYol">{{deger.label}}
+                                           ng-repeat="(ozellik, deger) in filterYol" ng-selected="deger.id == secilenYol">{{deger.label}}
                                 </md-option>
                             </md-select>
                         </md-input-container>
@@ -77,12 +77,12 @@
 
                     <md-list-item ng-if="isActiveNumarataj">
                         <md-input-container layout-fill>
-                            <md-select ng-model="secilenYol" placeholder="{{lang.menuToasts.findAdress.doornumber}}">
+                            <md-select ng-model="secilenKapi" placeholder="{{lang.menuToasts.findAdress.doornumber}}">
                                 <md-select-header>
                                     <span> {{lang.menuToasts.findAdress.doornumbers}} </span>
                                 </md-select-header>
                                 <md-option ng-value="deger.id" ng-click="showKapiNo(deger.id)"
-                                           ng-repeat="(ozellik, deger) in filterNumarataj">{{deger.label}}
+                                           ng-repeat="(ozellik, deger) in filterNumarataj" ng-selected="deger.id == secilenKapi">{{deger.label}}
                                 </md-option>
                             </md-select>
                         </md-input-container>
