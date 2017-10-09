@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAAA,4EAAiB;EAEf,QAAQ,EAAE,QAAQ;EAClB,GAAG,EAAC,IAAI;EACR,IAAI,EAAE,GAAG;EACT,SAAS,EAAE,KAAK;;AAoBlB,oCAAqC;EAEnC,4EAAiB;IAEf,KAAK,EAAC,GAAG;AAMb,oBAAoB;EAOlB,UAAU,EAAE,OAAO;EALnB,8BAAS;IAEP,OAAO,EAAE,KAAK",
+"mappings": "AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;EA2CE",
 "sources": ["ngdialog.scss"],
 "names": [],
 "file": "ngdialog.css"

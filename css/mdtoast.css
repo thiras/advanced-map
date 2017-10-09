@@ -10,18 +10,39 @@ md-toast {
 
 }*/
 md-toast {
+  z-index: 15;
+  width: 390px;
   display: inline-flex; }
   md-toast .md-toast-content {
-    height: 40px !important;
-    min-height: 40px !important;
-    max-height: 40px !important;
     text-align: left;
     background: #ffffff;
     padding: 3px !important; }
-    md-toast .md-toast-content * {
-      color: #2c3e50; }
     md-toast .md-toast-content md-icon {
       outline: none;
       cursor: pointer; }
+  md-toast form {
+    margin-top: -54px;
+    margin-left: -11px;
+    margin-right: -3px;
+    padding: 0; }
+
+md-toast#drawTool .md-toast-content {
+  color: #34495e; }
+
+md-toast#menuToasts {
+  position: fixed;
+  top: 58px;
+  left: 10px;
+  width: 390px;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  z-index: 20; }
+  md-toast#menuToasts .md-toast-content {
+    width: 400px;
+    height: auto !important;
+    display: inline-table; }
+  md-toast#menuToasts .h2 {
+    color: #fff; }
 
 /*# sourceMappingURL=mdtoast.css.map */

@@ -730,11 +730,17 @@ md-toast {
     text-align: left;
     background: #ffffff;
     padding: 3px !important; }
-    md-toast .md-toast-content * {
-      color: #2c3e50; }
     md-toast .md-toast-content md-icon {
       outline: none;
       cursor: pointer; }
+  md-toast form {
+    margin-top: -54px;
+    margin-left: -11px;
+    margin-right: -3px;
+    padding: 0; }
+
+md-toast#drawTool .md-toast-content {
+  color: #34495e; }
 
 md-toast#menuToasts {
   position: fixed;

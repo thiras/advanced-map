@@ -1,15 +1,46 @@
-#findAdressDialog, #findParcellDialog, #nearestTaxiDialog, #findTaxiAtAdress {
-  position: absolute;
-  top: 55px;
-  left: 8px;
-  max-width: 390px; }
+/*
+#findAdressDialog{
 
-@media screen and (max-width: 360px) {
-  #findAdressDialog, #findParcellDialog, #nearestTaxiDialog, #findTaxiAtAdress {
-    width: 95%; } }
-.md-dialog-container {
-  background: #2980b9; }
-  .md-dialog-container md-diloag {
-    display: block; }
+  position: fixed;
+  top: 55px;
+  left: 10px;
+  width: 390px;
+  padding: 0;
+  margin: 0;
+}
+
+#findParcellDialog{
+
+ @extend #findAdressDialog;
+
+}
+
+#nearestTaxiDialog{
+
+  @extend #findAdressDialog;
+}
+
+#findTaxiAtAdress{
+
+
+  @extend #findAdressDialog;
+}
+
+@media screen and (max-width:360px ) {
+
+  #findAdressDialog{
+
+    width:95%;
+  }
+
+
+}
+
+.md-dialog-container{
+
+
+
+}
+*/
 
 /*# sourceMappingURL=ngdialog.css.map */
