@@ -723,11 +723,10 @@ md-toast {
 
 }*/
 md-toast {
+  z-index: 15;
+  width: 390px;
   display: inline-flex; }
   md-toast .md-toast-content {
-    height: 40px !important;
-    min-height: 40px !important;
-    max-height: 40px !important;
     text-align: left;
     background: #ffffff;
     padding: 3px !important; }
@@ -736,6 +735,22 @@ md-toast {
     md-toast .md-toast-content md-icon {
       outline: none;
       cursor: pointer; }
+
+md-toast#menuToasts {
+  position: fixed;
+  top: 58px;
+  left: 10px;
+  width: 390px;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  z-index: 20; }
+  md-toast#menuToasts .md-toast-content {
+    width: 400px;
+    height: auto !important;
+    display: inline-table; }
+  md-toast#menuToasts .h2 {
+    color: #fff; }
 
 .grayfilter {
   filter: grayscale(100%);
@@ -800,15 +815,50 @@ md-backdrop.md-sidenav-backdrop{
   display:none;
 }
 */
-#findAdressDialog, #findParcellDialog {
-  position: absolute;
-  top: 55px;
-  left: 8px;
-  max-width: 390px; }
+/*
+#findAdressDialog{
 
-@media screen and (max-width: 360px) {
-  #findAdressDialog, #findParcellDialog {
-    width: 95%; } }
+  position: fixed;
+  top: 55px;
+  left: 10px;
+  width: 390px;
+  padding: 0;
+  margin: 0;
+}
+
+#findParcellDialog{
+
+ @extend #findAdressDialog;
+
+}
+
+#nearestTaxiDialog{
+
+  @extend #findAdressDialog;
+}
+
+#findTaxiAtAdress{
+
+
+  @extend #findAdressDialog;
+}
+
+@media screen and (max-width:360px ) {
+
+  #findAdressDialog{
+
+    width:95%;
+  }
+
+
+}
+
+.md-dialog-container{
+
+
+
+}
+*/
 /*
 
  */

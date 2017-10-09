@@ -1,12 +1,13 @@
-<md-dialog id="findParcellDialog" aria-label="Mango (Fruit)">
-    <form>
+<md-toast id="menuToasts" aria-label="Mango (Fruit)">
+   <div class="md-toast-content" layout-padding>
+      <form style="margin-top: -54px; margin-left: -11px;   margin-right: -3px; padding: 0;">
         <md-toolbar>
             <div class="md-toolbar-tools">
                 <h2><md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">dashboard</md-icon>
-                    {{lang.dialogs.findParcell.label}}</h2>
+                   <span class="md-subhead" style="color: #ffffff;">{{lang.menuToasts.findParcell.label}}</span></h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="cancel()">
-                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                    <md-icon style="padding: 7px;" md-svg-src="img/icons/cancel.svg" aria-label="Close dialog"></md-icon>
                 </md-button>
             </div>
         </md-toolbar>
@@ -18,9 +19,9 @@
                 <md-list-item>
 
                     <md-input-container layout-fill>
-                        <md-select ng-model="secilenIl" placeholder="{{lang.dialogs.general.provinceList}}">
+                        <md-select ng-model="secilenIl" placeholder="{{lang.menuToasts.general.provinceList}}">
                             <md-select-header>
-                                <span> {{lang.dialogs.general.provinces}} </span>
+                                <span> {{lang.menuToasts.general.provinces}} </span>
                             </md-select-header>
                             <md-option ng-value="deger.id" ng-click="changeIlce(deger.id)"
                                        ng-repeat="(ozellik, deger) in il">{{deger.label}}
@@ -34,9 +35,9 @@
 
                 <md-list-item ng-if="isActiveIlce">
                     <md-input-container layout-fill>
-                        <md-select ng-model="secilenIlce" placeholder="{{lang.dialogs.general.countylist}}">
+                        <md-select ng-model="secilenIlce" placeholder="{{lang.menuToasts.general.countylist}}">
                             <md-select-header>
-                                <span> {{lang.dialogs.general.counties}} </span>
+                                <span> {{lang.menuToasts.general.counties}} </span>
                             </md-select-header>
                             <md-option ng-value="deger.id" ng-click="changeMahelle(deger.id)"
                                        ng-repeat="(ozellik, deger) in filterIlce">{{deger.label}}
@@ -48,9 +49,9 @@
 
                 <md-list-item ng-if="isActiveMahalle">
                     <md-input-container layout-fill>
-                        <md-select ng-model="secilenMahalle" placeholder="{{lang.dialogs.general.neighborhoodlist}}">
+                        <md-select ng-model="secilenMahalle" placeholder="{{lang.menuToasts.general.neighborhoodlist}}">
                             <md-select-header>
-                                <span> {{lang.dialogs.general.neighborhoods}} </span>
+                                <span> {{lang.menuToasts.general.neighborhoods}} </span>
                             </md-select-header>
                             <md-option ng-value="deger.id" ng-click="changeYol(deger.id)"
                                        ng-repeat="(ozellik, deger) in filterMahalle">{{deger.label}}
@@ -70,4 +71,5 @@
             </md-button>
         </md-dialog-actions>
     </form>
-</md-dialog>
+   </div>
+</md-toast>

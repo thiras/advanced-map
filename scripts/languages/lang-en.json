@@ -23,7 +23,7 @@
     "delete":"Delete"
 
   },
-  "dialogs":{
+  "menuToasts":{
     "general":{
       "provinceList":"Province List",
       "countylist":"County List",
@@ -40,7 +40,13 @@
       "doornumbers":"Door Numbers"
     },
     "findParcell":{
-      "label":"Parcel Finding Panel"
+      "label":"Parcel Finding by Adress Panel"
+    },
+    "findTaxi":{
+      "label":"Taxi Finding by Adress Panel"
+    },
+    "findPharmacy":{
+      "label":"Pharmacy Finding by Adress Panel"
     }
   },
   "menu":{

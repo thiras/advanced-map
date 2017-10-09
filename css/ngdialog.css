@@ -1,11 +1,15 @@
-#findAdressDialog, #findParcellDialog {
+#findAdressDialog, #findParcellDialog, #nearestTaxiDialog, #findTaxiAtAdress {
   position: absolute;
   top: 55px;
   left: 8px;
   max-width: 390px; }
 
 @media screen and (max-width: 360px) {
-  #findAdressDialog, #findParcellDialog {
+  #findAdressDialog, #findParcellDialog, #nearestTaxiDialog, #findTaxiAtAdress {
     width: 95%; } }
+.md-dialog-container {
+  background: #2980b9; }
+  .md-dialog-container md-diloag {
+    display: block; }
 
 /*# sourceMappingURL=ngdialog.css.map */

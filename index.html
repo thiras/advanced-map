@@ -26,7 +26,7 @@
 </searchbox>
 <right-top-menu ng-include="'html/rightmenu.html'" layout="row"></right-top-menu>
 <slider-wrap></slider-wrap>
-<left-menu ng-include="'html/leftmenu.html'" layout="row">
+<left-menu style="z-index: 21;" ng-include="'html/leftmenu.html'" layout="row">
 </left-menu>
 <leaflet ng-click="contextMenuShow=0" right-click="openrightmenu()" data-lat="35" data-lng="30" zoom="12" id="map"></leaflet>
 <md-contextmenu ng ng-if="contextMenuShow" ng-style="{'left':mouseX,'top':mouseY}">
@@ -98,6 +98,7 @@
 <script src="scripts/controllers/vectorLayerBox.js"></script>
 <script src="scripts/controllers/editTool.js"></script>
 <script src="scripts/controllers/navbar.js"></script>
+<script src="scripts/controllers/menuCtrl.js"></script>
 <script src="scripts/sockets/autobahn.js"></script>
 <script src="scripts/search/search.js"></script>
 <script src="scripts/configs/fabdial.js"></script>

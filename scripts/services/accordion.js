@@ -56,6 +56,25 @@ var json={
             }
         }
     },
+    pharmacy:{
+        label:"Ezcane",
+        fonk:"menu",
+        icon:"dashboard",
+        submenu:{
+            menu2e1:{
+                label:"Adresten Eczane Bul",
+                fonk:"findPharmacyAtAdress"
+            },
+            menu2e2:{
+                label:"En Yakın Eczaneyi Bul",
+                fonk:"findNearestPharmacy"
+            },
+            menu2e3:{
+                label:"En Yakın Nöbetçi Eczaneyi Bul",
+                fonk:"findNearestSentinelPharmacy"
+            }
+        }
+    },
     menu4:{
         label:"Taksi Durakları",
         fonk:"menu",
