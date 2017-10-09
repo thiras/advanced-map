@@ -68,6 +68,7 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
             targetEvent: event,
             clickOutsideToClose: true,
             closeTo: '#closeBtn',
+            hasBackdrop: false
 
         })
 
@@ -99,6 +100,51 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
 
         alert("ulaşım methodu")
     }
+
+/* taksi */
+    $scope.findTaxiAtAdress=function () {
+
+        $mdDialog.show({
+            controller: navbarCtrl,
+            templateUrl: 'dialogs/findtaxiatadress.html',
+            parent: angular.element(document.body),
+            targetEvent: event,
+            clickOutsideToClose: true,
+            closeTo: '#closeBtn',
+
+        })
+            .then(function (answer) {
+                $scope.status = 'You said the information was "' + answer + '".';
+            }, function () {
+                $scope.status = 'You cancelled the dialog.';
+            });
+
+
+    }
+
+    $scope.findTaxiAtLocation=function () {
+        $mdDialog.show({
+            controller: navbarCtrl,
+            templateUrl: 'dialogs/nearesttaxi.html',
+            parent: angular.element(document.body),
+            targetEvent: event,
+            clickOutsideToClose: true,
+            closeTo: '#closeBtn',
+
+        })
+            .then(function (answer) {
+                $scope.status = 'You said the information was "' + answer + '".';
+            }, function () {
+                $scope.status = 'You cancelled the dialog.';
+            });
+
+
+
+    }
+
+
+    /*  taksi **/
+
 
 
     function navbarCtrl($scope, $sahtejson) {
@@ -250,6 +296,9 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
                 }
             }
         }
+
+
+
 
 
     }

@@ -800,9 +800,15 @@ md-backdrop.md-sidenav-backdrop{
   display:none;
 }
 */
-#findaddress {
-  max-width: 350px; }
+#findAdressDialog, #findParcellDialog {
+  position: absolute;
+  top: 55px;
+  left: 8px;
+  max-width: 390px; }
 
+@media screen and (max-width: 360px) {
+  #findAdressDialog, #findParcellDialog {
+    width: 95%; } }
 /*
 
  */

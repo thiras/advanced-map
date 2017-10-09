@@ -1,4 +1,24 @@
-#findaddress{
+#findAdressDialog{
 
-  max-width: 350px;
+  position: absolute;
+  top:55px;
+  left: 8px;
+  max-width: 390px;
+}
+
+#findParcellDialog{
+
+ @extend #findAdressDialog;
+
+}
+
+
+@media screen and (max-width:360px ) {
+
+  #findAdressDialog{
+
+    width:95%;
+  }
+
+
 }
