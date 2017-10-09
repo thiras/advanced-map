@@ -41,8 +41,9 @@ md-toast#menuToasts {
   md-toast#menuToasts .md-toast-content {
     width: 400px;
     height: auto !important;
-    display: inline-table; }
-  md-toast#menuToasts .h2 {
+    display: inline-table;
+    color: #2196f3; }
+  md-toast#menuToasts h2 {
     color: #fff; }
 
 /*# sourceMappingURL=mdtoast.css.map */

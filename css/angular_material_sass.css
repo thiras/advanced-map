@@ -12,17 +12,12 @@
  */
 /*mixins */
 /*  mixins son */
-.deneme {
-  -webkit-align-content: strech;
-  -moz-align-content: strech;
-  -ms-flex-line-pack: strech;
-  align-content: strech;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex; }
+/*.deneme{
 
+  @include vp-align-content(strech);
+
+  @include vp-display(flex);
+}*/
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -754,8 +749,9 @@ md-toast#menuToasts {
   md-toast#menuToasts .md-toast-content {
     width: 400px;
     height: auto !important;
-    display: inline-table; }
-  md-toast#menuToasts .h2 {
+    display: inline-table;
+    color: #2196f3; }
+  md-toast#menuToasts h2 {
     color: #fff; }
 
 .grayfilter {
