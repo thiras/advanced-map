@@ -47,13 +47,21 @@
 
     },
     "findTaxi":{
-      "label":"Taxi Finding by Adress Panel"
+      "label":"Taxi Finding by Adress Panel",
+      "placeHolder":"Taxi Stop Name : "
     },
     "findPharmacy":{
       "label":"Pharmacy Finding by Adress Panel",
       "placeHolder":"Pharmacy Name : ",
       "onlyDutyPharmacytrue":"Search All Pharmacies",
       "onlyDutyPharmacyfalse":"Search Only Duty Pharmacies"
+    },
+    "proprietaryBuild":{
+
+      "label":"proprietary Build Panel",
+      "mdselect1placeholder":"proprietary Build",
+      "mdselect2placeholder":"all districts",
+      "mdselect3placeholder":"all neighborhood"
     }
   },
   "menu":{

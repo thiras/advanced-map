@@ -82,3 +82,16 @@ md-toast#menuToasts{
     margin-top: 4px;
   }
 }
+
+md-toast#findProprietary{
+
+  @extend #menuToasts;
+
+  md-input-container{
+
+    margin-top: 5px;
+    margin-bottom: -20px;
+  }
+}
+
+

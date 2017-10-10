@@ -22,10 +22,19 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
     };
     $rootScope.pharmacy = {
         pharmacyName:"",
-        dutyPharmayControl:false
+        dutyPharmayControl:false,
+        pharmacySearchResults:false
+    };
+    $rootScope.taxi = {
+        taxiName:"",
+        taxiSearchResults:false
     };
     document.querySelector('title').innerText = $rootScope.lang.general.title;
-    $rootScope.parcell = {parcellLandNo: "", parcellNo: ""};
+    $rootScope.parcell = {
+        parcellLandNo: "",
+        parcellNo: "",
+        parcellSearchResults:false
+    };
     $showFabDials = false;
     $scope.contextMenuShow = 0;
     $scope.mouseX = 0 + "px";

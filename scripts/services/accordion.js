@@ -94,7 +94,13 @@ var json={
         label: "Tescilli yapı",
         fonk: "menu",
         icon:"account_balance",
-        submenu:false
+        submenu:{
+
+            menu:{
+                label:"tescilli yapı bul",
+                fonk:"tescilliYapi"
+            }
+        }
     },
     menu7: {
         label: "İnşaat Ruhsatı",

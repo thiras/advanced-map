@@ -25,8 +25,13 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
         $scope.secilenKapi=$rootScope.adress.kapi;
         $scope.pharmacyName =$rootScope.pharmacy.pharmacyName;
         $scope.dutyPharmayControl = $rootScope.pharmacy.dutyPharmayControl;
+        $scope.pharmacySearchResults=$rootScope.pharmacy.pharmacySearchResults;
         $scope.parcellLandNo=$rootScope.parcell.parcellLandNo;
         $scope.parcellNo=$rootScope.parcell.parcellNo;
+        $scope.parcellSearchResults=$rootScope.parcell.parcellSearchResults;
+        $scope.taxiName = $rootScope.taxi.taxiName;
+        $scope.taxiSearchResults = $rootScope.taxi.taxiSearchResults;
+
 
         $scope.setParcellLandNo=function () {
             $rootScope.parcell.parcellLandNo=$scope.parcellLandNo;
@@ -39,6 +44,9 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
         };
         $scope.setPharmacyDutyControl=function () {
             $rootScope.pharmacy.dutyPharmayControl=$scope.dutyPharmayControl;
+        };
+        $scope.setTaxiName=function () {
+            $rootScope.taxi.taxiName=$scope.taxiName;
         };
 
 
@@ -228,10 +236,6 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
                 }
             }
         }
-
-
-
-
 
 
 
