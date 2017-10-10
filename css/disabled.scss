@@ -3,3 +3,14 @@
 
   cursor: not-allowed !important;
 }
+
+
+#searchbox{
+
+
+
+ *{
+
+   @include vp-user-select(none);
+ }
+}

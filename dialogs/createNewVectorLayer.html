@@ -1,6 +1,6 @@
 <md-dialog aria-label="Mango (Fruit)">
     <form ng-cloak>
-        <md-toolbar>
+        <md-toolbar md-ink-ripple>
             <div class="md-toolbar-tools">
                 <h2 class="md-subhead">{{lang.vlList.dialogs.createNewVecLay.label}}</h2>
                 <span flex></span>
@@ -17,19 +17,28 @@
                         <h3>{{lang.vlList.dialogs.createNewVecLay.layerMainInfo}}</h3>
                     </md-list-item>
                     <md-list-item flex layout-xs="column" layout="row">
-                        <div style="margin-bottom:10.5px" flex-xs="100" flex="30">{{lang.vlList.dialogs.createNewVecLay.layname}}</div>
+                        <div style="margin-bottom:10.5px" flex-xs="100" flex="30">
+                            {{lang.vlList.dialogs.createNewVecLay.layname}}
+                        </div>
                         <md-input-container flex-xs="100" layout-fill flex="70">
-                            <input ng-model="layerName" type="text" placeholder="{{lang.vlList.dialogs.createNewVecLay.layname}}">
+                            <input ng-model="layerName" type="text"
+                                   placeholder="{{lang.vlList.dialogs.createNewVecLay.layname}}">
                         </md-input-container>
                     </md-list-item>
                     <md-list-item flex layout-xs="column" layout="row">
-                        <div style="margin-bottom:10.5px" flex-xs="100" flex="30">{{lang.vlList.dialogs.createNewVecLay.descrpt}}</div>
+                        <div style="margin-bottom:10.5px" flex-xs="100" flex="30">
+                            {{lang.vlList.dialogs.createNewVecLay.descrpt}}
+                        </div>
                         <md-input-container flex-xs="100" layout-fill flex="70" layout-align="start end">
-                            <textarea ng-model="descrptn" flex="100" placeholder="{{lang.vlList.dialogs.createNewVecLay.descrpt}}" name="" cols="15" rows="3"></textarea>
+                            <textarea ng-model="descrptn" flex="100"
+                                      placeholder="{{lang.vlList.dialogs.createNewVecLay.descrpt}}" name="" cols="15"
+                                      rows="3"></textarea>
                         </md-input-container>
                     </md-list-item>
                     <md-list-item flex layout-xs="column" layout="row">
-                        <div style="margin-bottom:10.5px" flex-xs="100" flex="30">{{lang.vlList.dialogs.createNewVecLay.type}}</div>
+                        <div style="margin-bottom:10.5px" flex-xs="100" flex="30">
+                            {{lang.vlList.dialogs.createNewVecLay.type}}
+                        </div>
                         <md-input-container flex-xs="100" layout-fill flex="70">
                             <md-select ng-model="vectorlayerType" flex="100">
                                 <label>{{lang.vlList.dialogs.createNewVecLay.type}}</label>
@@ -39,10 +48,13 @@
                             </md-select>
                         </md-input-container>
                     </md-list-item>
-                    <md-list-item  flex layout-xs="column" layout="row">
-                        <div style="margin-bottom:10.5px" flex-xs="100" flex="30">{{lang.vlList.dialogs.createNewVecLay.crs}}</div>
+                    <md-list-item flex layout-xs="column" layout="row">
+                        <div style="margin-bottom:10.5px" flex-xs="100" flex="30">
+                            {{lang.vlList.dialogs.createNewVecLay.crs}}
+                        </div>
                         <md-input-container flex-xs="100" layout-fill flex="70">
-                            <input ng-model="vectorCrs" type="text" placeholder="{{lang.vlList.dialogs.createNewVecLay.crs}}">
+                            <input ng-model="vectorCrs" type="text"
+                                   placeholder="{{lang.vlList.dialogs.createNewVecLay.crs}}">
                         </md-input-container>
                     </md-list-item>
                     <md-list-item flex layout-xs="column" layout="row">
@@ -50,39 +62,42 @@
                     </md-list-item>
                     <md-list-item layout-align="end start" flex layout-xs="column" layout="row">
                         <form>
-                        <div flex="45" flex-xs="100">
+                            <div flex="45" flex-xs="100">
 
-                            <md-input-container layout-fill>
-                                <input required type="text" ng-model="fieldName" placeholder="{{lang.vlList.dialogs.createNewVecLay.writeFieldName}}">
-                            </md-input-container>
-                        </div>
-                        <div flex="45" flex-xs="100">
+                                <md-input-container layout-fill>
+                                    <input required type="text" ng-model="fieldName"
+                                           placeholder="{{lang.vlList.dialogs.createNewVecLay.writeFieldName}}">
+                                </md-input-container>
+                            </div>
+                            <div flex="45" flex-xs="100">
 
-                           <md-input-container layout-fill>
-                               <label>{{fieldType}}</label>
+                                <md-input-container layout-fill>
+                                    <label>{{fieldType}}</label>
 
-                               <md-select placeholder="{{fieldType || lang.vlList.dialogs.createNewVecLay.select}}" ng-model="fieldType">
+                                    <md-select placeholder="{{fieldType || lang.vlList.dialogs.createNewVecLay.select}}"
+                                               ng-model="fieldType">
 
-                                   <md-option ng-value="'smallint'">{{lang.general.smallint}}</md-option>
-                                   <md-option ng-value="'integer'">{{lang.general.integer}}</md-option>
-                                   <md-option ng-value="'bigint'">{{lang.general.bigint}}</md-option>
-                                   <md-option ng-value="'real'">{{lang.general.real}}</md-option>
-                                   <md-option ng-value="'double precision'">{{lang.general.double}}</md-option>
-                                   <md-option ng-value="'text'">{{lang.general.text}}</md-option>
-                                   <md-option ng-value="'date'">{{lang.general.date}}</md-option>
-                                   <md-option ng-value="'timestamp'">{{lang.general.timestamp}}</md-option>
-                                   <md-option ng-value="'boolean'">{{lang.general.boolean}}</md-option>
-                               </md-select>
-                           </md-input-container>
+                                        <md-option ng-value="'smallint'">{{lang.general.smallint}}</md-option>
+                                        <md-option ng-value="'integer'">{{lang.general.integer}}</md-option>
+                                        <md-option ng-value="'bigint'">{{lang.general.bigint}}</md-option>
+                                        <md-option ng-value="'real'">{{lang.general.real}}</md-option>
+                                        <md-option ng-value="'double precision'">{{lang.general.double}}</md-option>
+                                        <md-option ng-value="'text'">{{lang.general.text}}</md-option>
+                                        <md-option ng-value="'date'">{{lang.general.date}}</md-option>
+                                        <md-option ng-value="'timestamp'">{{lang.general.timestamp}}</md-option>
+                                        <md-option ng-value="'boolean'">{{lang.general.boolean}}</md-option>
+                                    </md-select>
+                                </md-input-container>
 
-                        </div>
+                            </div>
 
-                        <div flex="10"  layout-align="center start">
-                            <md-button ng-click="addNewField(null);" ng-disabled="!fieldType || !fieldName" class="md-fab md-mini md-warn">
-                                <md-tooltip md-direction="up">{{lang.general.add}}</md-tooltip>
-                            <md-icon md-svg-src="img/icons/plus.svg"></md-icon>
-                            </md-button>
-                        </div>
+                            <div flex="10" layout-align="center start">
+                                <md-button ng-click="addNewField(null);" ng-disabled="!fieldType || !fieldName"
+                                           class="md-fab md-mini md-warn">
+                                    <md-tooltip md-direction="up">{{lang.general.add}}</md-tooltip>
+                                    <md-icon md-svg-src="img/icons/plus.svg"></md-icon>
+                                </md-button>
+                            </div>
                         </form>
                     </md-list-item>
                     <md-list-item>
@@ -91,12 +106,18 @@
                         </div>
                     </md-list-item>
                     <md-list-item ng-repeat="(ozellik,deger) in readyFields">
-                        <div layout="row"  flex>
-                            <div layout-padding layout-margin style="border: 1px solid #efefef;" flex="10">{{$index+1}}</div>
-                            <div layout-padding layout-margin style="border: 1px solid #efefef;" flex="40">{{ozellik}}</div>
-                            <div layout-padding layout-margin style="border: 1px solid #efefef;" flex="40">{{deger.type}}</div>
-                            <div   flex="10">
-                                <md-button ng-if='ozellik=="id" ? false:true' ng-click="deleteNewField(ozellik,null);" class="md-fab md-mini md-warn">
+                        <div layout="row" flex>
+                            <div layout-padding layout-margin style="border: 1px solid #efefef;" flex="10">
+                                {{$index+1}}
+                            </div>
+                            <div layout-padding layout-margin style="border: 1px solid #efefef;" flex="40">{{ozellik}}
+                            </div>
+                            <div layout-padding layout-margin style="border: 1px solid #efefef;" flex="40">
+                                {{deger.type}}
+                            </div>
+                            <div flex="10">
+                                <md-button ng-if='ozellik=="id" ? false:true' ng-click="deleteNewField(ozellik,null);"
+                                           class="md-fab md-mini md-warn">
                                     <md-tooltip md-direction="up">{{lang.general.delete}}</md-tooltip>
                                     <md-icon md-svg-src="img/icons/plus.svg"></md-icon>
                                 </md-button>

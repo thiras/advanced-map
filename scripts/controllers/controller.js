@@ -2,8 +2,30 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
 
     var lang = await $getlang;
     $rootScope.lang = lang.data;
-    $rootScope.adress={ulke:false,il:false,ilce:false,mahalle:false,yol:false,kapi:false,ulkeActive:false,ilActive:false,ilceActive:false,mahalleActive:false,yolActive:false,kapiActive:false,filterIlce:{},filterMahalle:{},filterYol:{},filterNumarataj:{}};
+    $rootScope.adress = {
+        ulke: false,
+        il: false,
+        ilce: false,
+        mahalle: false,
+        yol: false,
+        kapi: false,
+        ulkeActive: false,
+        ilActive: false,
+        ilceActive: false,
+        mahalleActive: false,
+        yolActive: false,
+        kapiActive: false,
+        filterIlce: {},
+        filterMahalle: {},
+        filterYol: {},
+        filterNumarataj: {}
+    };
+    $rootScope.pharmacy = {
+        pharmacyName:"",
+        dutyPharmayControl:false
+    };
     document.querySelector('title').innerText = $rootScope.lang.general.title;
+    $rootScope.parcell = {parcellLandNo: "", parcellNo: ""};
     $showFabDials = false;
     $scope.contextMenuShow = 0;
     $scope.mouseX = 0 + "px";
@@ -34,13 +56,11 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
     $scope.toggleRight = buildToggler('right');
 
 
-
-    $rootScope.$on("closeNavbar",function (e,a) {
+    $rootScope.$on("closeNavbar", function (e, a) {
 
 
         $scope.toggleLeft();
     });
-
 
 
     function buildToggler(componentId) {

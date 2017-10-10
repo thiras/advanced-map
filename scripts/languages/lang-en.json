@@ -20,7 +20,8 @@
     "date":"Date",
     "timestamp":"Date - Time",
     "boolean":"True False 1/0",
-    "delete":"Delete"
+    "delete":"Delete",
+    "search":"Search"
 
   },
   "menuToasts":{
@@ -40,13 +41,19 @@
       "doornumbers":"Door Numbers"
     },
     "findParcell":{
-      "label":"Parcel Finding by Adress Panel"
+      "label":"Parcel Finding by Adress Panel",
+      "landNo":"Land No : ",
+      "parcellNo":"Parcell No : "
+
     },
     "findTaxi":{
       "label":"Taxi Finding by Adress Panel"
     },
     "findPharmacy":{
-      "label":"Pharmacy Finding by Adress Panel"
+      "label":"Pharmacy Finding by Adress Panel",
+      "placeHolder":"Pharmacy Name : ",
+      "onlyDutyPharmacytrue":"Search All Pharmacies",
+      "onlyDutyPharmacyfalse":"Search Only Duty Pharmacies"
     }
   },
   "menu":{

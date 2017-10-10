@@ -1,31 +1,24 @@
 <section layout="row" ng-controller="navbar">
     <md-sidenav class="md-sidenav-left" md-component-id="left"
                 md-whiteframe="4">
-       <!-- <md-content>
-            <img layout-fill
-                 ng-src="{{streetWievImgSrc}}"
-                 alt="">
-        </md-content>
-        <md-toolbar class="md-theme-indigo"><h1 layout-align="center center" class="md-toolbar-tools "> Ballista map
-            sistemleri
-        </h1>
-        </md-toolbar>-->
-
-       <button class="accordion">
+        <button class="accordion">
 
 
-       </button>
+        </button>
         <md-content>
 
             <div ng-repeat="(ozellik, deger) in menuJSON">
                 <button class="accordion">
-                    <md-icon class="mat-icon material-icons accordion-icons" role="img" aria-hidden="true">{{deger.icon}}
+                    <md-icon class="mat-icon material-icons accordion-icons" role="img" aria-hidden="true">
+                        {{deger.icon}}
                     </md-icon>
                     {{deger.label}}
                 </button>
                 <div class="panel">
                     <md-list>
-                        <md-list-item ng-click="factoryDesign(deg)" ng-repeat="(prop, deg) in deger.submenu " md-ink-ripple>{{deg.label}}</md-list-item>
+                        <md-list-item ng-click="factoryDesign(deg)" ng-repeat="(prop, deg) in deger.submenu "
+                                      md-ink-ripple>{{deg.label}}
+                        </md-list-item>
                     </md-list>
                 </div>
                 <md-divider></md-divider>

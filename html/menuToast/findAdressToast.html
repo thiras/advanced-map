@@ -1,7 +1,7 @@
 <md-toast id="menuToasts" aria-label="Mango (Fruit)">
     <div class="md-toast-content" layout-padding>
         <form>
-            <md-toolbar>
+            <md-toolbar md-ink-ripple>
                 <div class="md-toolbar-tools">
                     <h2><md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">home</md-icon>
                         <span class="md-subhead" style="color: #ffffff;">{{lang.menuToasts.findAdress.label}}</span></h2>
@@ -15,7 +15,6 @@
 
                 <md-list>
 
-                    {{deneme}}
                     <md-list-item>
 
                         <md-input-container layout-fill>
@@ -92,6 +91,14 @@
             </md-dialog-content>
             <md-dialog-actions layout="row">
                 <span flex></span>
+
+                <md-button class="md-raised md-primary md-button md-ink-ripple md-button" ng-click="showParcell()">
+                    <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">
+                        search
+                    </md-icon>
+                    {{lang.general.search}}
+                </md-button>
+
                 <md-button class="md-raised md-warn md-button md-ink-ripple md-button" ng-click="cancel()"
                            style="margin-right:20px;">
                     {{lang.general.close}}

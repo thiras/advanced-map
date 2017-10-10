@@ -11,7 +11,7 @@
 <md-icon hide-gt-xs layout-fill>
     <md-menu-bar>
         <md-menu md-offset="0 15">
-            <button  ng-click="$mdOpenMenu()"><i class="material-icons">view_module</i></button>
+            <button ng-click="$mdOpenMenu()"><i class="material-icons">view_module</i></button>
             <md-menu-content class="grid-2">
                 <md-menu-item>
                     <md-button><i class="material-icons">settings</i>Ayarlar</md-button>
@@ -43,13 +43,14 @@
     <md-tooltip>{{lang.searchBox.btnSearch}}</md-tooltip>
 </md-icon>
 
-<md-icon  layout-fill hide-xs>
+<md-icon layout-fill hide-xs>
 
     <md-tooltip>{{lang.searchBox.btnLayer}}</md-tooltip>
     <md-menu-bar>
         <md-menu md-offset="-272 10">
             <button id="layerIcon" ng-click="$mdOpenMenu()"><i class="material-icons">layers</i></button>
-            <md-menu-content border-radius="1" style="padding-top: 0; padding-bottom: 1px;" md-whiteframe="24" layout-padding>
+            <md-menu-content border-radius="1" style="padding-top: 0; padding-bottom: 1px;" md-whiteframe="24"
+                             layout-padding>
                 <table-page ng-include="'html/table.html'"></table-page>
             </md-menu-content>
         </md-menu>

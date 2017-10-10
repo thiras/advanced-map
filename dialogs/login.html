@@ -1,70 +1,73 @@
-<md-toolbar layout-align="center center"><md-title>başlık</md-title>
-</md-toolbar>
-<md-content layout-padding>
-
-   Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus accusantium amet architecto at autem cupiditate dolore ipsum magnam maxime omnis quas quibusdam, quidem rem sapiente. Eaque id illo veniam?
-</md-content>
-
 <page-login>
+    <div ng-cloak>
+        <md-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="{{lang.login.login}}">
+                    <md-content class="md-padding">
+                        <h1 class="md-title">{{lang.login.signinForm}}</h1>
+                        burası from kayıtı
+                    </md-content>
+                </md-tab>
+                <md-tab label="{{lang.general.signup}}">
+                    <md-content class="md-padding">
+                        <h3 layout-padding class="md-title">{{lang.login.signUpForm}}</h3>
+                        <md-content layout-padding class="md-no-momentum">
+                            <md-input-container class="md-icon-float md-block">
+                                <label>{{lang.login.name}}</label>
+                                <input required ng-model="user.name" type="text">
+                            </md-input-container>
 
-<div ng-cloak>
-    <md-content>
-        <md-tabs md-dynamic-height md-border-bottom>
-            <md-tab   label="{{lang.login.login}}">
-                <md-content class="md-padding">
-                    <h1 class="md-title">{{lang.login.signinForm}}</h1>
-                    burası from kayıtı
-                </md-content>
-            </md-tab>
-            <md-tab label="{{lang.general.signup}}">
-                <md-content class="md-padding">
-                    <h3 layout-padding class="md-title">{{lang.login.signUpForm}}</h3>
-                    <md-content  layout-padding class="md-no-momentum">
-                        <md-input-container class="md-icon-float md-block">
-                            <label>{{lang.login.name}}</label>
-                            <input required ng-model="user.name" type="text">
-                        </md-input-container>
+                            <md-input-container class="md-block">
+                                <input ng-model="user.phone" required type="text"
+                                       placeholder="{{lang.login.phoneNumber}}">
+                            </md-input-container>
 
-                        <md-input-container  class="md-block">
-                            <input ng-model="user.phone" required type="text" placeholder="{{lang.login.phoneNumber}}">
-                        </md-input-container>
-
-                        <md-input-container class="md-block">
-                            <input ng-model="user.email" type="email" placeholder="{{lang.login.email}}" ng-required="true">
-                        </md-input-container>
+                            <md-input-container class="md-block">
+                                <input ng-model="user.email" type="email" placeholder="{{lang.login.email}}"
+                                       ng-required="true">
+                            </md-input-container>
 
 
-                        <md-input-container  class="md-block">
-                            <input required ng-model="user.address" type="text" placeholder="{{lang.login.adress}}" >
-                        </md-input-container>
+                            <md-input-container class="md-block">
+                                <input required ng-model="user.address" type="text" placeholder="{{lang.login.adress}}">
+                            </md-input-container>
 
-                        <md-input-container class="md-block">
-                            <md-checkbox ng-model="user.contract" style="float:left;"></md-checkbox>  <div ng-bind-html="agreement"></div>
-                        </md-input-container>
+                            <md-input-container class="md-block">
+                                <md-checkbox ng-model="user.contract" style="float:left;"></md-checkbox>
+                                <div ng-bind-html="agreement"></div>
+                            </md-input-container>
 
-                        <md-button loginbutton ng-disabled="!user.address || !user.email || !user.phone ||  !user.name || !user.contract"  class="md-raised md-primary">{{lang.login.login}}</md-button>
-                        <md-button class="md-raised md-primary" id="hide" ng-click="cancel()" >{{lang.general.ignore}}</md-button>
+                            <md-button loginbutton
+                                       ng-disabled="!user.address || !user.email || !user.phone ||  !user.name || !user.contract"
+                                       class="md-raised md-primary">{{lang.login.login}}
+                            </md-button>
+                            <md-button class="md-raised md-primary" id="hide" ng-click="cancel()">
+                                {{lang.general.ignore}}
+                            </md-button>
+
+                        </md-content>
+
+
+                        <md-answer layout-padding layout-align="center center">
+
+
+                        </md-answer>
 
                     </md-content>
+                </md-tab>
 
-
-                   <md-answer layout-padding layout-align="center center">
-
-
-                   </md-answer>
-
-                </md-content>
-            </md-tab>
-
-            <md-tab label="three">
-                <md-content class="md-padding">
-                    <h1 class="md-display-2">Tab Three</h1>
-                    <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
-                </md-content>
-            </md-tab>
-        </md-tabs>
-    </md-content>
-</div>
+                <md-tab label="three">
+                    <md-content class="md-padding">
+                        <h1 class="md-display-2">Tab Three</h1>
+                        <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere
+                            molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit
+                            erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac
+                            est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-content>
+    </div>
 
 </page-login>
 

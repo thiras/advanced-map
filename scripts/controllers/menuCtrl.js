@@ -23,6 +23,23 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
         $scope.secilenMahalle=$rootScope.adress.mahalle;
         $scope.secilenYol=$rootScope.adress.yol;
         $scope.secilenKapi=$rootScope.adress.kapi;
+        $scope.pharmacyName =$rootScope.pharmacy.pharmacyName;
+        $scope.dutyPharmayControl = $rootScope.pharmacy.dutyPharmayControl;
+        $scope.parcellLandNo=$rootScope.parcell.parcellLandNo;
+        $scope.parcellNo=$rootScope.parcell.parcellNo;
+
+        $scope.setParcellLandNo=function () {
+            $rootScope.parcell.parcellLandNo=$scope.parcellLandNo;
+        };
+        $scope.setParcellNo=function () {
+            $rootScope.parcell.parcellNo=$scope.parcellNo;
+        };
+        $scope.setPharmacyName=function () {
+            $rootScope.pharmacy.pharmacyName=$scope.pharmacyName;
+        };
+        $scope.setPharmacyDutyControl=function () {
+            $rootScope.pharmacy.dutyPharmayControl=$scope.dutyPharmayControl;
+        };
 
 
         $scope.cancel = function () {
