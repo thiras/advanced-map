@@ -612,6 +612,12 @@ all-fab-dials {
 .md-button:disabled {
   cursor: not-allowed !important; }
 
+#searchbox * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
 md-slider-container {
   position: fixed;
   left: 0px;
@@ -754,6 +760,10 @@ md-toast#menuToasts {
   md-toast#menuToasts h2 {
     color: #fff; }
 
+#findParcelToast md-input-container {
+  margin-bottom: -20px;
+  margin-top: 4px; }
+
 .grayfilter {
   filter: grayscale(100%);
   -webkit-transition: 0.3s all;
@@ -861,6 +871,12 @@ md-backdrop.md-sidenav-backdrop{
 
 }
 */
+md-switch.md-checked .md-bar {
+  background-color: #81d4fa; }
+
+md-switch.md-checked .md-thumb {
+  background-color: #03a9f4; }
+
 /*
 
  */
