@@ -1,199 +1,274 @@
 {
   "general": {
-    "title":"BalistaGIS Software",
-    "close":"Close",
-    "save":"Save",
-    "have":"Available",
-    "add":"Add",
-    "createLayer":"Create Layer",
-    "leafletAttr":"Balista Bilişim Yazılım A.Ş",
-    "moduls":"Moduls",
-    "signup":"Sign Up",
-    "ignore":"Ignore",
-    "cancel":"Cancel",
-    "smallint":"Small Integer",
-    "integer":"Integer",
-    "bigint":"Big Integer",
-    "real":"Small Real Number",
-    "double":"Big Real Number",
-    "text":"Text",
-    "date":"Date",
-    "timestamp":"Date - Time",
-    "boolean":"True False 1/0",
-    "delete":"Delete",
-    "search":"Search"
-
+    "title": "BalistaGIS Software",
+    "close": "Close",
+    "save": "Save",
+    "have": "Available",
+    "add": "Add",
+    "createLayer": "Create Layer",
+    "leafletAttr": "Balista Bilişim Yazılım A.Ş",
+    "moduls": "Moduls",
+    "signup": "Sign Up",
+    "ignore": "Ignore",
+    "cancel": "Cancel",
+    "smallint": "Small Integer",
+    "integer": "Integer",
+    "bigint": "Big Integer",
+    "real": "Small Real Number",
+    "double": "Big Real Number",
+    "text": "Text",
+    "date": "Date",
+    "timestamp": "Date - Time",
+    "boolean": "True False 1/0",
+    "delete": "Delete",
+    "search": "Search"
   },
-  "menuToasts":{
-    "general":{
-      "provinceList":"Province List",
-      "countylist":"County List",
-      "neighborhoodlist":"Neighborhood List",
-      "provinces":"Provinces",
-      "counties":"Counties",
-      "neighborhoods":"Neighborhoods"
+  "menuToasts": {
+    "general": {
+      "provinceList": "Province List",
+      "countylist": "County List",
+      "neighborhoodlist": "Neighborhood List",
+      "provinces": "Provinces",
+      "counties": "Counties",
+      "neighborhoods": "Neighborhoods"
     },
-    "findAdress":{
-     "label":"Address Finder Panel",
-      "streetlist":"Road Street List",
-      "doornumber":"Door Number List",
-      "streets":"Roads Streets",
-      "doornumbers":"Door Numbers"
+    "findAdress": {
+      "label": "Address Finder Panel",
+      "streetlist": "Road Street List",
+      "doornumber": "Door Number List",
+      "streets": "Roads Streets",
+      "doornumbers": "Door Numbers"
     },
-    "findParcell":{
-      "label":"Parcel Finding by Adress Panel",
-      "landNo":"Land No : ",
-      "parcellNo":"Parcell No : "
-
+    "findParcell": {
+      "label": "Parcel Finding by Adress Panel",
+      "landNo": "Land No : ",
+      "parcellNo": "Parcell No : "
     },
-    "findTaxi":{
-      "label":"Taxi Finding by Adress Panel",
-      "placeHolder":"Taxi Stop Name : "
+    "findTaxi": {
+      "label": "Taxi Finding by Adress Panel",
+      "placeHolder": "Taxi Stop Name : "
     },
-    "findPharmacy":{
-      "label":"Pharmacy Finding by Adress Panel",
-      "placeHolder":"Pharmacy Name : ",
-      "onlyDutyPharmacytrue":"Search All Pharmacies",
-      "onlyDutyPharmacyfalse":"Search Only Duty Pharmacies"
+    "findPharmacy": {
+      "label": "Pharmacy Finding by Adress Panel",
+      "placeHolder": "Pharmacy Name : ",
+      "onlyDutyPharmacytrue": "Search All Pharmacies",
+      "onlyDutyPharmacyfalse": "Search Only Duty Pharmacies"
     },
-    "proprietaryBuild":{
-      "label":"Proprietary Build Panel",
-      "mdselect1placeholder":"Build Types"
+    "proprietaryBuild": {
+      "label": "Proprietary Build Panel",
+      "mdselect1placeholder": "Build Types"
     }
   },
-  "menu":{
-    "menu1":{
-      "label":"Find Address",
-      "menu1e1":"Selecting District, Neighborhood, Road and Door Numbers",
-      "menu1e2":"Clicking on the Map"
+  "menu": {
+    "menu1": {
+      "label": "Find Address",
+      "menu1e1": "Go to Adress by Selection",
+      "menu1e2": "Clicking on the Map"
     },
-    "menu2":{
-      "label":"Find Address",
-      "menu1e1":"Selecting District, Neighborhood, Road and Door Numbers",
-      "menu1e2":"Clicking on the Map"
+    "menu2": {
+      "label": "Find Parcell",
+      "menu1e1": "Find Parcell By Adress",
+      "menu1e2": "Find Parcell at Your Location"
+    },
+    "menu3": {
+      "label": "Transportation",
+      "menu1e1": "Bus and Minibus",
+      "menu1e2": "Metro, Train and Tram",
+      "menu1e3": "Ship Ferries",
+      "menu1e4": "Aircraft and Air Vehicles"
+    },
+    "menu4": {
+      "label": "Pharmacy",
+      "menu1e1": "Find Pharmacy By Adress",
+      "menu1e2": "Find Nearest Pharmacy",
+      "menu1e3": "find Sentinel Pharmacy"
+    },
+    "menu5": {
+      "label": "Taxi Points",
+      "menu1e1": "Find Taxi Points By Adress",
+      "menu1e2": "Find Nearest Taxi Points"
+    },
+    "menu6": {
+      "label": "Registered Buildings",
+      "menu1e1": "Find Registered Buildings By Adress",
+      "menu1e2": "Find Registered Buildings with Search Circle"
+    },
+    "menu7": {
+      "label": "Building License",
+      "menu1e1": "Find Building License"
+    },
+    "menu8": {
+      "label": "Pharmacy",
+      "menu1e1": "Find Pharmacy By Adress",
+      "menu1e2": "Find Nearest Pharmacy",
+      "menu1e3": "find Sentinel Pharmacy"
+    },
+    "menu9": {
+      "label": "important centers and poi points",
+      "menu1e1": "what is closest to me",
+      "menu1e2": "find poi points according to the type",
+      "menu1e3": "find poi points by drawing the field",
+      "menu1e4": "find poi points by specifying address"
+    },
+    "menu10": {
+      "label": "Health Institutions",
+      "menu1e1": "find family physician",
+      "menu1e2": "find hospital in address",
+      "menu1e3": "find poi points by drawing the field",
+      "menu1e4": "find poi points by specifying address"
+    },
+    "menu11": {
+      "label": "Security Centers",
+      "menu1e1": "police station in town",
+      "menu1e2": "nearest police station",
+      "menu1e3": "military center in the region",
+      "menu1e4": "nearest military center"
+    },
+    "menu12": {
+      "label": "route creation",
+      "menu1e1": "Creating a route by specifying an address",
+      "menu1e2": "marking the map to create a route"
+    },
+    "menu13": {
+      "label": "length measurement",
+      "menu1e1": "measure length by drawing a map",
+      "menu1e2": "measure length by entering a point manually"
+    },
+    "menu14": {
+      "label": "Area Aeasurement",
+      "menu1e1": "area measurement when drawing",
+      "menu1e2": "finding a field by entering a dot manually"
+    },
+    "menu15": {
+      "label": "Help",
+      "menu1e1": "how to use the application",
+      "menu1e2": "frequently asked questions"
+    },
+    "menu16": {
+      "label": "Contact",
+      "menu1e1": "address and phone information",
+      "menu1e2": "Contact Us",
+      "menu1e3":"creating a support request"
     }
   },
-  "toolEdit":{
-    "label":"Edit",
-    "draw":{
-      "polygon":"Draw a New Polygon",
-      "polyRectangle":"Draw a New Polygon Rectangle",
-      "polyCircile":"Draw a New Circle",
-      "polyEllips":"Draw a New Polygon",
-      "polyArc":"Draw a New Arc",
-      "polyLineBezier":"Draw a New Bezier",
-      "line":"Draw a New Line",
-      "lineRectangle":"Draw a New Line Rectangle",
-      "lineCircle":"Draw a New Line Circle",
-      "lineArc":"Draw a New Line Arc",
-      "lineBezier":"Draw a New Line Bezier",
-      "point":"Draw a New Point",
-      "marker":"Draw a New Marker",
-      "edit":"Edit Drawing Geometries",
-      "delete":"Delete Drawing Geometry"
+  "toolEdit": {
+    "label": "Edit",
+    "draw": {
+      "polygon": "Draw a New Polygon",
+      "polyRectangle": "Draw a New Polygon Rectangle",
+      "polyCircile": "Draw a New Circle",
+      "polyEllips": "Draw a New Polygon",
+      "polyArc": "Draw a New Arc",
+      "polyLineBezier": "Draw a New Bezier",
+      "line": "Draw a New Line",
+      "lineRectangle": "Draw a New Line Rectangle",
+      "lineCircle": "Draw a New Line Circle",
+      "lineArc": "Draw a New Line Arc",
+      "lineBezier": "Draw a New Line Bezier",
+      "point": "Draw a New Point",
+      "marker": "Draw a New Marker",
+      "edit": "Edit Drawing Geometries",
+      "delete": "Delete Drawing Geometry"
     }
   },
-  "login":{
-    "login":"Sign In",
-    "signin":"User Login",
-    "signinForm":"User Login Form",
-    "signUpForm":"User Sign Up Form",
-    "name":"Name Surname",
-    "phoneNumber":"Phone Number",
-    "email":"Email Adress",
-    "adress":"Adress",
-    "contract":"I agree to read the <a href='#' accept-agreement>Contract</a>"
+  "login": {
+    "login": "Sign In",
+    "signin": "User Login",
+    "signinForm": "User Login Form",
+    "signUpForm": "User Sign Up Form",
+    "name": "Name Surname",
+    "phoneNumber": "Phone Number",
+    "email": "Email Adress",
+    "adress": "Adress",
+    "contract": "I agree to read the <a href='#' accept-agreement>Contract</a>"
   },
-  "searchBox":{
-    "btnMenuOnOff":"Menu Open/Close",
-    "inptSearchBox":"District, Neighborhood, Hospital, School ...",
-    "btnSearch":"Search",
-    "btnLayer":"Open Layer Box"
+  "searchBox": {
+    "btnMenuOnOff": "Menu Open/Close",
+    "inptSearchBox": "District, Neighborhood, Hospital, School ...",
+    "btnSearch": "Search",
+    "btnLayer": "Open Layer Box"
   },
-  "leftmenu":{
-    "label":"Basemaps & Analysis",
-    "basemap":"Basemaps",
-    "satallite":"Satellite Views",
-    "analysis":"Analysis",
-    "freemaps":"Free Basemaps",
-    "opacity":"Opacity"
+  "leftmenu": {
+    "label": "Basemaps & Analysis",
+    "basemap": "Basemaps",
+    "satallite": "Satellite Views",
+    "analysis": "Analysis",
+    "freemaps": "Free Basemaps",
+    "opacity": "Opacity"
   },
-  "vlList":{
-    "label":"Vector Layer List",
-    "iconAdLayer":"Add New Layer",
-    "iconConnectDB":"Connect Database",
-    "iconSearchDB":"View Database Tables",
-    "iconRefresh":"Refresh Selected Layer",
-    "iconEdit":"Edit Selected Layer",
-    "iconDown":"Layer Move To Down",
-    "iconUp":"Layer Move To Up",
-    "iconBottom":"Layer Move To Bottom",
-    "iconTop":"Layer Move To Top",
-    "iconSettings":"Open Settings Panel of Selected Layer",
-    "iconCloudDown":"Download Selected Layer",
-    "iconCloudUp":"Send Selected Layer to System",
-    "iconZoom":"Zoom To Layer",
-    "iconSnap":"Set Active Snap Of Layer",
-    "iconLayerSetting":"Open Settings Layer's Panel",
-    "iconRemove":"Remove Layer from List",
-    "dialogs":{
+  "vlList": {
+    "label": "Vector Layer List",
+    "iconAdLayer": "Add New Layer",
+    "iconConnectDB": "Connect Database",
+    "iconSearchDB": "View Database Tables",
+    "iconRefresh": "Refresh Selected Layer",
+    "iconEdit": "Edit Selected Layer",
+    "iconDown": "Layer Move To Down",
+    "iconUp": "Layer Move To Up",
+    "iconBottom": "Layer Move To Bottom",
+    "iconTop": "Layer Move To Top",
+    "iconSettings": "Open Settings Panel of Selected Layer",
+    "iconCloudDown": "Download Selected Layer",
+    "iconCloudUp": "Send Selected Layer to System",
+    "iconZoom": "Zoom To Layer",
+    "iconSnap": "Set Active Snap Of Layer",
+    "iconLayerSetting": "Open Settings Layer's Panel",
+    "iconRemove": "Remove Layer from List",
+    "dialogs": {
       "laySet": {
-        "label":"Layer Settings",
-        "tab1":{
-          "label":"Datas"
+        "label": "Layer Settings",
+        "tab1": {
+          "label": "Datas"
         },
-        "tab2":{
-          "label":"General",
-          "h1":"General Info of Layer",
-          "inptLayNam":"Layer Name",
-          "inptLayDesc":"Layer Description",
-          "inptMinZoom":"Minimum Zoom",
-          "inptMaxZoom":"Maximum Zoom",
-          "inptAutoSave":"Auto Saving Time (mn)"
+        "tab2": {
+          "label": "General",
+          "h1": "General Info of Layer",
+          "inptLayNam": "Layer Name",
+          "inptLayDesc": "Layer Description",
+          "inptMinZoom": "Minimum Zoom",
+          "inptMaxZoom": "Maximum Zoom",
+          "inptAutoSave": "Auto Saving Time (mn)"
         },
-        "tab3":{
-          "label":"View",
-          "h11":"WHEN OPEN DEFAULT VİEWS OF LAYER STYLE",
-          "h12":"WHEN MOUSE OVER OF LAYER VİEWS STYLE",
-          "h13":"WHEN MOUSE OVER OF LAYER VİEWS STYLE",
-          "layObj":"LAYER OBJECT",
-          "layStatus":"STATUS",
-          "layColor":"COLOR",
-          "layHex":"HEX",
-          "layWidth":"WEIGHT",
-          "layOpacity":"OPACITY",
-          "layLineStyle":"Line Attributes",
-          "layFillStyle":"Fill Attributes"
+        "tab3": {
+          "label": "View",
+          "h11": "WHEN OPEN DEFAULT VİEWS OF LAYER STYLE",
+          "h12": "WHEN MOUSE OVER OF LAYER VİEWS STYLE",
+          "h13": "WHEN MOUSE OVER OF LAYER VİEWS STYLE",
+          "layObj": "LAYER OBJECT",
+          "layStatus": "STATUS",
+          "layColor": "COLOR",
+          "layHex": "HEX",
+          "layWidth": "WEIGHT",
+          "layOpacity": "OPACITY",
+          "layLineStyle": "Line Attributes",
+          "layFillStyle": "Fill Attributes"
         },
-        "tab4":{
-          "label":"Queries"
-        }
-
-      },
-      "addNewVecLay":{
-        "label":"New Layer Insertion Panel",
-        "createNewLayer":"Create New Layer",
-        "tab1":{
-          "label":"Existing Layers"
-        },
-        "tab2":{
-          "label":"Created Layers"
+        "tab4": {
+          "label": "Queries"
         }
       },
-      "createNewVecLay":{
-        "label":"CREATE NEW LAYER",
-        "layname":"Write Layer Name",
-        "descrpt":"Write Layer Description",
-        "type":"Select To Layer Type",
-        "crs":"Select To Coordinate System EPSG Code",
-        "layerMainInfo":"Layers Information Input Form",
-        "layTabProp":"Layer's Table Field Input Form",
+      "addNewVecLay": {
+        "label": "New Layer Insertion Panel",
+        "createNewLayer": "Create New Layer",
+        "tab1": {
+          "label": "Existing Layers"
+        },
+        "tab2": {
+          "label": "Created Layers"
+        }
+      },
+      "createNewVecLay": {
+        "label": "CREATE NEW LAYER",
+        "layname": "Write Layer Name",
+        "descrpt": "Write Layer Description",
+        "type": "Select To Layer Type",
+        "crs": "Select To Coordinate System EPSG Code",
+        "layerMainInfo": "Layers Information Input Form",
+        "layTabProp": "Layer's Table Field Input Form",
         "select ": "Select a Type",
-        "alreadyHavefile":"Existing Table fields",
-        "writeFieldName":"Write Field Name"
-
+        "alreadyHavefile": "Existing Table fields",
+        "writeFieldName": "Write Field Name"
       }
     }
   }
-
 }

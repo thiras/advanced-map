@@ -81,14 +81,14 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
     };
 
 
-    $scope.tescilliYapi=function () {
+    $scope.findProprietary=function () {
 
         $rootScope.$emit("closeNavbar", "closeNavbar");
         $mdToast.show({
             hideDelay: 0,
             position: 'top right',
             controller: 'menuCtrl',
-            templateUrl: 'html/menuToast/findProprietary.html',
+            templateUrl: 'html/menuToast/findProprietaryToast.html',
         });
 
     }

@@ -1,264 +1,275 @@
-app.service("$accordion",function ($rootScope) {
+app.service("$accordion", function ($rootScope) {
 
 
-var lang = $rootScope.lang;
-var json={
-    menu1:{
-        label:lang.menu.menu1.label,
-        fonk:"menu",
-        icon:"home",
-        submenu:{
-            menu1e1:{
-                label:lang.menu.menu1.menu1e1,
-                fonk:"findAdressPanel"
-            },
-            menu1e2:{
-                label:"Harita Üzerinde Tıklayarak ",
-                fonk:"menu"
+    var lang = $rootScope.lang;
+    var json = {
+        menu1: {
+            label: lang.menu.menu1.label,
+            fonk: "menu",
+            icon: "home",
+            submenu: {
+                menu1e1: {
+                    label: lang.menu.menu1.menu1e1,
+                    fonk: "findAdressPanel"
+                },
+                menu1e2: {
+                    label: lang.menu.menu1.menu1e2,
+                    fonk: "menu"
+                }
             }
-        }
-    },
-    menu2:{
-        label:"Parsel bul",
-        fonk:"menu",
-        icon:"dashboard",
-        submenu:{
-            menu2e1:{
-                label:"Adresten Ada Parsell Bilgisi İle Bul",
-                fonk:"findParcellPanel"
-            },
-            menu2e2:{
-                label:"Bulunduğunuz Noktanın Ada Parsel Bilgileri",
-                fonk:"findParcelWithLocation"
+        },
+        menu2: {
+            label: lang.menu.menu2.label,
+            fonk: "menu",
+            icon: "dashboard",
+            submenu: {
+                menu2e1: {
+                    label: lang.menu.menu2.menu1e1,
+                    fonk: "findParcellPanel"
+                },
+                menu2e2: {
+                    label: lang.menu.menu2.menu1e2,
+                    fonk: "findParcelWithLocation"
+                }
             }
-        }
-    },
-    menu3:{
-        label:"Ulaşım Hat ve Kalkış Bilgileri",
-        fonk:"menu",
-        icon:"directions bus",
-        submenu:{
-            menu3e1:{
-                label:"Otobüs & Minibüs",
-                fonk:"findBusDialog"
-            },
-            menu3e2:{
-                label:"Metro,Tren & Tramvay",
-                fonk:"findTrainDialog"
-            },
-            menu3e3:{
-                label:"Vapur & Feribot",
-                fonk:"findShipDialog"
-            },
-            menu3e4:{
-                label:"Uçak & Hava Taşıtları",
-                fonk:"findAircraftDialog"
+        },
+        menu3: {
+            label: lang.menu.menu3.label,
+            fonk: "menu",
+            icon: "directions bus",
+            submenu: {
+                menu3e1: {
+                    label: lang.menu.menu3.menu1e1,
+                    fonk: "findBusDialog"
+                },
+                menu3e2: {
+                    label: lang.menu.menu3.menu1e2,
+                    fonk: "findTrainDialog"
+                },
+                menu3e3: {
+                    label: lang.menu.menu3.menu1e3,
+                    fonk: "findShipDialog"
+                },
+                menu3e4: {
+                    label: lang.menu.menu3.menu1e4,
+                    fonk: "findAircraftDialog"
+                }
             }
-        }
-    },
-    pharmacy:{
-        label:"Ezcane",
-        fonk:"menu",
-        icon:"dashboard",
-        submenu:{
-            menu2e1:{
-                label:"Adresten Eczane Bul",
-                fonk:"findPharmacyAtAdress"
-            },
-            menu2e2:{
-                label:"En Yakın Eczaneyi Bul",
-                fonk:"findNearestPharmacy"
-            },
-            menu2e3:{
-                label:"En Yakın Nöbetçi Eczaneyi Bul",
-                fonk:"findNearestSentinelPharmacy"
+        },
+        pharmacy: {
+            label: lang.menu.menu4.label,
+            fonk: "menu",
+            icon: "dashboard",
+            submenu: {
+                menu2e1: {
+                    label: lang.menu.menu4.menu1e1,
+                    fonk: "findPharmacyAtAdress"
+                },
+                menu2e2: {
+                    label: lang.menu.menu4.menu1e2,
+                    fonk: "findNearestPharmacy"
+                },
+                menu2e3: {
+                    label: lang.menu.menu4.menu1e3,
+                    fonk: "findNearestSentinelPharmacy"
+                }
             }
-        }
-    },
-    menu4:{
-        label:"Taksi Durakları",
-        fonk:"menu",
-        icon:"local_taxi",
-        submenu:{
-            menu4e1:{
-                label:"Adreste ki Taksi Durağını Bul",
-                fonk:"findTaxiAtAdress"
-            },
-            menu4e2:{
-                label:"En Yakın Taksi Durağını Bul",
-                fonk:"findTaxiAtLocation"
+        },
+        menu4: {
+            label: lang.menu.menu5.label,
+            fonk: "menu",
+            icon: "local_taxi",
+            submenu: {
+                menu4e1: {
+                    label: lang.menu.menu5.menu1e1,
+                    fonk: "findTaxiAtAdress"
+                },
+                menu4e2: {
+                    label: lang.menu.menu5.menu1e2,
+                    fonk: "findTaxiAtLocation"
+                }
             }
-    }},
+        },
 
-    menu6: {
-        label: "Tescilli yapı",
-        fonk: "menu",
-        icon:"account_balance",
-        submenu:{
+        menu6: {
+            label: lang.menu.menu6.label,
+            fonk: "menu",
+            icon: "account_balance",
+            submenu: {
 
-            menu:{
-                label:"tescilli yapı bul",
-                fonk:"tescilliYapi"
+                menu1: {
+                    label: lang.menu.menu6.menu1e1,
+                    fonk: "findProprietary"
+                },
+                menu2: {
+                    label: lang.menu.menu6.menu1e2,
+                    fonk: "findProprietaryByCircle"
+                }
             }
-        }
-    },
-    menu7: {
-        label: "İnşaat Ruhsatı",
-        fonk: "menu",
-        icon:"location_city",
-        submenu: false
-    },
-    menu5: {
-        label: "Önemli Merkezler ve POI Noktaları",
-        fonk: "menu",
-        icon:"location_on",
-        submenu: {
-            menu3e0: {
-                label: "En Yakınımda Neler Var?",
-                fonk: "menu"
-            },
-            menu3e1: {
-                label: "Türüne Göre POI Noktaları Bul",
-                fonk: "menu"
-            },
-            menu3e2: {
-                label: "Alan Çizerek POI Noktaları Bul",
-                fonk: "menu"
-            },
-            menu3e3: {
-                label: "Adres Belirterek POI Noktaları Bul",
-                fonk: "menu"
-            }
-        }
-    },
-    menu9: {
-        label: "Sağlık Kurumları",
-        fonk: "menu",
-        icon:"local_florist",
-        submenu: {
-            menu3e1: {
-                label: "Aile Hekimini Bul",
-                fonk: "findMyDoctor"
-            },
-            menu3e2: {
-                label: "Adresten Hastane Bul",
-                fonk: "findHospital"
-            },
-            menu3e3: {
-                label: "En Yakın Sağlık Ocağını Bul",
-                fonk: "findNearPoliclinic"
-            },
-            menu4e3: {
-                label: "En Yakın Hastaneyi Bul",
-                fonk: "findNearHospital"
-            }
-        }
-    },
-    menu10: {
-        label: "Güvenlik Merkezleri",
-        fonk: "menu",
-        icon:"security",
-        submenu: {
-            menu3e1: {
-                label: "Adreste ki Polis Karakolu",
-                fonk: "menu"
-            },
-            menu3e2: {
-                label: "En Yakın Polis Karakolu",
-                fonk: "menu"
-            },
-            menu3e3: {
-                label: "Adreste ki Askeri Merkez",
-                fonk: "menu"
-            },
-            menu4e3: {
-                label: "En Yakın Askeri Merkez",
-                fonk: "menu"
-            }
-        }
-    },
-    menu12: {
-        label: "Güzergah Oluşturma",
-        fonk: "menu",
-        icon:"navigation",
-        submenu: {
-            menu3e1: {
-                label: "Adres Belirterek Güzergah Oluştur",
-                fonk: "openNavigationByAdress"
-            },
-            menu3e2: {
-                label: "Haritayı İşaretleyerek Güzergah Oluşur",
-                fonk: "openNavigationByMarker"
-            }
-        }
-    },
-    menu13: {
-        label: "Uzunluk ölçümü",
-        fonk: "menu",
-        icon:"timeline",
-        submenu: {
-            menu3e1: {
-                label: "Haritada Çizerek Uzunluk Ölç",
-                fonk: "openDrawRulerByMouse"
-            },
-            menu3e2: {
-                label: "El ile Nokta Girerek Uzunluk Ölç",
-                fonk: "openDrawRulerByManuel"
-            }
-        }
-    },
-    menu15: {
-        label: "Alan ölçümü",
-        fonk: "menu",
-        icon:"view_agenda",
-        submenu: {
-            menu3e1: {
-                label: "Çizerek Alan Ölç",
-                fonk: "openDrawAreaByMouse"
-            },
-            menu3e2: {
-                label: "El ile Nokta Girerek Alan Bul",
-                fonk: "openDrawAreaByManuel"
-            }
-        }
-    },
+        },
+        menu7: {
+            label: lang.menu.menu7.label,
+            fonk: "menu",
+            icon: "location_city",
+            submenu: {
 
-    menu16: {
-        label: "Yardım",
-        fonk: "menu",
-        icon:"help",
-        submenu: {
-            menu3e1: {
-                label: "Siteyi Nasıl Kullanırım ?",
-                fonk: "openHelpUsingApp"
-            },
-            menu3e2: {
-                label: "Sıkça Sorulan Sorular",
-                fonk: "openHelpSSS"
+                menu1: {
+                    label: lang.menu.menu7.menu1e1,
+                    fonk: "findBuildingLicence"
+                }
             }
-        }
-    },
-    menu17: {
-        label: "İletişim",
-        fonk: "menu",
-        icon:"contact_phone",
-        submenu: {
-            menu3e1: {
-                label: "Adres ve Telefon Bilgileri",
-                fonk: "openContactAdressPhone"
-            },
-            menu3e2: {
-                label: "Bize Yazın",
-                fonk: "openContactWriteUs"
-            },
-            menu3e3: {
-                label: "Destek Talebi Oluşturun",
-                fonk: "openContactSupport"
+        },
+        menu5: {
+            label: lang.menu.menu9.label,
+            fonk: "menu",
+            icon: "location_on",
+            submenu: {
+                menu3e0: {
+                    label: lang.menu.menu9.menu1e1,
+                    fonk: "menu"
+                },
+                menu3e1: {
+                    label: lang.menu.menu9.menu1e2,
+                    fonk: "menu"
+                },
+                menu3e2: {
+                    label: lang.menu.menu9.menu1e3,
+                    fonk: "menu"
+                },
+                menu3e3: {
+                    label: lang.menu.menu9.menu1e4,
+                    fonk: "menu"
+                }
             }
-        }
-    },
-};
+        },
+        menu9: {
+            label: lang.menu.menu10.label,
+            fonk: "menu",
+            icon: "local_florist",
+            submenu: {
+                menu3e1: {
+                    label: lang.menu.menu10.menu1e1,
+                    fonk: "findMyDoctor"
+                },
+                menu3e2: {
+                    label: lang.menu.menu10.menu1e2,
+                    fonk: "findHospital"
+                },
+                menu3e3: {
+                    label: lang.menu.menu10.menu1e3,
+                    fonk: "findNearPoliclinic"
+                },
+                menu4e3: {
+                    label: lang.menu.menu10.menu1e4,
+                    fonk: "findNearHospital"
+                }
+            }
+        },
+        menu10: {
+            label: lang.menu.menu11.label,
+            fonk: "menu",
+            icon: "security",
+            submenu: {
+                menu3e1: {
+                    label: lang.menu.menu11.menu1e1,
+                    fonk: "menu"
+                },
+                menu3e2: {
+                    label: lang.menu.menu11.menu1e2,
+                    fonk: "menu"
+                },
+                menu3e3: {
+                    label: lang.menu.menu11.menu1e3,
+                    fonk: "menu"
+                },
+                menu4e3: {
+                    label: lang.menu.menu11.menu1e4,
+                    fonk: "menu"
+                }
+            }
+        },
+        menu12: {
+            label: lang.menu.menu12.label,
+            fonk: "menu",
+            icon: "navigation",
+            submenu: {
+                menu3e1: {
+                    label: lang.menu.menu12.menu1e1,
+                    fonk: "openNavigationByAdress"
+                },
+                menu3e2: {
+                    label: lang.menu.menu12.menu1e2,
+                    fonk: "openNavigationByMarker"
+                }
+            }
+        },
+        menu13: {
+            label: lang.menu.menu13.label,
+            fonk: "menu",
+            icon: "timeline",
+            submenu: {
+                menu3e1: {
+                    label: lang.menu.menu13.menu1e1,
+                    fonk: "openDrawRulerByMouse"
+                },
+                menu3e2: {
+                    label:lang.menu.menu13.menu1e2,
+                    fonk: "openDrawRulerByManuel"
+                }
+            }
+        },
+        menu15: {
+            label: lang.menu.menu14.label,
+            fonk: "menu",
+            icon: "view_agenda",
+            submenu: {
+                menu3e1: {
+                    label: lang.menu.menu13.menu1e1,
+                    fonk: "openDrawAreaByMouse"
+                },
+                menu3e2: {
+                    label: lang.menu.menu13.menu1e2,
+                    fonk: "openDrawAreaByManuel"
+                }
+            }
+        },
+
+        menu16: {
+            label: lang.menu.menu15.label,
+            fonk: "menu",
+            icon: "help",
+            submenu: {
+                menu3e1: {
+                    label: lang.menu.menu15.menu1e1,
+                    fonk: "openHelpUsingApp"
+                },
+                menu3e2: {
+                    label: lang.menu.menu15.menu1e2,
+                    fonk: "openHelpSSS"
+                }
+            }
+        },
+        menu17: {
+            label: lang.menu.menu16.label,
+            fonk: "menu",
+            icon: "contact_phone",
+            submenu: {
+                menu3e1: {
+                    label: lang.menu.menu16.menu1e1,
+                    fonk: "openContactAdressPhone"
+                },
+                menu3e2: {
+                    label:lang.menu.menu16.menu1e2,
+                    fonk: "openContactWriteUs"
+                },
+                menu3e3: {
+                    label: lang.menu.menu16.menu1e3,
+                    fonk: "openContactSupport"
+                }
+            }
+        },
+    };
 
 
-return json;
+    return json;
 });

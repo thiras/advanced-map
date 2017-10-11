@@ -33,6 +33,7 @@ button.accordion.active:after {
 
 div.panel {
   background-color:#eeeeee;
+
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
