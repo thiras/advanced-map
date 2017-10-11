@@ -11,6 +11,7 @@ md-toast {
 }*/
 
 
+
 md-toast {
 z-index: 15;
   width:390px;
@@ -68,6 +69,7 @@ md-toast#menuToasts{
   margin: 0;
   height: 100%;
   z-index: 20;
+
   .md-toast-content {
     width: 400px;
     height:auto !important;
@@ -91,6 +93,7 @@ md-toast#menuToasts{
 
     margin-bottom: -20px;
     margin-top: 4px;
+
   }
 }
 
@@ -105,4 +108,11 @@ md-toast#findProprietary{
   }
 }
 
+md-toast#fndBldLsToast{
+
+
+
+  @extend #menuToasts;
+
+}
 

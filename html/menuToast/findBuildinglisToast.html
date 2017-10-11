@@ -1,37 +1,56 @@
-<md-toast id="menuToasts" aria-label="taxi">
+<md-toast   id="fndBldLsToast" aria-label="Mango (Fruit)">
     <div class="md-toast-content" layout-padding>
         <form>
             <md-toolbar md-ink-ripple>
                 <div class="md-toolbar-tools">
                     <h2>
                         <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img"
-                                 aria-hidden="true">local_taxi</md-icon>
-                        <span class="md-subhead" style="color: #ffffff;">{{lang.menuToasts.findTaxi.label}}</span></h2>
+                                 aria-hidden="true">location_city
+                        </md-icon>
+                        <span class="md-subhead"
+                              style="color: #ffffff;">{{lang.menuToasts.findBuildingLic.label}}</span></h2>
                     <span flex></span>
                     <md-button class="md-icon-button" ng-click="cancel()">
-                        <md-icon style="padding: 7px;" md-svg-src="img/icons/cancel.svg"
-                                 aria-label="Close dialog"></md-icon>
+                        <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
                     </md-button>
                 </div>
             </md-toolbar>
-            <md-dialog-content layout-fill>
-
+            <md-dialog-content style="style:100%">
                 <md-list>
-                    <md-list-item>
-                        <md-input-container layout-fill style="margin-top: 5px; margin-bottom: -20px;">
-                            <input ng-keyup="setTaxiName()" type="text" ng-model="taxiName" placeholder="{{lang.menuToasts.findTaxi.placeHolder}}">
+
+
+                    <md-list-item style="margin-top: 5px;">
+                        <md-input-container layout-fill class="md-icon-float md-input-has-value">
+                            <label ng-click="delegateClick()" tabindex="-1" class="ng-binding ng-scope" role="button"
+                                   for="input_17">{{lang.menuToasts.findBuildingLic.ownerName}}</label>
+                            <input autocomplete="on" type="text" ng-keyup="setOwnerName()" ng-model="buildOwnerName"
+                                   class="ng-pristine ng-valid md-input ng-not-empty ng-touched" id="input_17"
+                                   aria-invalid="false" style="">
+                            <div class="md-errors-spacer"></div>
                         </md-input-container>
                     </md-list-item>
-                    <md-list-item>
 
-                        <md-input-container layout-fill >
+
+                    <md-list-item style="margin-bottom: -10px;">
+                        <md-input-container layout-fill class="md-icon-float md-input-has-value">
+                            <label ng-click="delegateClick()" tabindex="-1" class="ng-binding ng-scope" role="button"
+                                   for="input_17">{{lang.menuToasts.findBuildingLic.BuilderName}}</label>
+                            <input autocomplete="on" type="text" ng-keyup="setBuilderName()" ng-model="buildConstName"
+                                   class="ng-pristine ng-valid md-input ng-not-empty ng-touched" id="input_18"
+                                   aria-invalid="false" style="">
+                            <div class="md-errors-spacer"></div>
+                        </md-input-container>
+                    </md-list-item>
+
+
+                    <md-list-item>
+                        <md-input-container layout-fill>
                             <md-select ng-model="secilenIl" placeholder="{{lang.menuToasts.general.provinceList}}">
                                 <md-select-header>
                                     <span> {{lang.menuToasts.general.provinces}} </span>
                                 </md-select-header>
                                 <md-option ng-value="deger.id" ng-click="changeIlce(deger.id)"
-                                           ng-repeat="(ozellik, deger) in il" ng-selected="deger.id == secilenIl">
-                                    {{deger.label}}
+                                           ng-repeat="(ozellik, deger) in il" ng-selected="deger.id == secilenIl">{{deger.label}}
                                 </md-option>
 
                             </md-select>
@@ -47,8 +66,7 @@
                                     <span> {{lang.menuToasts.general.counties}} </span>
                                 </md-select-header>
                                 <md-option ng-value="deger.id" ng-click="changeMahelle(deger.id)"
-                                           ng-repeat="(ozellik, deger) in filterIlce"
-                                           ng-selected="deger.id == secilenIlce">{{deger.label}}
+                                           ng-repeat="(ozellik, deger) in filterIlce" ng-selected="deger.id == secilenIlce">{{deger.label}}
                                 </md-option>
                             </md-select>
                         </md-input-container>
@@ -57,19 +75,16 @@
 
                     <md-list-item ng-if="isActiveMahalle">
                         <md-input-container layout-fill>
-                            <md-select ng-model="secilenMahalle"
-                                       placeholder="{{lang.menuToasts.general.neighborhoodlist}}">
+                            <md-select ng-model="secilenMahalle" placeholder="{{lang.menuToasts.general.neighborhoodlist}}">
                                 <md-select-header>
                                     <span> {{lang.menuToasts.general.neighborhoods}} </span>
                                 </md-select-header>
                                 <md-option ng-value="deger.id" ng-click="changeYol(deger.id)"
-                                           ng-repeat="(ozellik, deger) in filterMahalle"
-                                           ng-selected="deger.id == secilenMahalle">{{deger.label}}
+                                           ng-repeat="(ozellik, deger) in filterMahalle" ng-selected="deger.id == secilenMahalle">{{deger.label}}
                                 </md-option>
                             </md-select>
                         </md-input-container>
                     </md-list-item>
-
 
                 </md-list>
             </md-dialog-content>
@@ -88,7 +103,7 @@
                     {{lang.general.close}}
                 </md-button>
             </md-dialog-actions>
-            <md-dialog-content ng-if="taxiSearchResults" layout-fill>
+            <md-dialog-content ng-if="buildSearchResults" layout-fill>
                 <md-list>
                     <md-list-item>
 

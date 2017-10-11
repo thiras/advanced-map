@@ -1,4 +1,4 @@
-app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeout) {
+app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeout,$mdDialog) {
     $scope.lang = $rootScope.lang;
         $scope.il = $sahtejson.il;
         $scope.ilce = $sahtejson.ilce;
@@ -13,11 +13,11 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
         $scope.isActiveMahalle = $rootScope.adress.mahalleActive;
         $scope.isActiveYol = $rootScope.adress.yolActive;
         $scope.isActiveNumarataj = $rootScope.adress.kapiActive;
-        $scope.featureIl = false;
-        $scope.featureIlce = false;
-        $scope.featureMahalle = false;
-        $scope.featureYol = false;
-        $scope.featureKapi = false;
+        $scope.featureIl = $rootScope.adress.featureIl;
+        $scope.featureIlce = $rootScope.adress.featureIlce;
+        $scope.featureMahalle = $rootScope.adress.featureMahalle;
+        $scope.featureYol = $rootScope.adress.featureYol;
+        $scope.featureKapi = $rootScope.adress.featureKapi;
         $scope.secilenIl=$rootScope.adress.il;
         $scope.secilenIlce=$rootScope.adress.ilce;
         $scope.secilenMahalle=$rootScope.adress.mahalle;
@@ -31,6 +31,8 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
         $scope.parcellSearchResults=$rootScope.parcell.parcellSearchResults;
         $scope.taxiName = $rootScope.taxi.taxiName;
         $scope.taxiSearchResults = $rootScope.taxi.taxiSearchResults;
+        $scope.buildOwnerName = $rootScope.buildLicense.buildOwnerName;
+        $scope.buildConstName = $rootScope.buildLicense.buildConstName;
         $scope.buildTypes =[
             {value:1,text:"Anıt"},
             {value:2,text:"Cami"},
@@ -66,6 +68,12 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
         $scope.setTaxiName=function () {
             $rootScope.taxi.taxiName=$scope.taxiName;
         };
+        $scope.setOwnerName=function () {
+            $rootScope.buildLicense.buildOwnerName=$scope.buildOwnerName;
+        };
+        $scope.setBuilderName=function () {
+            $rootScope.buildLicense.buildConstName=$scope.buildConstName;
+        };
 
 
         $scope.cancel = function () {
@@ -76,6 +84,8 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
             },10);
 
         };
+
+
 
         $scope.changeIlce = function (ilid) {
 
@@ -88,10 +98,12 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
                     if($scope.featureIl!==false){
                         $scope.featureIl.remove();
                         $scope.featureIl=false;
+                        $rootScope.adress.featureIl=false;
                     }
                     $scope.featureIl = L.geoJSON($scope.il[i].geojson, {
                         style: {color: "#ff0000"}
                     }).bindPopup($scope.il[i].label).addTo($rootScope.leaflet);
+                    $rootScope.adress.featureIl=$scope.featureIl;
                     var ilbbox = $scope.featureIl.getBounds();
                     $rootScope.leaflet.fitBounds(ilbbox);
                     $scope.isActiveIlce = true;
@@ -115,14 +127,17 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
                     if($scope.featureIl!==false){
                         $scope.featureIl.remove();
                         $scope.featureIl=false;
+                        $rootScope.adress.featureIl=false;
                     }
                     if($scope.featureIlce!==false){
                         $scope.featureIlce.remove();
                         $scope.featureIlce=false;
+                        $rootScope.adress.featureIlce=false;
                     }
                     $scope.featureIlce = L.geoJSON($scope.ilce[i].geojson, {
                         style: {color: "#ffff00"}
                     }).bindPopup($scope.ilce[i].label).addTo($rootScope.leaflet);
+                    $rootScope.adress.featureIlce=$scope.featureIlce;
                     var ilcebbox = $scope.featureIlce.getBounds();
                     $rootScope.leaflet.fitBounds(ilcebbox);
                     $scope.isActiveMahalle = true;
@@ -148,23 +163,25 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
                     $rootScope.adress.mahalle=$scope.mahalle[i].id;
                     $scope.secilenMahalle=$rootScope.adress.mahalle;
                     $rootScope.adress.yolActive=true;
-
                     if($scope.featureIl!==false){
                         $scope.featureIl.remove();
                         $scope.featureIl=false;
-
+                        $rootScope.adress.featureIl=false;
                     }
                     if($scope.featureIlce!==false){
                         $scope.featureIlce.remove();
                         $scope.featureIlce=false;
+                        $rootScope.adress.featureIlce=false;
                     }
                     if($scope.featureMahalle!==false){
                         $scope.featureMahalle.remove();
                         $scope.featureMahalle=false;
+                        $rootScope.adress.featureMahalle=false;
                     }
                     $scope.featureMahalle = L.geoJSON($scope.mahalle[i].geojson, {
                         style: {color: "#ff00ff"}
                     }).bindPopup($scope.mahalle[i].label).addTo($rootScope.leaflet);
+                    $rootScope.adress.featureMahalle=$scope.featureMahalle;
                     var mahallebbox = $scope.featureMahalle.getBounds();
                     $rootScope.leaflet.fitBounds(mahallebbox);
                     $scope.isActiveYol = true;
@@ -183,6 +200,7 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
 
 
         $scope.changeKapiNo = function (yolid) {
+            debugger;
             $scope.filterNumarataj = {};
             for (i in $scope.yol) {
                 if (yolid == $scope.yol[i].id) {
@@ -192,18 +210,27 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
                     if($scope.featureIl!==false){
                         $scope.featureIl.remove();
                         $scope.featureIl=false;
+                        $rootScope.adress.featureIl=false;
                     }
                     if($scope.featureIlce!==false){
                         $scope.featureIlce.remove();
                         $scope.featureIlce=false;
+                        $rootScope.adress.featureIlce=false;
+                    }
+                    if($scope.featureMahalle!==false){
+                        $scope.featureMahalle.remove();
+                        $scope.featureMahalle=false;
+                        $rootScope.adress.featureMahalle=false;
                     }
                     if($scope.featureYol!==false){
                         $scope.featureYol.remove();
                         $scope.featureYol=false;
+                        $rootScope.adress.featureYol=false;
                     }
                     $scope.featureYol = L.geoJSON($scope.yol[i].geojson, {
                         style: {color: "#ff00ff"}
                     }).bindPopup($scope.yol[i].label).addTo($rootScope.leaflet);
+                    $rootScope.adress.featureYol=$scope.featureYol;
                     var yolbbox = $scope.featureYol.getBounds();
                     $rootScope.leaflet.fitBounds(yolbbox);
                     $scope.isActiveNumarataj = true;
@@ -225,29 +252,36 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
                 if (numaratajid == $scope.numarataj[i].id) {
                     $scope.secilenKapi=$scope.numarataj[i].id;
                     $rootScope.adress.kapi=$scope.numarataj[i].id;
+                    $scope.removeAdressFeature(["all"]);
                     if($scope.featureIl!==false){
                         $scope.featureIl.remove();
                         $scope.featureIl=false;
+                        $rootScope.adress.featureIl=false;
                     }
                     if($scope.featureIlce!==false){
                         $scope.featureIlce.remove();
                         $scope.featureIlce=false;
+                        $rootScope.adress.featureIlce=false;
                     }
                     if($scope.featureMahalle!==false){
                         $scope.featureMahalle.remove();
                         $scope.featureMahalle=false;
+                        $rootScope.adress.featureMahalle=false;
                     }
                     if($scope.featureYol!==false){
                         $scope.featureYol.remove();
                         $scope.featureYol=false;
+                        $rootScope.adress.featureYol=false;
                     }
                     if($scope.featureKapi!==false){
                         $scope.featureKapi.remove();
                         $scope.featureKapi=false;
+                        $rootScope.adress.featureKapi=false;
                     }
                     $scope.featureKapi = L.geoJSON($scope.numarataj[i].geojson, {
                         style: {color: "#ff00ff"}
                     }).bindPopup($scope.numarataj[i].label).addTo($rootScope.leaflet);
+                    $rootScope.adress.featureKapi=$scope.featureKapi;
                     var yolbbox = $scope.featureKapi.getBounds();
                     $rootScope.leaflet.fitBounds(yolbbox);
 
@@ -257,5 +291,8 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
 
 
 
+        $scope.close=function () {
+            $mdDialog.cancel();
+        }
 
 });

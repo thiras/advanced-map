@@ -57,6 +57,13 @@
     "proprietaryBuild": {
       "label": "Proprietary Build Panel",
       "mdselect1placeholder": "Build Types"
+    },
+    "findBuildingLic":{
+      "label":"Find Building Licance Panel",
+      "ownerName":"Name and Surname of Building Owner",
+      "BuilderName":"Name and Surname of the Contractor"
+
+
     }
   },
   "menu": {
@@ -125,12 +132,12 @@
       "menu1e4": "nearest military center"
     },
     "menu12": {
-      "label": "route creation",
+      "label": "Route & Navigation",
       "menu1e1": "Creating a route by specifying an address",
       "menu1e2": "marking the map to create a route"
     },
     "menu13": {
-      "label": "length measurement",
+      "label": "Length Measurement",
       "menu1e1": "measure length by drawing a map",
       "menu1e2": "measure length by entering a point manually"
     },

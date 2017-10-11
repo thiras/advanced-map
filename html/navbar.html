@@ -12,12 +12,12 @@
                     <md-icon class="mat-icon material-icons accordion-icons" role="img" aria-hidden="true">
                         {{deger.icon}}
                     </md-icon>
-                    {{deger.label}}
+                    <span style="text-transform: capitalize;">{{deger.label}}</span>
                 </button>
                 <div class="panel">
                     <md-list>
-                        <md-list-item ng-click="factoryDesign(deg)" ng-repeat="(prop, deg) in deger.submenu "
-                                      md-ink-ripple>{{deg.label}}
+                        <md-list-item  ng-click="factoryDesign(deg)" ng-repeat="(prop, deg) in deger.submenu "
+                                      md-ink-ripple><span style="text-transform: capitalize;">{{deg.label}}</span>
                         </md-list-item>
                     </md-list>
                 </div>

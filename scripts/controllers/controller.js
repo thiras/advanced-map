@@ -18,7 +18,12 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
         filterIlce: {},
         filterMahalle: {},
         filterYol: {},
-        filterNumarataj: {}
+        filterNumarataj: {},
+        featureIl:false,
+        featureIlce:false,
+        featureMahalle:false,
+        featureYol:false,
+        featureKapi:false
     };
     $rootScope.pharmacy = {
         pharmacyName:"",
@@ -28,6 +33,10 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
     $rootScope.taxi = {
         taxiName:"",
         taxiSearchResults:false
+    };
+    $rootScope.buildLicense = {
+        buildOwnerName:"",
+        buildConstName:""
     };
     document.querySelector('title').innerText = $rootScope.lang.general.title;
     $rootScope.parcell = {

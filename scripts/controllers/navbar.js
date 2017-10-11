@@ -1,5 +1,6 @@
 app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $rootScope,$mdToast) {
 
+    /*navbar menusu event ve fonksiyonları içeririr*/
     $scope.menuJSON = $accordion;
     /*  menu acma ayar bas*/
     $scope.toggleLeft = buildToggler('left');
@@ -92,7 +93,33 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
         });
 
     }
+    $scope.findBuildingLicence=function () {
 
+        $rootScope.$emit("closeNavbar", "closeNavbar");
+        $mdToast.show({
+            hideDelay: 0,
+            position: 'top right',
+            controller: 'menuCtrl',
+            templateUrl: 'html/menuToast/findBuildinglisToast.html',
+        });
+    }
+
+    $scope.openHelpUsingApp=function (ev) {
+
+        $mdDialog.show({
+            controller:'menuCtrl',
+            templateUrl: 'html/help/help1.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose:true,
+            fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+        })
+            .then(function(answer) {
+                $scope.status = 'You said the information was "' + answer + '".';
+            }, function() {
+                $scope.status = 'You cancelled the dialog.';
+            });
+    }
 
 
 });
