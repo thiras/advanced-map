@@ -34,6 +34,17 @@ z-index: 15;
     margin-right: -3px;
     padding: 0;
   }
+  .searchButton{
+    background-color: #2196f3 !important;
+    md-icon{
+      color: #f4f7fa !important;
+    }
+  }
+  .closeButton{
+    margin-right: 20px !important;
+    background-color: #dadada !important;
+    color: #7d7d7d !important;
+  }
 
 }
 

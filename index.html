@@ -20,7 +20,7 @@
     <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet.pm@0.19.0/dist/leaflet.pm.min.js"></script>
 </head>
-<body ng-click="!contextMenuShow" ng-app="app" ng-controller="controller" ng-contextmenu="rightclick()">
+<body ng-click="!contextMenuShow" ng-app="app" ng-controller="controller" ng-contextmenu="rightclick()" ng-cloak>
 <nav ng-include="'html/navbar.html'"></nav>
 <searchbox layout-align="center start" layout="row" ng-include="'html/searchbox.html'" flex id="searchbox" layout="row" md-whiteframe="6">
 </searchbox>
@@ -28,8 +28,8 @@
 <slider-wrap></slider-wrap>
 <left-menu style="z-index: 21;" ng-include="'html/leftmenu.html'" layout="row">
 </left-menu>
-<leaflet ng-click="contextMenuShow=0" right-click="openrightmenu()" data-lat="35" data-lng="30" zoom="12" id="map"></leaflet>
-<md-contextmenu ng ng-if="contextMenuShow" ng-style="{'left':mouseX,'top':mouseY}">
+<leaflet ng-click="contextMenuShow=0"  right-click="openrightmenu()" data-lat="35" data-lng="30" zoom="12" id="map"></leaflet>
+<md-contextmenu ng-if="contextMenuShow"   ng-style="{'left':mouseX,'top':mouseY}">
     <md-menu-bar>
         <md-menu>
             <button style="opacity: 0" id="rightMenuOpen" id="openMenu" class="md-button md-raised md-default"

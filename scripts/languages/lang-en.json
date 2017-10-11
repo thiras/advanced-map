@@ -57,11 +57,8 @@
       "onlyDutyPharmacyfalse":"Search Only Duty Pharmacies"
     },
     "proprietaryBuild":{
-
-      "label":"proprietary Build Panel",
-      "mdselect1placeholder":"proprietary Build",
-      "mdselect2placeholder":"all districts",
-      "mdselect3placeholder":"all neighborhood"
+      "label":"Proprietary Build Panel",
+      "mdselect1placeholder":"Build Types"
     }
   },
   "menu":{

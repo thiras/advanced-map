@@ -31,6 +31,24 @@ app.controller("menuCtrl",function ($scope,$sahtejson,$rootScope,$mdToast,$timeo
         $scope.parcellSearchResults=$rootScope.parcell.parcellSearchResults;
         $scope.taxiName = $rootScope.taxi.taxiName;
         $scope.taxiSearchResults = $rootScope.taxi.taxiSearchResults;
+        $scope.buildTypes =[
+            {value:1,text:"Anıt"},
+            {value:2,text:"Cami"},
+            {value:3,text:"Çeşme"},
+            {value:4,text:"Darül Hüffaz"},
+            {value:5,text:"Diğer"},
+            {value:6,text:"Hamam"},
+            {value:7,text:"Han"},
+            {value:8,text:"Kamu"},
+            {value:9,text:"Kilise"},
+            {value:10,text:"Kütüphane"},
+            {value:11,text:"Medrese"},
+            {value:12,text:"Mevlana"},
+            {value:13,text:"Müze"},
+            {value:14,text:"Şehitlik"},
+            {value:15,text:"Türbe"},
+            ];
+
 
 
         $scope.setParcellLandNo=function () {
