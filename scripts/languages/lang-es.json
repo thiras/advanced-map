@@ -1,0 +1,276 @@
+{
+  "general": {
+    "title": "BalistaGIS Software",
+    "close": "Cerrar",
+    "save": "Guardar",
+    "have": "Disponible",
+    "add": "Añadir",
+    "createLayer": "Crear capa",
+    "leafletAttr": "Balista Bilişim Yazılım A.Ş",
+    "moduls": "Modulos",
+    "signup": "Registrars",
+    "ignore": "Ignora",
+    "cancel": "Cancelar",
+    "smallint": "Número entero pequeño",
+    "integer": "entero",
+    "bigint": "Big Integer",
+    "real": "Número Real Pequeño",
+    "double": "Número real grande",
+    "text": "Texto",
+    "date": "Fecha",
+    "timestamp": "Fecha - Hora",
+    "boolean": "True Falso 1/0",
+    "delete": "Borrar",
+    "search": "Buscar"
+  },
+  "menuToasts": {
+    "general": {
+      "provinceList": "Lista de provincias",
+      "countylist": "Lista del condado",
+      "neighborhoodlist": "Lista de vecindarios",
+      "provinces": "Provincias",
+      "counties": "Condados",
+      "neighborhoods": "barrios"
+    },
+    "findAdress": {
+      "label": "Panel del buscador de direcciones",
+      "streetlist": "Lista de calles de carreteras",
+      "doornumber": "Lista de Número de Puerta",
+      "streets": "Calles de las carreteras",
+      "doornumbers": "Números de puerta"
+    },
+    "findParcell": {
+      "label": "Búsqueda de paquetes por panel de dirección",
+      "landNo": "Land No : ",
+      "parcellNo": "Parcell No : "
+    },
+    "findTaxi": {
+      "label": "Búsqueda de Taxis por Panel de Adress",
+      "placeHolder": "Nombre de la parada de taxis : "
+    },
+    "findPharmacy": {
+      "label": "Búsqueda de Farmacia por Panel de Adress",
+      "placeHolder": "Nombre de Farmacia : ",
+      "onlyDutyPharmacytrue": "Buscar en todas las farmacias",
+      "onlyDutyPharmacyfalse": "Buscar sólo farmacias de servicio"
+    },
+    "proprietaryBuild": {
+      "label": "Panel de creación de propiedad",
+      "mdselect1placeholder": "Tipos de construcción"
+    },
+    "findBuildingLic":{
+      "label":"Buscar panel de licencias de construcción",
+      "ownerName":"Nombre y apellido del propietario del edificio",
+      "BuilderName":"Nombre y Apellidos del Contratista"
+    }
+  },
+  "menu": {
+    "menu1": {
+      "label": "Find Address",
+      "menu1e1": "Go to Adress by Selection",
+      "menu1e2": "Clicking on the Map"
+    },
+    "menu2": {
+      "label": "Find Parcell",
+      "menu1e1": "Find Parcell By Adress",
+      "menu1e2": "Find Parcell at Your Location"
+    },
+    "menu3": {
+      "label": "Transportation",
+      "menu1e1": "Bus and Minibus",
+      "menu1e2": "Metro, Train and Tram",
+      "menu1e3": "Ship Ferries",
+      "menu1e4": "Aircraft and Air Vehicles"
+    },
+    "menu4": {
+      "label": "Pharmacy",
+      "menu1e1": "Find Pharmacy By Adress",
+      "menu1e2": "Find Nearest Pharmacy",
+      "menu1e3": "find Sentinel Pharmacy"
+    },
+    "menu5": {
+      "label": "Taxi Points",
+      "menu1e1": "Find Taxi Points By Adress",
+      "menu1e2": "Find Nearest Taxi Points"
+    },
+    "menu6": {
+      "label": "Registered Buildings",
+      "menu1e1": "Find Registered Buildings By Adress",
+      "menu1e2": "Find Registered Buildings with Search Circle"
+    },
+    "menu7": {
+      "label": "Building License",
+      "menu1e1": "Find Building License"
+    },
+    "menu8": {
+      "label": "Pharmacy",
+      "menu1e1": "Find Pharmacy By Adress",
+      "menu1e2": "Find Nearest Pharmacy",
+      "menu1e3": "find Sentinel Pharmacy"
+    },
+    "menu9": {
+      "label": "important centers and poi points",
+      "menu1e1": "what is closest to me",
+      "menu1e2": "Find Poi Points According to The Type",
+      "menu1e3": "Find Poi Points by Drawing The Field",
+      "menu1e4": "Find Poi Points by Specifying Address"
+    },
+    "menu10": {
+      "label": "Health Institutions",
+      "menu1e1": "Find Family Physician",
+      "menu1e2": "Find Hospital In Address",
+      "menu1e3": "Find Nearest Hospital",
+      "menu1e4": "Find the Nearest Health Care Center"
+    },
+    "menu11": {
+      "label": "Security Centers",
+      "menu1e1": "Police Station in Town",
+      "menu1e2": "Nearest Police Station",
+      "menu1e3": "Military Center in the Region",
+      "menu1e4": "Nearest Military Center"
+    },
+    "menu12": {
+      "label": "Route & Navigation",
+      "menu1e1": "Creating a route by specifying an address",
+      "menu1e2": "Marking the Map To Create a Route"
+    },
+    "menu13": {
+      "label": "Length & Area Measurement",
+      "menu1e1": "Measure Length by Drawing a Map",
+      "menu1e2": "Measure Length by Entering a Point Manually",
+      "menu1e3": "Area Measurement When Drawing",
+      "menu1e4": "Finding a Field by Entering a Dot Manually"
+    },
+    "menu15": {
+      "label": "Help",
+      "menu1e1": "How to Use The Application",
+      "menu1e2": "Frequently Asked Questions"
+    },
+    "menu16": {
+      "label": "Contact",
+      "menu1e1": "address and phone information",
+      "menu1e2": "Contact Us",
+      "menu1e3":"creating a support request"
+    }
+  },
+  "toolEdit": {
+    "label": "Edit",
+    "draw": {
+      "polygon": "Draw a New Polygon",
+      "polyRectangle": "Draw a New Polygon Rectangle",
+      "polyCircile": "Draw a New Circle",
+      "polyEllips": "Draw a New Polygon",
+      "polyArc": "Draw a New Arc",
+      "polyLineBezier": "Draw a New Bezier",
+      "line": "Draw a New Line",
+      "lineRectangle": "Draw a New Line Rectangle",
+      "lineCircle": "Draw a New Line Circle",
+      "lineArc": "Draw a New Line Arc",
+      "lineBezier": "Draw a New Line Bezier",
+      "point": "Draw a New Point",
+      "marker": "Draw a New Marker",
+      "edit": "Edit Drawing Geometries",
+      "delete": "Delete Drawing Geometry"
+    }
+  },
+  "login": {
+    "login": "Sign In",
+    "signin": "User Login",
+    "signinForm": "User Login Form",
+    "signUpForm": "User Sign Up Form",
+    "name": "Name Surname",
+    "phoneNumber": "Phone Number",
+    "email": "Email Adress",
+    "adress": "Adress",
+    "contract": "I agree to read the <a href='#' accept-agreement>Contract</a>"
+  },
+  "searchBox": {
+    "btnMenuOnOff": "Menu Open/Close",
+    "inptSearchBox": "District, Neighborhood, Hospital, School ...",
+    "btnSearch": "Search",
+    "btnLayer": "Open Layer Box"
+  },
+  "leftmenu": {
+    "label": "Basemaps & Analysis",
+    "basemap": "Basemaps",
+    "satallite": "Satellite Views",
+    "analysis": "Analysis",
+    "freemaps": "Free Basemaps",
+    "opacity": "Opacity"
+  },
+  "vlList": {
+    "label": "Vector Layer List",
+    "iconAdLayer": "Add New Layer",
+    "iconConnectDB": "Connect Database",
+    "iconSearchDB": "View Database Tables",
+    "iconRefresh": "Refresh Selected Layer",
+    "iconEdit": "Edit Selected Layer",
+    "iconDown": "Layer Move To Down",
+    "iconUp": "Layer Move To Up",
+    "iconBottom": "Layer Move To Bottom",
+    "iconTop": "Layer Move To Top",
+    "iconSettings": "Open Settings Panel of Selected Layer",
+    "iconCloudDown": "Download Selected Layer",
+    "iconCloudUp": "Send Selected Layer to System",
+    "iconZoom": "Zoom To Layer",
+    "iconSnap": "Set Active Snap Of Layer",
+    "iconLayerSetting": "Open Settings Layer's Panel",
+    "iconRemove": "Remove Layer from List",
+    "dialogs": {
+      "laySet": {
+        "label": "Layer Settings",
+        "tab1": {
+          "label": "Datas"
+        },
+        "tab2": {
+          "label": "General",
+          "h1": "General Info of Layer",
+          "inptLayNam": "Layer Name",
+          "inptLayDesc": "Layer Description",
+          "inptMinZoom": "Minimum Zoom",
+          "inptMaxZoom": "Maximum Zoom",
+          "inptAutoSave": "Auto Saving Time (mn)"
+        },
+        "tab3": {
+          "label": "View",
+          "h11": "WHEN OPEN DEFAULT VİEWS OF LAYER STYLE",
+          "h12": "WHEN MOUSE OVER OF LAYER VİEWS STYLE",
+          "h13": "WHEN MOUSE OVER OF LAYER VİEWS STYLE",
+          "layObj": "LAYER OBJECT",
+          "layStatus": "STATUS",
+          "layColor": "COLOR",
+          "layHex": "HEX",
+          "layWidth": "WEIGHT",
+          "layOpacity": "OPACITY",
+          "layLineStyle": "Line Attributes",
+          "layFillStyle": "Fill Attributes"
+        },
+        "tab4": {
+          "label": "Queries"
+        }
+      },
+      "addNewVecLay": {
+        "label": "New Layer Insertion Panel",
+        "createNewLayer": "Create New Layer",
+        "tab1": {
+          "label": "Existing Layers"
+        },
+        "tab2": {
+          "label": "Created Layers"
+        }
+      },
+      "createNewVecLay": {
+        "label": "CREATE NEW LAYER",
+        "layname": "Write Layer Name",
+        "descrpt": "Write Layer Description",
+        "type": "Select To Layer Type",
+        "crs": "Select To Coordinate System EPSG Code",
+        "layerMainInfo": "Layers Information Input Form",
+        "layTabProp": "Layer's Table Field Input Form",
+        "select ": "Select a Type",
+        "alreadyHavefile": "Existing Table fields",
+        "writeFieldName": "Write Field Name"
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+<md-toast id="calculatebymanuel" aria-label="Mango (Fruit)">
+    <div class="md-toast-content" layout-padding>
+        <form>
+            <md-toolbar md-ink-ripple>
+                <div class="md-toolbar-tools">
+                    <h2><md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">home</md-icon>
+                        <span class="md-subhead" style="color: #ffffff;">{{lang.menuToasts.findAdress.label}}</span></h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="cancel()">
+                        <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-dialog-content style="style:100%">
+                <md-content>
+
+                <md-list layout-padding>
+
+                    <md-list-item layout-fill flex layout-align="center center">
+
+                        <div flex="5" style="margin-top:-14px">
+                           {{sayi || 1}}
+                        </div>
+                        <md-input-container flex="40" >
+                            <input type="number" max="90" min="-90" ng-keyup="lngControl(lng)" placeholder="Enlem" ng-model="lng">
+                        </md-input-container>
+                        <md-input-container flex="40" >
+                            <input type="number" max="180" min="-180" placeholder="Boylam" ng-model="ltd">
+                        </md-input-container>
+                        <md-input-container flex="15">
+                            <md-button ng-disabled="!lng  || !ltd" ng-click="addLngLtd(lng,ltd)" id="plsButton" class="md-fab md-mini">
+                                <md-icon md-svg-src="img/icons/plus.svg"></md-icon>
+                            </md-button>
+                        </md-input-container>
+
+                    </md-list-item>
+
+
+                    <md-list-item id="listLtdLng" layout-align="end end" flex ng-repeat="veri in listLngLtd">
+                        <md-input-container flex="15">
+                            <input type="text" ng-value="veri.sayi">
+                        </md-input-container>
+                        <md-input-container flex="35">
+                            <input type="text" ng-model="veri.lng" type="number" ng-value="veri.lng">
+                        </md-input-container>
+                        <md-input-container flex="35">
+                            <input type="text" ng-model="veri.ltd" type="number" ng-value="veri.ltd">
+                        </md-input-container>
+                        <md-input-container flex="15"><md-button ng-click="removeLngLtd($index)" id="listLtdLngBtn" class="md-raised md-warn  md-button md-ink-ripple md-button">sil</md-button></md-input-container>
+                    </md-list-item>
+
+                </md-list>
+            </md-dialog-content>
+            <md-dialog-actions layout="row">
+                <span flex></span>
+
+                <md-button class="md-raised searchButton md-button md-ink-ripple md-button" ng-click="showParcell()">
+                    <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">
+                        search
+                    </md-icon>
+                    {{lang.general.search}}
+                </md-button>
+
+                <md-button class="md-raised closeButton md-button md-ink-ripple md-button" ng-click="cancel()"
+                           style="margin-right:20px;">
+                    {{lang.general.close}}
+                </md-button>
+            </md-dialog-actions>
+        </form>
+
+    </div>
+
+</md-toast>
+

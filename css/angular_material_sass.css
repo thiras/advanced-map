@@ -752,7 +752,7 @@ md-toast {
 md-toast#drawTool .md-toast-content {
   color: #34495e; }
 
-md-toast#menuToasts, md-toast#findProprietary, md-toast#fndBldLsToast {
+md-toast#menuToasts, md-toast#findProprietary, md-toast#fndBldLsToast, md-toast#calculatebymanuel {
   position: fixed;
   top: 58px;
   left: 10px;
@@ -761,12 +761,12 @@ md-toast#menuToasts, md-toast#findProprietary, md-toast#fndBldLsToast {
   margin: 0;
   height: 100%;
   z-index: 20; }
-  md-toast#menuToasts .md-toast-content, md-toast#findProprietary .md-toast-content, md-toast#fndBldLsToast .md-toast-content {
+  md-toast#menuToasts .md-toast-content, md-toast#findProprietary .md-toast-content, md-toast#fndBldLsToast .md-toast-content, md-toast#calculatebymanuel .md-toast-content {
     width: 400px;
     height: auto !important;
     display: inline-table;
     color: #2196f3; }
-  md-toast#menuToasts h2, md-toast#findProprietary h2, md-toast#fndBldLsToast h2 {
+  md-toast#menuToasts h2, md-toast#findProprietary h2, md-toast#fndBldLsToast h2, md-toast#calculatebymanuel h2 {
     color: #fff; }
 
 #findParcelToast md-input-container {
@@ -776,6 +776,9 @@ md-toast#menuToasts, md-toast#findProprietary, md-toast#fndBldLsToast {
 md-toast#findProprietary md-input-container {
   margin-top: 5px;
   margin-bottom: -20px; }
+
+#listLtdLng md-input-container {
+  height: 15px; }
 
 .grayfilter {
   filter: grayscale(100%);
@@ -896,6 +899,12 @@ md-switch.md-checked .md-thumb {
 iframe {
   width: 100%;
   min-height: 50vh; }
+
+#plsButton {
+  margin-top: -26px; }
+
+#listLtdLngBtn {
+  margin-top: -5px; }
 
 /*
 

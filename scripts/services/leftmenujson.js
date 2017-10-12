@@ -7,7 +7,7 @@ app.service("$leftmenujson", function ($http, $rootScope) {
         showLayer: ["basemap", "uydu2012", "analizHeatmap"],
         layerBox: [
             {
-                id: "base", label: "BaseMap Haritalar", img: "img/icons/map.svg", active: true, layers: [
+                id: "base", label: "BaseMap Haritalar", img: "img/icons/map.svg", active: false, layers: [
                 {id: "basemap", label: "BaseMap", opacity: 0.5, active: true, show: false, img: "img/icons/map.svg"},
                 {
                     id: "gecebasmap",
@@ -20,7 +20,7 @@ app.service("$leftmenujson", function ($http, $rootScope) {
             ]
             }
             , {
-                id: "uydu", label: "Uygu Görüntüleri", img: "img/icons/map.svg", active: true, layers: [
+                id: "uydu", label: "Uygu Görüntüleri", img: "img/icons/map.svg", active: false, layers: [
                     {
                         id: "uydu2012",
                         label: "2012 Uydu Görüntüleri",
@@ -49,7 +49,7 @@ app.service("$leftmenujson", function ($http, $rootScope) {
                 ]
             }
             , {
-                id: "analiz", label: "Analizler", img: "img/icons/map.svg", active: true, layers: [
+                id: "analiz", label: "Analizler", img: "img/icons/map.svg", active: false, layers: [
                     {
                         id: "analizHeatmap",
                         label: "Heatmap Analizi",

@@ -20,10 +20,10 @@
     "date":"Tarih",
     "timestamp":"Tarih - Saat",
     "boolean":"Mantıksal Değer 1/0",
-    "delete":"Sil"
-
+    "delete":"Sil",
+    "search": "Ara"
   },
-  "dialogs":{
+  "menuToasts":{
     "general":{
       "provinceList":"İl Listesi",
       "countylist":"İlçe Listesi",
@@ -40,14 +40,111 @@
       "doornumbers":"Kapı Numaraları"
     },
     "findParcell":{
-      "label":"Parsel Bulma Paneli"
+      "label":"Parsel Bulma Paneli",
+      "landNo": "Ada No : ",
+      "parcellNo": "Parsel No : "
+    },
+    "findTaxi": {
+      "label": "Taksi ve Taksi Durakları Bulma Paneli",
+      "placeHolder": "Taksi Durağı Adı : "
+    },
+    "findPharmacy": {
+      "label": "Adreste'ki Eczaneler Bulma Paneli",
+      "placeHolder": "Eczane İsmi : ",
+      "onlyDutyPharmacytrue": "Tüm Eczaneleri Bul",
+      "onlyDutyPharmacyfalse": "Sadece Nöbetçi Eczaneleri Bul"
+    },
+    "proprietaryBuild": {
+      "label": "Tescilli Yapı Bulma Paneli",
+      "mdselect1placeholder": "Yapı Türü"
+    },
+    "findBuildingLic":{
+      "label":"İnşaat Ruhsat",
+      "ownerName":"Mülkiyet Sahibinin Adı Soyadı",
+      "BuilderName":"Müteahhit Adı Soyadı"
     }
   },
   "menu":{
     "menu1":{
       "label":"Adres Bul",
-      "menu1e1":"İlçe, Mahalle, Yol ve Kapı Numarası Seçerek",
+      "menu1e1":"Seçerek Adrese Git",
       "menu1e2":"Haritayı Tıklayarak"
+    },
+    "menu2": {
+      "label": "Parsel Bul",
+      "menu1e1": "Adres Yardımı ile Parsel Bul",
+      "menu1e2": "Bulunduğunuz Konumda ki Parseli Bul"
+    },
+    "menu3": {
+      "label": "Ulaşım",
+      "menu1e1": "Otobüs & Minibüs",
+      "menu1e2": "Metro,Tren ve Tramvay",
+      "menu1e3": "Vapur - Feribot",
+      "menu1e4": "Uçak ve Hava Taşıtları"
+    },
+    "menu4": {
+      "label": "Eczane",
+      "menu1e1": "Adres Yardımı ile Eczane Bul",
+      "menu1e2": "En Yakın Eczaneyi Bul",
+      "menu1e3": "Nöbetçi Eczaneleri Bul"
+    },
+    "menu5": {
+      "label": "Taksi",
+      "menu1e1": "Adres Yardımı ile Taksi Durağı Bul",
+      "menu1e2": "En Yakın Taksi Durağını Bul"
+    },
+    "menu6": {
+      "label": "Tescilli Yapılar",
+      "menu1e1": "Adresteki Tescilli Yapıları Bul",
+      "menu1e2": "Arama Çemberi ile Tescilli Yapıları Bul"
+    },
+    "menu7": {
+      "label": "İnşaat Ruhsat",
+      "menu1e1": "Yapı Ruhsatı Bul"
+    },
+    "menu9": {
+      "label": "Önemli Merkezler & POI Noktaları",
+      "menu1e1": "Yakınımda  Neler Var ?",
+      "menu1e2": "Belirli Bir Türde POI Noktalarını Bul",
+      "menu1e3": "Alan Çizerek POI Noktalarını Bul",
+      "menu1e4": "Adres Belirterek POI Noktalarını Bul"
+    },
+    "menu10": {
+      "label": "Sağlık Merkezleri",
+      "menu1e1": "Aile Hekimini Bul",
+      "menu1e2": "Adres Yardımı ile Hastane Bul",
+      "menu1e3": "En Yakın Hastaneyi Bul",
+      "menu1e4": "En Yakın Sağlık Ocağını Bul"
+    },
+    "menu11": {
+      "label": "Güvenlik Merkezleri",
+      "menu1e1": "Adres Yardımı ile Polis Karakolu Bul",
+      "menu1e2": "En Yakın Polis Karakolunu Bul",
+      "menu1e3": "Adres Yardımı ile Askeri Bölgeyi Bul",
+      "menu1e4": "En Yakın Askeri Bölgeyi Bul"
+    },
+    "menu12": {
+      "label": "Güzergah & Navigasyon",
+      "menu1e1": "Adres Belirterek Rota Oluşturma",
+      "menu1e2": "Haritayı İşaretleyerek Rota Oluşturma"
+    },
+    "menu13": {
+      "label": "Uzunluk ve Alan Ölçümü",
+      "menu1e1": "Haritada Çizerek Mesafe Bul",
+      "menu1e2": "El ile Girerek Mesafe Bul",
+      "menu1e3": "Haritada Çizerek Alan Hesapla",
+      "menu1e4": "El ile Girerek Alan Hesapla"
+    },
+    "menu15": {
+      "label": "Yardım",
+      "menu1e1": "Uygulamayı Nasıl Kullanılır",
+      "menu1e2": "Sıkça Sorulan Sorular"
+    },
+    "menu16": {
+      "label": "İletişim",
+      "menu1e1": "Adres ve Telefon Bilgileri",
+      "menu1e2": "Bize Ulaşın",
+      "menu1e3":"Destek Talebi Oluştur"
     }
   },
   "toolEdit":{

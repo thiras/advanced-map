@@ -215,25 +215,17 @@ app.service("$accordion", function ($rootScope) {
                 menu3e2: {
                     label:lang.menu.menu13.menu1e2,
                     fonk: "openDrawRulerByManuel"
-                }
-            }
-        },
-        menu15: {
-            label: lang.menu.menu14.label,
-            fonk: "menu",
-            icon: "view_agenda",
-            submenu: {
-                menu3e1: {
-                    label: lang.menu.menu13.menu1e1,
+                },
+                menu3e3: {
+                    label: lang.menu.menu13.menu1e3,
                     fonk: "openDrawAreaByMouse"
                 },
-                menu3e2: {
-                    label: lang.menu.menu13.menu1e2,
+                menu3e4: {
+                    label: lang.menu.menu13.menu1e4,
                     fonk: "openDrawAreaByManuel"
                 }
             }
         },
-
         menu16: {
             label: lang.menu.menu15.label,
             fonk: "menu",
