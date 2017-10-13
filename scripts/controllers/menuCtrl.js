@@ -299,15 +299,17 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.addLngLtd = function (lng, ltd) {
 
 
-        if (lng == "undefined") {
+        if (lng != null && ltd!=null) {
 
-            alert("ditttt");
+            $scope.listLngLtd.push({sayi: $scope.sayi, lng: lng, ltd: ltd});
+            $rootScope.listLngLtd = $scope.listLngLtd;
+            $scope.sayi += 1;
+            $rootScope.sayi=$scope.sayi;
+
+
 
         }
-        $scope.listLngLtd.push({sayi: $scope.sayi, lng: lng, ltd: ltd});
-        $rootScope.listLngLtd = $scope.listLngLtd;
-        $scope.sayi += 1;
-       $rootScope.sayi=$scope.sayi;
+
 
 
     }
@@ -321,38 +323,53 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
     $scope.lngControl = function (val) {
 
-        if (!val) {
 
-            $mdDialog.show(
-                $mdDialog.alert()
-                    .parent(angular.element(document.querySelector('#popupContainer')))
-                    .clickOutsideToClose(true)
-                    .title('uyarı')
-                    .textContent('enlem değeri +90 ve -90 değeri arasında olmalı')
-                    .ariaLabel('Alert Dialog Demo')
-                    .ok('Anladım!')
-                    .targetEvent(event)
-            );
+        console.log("val",val);
+
+
+        if (!val && val!=0) {
+
+
+
+
+                $mdDialog.show(
+                    $mdDialog.alert()
+                        .parent(angular.element(document.querySelector('#popupContainer')))
+                        .clickOutsideToClose(true)
+                        .title('uyarı')
+                        .textContent('enlem değeri +90 ve -90 değeri arasında olmalı')
+                        .ariaLabel('Alert Dialog Demo')
+                        .ok('Anladım!')
+                        .targetEvent(event)
+                );
+                $scope.lng ="";
+
+
         }
-        
+
 
     }
     
     
     $scope.ltdControl=function (ltd) {
 
-        if (!ltd) {
+        if (!ltd && ltd!=0) {
 
-            $mdDialog.show(
-                $mdDialog.alert()
-                    .parent(angular.element(document.querySelector('#popupContainer')))
-                    .clickOutsideToClose(true)
-                    .title('uyarı')
-                    .textContent('boylam değeri +180 ve -180 değeri arasında olmalı')
-                    .ariaLabel('Alert Dialog Demo')
-                    .ok('Anladım!')
-                    .targetEvent(event)
-            );
+
+
+                $mdDialog.show(
+                    $mdDialog.alert()
+                        .parent(angular.element(document.querySelector('#popupContainer')))
+                        .clickOutsideToClose(true)
+                        .title('uyarı')
+                        .textContent('boylam değeri +180 ve -180 değeri arasında olmalı')
+                        .ariaLabel('Alert Dialog Demo')
+                        .ok('Anladım!')
+                        .targetEvent(event)
+                );
+
+                $scope.ltd ="";
+
         }
 
 

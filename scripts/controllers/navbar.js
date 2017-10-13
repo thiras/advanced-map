@@ -131,6 +131,16 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
             templateUrl: 'html/menuToast/calculatebymanualToast.html',
         });
 
-    }
+    };
 
+   /* $scope.openDrawAreaByManuel=function () {
+        $rootScope.$emit("closeNavbar", "closeNavbar");
+        $mdToast.show({
+            hideDelay: 0,
+            position: 'top left',
+            controller: 'menuCtrl',
+            templateUrl: 'html/menuToast/calculatebymanualToast.html',
+        });
+    }
+*/
 });

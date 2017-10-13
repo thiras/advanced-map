@@ -25,10 +25,10 @@
                             <input type="number" max="90" min="-90" ng-keyup="lngControl(lng)" placeholder="Enlem" ng-model="lng">
                         </md-input-container>
                         <md-input-container flex="40" >
-                            <input type="number" max="180" min="-180" ng-keyup="ltdControl(lng)" placeholder="Boylam" ng-model="ltd">
+                            <input type="number" max="180" min="-180" ng-keyup="ltdControl(ltd)" placeholder="Boylam" ng-model="ltd">
                         </md-input-container>
                         <md-input-container flex="15">
-                            <md-button ng-disabled="!lng  || !ltd" ng-click="addLngLtd(lng,ltd)" id="plsButton" class="md-fab md-mini">
+                            <md-button aa="<!--ng-disabled=!lng  || !ltd-->" ng-click="addLngLtd(lng,ltd)" id="plsButton" class="md-fab md-mini">
                                 <md-icon md-svg-src="img/icons/plus.svg"></md-icon>
                             </md-button>
                         </md-input-container>
@@ -36,9 +36,9 @@
                     </md-list-item>
 
 
-                    <md-list-item id="listLtdLng" layout-align="end end" flex ng-repeat="veri in listLngLtd">
+                    <md-list-item id="listLtdLng" layout-align="end end" layout-align="space-between center" flex ng-repeat="veri in listLngLtd">
                         <md-input-container flex="15">
-                            <input type="text" ng-value="veri.sayi">
+                           <div style="display: inline-flex;margin-top:14px;">{{veri.sayi}}</div>
                         </md-input-container>
                         <md-input-container flex="35">
                             <input type="text" ng-model="veri.lng" type="number" ng-value="veri.lng">
@@ -50,6 +50,7 @@
                     </md-list-item>
 
                 </md-list>
+                </md-content>
             </md-dialog-content>
             <md-dialog-actions layout="row">
                 <span flex></span>

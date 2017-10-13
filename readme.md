@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # GELİŞMİŞ HARİTA UYGULAMASI
 
 * Çoklu dil desteği mevcut
@@ -29,8 +29,3 @@ angular.element(body).scope().leaflet.createMap(iat,lng);
 
 
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 83c6443b0d40964ce36f66f487bc625e7f45153e

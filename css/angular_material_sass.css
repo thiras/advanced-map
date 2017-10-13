@@ -906,6 +906,9 @@ iframe {
 #listLtdLngBtn {
   margin-top: -5px; }
 
+#calculatebymanuel md-list {
+  max-height: 65vh; }
+
 /*
 
  */
