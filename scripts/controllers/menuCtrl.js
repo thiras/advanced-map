@@ -334,7 +334,28 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
                     .targetEvent(event)
             );
         }
-        ;
+        
+
+    }
+    
+    
+    $scope.ltdControl=function (ltd) {
+
+        if (!ltd) {
+
+            $mdDialog.show(
+                $mdDialog.alert()
+                    .parent(angular.element(document.querySelector('#popupContainer')))
+                    .clickOutsideToClose(true)
+                    .title('uyarı')
+                    .textContent('boylam değeri +180 ve -180 değeri arasında olmalı')
+                    .ariaLabel('Alert Dialog Demo')
+                    .ok('Anladım!')
+                    .targetEvent(event)
+            );
+        }
+
+
 
     }
 

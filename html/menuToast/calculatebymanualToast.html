@@ -25,7 +25,7 @@
                             <input type="number" max="90" min="-90" ng-keyup="lngControl(lng)" placeholder="Enlem" ng-model="lng">
                         </md-input-container>
                         <md-input-container flex="40" >
-                            <input type="number" max="180" min="-180" placeholder="Boylam" ng-model="ltd">
+                            <input type="number" max="180" min="-180" ng-keyup="ltdControl(lng)" placeholder="Boylam" ng-model="ltd">
                         </md-input-container>
                         <md-input-container flex="15">
                             <md-button ng-disabled="!lng  || !ltd" ng-click="addLngLtd(lng,ltd)" id="plsButton" class="md-fab md-mini">
