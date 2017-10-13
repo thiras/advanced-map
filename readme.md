@@ -6,7 +6,7 @@
 
 >Geliştiriciler </br>
 * Dılo sürücü </br>
-* Ali Kılıç
+* [Ali Kılıç](https://github.com/gislayer)
 
 
 
