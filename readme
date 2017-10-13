@@ -1,6 +1,6 @@
 
->![Alt Text](http://erinlyyc.com/wp-content/uploads/2017/05/google-maps.jpg "map systems")
->![img](https://cdn.lynda.com/courses/315196-635618397880493050_338x600_thumb.jpg "Optional title")
+![Alt Text](http://erinlyyc.com/wp-content/uploads/2017/05/google-maps.jpg "map systems")
+
 
 
 angular.element(body).scope().leaflet.createMap(iat,lng);
