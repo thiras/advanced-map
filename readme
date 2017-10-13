@@ -1,8 +1,0 @@
-
-
-
-
-angular.element(body).scope().leaflet.createMap(iat,lng);
-
-
-
