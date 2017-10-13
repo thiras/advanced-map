@@ -1,4 +1,4 @@
-app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $timeout, $mdDialog) {
+app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $timeout, $mdDialog,$leafletFonk) {
     $scope.lang = $rootScope.lang;
     $scope.il = $sahtejson.il;
     $scope.ilce = $sahtejson.ilce;
@@ -289,91 +289,156 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
     $scope.close = function () {
         $mdDialog.cancel();
-    }
+    };
 
+    debugger;
+    $scope.measureLines = $rootScope.measureLines || [{name:"1. Measure Line",id:1,latlng:[],latlngs:[],feature:false,show:true}];
+    $rootScope.measureLines=$rootScope.measureLines || $scope.measureLines;
+    $scope.measureCalc=$rootScope.measureCalc || 0;
+    $scope.measureName = $scope.measureLines[$scope.measureCalc].name;
+    $scope.measureLineLatLng = $scope.measureLines[$scope.measureCalc].latlng || [];
 
-    $scope.listLngLtd = $scope.listLngLtd || [];
+    $scope.sayi =  $rootScope.measureLineLatLngLenght || 1;
 
-    $scope.sayi =  $rootScope.sayi || 1;
+    $scope.setMeasureName=function () {
+        $scope.measureLines[$scope.measureCalc].name = $scope.measureName;
+    };
+    $scope.newMeasureLine = function () {
+        debugger;
+        var next = $scope.measureCalc+2;
+        $scope.measureCalc=next-1;
+        $scope.measureLines.push({name:next+". Measure Line",id:next,latlng:[],latlngs:[],feature:false,show:true});
+        $scope.measureName=next+". Measure Line";
+        $rootScope.measureLines=$scope.measureLines;
+        $rootScope.measureCalc=$scope.measureCalc;
+        $scope.measureLineLatLng = $scope.measureLines[$scope.measureCalc].latlng || [];
+        $scope.sayi = $scope.measureLineLatLng.length+1;
+        $rootScope.measureLineLatLngLenght=$scope.sayi;
+        $scope.lng="";
+        $scope.lat="";
+    };
 
-    $scope.addLngLtd = function (lng, ltd) {
-
-
-        if (lng != null && ltd!=null) {
-
-            $scope.listLngLtd.push({sayi: $scope.sayi, lng: lng, ltd: ltd});
-            $rootScope.listLngLtd = $scope.listLngLtd;
+    $scope.addLatLngToLine = function (lng, lat) {
+        debugger;
+        if (lng != null && lat!=null) {
+            $scope.measureLines[$scope.measureCalc].latlng.push({sayi: $scope.sayi, lng: lng, lat: lat});
+            $scope.measureLines[$scope.measureCalc].latlngs.push([lat,lng]);
+            $rootScope.measureLines = $scope.measureLines;
             $scope.sayi += 1;
-            $rootScope.sayi=$scope.sayi;
+            $rootScope.measureLineLatLngLenght=$scope.sayi;
+            var measureLine = L.polyline($scope.measureLines[$scope.measureCalc].latlng, {color: 'green'});
+            if($scope.measureLines[$scope.measureCalc].feature==false){
+                $scope.measureLines[$scope.measureCalc].feature =measureLine;
+                measureLine.addTo($rootScope.leaflet);
+
+            }else{
+                $scope.measureLines[$scope.measureCalc].feature.remove();
+                $scope.measureLines[$scope.measureCalc].feature =measureLine;
+                measureLine.addTo($rootScope.leaflet);
+            }
 
 
 
+        }else{
+            $mdDialog.show(
+                $mdDialog.alert()
+                    .parent(angular.element(document.querySelector('#popupContainer')))
+                    .clickOutsideToClose(true)
+                    .title('uyarı')
+                    .textContent('Lütfen Enlem & Boylam Bilgilerini Giriniz')
+                    .ariaLabel('Alert Dialog Demo')
+                    .ok('Anladım!')
+                    .targetEvent(event)
+            );
         }
 
 
 
-    }
-    $scope.removeLngLtd = function (i) {
+    };
+    $scope.removeLatLngToLine = function (i) {
+        console.log($scope.measureLineLatLng);
+        $scope.measureLineLatLng.splice(i, 1);
+        var measureLine = L.polyline($scope.measureLines[$scope.measureCalc].latlng, {color: 'green'});
+        if($scope.measureLines[$scope.measureCalc].feature==false){
+            $scope.measureLines[$scope.measureCalc].feature =measureLine;
+            measureLine.addTo($rootScope.leaflet);
 
-
-        console.log($scope.listLngLtd)
-        $scope.listLngLtd.splice(i, 1);
-
-    }
-
-    $scope.lngControl = function (val) {
-
-
-        console.log("val",val);
-
-
-        if (!val && val!=0) {
-
-
-
-
-                $mdDialog.show(
-                    $mdDialog.alert()
-                        .parent(angular.element(document.querySelector('#popupContainer')))
-                        .clickOutsideToClose(true)
-                        .title('uyarı')
-                        .textContent('enlem değeri +90 ve -90 değeri arasında olmalı')
-                        .ariaLabel('Alert Dialog Demo')
-                        .ok('Anladım!')
-                        .targetEvent(event)
-                );
-                $scope.lng ="";
-
-
+        }else{
+            $scope.measureLines[$scope.measureCalc].feature.remove();
+            $scope.measureLines[$scope.measureCalc].feature =measureLine;
+            measureLine.addTo($rootScope.leaflet);
         }
 
+    };
 
-    }
+    $scope.lngControl = function (ind,lng) {
+        debugger;
+        if(lng=="" || lng==null){lng="";}
+        if (lng>=-180 && lng<=180) {
+            lng=parseFloat(lng);
+            if(ind==null){
+                $scope.lng=lng;
+            }else{
+                $scope.measureLineLatLng[ind].lng=lng;
+            }
+
+        }else{
+            $mdDialog.show(
+                $mdDialog.alert()
+                    .parent(angular.element(document.querySelector('#popupContainer')))
+                    .clickOutsideToClose(true)
+                    .title('uyarı')
+                    .textContent('Enlem değeri +90 ve -90 değeri arasında olmalı')
+                    .ariaLabel('Alert Dialog Demo')
+                    .ok('Anladım!')
+                    .targetEvent(event)
+            );
+            if(ind==null){
+                $scope.lng="";
+            }else{
+                $scope.measureLineLatLng[ind].lng=0;
+            }
+        }
+    };
     
     
-    $scope.ltdControl=function (ltd) {
-
-        if (!ltd && ltd!=0) {
-
-
-
-                $mdDialog.show(
-                    $mdDialog.alert()
-                        .parent(angular.element(document.querySelector('#popupContainer')))
-                        .clickOutsideToClose(true)
-                        .title('uyarı')
-                        .textContent('boylam değeri +180 ve -180 değeri arasında olmalı')
-                        .ariaLabel('Alert Dialog Demo')
-                        .ok('Anladım!')
-                        .targetEvent(event)
-                );
-
-                $scope.ltd ="";
-
+    $scope.latControl=function (ind,lat) {
+        debugger;
+        if(lat=="" || lat==null){lat="";}
+        if (lat>=-90 && lat<=90) {
+            lat=parseFloat(lat);
+            if(ind==null){
+                $scope.lat=lat;
+            }else{
+                $scope.measureLineLatLng[ind].lat=lat;
+            }
+        }else{
+            $mdDialog.show(
+                $mdDialog.alert()
+                    .parent(angular.element(document.querySelector('#popupContainer')))
+                    .clickOutsideToClose(true)
+                    .title('uyarı')
+                    .textContent('Enlem değeri +90 ve -90 değeri arasında olmalı')
+                    .ariaLabel('Alert Dialog Demo')
+                    .ok('Anladım!')
+                    .targetEvent(event)
+            );
+            if(ind==null){
+                $scope.lat="";
+            }else{
+                $scope.measureLineLatLng[ind].lat=0;
+            }
         }
-
-
-
     }
+
+    $scope.readyGetPoint=function(a,b){
+        $rootScope.leaflet.on("click",function (e) {
+            $rootScope.clickLat = e.latlng.lat;
+            $rootScope.clickLng = e.latlng.lng;
+            $scope.lng=e.latlng.lng;
+            $scope.lat=e.latlng.lat;
+            $scope.addLatLngToLine($scope.lng,$scope.lat);
+        });
+    };
 
 });

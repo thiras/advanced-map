@@ -28,6 +28,10 @@ app.factory("$leafletFonk",function ($rootScope,$fonks,$leftmenujson) {
         $rootScope.L=L;
         $rootScope.leaflet = L.map('map', {zoomControl: false});
         $rootScope.leaflet.setView([lng, lat],7);
+        $rootScope.leaflet.on("click",function (e) {
+            $rootScope.clickLat = e.latlng.lat;
+            $rootScope.clickLng = e.latlng.lng;
+        });
 
         $rootScope.mevcutHarita = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
             maxZoom: 20,
