@@ -50,6 +50,12 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         {value: 14, text: "Şehitlik"},
         {value: 15, text: "Türbe"},
     ];
+    $scope.mesureTypesOpt = [
+        {value:"degrees",text:$rootScope.lang.menuToasts.mesureLineArea.measureTypes[1]},
+        {value:"radians",text:$rootScope.lang.menuToasts.mesureLineArea.measureTypes[2]},
+        {value:"miles",text:$rootScope.lang.menuToasts.mesureLineArea.measureTypes[3]},
+        {value:"kilometers",text:$rootScope.lang.menuToasts.mesureLineArea.measureTypes[4]}
+        ];
 
 
     $scope.setParcellLandNo = function () {
@@ -74,10 +80,8 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         $rootScope.buildLicense.buildConstName = $scope.buildConstName;
     };
 
-
     $scope.cancel = function () {
         $mdToast.hide();
-
         $timeout(function () {
             angular.element(document.querySelector("#menus")).triggerHandler("click");
         }, 10);
@@ -291,8 +295,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         $mdDialog.cancel();
     };
 
-    debugger;
-    $scope.measureLines = $rootScope.measureLines || [{name:"1. Measure Line",id:1,latlng:[],latlngs:[],feature:false,show:true}];
+    $scope.measureLines = $rootScope.measureLines || [{name:"1. "+$rootScope.lang.menuToasts.mesureLineArea.measureline,id:1,latlng:[],latlngs:[],feature:false,show:true,measure:0}];
     $rootScope.measureLines=$rootScope.measureLines || $scope.measureLines;
     $scope.measureCalc=$rootScope.measureCalc || 0;
     $scope.measureName = $scope.measureLines[$scope.measureCalc].name;
@@ -307,8 +310,8 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         debugger;
         var next = $scope.measureCalc+2;
         $scope.measureCalc=next-1;
-        $scope.measureLines.push({name:next+". Measure Line",id:next,latlng:[],latlngs:[],feature:false,show:true});
-        $scope.measureName=next+". Measure Line";
+        $scope.measureLines.push({name:next+". "+$rootScope.lang.menuToasts.mesureLineArea.measureline,id:next,latlng:[],latlngs:[],feature:false,show:true,measure:0});
+        $scope.measureName=next+". "+$rootScope.lang.menuToasts.mesureLineArea.measureline;
         $rootScope.measureLines=$scope.measureLines;
         $rootScope.measureCalc=$scope.measureCalc;
         $scope.measureLineLatLng = $scope.measureLines[$scope.measureCalc].latlng || [];
@@ -319,7 +322,6 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     };
 
     $scope.addLatLngToLine = function (lng, lat) {
-        debugger;
         if (lng != null && lat!=null) {
             $scope.measureLines[$scope.measureCalc].latlng.push({sayi: $scope.sayi, lng: lng, lat: lat});
             $scope.measureLines[$scope.measureCalc].latlngs.push([lat,lng]);
@@ -327,38 +329,32 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             $scope.sayi += 1;
             $rootScope.measureLineLatLngLenght=$scope.sayi;
             var measureLine = L.polyline($scope.measureLines[$scope.measureCalc].latlng, {color: 'green'});
+            var geojson = measureLine.toGeoJSON();
+            var measureL = turf.lineDistance(geojson, 'kilometers');
+            $scope.measureLines[$scope.measureCalc].measure = turf.round(measureL*1000,3);
             if($scope.measureLines[$scope.measureCalc].feature==false){
                 $scope.measureLines[$scope.measureCalc].feature =measureLine;
                 measureLine.addTo($rootScope.leaflet);
-
             }else{
                 $scope.measureLines[$scope.measureCalc].feature.remove();
                 $scope.measureLines[$scope.measureCalc].feature =measureLine;
                 measureLine.addTo($rootScope.leaflet);
             }
-
-
-
         }else{
-            $mdDialog.show(
-                $mdDialog.alert()
-                    .parent(angular.element(document.querySelector('#popupContainer')))
-                    .clickOutsideToClose(true)
-                    .title('uyarı')
-                    .textContent('Lütfen Enlem & Boylam Bilgilerini Giriniz')
-                    .ariaLabel('Alert Dialog Demo')
-                    .ok('Anladım!')
-                    .targetEvent(event)
-            );
+            $rootScope.$emit("message",{
+                status:"warning",
+                header:$rootScope.lang.general.warning,
+                content:$rootScope.lang.menuToasts.mesureLineArea.alerts.alert1,
+                time:"auto"});
         }
-
-
-
     };
     $scope.removeLatLngToLine = function (i) {
         console.log($scope.measureLineLatLng);
         $scope.measureLineLatLng.splice(i, 1);
         var measureLine = L.polyline($scope.measureLines[$scope.measureCalc].latlng, {color: 'green'});
+        var geojson = measureLine.toGeoJSON();
+        var measureL = turf.lineDistance(geojson, 'kilometers');
+        $scope.measureLines[$scope.measureCalc].measure = turf.round(measureL*1000,3);
         if($scope.measureLines[$scope.measureCalc].feature==false){
             $scope.measureLines[$scope.measureCalc].feature =measureLine;
             measureLine.addTo($rootScope.leaflet);
@@ -372,7 +368,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     };
 
     $scope.lngControl = function (ind,lng) {
-        debugger;
+
         if(lng=="" || lng==null){lng="";}
         if (lng>=-180 && lng<=180) {
             lng=parseFloat(lng);
@@ -383,16 +379,11 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             }
 
         }else{
-            $mdDialog.show(
-                $mdDialog.alert()
-                    .parent(angular.element(document.querySelector('#popupContainer')))
-                    .clickOutsideToClose(true)
-                    .title('uyarı')
-                    .textContent('Enlem değeri +90 ve -90 değeri arasında olmalı')
-                    .ariaLabel('Alert Dialog Demo')
-                    .ok('Anladım!')
-                    .targetEvent(event)
-            );
+            $rootScope.$emit("message",{
+                status:"warning",
+                header:$rootScope.lang.general.warning,
+                content:$rootScope.lang.menuToasts.mesureLineArea.alerts.alert2,
+                time:"auto"});
             if(ind==null){
                 $scope.lng="";
             }else{
@@ -403,7 +394,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     
     
     $scope.latControl=function (ind,lat) {
-        debugger;
+
         if(lat=="" || lat==null){lat="";}
         if (lat>=-90 && lat<=90) {
             lat=parseFloat(lat);
@@ -413,32 +404,34 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
                 $scope.measureLineLatLng[ind].lat=lat;
             }
         }else{
-            $mdDialog.show(
-                $mdDialog.alert()
-                    .parent(angular.element(document.querySelector('#popupContainer')))
-                    .clickOutsideToClose(true)
-                    .title('uyarı')
-                    .textContent('Enlem değeri +90 ve -90 değeri arasında olmalı')
-                    .ariaLabel('Alert Dialog Demo')
-                    .ok('Anladım!')
-                    .targetEvent(event)
-            );
+            $rootScope.$emit("message",{
+                status:"warning",
+                header:$rootScope.lang.general.warning,
+                content:$rootScope.lang.menuToasts.mesureLineArea.alerts.alert3,
+                time:"auto"});
+
             if(ind==null){
                 $scope.lat="";
             }else{
                 $scope.measureLineLatLng[ind].lat=0;
             }
         }
-    }
+    };
 
     $scope.readyGetPoint=function(a,b){
         $rootScope.leaflet.on("click",function (e) {
-            $rootScope.clickLat = e.latlng.lat;
-            $rootScope.clickLng = e.latlng.lng;
-            $scope.lng=e.latlng.lng;
-            $scope.lat=e.latlng.lat;
+            var lat = turf.round(e.latlng.lat, 6);
+            var lng = turf.round(e.latlng.lng, 6);
+            $rootScope.clickLat =lat;
+            $rootScope.clickLng = lng;
+            $scope.lng=lng;
+            $scope.lat=lat;
             $scope.addLatLngToLine($scope.lng,$scope.lat);
         });
     };
+
+
+
+    //$rootScope.$emit("opendialog",{status:"warning",header:"Deneme Başlığı",content:"İçerik Buraya Gelecek",time:2000});
 
 });

@@ -21,7 +21,9 @@
     "timestamp":"Tarih - Saat",
     "boolean":"Mantıksal Değer 1/0",
     "delete":"Sil",
-    "search": "Ara"
+    "search": "Ara",
+    "warning":"Uyarı !...",
+    "gotit":"Anladım !"
   },
   "menuToasts":{
     "general":{
@@ -62,6 +64,22 @@
       "label":"İnşaat Ruhsat",
       "ownerName":"Mülkiyet Sahibinin Adı Soyadı",
       "BuilderName":"Müteahhit Adı Soyadı"
+    },
+    "mesureLineArea":{
+      "label":"Uzunluk ve Alan Ölçümleri",
+      "mesureName":"Ölçüm Adı : ",
+      "measure":"Ölçüm",
+      "measureline":"Ölçüm Çizgisi",
+      "lat":"Enlem",
+      "lng":"Boylam",
+      "getPointMap":"Haritadan Nokta Topla",
+      "measureTypes":["Ölçü Birimleri","Derece","Radyan","Mil","Kilometre"],
+      "newMesure":"Yeni Hesaplama",
+      "alerts":{
+        "alert1":"Lütfen Enlem & Boylam Bilgisini Giriniz",
+        "alert3":"Enlem Değeri +90 ile -90 Derece Aralığında olmalıdır. Girdiğiniz Değer Kabul Edilemez.",
+        "alert2":"Boylam Değeri +180 ile -180 Derece Aralığında olmalıdır. Girdiğiniz Değer Kabul Edilemez."
+      }
     }
   },
   "menu":{

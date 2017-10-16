@@ -1,0 +1,316 @@
+<md-dialog  aria-label="Katman Ayarları">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{lang.vlList.dialogs.laySet.label}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content style="width: 100%; max-height:810px; ">
+            <md-tabs md-dynamic-height md-border-bottom>
+
+                <md-tab label="{{lang.vlList.dialogs.laySet.tab1.label}}">
+                    <md-content style="padding: 5px;" class="md-padding">
+                        <md-list style="padding: 0;">
+                            <md-list-item style="padding: 0;">
+                                <table width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th style="padding: 2px; width: 50px; margin: 2px; border: 1px solid #ccc; background-color: #ccc; color: #fff;">#</th>
+                                        <th ng-repeat="(ozellik,deger) in readyFieldsInfo" style="background-color: #ccc; color: #fff; padding: 2px; margin: 2px; border: 1px solid #ccc;">{{ozellik}}</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="(ozellik,deger) in createdFeatures">
+                                        <th style="padding: 2px; margin: 2px; border: 1px solid #e2e2e2; background-color: #fff;">{{$index+1}}</th>
+                                        <td style="padding: 2px; margin: 2px; border: 1px solid #e2e2e2; background-color: #fff;" ng-repeat="(ozellik2,deger2) in deger.dataFields">{{deger2}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </md-list-item>
+                        </md-list>
+                    </md-content>
+                </md-tab>
+                <md-tab label="{{lang.vlList.dialogs.laySet.tab2.label}}">
+                    <md-content class="md-padding">
+                        <h1 class="md-display-2">{{lang.vlList.dialogs.laySet.tab2.h1}}</h1>
+                        <table width="100%">
+                            <tbody>
+                            <tr>
+                                <td width="100%">
+                                    <md-input-container style="width:100%;">
+                                        <input placeholder="{{lang.vlList.dialogs.laySet.tab2.inptLayNam}}" type="text" ng-model="clickSettings.label">
+                                    </md-input-container>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <md-input-container style="width:100%;">
+                                        <input placeholder="{{lang.vlList.dialogs.laySet.tab2.inptLayDesc}}" type="text" ng-model="clickSettings.description">
+                                    </md-input-container>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <md-input-container style="width:100%;">
+                                        <input placeholder="{{lang.vlList.dialogs.laySet.tab2.inptMinZoom}}" type="number" ng-model="clickSettings.minZoom">
+                                    </md-input-container>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <md-input-container style="width:100%;">
+                                        <input placeholder="{{lang.vlList.dialogs.laySet.tab2.inptMaxZoom}}" type="number" ng-model="clickSettings.maxZoom">
+                                    </md-input-container>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <md-input-container style="width:100%;">
+                                        <input placeholder="{{lang.vlList.dialogs.laySet.tab2.inptAutoSave}}" type="number" ng-model="clickSettings.lastChangeTime">
+                                    </md-input-container>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <h1 class="md-display-2">{{lang.vlList.dialogs.createNewVecLay.alreadyHavefile}}</h1>
+                        <md-list-item layout-align="end start" flex layout-xs="column" layout="row">
+                            <form>
+                                <div flex="45" flex-xs="100">
+
+                                    <md-input-container layout-fill>
+                                        <input required type="text" ng-model="fieldName" placeholder="{{lang.vlList.dialogs.createNewVecLay.writeFieldName}}">
+                                    </md-input-container>
+                                </div>
+                                <div flex="45" flex-xs="100">
+
+                                    <md-input-container layout-fill>
+                                        <label>{{fieldType}}</label>
+
+                                        <md-select placeholder="{{fieldType || lang.vlList.dialogs.createNewVecLay.select}}" ng-model="fieldType">
+
+                                            <md-option ng-value="'smallint'">{{lang.general.smallint}}</md-option>
+                                            <md-option ng-value="'integer'">{{lang.general.integer}}</md-option>
+                                            <md-option ng-value="'bigint'">{{lang.general.bigint}}</md-option>
+                                            <md-option ng-value="'real'">{{lang.general.real}}</md-option>
+                                            <md-option ng-value="'double precision'">{{lang.general.double}}</md-option>
+                                            <md-option ng-value="'text'">{{lang.general.text}}</md-option>
+                                            <md-option ng-value="'date'">{{lang.general.date}}</md-option>
+                                            <md-option ng-value="'timestamp'">{{lang.general.timestamp}}</md-option>
+                                            <md-option ng-value="'boolean'">{{lang.general.boolean}}</md-option>
+                                        </md-select>
+                                    </md-input-container>
+
+                                </div>
+
+                                <div flex="10"  layout-align="center start">
+                                    <md-button ng-click="addNewField(id);" ng-disabled="!fieldType || !fieldName" class="md-fab md-mini md-warn">
+                                        <md-tooltip md-direction="up">{{lang.general.add}}</md-tooltip>
+                                        <md-icon md-svg-src="img/icons/plus.svg"></md-icon>
+                                    </md-button>
+                                </div>
+                            </form>
+                        </md-list-item>
+                        <md-list-item>
+                            <div layout="row" flex>
+                                <div flex="100">{{lang.vlList.dialogs.createNewVecLay.alreadyHavefile}}</div>
+                            </div>
+                        </md-list-item>
+                        <md-list-item ng-repeat="(ozellik,deger) in readyFieldsInfo">
+                            <div layout="row"  flex>
+                                <div layout-padding layout-margin style="border: 1px solid #efefef;" flex="10">{{$index+1}}</div>
+                                <div layout-padding layout-margin style="border: 1px solid #efefef;" flex="40">{{ozellik}}</div>
+                                <div layout-padding layout-margin style="border: 1px solid #efefef;" flex="40">{{deger.type}}</div>
+                                <div   flex="10">
+                                    <md-button ng-if='ozellik=="id" ? false:true' ng-click="deleteNewField(ozellik,id);" class="md-fab md-mini md-warn">
+                                        <md-tooltip md-direction="up">{{lang.general.delete}}</md-tooltip>
+                                        <md-icon md-svg-src="img/icons/plus.svg"></md-icon>
+                                    </md-button>
+                                </div>
+                            </div>
+                        </md-list-item>
+                    </md-content>
+                </md-tab>
+
+                <md-tab label="{{lang.vlList.dialogs.laySet.tab3.label}}">
+                    <md-content class="md-padding">
+                        <p  >
+                        <div ng-repeat="(ozellik, deger) in styles">
+                            <table show-xs show-sm hide-lg hide-md border="0" width="100%" cellspacing="0" cellpadding="0" showz-gt-md class="settings-table" >
+                                <thead>
+                                <tr>
+                                    <th md-whiteframe="2" style="background-color: #e0e0e0;" layout-padding colspan="2" class="md-caption"  align="left">{{ozellik=="style" ? lang.vlList.dialogs.laySet.tab3.h11:ozellik=="hoverStyle" ? lang.vlList.dialogs.laySet.tab3.h12:ozellik=="selectedStyle" ? lang.vlList.dialogs.laySet.tab3.h13:"Yok"}}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr><th layout-align="start center" colspan="2" align="left" style="padding-top: 10px; padding-bottom: 10px;">{{lang.vlList.dialogs.laySet.tab3.layLineStyle}}</th></tr>
+                                <tr>
+                                    <td width="50%" align="left">{{lang.vlList.dialogs.laySet.tab3.layStatus}}</td>
+                                    <td width="50%" align="center"><md-checkbox style="margin-left: 10px;" ng-model="styles[ozellik].stroke">
+                                    </md-checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td align="left">{{lang.vlList.dialogs.laySet.tab3.layColor}}</td>
+                                    <td align="center" >
+                                        <div ng-click="colorPalet(id,ozellik,'color');" ng-style="{'background-color':styles[ozellik].color,'width':'30px','height':'30px','margin-bottom':'20px','border-radius':'100%','outline':'none'}"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">{{lang.vlList.dialogs.laySet.tab3.layHex}}</td>
+                                    <td>
+                                        <md-input-container>
+                                            <input style="width: 100%; text-align: center;" type="text" ng-model="styles[ozellik].color">
+                                        </md-input-container>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">{{lang.vlList.dialogs.laySet.tab3.layWidth}}</td>
+                                    <td>
+                                        <md-input-container>
+                                            <input  style="width: 100%; text-align: center;" type="text" ng-model="styles[ozellik].weight">
+                                        </md-input-container>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">{{lang.vlList.dialogs.laySet.tab3.layOpacity}}</td>
+                                    <td>
+                                        <md-slider min="0" max="1" step="0.01" md-discrete ng-model="styles[ozellik].opacity"></md-slider>
+                                    </td>
+                                </tr>
+                                <tr><th layout-align="center center" colspan="2" align="left" style="padding-top: 10px; padding-bottom: 10px;">{{lang.vlList.dialogs.laySet.tab3.layFillStyle}}</th></tr>
+                                <tr>
+                                    <td align="left">{{lang.vlList.dialogs.laySet.tab3.layStatus}}</td>
+                                    <td align="center"><md-checkbox style="margin-left: 10px;" ng-model="styles[ozellik].fill">
+                                    </md-checkbox></td>
+                                </tr>
+                                <tr>
+                                    <td align="left">{{lang.vlList.dialogs.laySet.tab3.layColor}}</td>
+                                    <td align="center" >
+                                        <div ng-click="colorPalet(id,ozellik,'fillColor');" ng-style="{'background-color':styles[ozellik].fillColor,'width':'30px','height':'30px','margin-bottom':'20px','border-radius':'100%','outline':'none'}"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">{{lang.vlList.dialogs.laySet.tab3.layHex}}</td>
+                                    <td>
+                                        <md-input-container>
+                                            <input style="width: 100%; text-align: center;"  type="text" ng-model="styles[ozellik].fillColor">
+                                        </md-input-container>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left">{{lang.vlList.dialogs.laySet.tab3.layOpacity}}</td>
+                                    <td>
+                                        <md-slider min="0" max="1" step="0.01" md-discrete ng-model="styles[ozellik].fillOpacity"></md-slider>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <table hide-xs hide-sm show-lg show-md border="0" cellspacing="0" cellpadding="0" showz-gt-md class="settings-table" >
+                                <thead>
+                                <tr>
+
+
+                                    <th md-whiteframe="2" style="background-color: #e0e0e0;" layout-padding colspan="6" class="md-caption"  align="left">{{ozellik=="style" ? lang.vlList.dialogs.laySet.tab3.h11:ozellik=="hoverStyle" ? lang.vlList.dialogs.laySet.tab3.h12:ozellik=="selectedStyle" ? lang.vlList.dialogs.laySet.tab3.h13:"Yok"}}</th>
+
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th class="md-body-1" style="padding: 10px;" width="25%" align="left">{{lang.vlList.dialogs.laySet.tab3.layObj}}</th>
+                                    <th class="md-body-1" style="width: 58px;">{{lang.vlList.dialogs.laySet.tab3.layStatus}}</th>
+                                    <th class="md-body-1">{{lang.vlList.dialogs.laySet.tab3.layColor}}</th>
+                                    <th class="md-body-1" style="width:80px;">{{lang.vlList.dialogs.laySet.tab3.layHex}}</th>
+                                    <th class="md-body-1" style="width:70px;">{{lang.vlList.dialogs.laySet.tab3.layWidth}}</th>
+                                    <th class="md-body-1">{{lang.vlList.dialogs.laySet.tab3.layOpacity}}</th>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px;">{{lang.vlList.dialogs.laySet.tab3.layLineStyle}}</td>
+                                    <td align="center">
+                                        <md-checkbox ng-model="styles[ozellik].stroke">
+                                        </md-checkbox>
+                                    </td>
+                                    <td align="center" >
+                                        <div ng-click="colorPalet(id,ozellik,'color');" ng-style="{'background-color':styles[ozellik].color,'width':'30px','height':'30px','margin-bottom':'20px','border-radius':'100%','outline':'none'}"></div>
+                                        <!--<md-input-container>
+                                            <input type="color" data-a="{{ozellik}}" ng-model="styles[ozellik].color">
+                                        </md-input-container>-->
+                                    </td>
+                                    <td>
+                                        <md-input-container>
+                                            <input type="text" ng-model="styles[ozellik].color">
+                                        </md-input-container>
+                                    </td>
+                                    <td>
+                                        <md-input-container>
+                                            <input type="text" ng-model="styles[ozellik].weight">
+                                        </md-input-container>
+                                    </td>
+                                    <td>
+                                        <md-slider min="0" max="1" step="0.01" md-discrete ng-model="styles[ozellik].opacity"></md-slider>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px;">{{lang.vlList.dialogs.laySet.tab3.layFillStyle}}</td>
+                                    <td align="center">
+                                        <md-checkbox ng-model="styles[ozellik].fill">
+                                        </md-checkbox>
+                                    </td>
+                                    <td align="center">
+                                        <div ng-click="colorPalet(id,ozellik,'fillColor');" ng-style="{'background-color':styles[ozellik].fillColor,'width':'30px','height':'30px','margin-bottom':'20px','border-radius':'100%','outline':'none'}"></div>
+                                    </td>
+                                    <td>
+
+                                        <md-input-container>
+
+                                            <input type="text" ng-model="styles[ozellik].fillColor">
+                                        </md-input-container>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        <md-slider min="0" max="1" step="0.01" md-discrete ng-model="styles[ozellik].fillOpacity"></md-slider>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        </p>
+                    </md-content>
+                </md-tab>
+                <md-tab label="{{lang.vlList.dialogs.laySet.tab4.label}}">
+                    <md-content class="md-padding">
+                        <h1 class="md-display-2">Başlık</h1>
+                        <p>Açıklama</p>
+                    </md-content>
+                </md-tab>
+
+
+                <md-tab ng-if="true" label="{{lang.vlList.dialogs.laySet.tab5.label}}">
+                    <md-content class="md-padding">
+                        <h1 class="md-display-2">Başlık</h1>
+                        <p>Açıklama</p>
+                    </md-content>
+                </md-tab>
+
+
+            </md-tabs>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+
+            <span flex></span>
+
+            <md-button class="md-raised md-warn md-button md-ink-ripple" ng-click="answer('useful')" style="margin-right:20px;">
+                {{lang.general.close}}
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

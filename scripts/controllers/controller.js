@@ -1,4 +1,4 @@
-app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav, $rootScope, $window, $storage, $leftmenujson, $leafletFonk, $getlang) {
+app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav, $rootScope, $window, $storage, $leftmenujson, $leafletFonk, $getlang,$mdDialog) {
 
     var lang = await $getlang;
     $rootScope.lang = lang.data;
@@ -113,7 +113,81 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
 
         $scope.mouseX = pozx - 50 + "px";
         $scope.mouseY = pozy - 40 + "px";
+    };
+
+    function messageConroller($scope, $mdDialog) {
+        $scope.hide = function() {
+            $mdDialog.hide();
+        };
+
+        $scope.cancel = function() {
+            $mdDialog.cancel();
+        };
+
+        $scope.answer = function(answer) {
+            $mdDialog.hide(answer);
+        };
     }
 
 
+    $rootScope.$on("message",function (e,obj) {
+        debugger;
+        var status = obj.status;
+        var header = obj.header;
+        var content = obj.content;
+        var closeTime = obj.time;
+        var color = {bg:"",c:""};
+        if(status=="success"){
+            var color = {bg:"#8bc34a",c:"#ffffff",bc:"#699b2e",icon:"check"};
+        }
+        if(status=="error"){
+            var color = {bg:"#D84315",c:"#ffffff",bc:"#D84315",icon:"error"};
+        }
+        if(status=="warning"){
+            var color = {bg:"#ff9800",c:"#ffffff",bc:"#ec8d00",icon:"warning"};
+        }
+        if(status=="info"){
+            var color = {bg:"#2196F3",c:"#ffffff",bc:"#0070c9",icon:"info"};
+        }
+        var mdicon = '<md-icon style="color:'+color.c+';font-size: 25px;margin-top: -6px;" class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">'+color.icon+'</md-icon>';
+        $mdDialog.show(
+            {
+                targetEvent: e,
+                template:
+                '<md-dialog style="width: 450px;border-radius: 5px;">' +
+                '  <md-dialog-content style="padding: 0; ">' +
+                '<h2 style="background-color: '+color.bg+';font-size: 15px; padding: 10px;color: '+color.c+';">'+mdicon+' '+header+'</h2>' +
+                '<div style="padding: 10px;font-size: 13px;color: #5c5c5c;">'+content+'</div>' +
+                '</md-dialog-content>' +
+                '  <md-dialog-actions>' +
+                '<md-button ng-click="dialog.cancel()" style="color:'+color.bc+';font-weight: bold;">'+$rootScope.lang.general.gotit+'</md-button>'+
+                '  </md-dialog-actions>' +
+                '</md-dialog>',
+                controller: 'controller'
+               /* onComplete: afterShowAnimation,*/
+               /* locals: { employee: $scope.userName }*/
+            }
+        );
+        if(closeTime=="auto"){
+            var wordNum = content.split(" ").length;
+            var closeTime=(wordNum/1.5)*1000;
+            $timeout(function () {
+                $mdDialog.cancel();
+            },closeTime);
+        }else{
+            if(closeTime=="stay"){
+
+            }else{
+                closeTime=parseInt(closeTime);
+                if(closeTime>0){
+                    $timeout(function () {
+                        $mdDialog.cancel();
+                    },closeTime);
+                }
+            }
+
+        }
+
+
+    });
 });

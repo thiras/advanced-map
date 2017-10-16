@@ -21,7 +21,9 @@
     "timestamp": "Date - Time",
     "boolean": "True False 1/0",
     "delete": "Delete",
-    "search": "Search"
+    "search": "Search",
+    "warning":"Warning !...",
+    "gotit":"i got it !"
   },
   "menuToasts": {
     "general": {
@@ -62,8 +64,22 @@
       "label":"Find Building Licance Panel",
       "ownerName":"Name and Surname of Building Owner",
       "BuilderName":"Name and Surname of the Contractor"
-
-
+    },
+    "mesureLineArea":{
+      "label":"Length & Area Measurement",
+      "mesureName":"Measure Name : ",
+      "measure":"Measure",
+      "measureline":"Measure Line",
+      "lat":"Latitude",
+      "lng":"Longitude",
+      "getPointMap":"Get Points From the Map",
+      "measureTypes":["Measurement Units","Degree","Radian","Miles","Kilometers"],
+      "newMesure":"New Measure",
+      "alerts":{
+        "alert1":"Please Enter Latitude & Longitude Information",
+        "alert3":"The Longitude value must be between +90 and -90",
+        "alert2":"The Latitude value must be between +180 and -180"
+      }
     }
   },
   "menu": {

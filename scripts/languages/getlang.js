@@ -16,7 +16,7 @@ app.service("$getlang", function ($http) {
 
     })();
 
-    $lang="tr";
+    $lang="en";
 
     var $url = "scripts/languages/lang-" + $lang + ".json";
 
