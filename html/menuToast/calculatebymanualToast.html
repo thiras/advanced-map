@@ -51,10 +51,10 @@
                            {{sayi || 1}}
                         </div>
                         <md-input-container style="margin: 0;" flex="30" >
-                            <input type="number" max="90" min="-90" ng-focus="readyGetPoint(null,null);" ng-keyup="latControl(null,lat)" placeholder="{{lang.menuToasts.mesureLineArea.lat}}" ng-model="lat">
+                            <input type="number" max="90" min="-90"  ng-keyup="latControl(null,lat)" placeholder="{{lang.menuToasts.mesureLineArea.lat}}" ng-model="lat">
                         </md-input-container>
                         <md-input-container style="margin: 0;" flex="30" >
-                            <input type="number" max="180" min="-180" ng-focus="readyGetPoint(null,null);" ng-keyup="lngControl(null,lng)" placeholder="{{lang.menuToasts.mesureLineArea.lng}}" ng-model="lng">
+                            <input type="number" max="180" min="-180" ng-keyup="lngControl(null,lng)" placeholder="{{lang.menuToasts.mesureLineArea.lng}}" ng-model="lng">
                         </md-input-container>
                         <div style="margin: 0;" flex="15">
                             <md-button aa="<!--ng-disabled=!lng  || !lat-->" ng-click="addLatLngToLine(lng,lat)" id="plsButton" class="md-fab md-mini">
@@ -62,7 +62,10 @@
                             </md-button>
                         </div>
                         <div style="margin: 0;" flex="15">
-                            <md-button aa="<!--ng-disabled=!lng  || !lat-->" ng-click="addLatLngToLine(lng,lat)" id="plsButton" class="md-fab md-mini"><md-icon style="color:#aaa;" class="mat-icon material-icons accordion-icons" role="img" aria-hidden="true">location_off</md-icon>
+
+                            <md-button ng-if="clickMapAddPoint" aa="<!--ng-disabled=!lng  || !lat-->" ng-click="openGetLocationPoint(false)" id="plsButton" class="md-fab md-mini"><md-icon style="color:#2196f3;" class="mat-icon material-icons accordion-icons" role="img" aria-hidden="true">location_on</md-icon>
+                            </md-button>
+                            <md-button ng-if="!clickMapAddPoint" aa="<!--ng-disabled=!lng  || !lat-->" ng-click="openGetLocationPoint(true)" id="plsButton" class="md-fab md-mini"><md-icon style="color:#aaa;" class="mat-icon material-icons accordion-icons" role="img" aria-hidden="true">location_off</md-icon>
                             </md-button>
                         </div>
 

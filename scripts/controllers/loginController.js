@@ -1,5 +1,4 @@
-
-    app.config(function ($mdThemingProvider) {
+app.config(function ($mdThemingProvider) {
         $mdThemingProvider.theme('red')
             .primaryPalette('red');
 

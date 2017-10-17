@@ -33,6 +33,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.taxiSearchResults = $rootScope.taxi.taxiSearchResults;
     $scope.buildOwnerName = $rootScope.buildLicense.buildOwnerName;
     $scope.buildConstName = $rootScope.buildLicense.buildConstName;
+    $scope.clickMapAddPoint = false;
     $scope.buildTypes = [
         {value: 1, text: "Anıt"},
         {value: 2, text: "Cami"},
@@ -418,6 +419,8 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         }
     };
 
+    
+
     $scope.readyGetPoint=function(a,b){
         $rootScope.leaflet.on("click",function (e) {
             var lat = turf.round(e.latlng.lat, 6);
@@ -429,6 +432,14 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             $scope.addLatLngToLine($scope.lng,$scope.lat);
         });
     };
+    $scope.openGetLocationPoint = function (durum) {
+        if(durum==true){
+            $scope.clickMapAddPoint = true;
+        }else{
+            $scope.clickMapAddPoint = false;
+        }
+
+    }
 
 
 

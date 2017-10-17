@@ -131,7 +131,7 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
 
 
     $rootScope.$on("message",function (e,obj) {
-        debugger;
+
         var status = obj.status;
         var header = obj.header;
         var content = obj.content;
@@ -152,7 +152,7 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
         var mdicon = '<md-icon style="color:'+color.c+';font-size: 25px;margin-top: -6px;" class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">'+color.icon+'</md-icon>';
         $mdDialog.show(
             {
-                targetEvent: e,
+                targetEvent: null,
                 template:
                 '<md-dialog style="width: 450px;border-radius: 5px;">' +
                 '  <md-dialog-content style="padding: 0; ">' +
@@ -160,10 +160,10 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
                 '<div style="padding: 10px;font-size: 13px;color: #5c5c5c;">'+content+'</div>' +
                 '</md-dialog-content>' +
                 '  <md-dialog-actions>' +
-                '<md-button ng-click="dialog.cancel()" style="color:'+color.bc+';font-weight: bold;">'+$rootScope.lang.general.gotit+'</md-button>'+
+                '<md-button ng-click="cancel()" style="color:'+color.bc+';font-weight: bold;">'+$rootScope.lang.general.gotit+'</md-button>'+
                 '  </md-dialog-actions>' +
                 '</md-dialog>',
-                controller: 'controller'
+                controller: 'customDialog'
                /* onComplete: afterShowAnimation,*/
                /* locals: { employee: $scope.userName }*/
             }
