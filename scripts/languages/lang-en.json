@@ -66,10 +66,12 @@
       "BuilderName":"Name and Surname of the Contractor"
     },
     "mesureLineArea":{
-      "label":"Length & Area Measurement",
+      "label":"Length Measurement",
+      "label2":"Area Measurement",
       "mesureName":"Measure Name : ",
       "measure":"Measure",
       "measureline":"Measure Line",
+      "measureArea":"Measure Area",
       "lat":"Latitude",
       "lng":"Longitude",
       "getPointMap":"Get Points From the Map",

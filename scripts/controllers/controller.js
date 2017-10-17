@@ -1,4 +1,4 @@
-app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav, $rootScope, $window, $storage, $leftmenujson, $leafletFonk, $getlang,$mdDialog) {
+app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav, $rootScope, $window, $storage, $leftmenujson, $leafletFonk, $getlang, $mdDialog) {
 
     var lang = await $getlang;
     $rootScope.lang = lang.data;
@@ -19,30 +19,30 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
         filterMahalle: {},
         filterYol: {},
         filterNumarataj: {},
-        featureIl:false,
-        featureIlce:false,
-        featureMahalle:false,
-        featureYol:false,
-        featureKapi:false
+        featureIl: false,
+        featureIlce: false,
+        featureMahalle: false,
+        featureYol: false,
+        featureKapi: false
     };
     $rootScope.pharmacy = {
-        pharmacyName:"",
-        dutyPharmayControl:false,
-        pharmacySearchResults:false
+        pharmacyName: "",
+        dutyPharmayControl: false,
+        pharmacySearchResults: false
     };
     $rootScope.taxi = {
-        taxiName:"",
-        taxiSearchResults:false
+        taxiName: "",
+        taxiSearchResults: false
     };
     $rootScope.buildLicense = {
-        buildOwnerName:"",
-        buildConstName:""
+        buildOwnerName: "",
+        buildConstName: ""
     };
     document.querySelector('title').innerText = $rootScope.lang.general.title;
     $rootScope.parcell = {
         parcellLandNo: "",
         parcellNo: "",
-        parcellSearchResults:false
+        parcellSearchResults: false
     };
     $showFabDials = false;
     $scope.contextMenuShow = 0;
@@ -116,73 +116,73 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
     };
 
     function messageConroller($scope, $mdDialog) {
-        $scope.hide = function() {
+        $scope.hide = function () {
             $mdDialog.hide();
         };
 
-        $scope.cancel = function() {
+        $scope.cancel = function () {
             $mdDialog.cancel();
         };
 
-        $scope.answer = function(answer) {
+        $scope.answer = function (answer) {
             $mdDialog.hide(answer);
         };
     }
 
 
-    $rootScope.$on("message",function (e,obj) {
+    $rootScope.$on("message", function (e, obj) {
 
         var status = obj.status;
         var header = obj.header;
         var content = obj.content;
-        var closeTime = obj.time;
-        var color = {bg:"",c:""};
-        if(status=="success"){
-            var color = {bg:"#8bc34a",c:"#ffffff",bc:"#699b2e",icon:"check"};
+        closeTime = obj.time;
+        var color = {bg: "", c: ""};
+        if (status === "success") {
+            color = {bg: "#8bc34a", c: "#ffffff", bc: "#699b2e", icon: "check"};
         }
-        if(status=="error"){
-            var color = {bg:"#D84315",c:"#ffffff",bc:"#D84315",icon:"error"};
+        if (status === "error") {
+            color = {bg: "#D84315", c: "#ffffff", bc: "#D84315", icon: "error"};
         }
-        if(status=="warning"){
-            var color = {bg:"#ff9800",c:"#ffffff",bc:"#ec8d00",icon:"warning"};
+        if (status === "warning") {
+            color = {bg: "#ff9800", c: "#ffffff", bc: "#ec8d00", icon: "warning"};
         }
-        if(status=="info"){
-            var color = {bg:"#2196F3",c:"#ffffff",bc:"#0070c9",icon:"info"};
+        if (status === "info") {
+            color = {bg: "#2196F3", c: "#ffffff", bc: "#0070c9", icon: "info"};
         }
-        var mdicon = '<md-icon style="color:'+color.c+';font-size: 25px;margin-top: -6px;" class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">'+color.icon+'</md-icon>';
+        var mdicon = '<md-icon style="color:' + color.c + ';font-size: 25px;margin-top: -6px;" class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">' + color.icon + '</md-icon>';
         $mdDialog.show(
             {
                 targetEvent: null,
                 template:
                 '<md-dialog style="width: 450px;border-radius: 5px;">' +
                 '  <md-dialog-content style="padding: 0; ">' +
-                '<h2 style="background-color: '+color.bg+';font-size: 15px; padding: 10px;color: '+color.c+';">'+mdicon+' '+header+'</h2>' +
-                '<div style="padding: 10px;font-size: 13px;color: #5c5c5c;">'+content+'</div>' +
+                '<h2 style="background-color: ' + color.bg + ';font-size: 15px; padding: 10px;color: ' + color.c + ';">' + mdicon + ' ' + header + '</h2>' +
+                '<div style="padding: 10px;font-size: 13px;color: #5c5c5c;">' + content + '</div>' +
                 '</md-dialog-content>' +
                 '  <md-dialog-actions>' +
-                '<md-button ng-click="cancel()" style="color:'+color.bc+';font-weight: bold;">'+$rootScope.lang.general.gotit+'</md-button>'+
+                '<md-button ng-click="cancel()" style="color:' + color.bc + ';font-weight: bold;">' + $rootScope.lang.general.gotit + '</md-button>' +
                 '  </md-dialog-actions>' +
                 '</md-dialog>',
                 controller: 'customDialog'
-               /* onComplete: afterShowAnimation,*/
-               /* locals: { employee: $scope.userName }*/
+                /* onComplete: afterShowAnimation,*/
+                /* locals: { employee: $scope.userName }*/
             }
         );
-        if(closeTime=="auto"){
+        if (closeTime === "auto") {
             var wordNum = content.split(" ").length;
-            var closeTime=(wordNum/1.5)*1000;
+            var closeTime = (wordNum / 1.5) * 1000;
             $timeout(function () {
                 $mdDialog.cancel();
-            },closeTime);
-        }else{
-            if(closeTime=="stay"){
+            }, closeTime);
+        } else {
+            if (closeTime === "stay") {
 
-            }else{
-                closeTime=parseInt(closeTime);
-                if(closeTime>0){
+            } else {
+                closeTime = parseInt(closeTime);
+                if (closeTime > 0) {
                     $timeout(function () {
                         $mdDialog.cancel();
-                    },closeTime);
+                    }, closeTime);
                 }
             }
 

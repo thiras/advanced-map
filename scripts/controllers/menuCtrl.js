@@ -1,4 +1,4 @@
-app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $timeout, $mdDialog,$leafletFonk) {
+app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $timeout, $mdDialog, $leafletFonk) {
     $scope.lang = $rootScope.lang;
     $scope.il = $sahtejson.il;
     $scope.ilce = $sahtejson.ilce;
@@ -33,7 +33,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.taxiSearchResults = $rootScope.taxi.taxiSearchResults;
     $scope.buildOwnerName = $rootScope.buildLicense.buildOwnerName;
     $scope.buildConstName = $rootScope.buildLicense.buildConstName;
-    $scope.clickMapAddPoint = false;
+    $scope.clickMapAddPoint = $rootScope.clickMapAddPoint || false;
     $scope.buildTypes = [
         {value: 1, text: "Anıt"},
         {value: 2, text: "Cami"},
@@ -52,11 +52,19 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         {value: 15, text: "Türbe"},
     ];
     $scope.mesureTypesOpt = [
-        {value:"degrees",text:$rootScope.lang.menuToasts.mesureLineArea.measureTypes[1]},
-        {value:"radians",text:$rootScope.lang.menuToasts.mesureLineArea.measureTypes[2]},
-        {value:"miles",text:$rootScope.lang.menuToasts.mesureLineArea.measureTypes[3]},
-        {value:"kilometers",text:$rootScope.lang.menuToasts.mesureLineArea.measureTypes[4]}
-        ];
+        {value: "degrees", text: $rootScope.lang.menuToasts.mesureLineArea.measureTypes[1]},
+        {value: "radians", text: $rootScope.lang.menuToasts.mesureLineArea.measureTypes[2]},
+        {value: "miles", text: $rootScope.lang.menuToasts.mesureLineArea.measureTypes[3]},
+        {value: "kilometers", text: $rootScope.lang.menuToasts.mesureLineArea.measureTypes[4]}
+    ];
+    $scope.measureType =$rootScope.measureType || "kilometers";
+    $scope.activeMeasureType = function () {
+        $rootScope.measureType=$scope.measureType;
+    };
+    $scope.panelName = $rootScope.menuPanelName;
+    $scope.onMouseOverPoint = false;
+    $scope.lastPoint = false;
+    $scope.nowPoint = false;
 
 
     $scope.setParcellLandNo = function () {
@@ -203,7 +211,6 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
 
     $scope.changeKapiNo = function (yolid) {
-        debugger;
         $scope.filterNumarataj = {};
         for (i in $scope.yol) {
             if (yolid == $scope.yol[i].id) {
@@ -295,148 +302,324 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.close = function () {
         $mdDialog.cancel();
     };
-
-    $scope.measureLines = $rootScope.measureLines || [{name:"1. "+$rootScope.lang.menuToasts.mesureLineArea.measureline,id:1,latlng:[],latlngs:[],feature:false,show:true,measure:0}];
-    $rootScope.measureLines=$rootScope.measureLines || $scope.measureLines;
-    $scope.measureCalc=$rootScope.measureCalc || 0;
+    if($scope.panelName.fonk=="openDrawRulerByManuel"){
+        var nam =$rootScope.lang.menuToasts.mesureLineArea.measureline;
+    }
+    if($scope.panelName.fonk=="openDrawAreaByMouse"){
+        var nam =$rootScope.lang.menuToasts.mesureLineArea.measureArea;
+    }
+    $scope.measureLines = $rootScope.measureLines || [{
+        name: "1. " + nam,
+        id: 1,
+        latlng: [],
+        latlngs: [],
+        feature: false,
+        show: true,
+        measure: 0
+    }];
+    $rootScope.measureLines = $rootScope.measureLines || $scope.measureLines;
+    $scope.measureCalc = $rootScope.measureCalc || 0;
     $scope.measureName = $scope.measureLines[$scope.measureCalc].name;
     $scope.measureLineLatLng = $scope.measureLines[$scope.measureCalc].latlng || [];
 
-    $scope.sayi =  $rootScope.measureLineLatLngLenght || 1;
+    $scope.sayi = $rootScope.measureLineLatLngLenght || 1;
 
-    $scope.setMeasureName=function () {
+    $scope.setMeasureName = function () {
         $scope.measureLines[$scope.measureCalc].name = $scope.measureName;
     };
     $scope.newMeasureLine = function () {
-        debugger;
-        var next = $scope.measureCalc+2;
-        $scope.measureCalc=next-1;
-        $scope.measureLines.push({name:next+". "+$rootScope.lang.menuToasts.mesureLineArea.measureline,id:next,latlng:[],latlngs:[],feature:false,show:true,measure:0});
-        $scope.measureName=next+". "+$rootScope.lang.menuToasts.mesureLineArea.measureline;
-        $rootScope.measureLines=$scope.measureLines;
-        $rootScope.measureCalc=$scope.measureCalc;
+        var next = $scope.measureCalc + 2;
+        lastLine.remove();
+        measureDivicon.remove();
+        $scope.lastPoint=false;
+        $scope.measureCalc = next - 1;
+        $rootScope.measureCalc = $scope.measureCalc;
+        if($scope.panelName.fonk=="openDrawRulerByManuel"){
+            var nam =$rootScope.lang.menuToasts.mesureLineArea.measureline;
+        }
+        if($scope.panelName.fonk=="openDrawAreaByMouse"){
+            var nam =$rootScope.lang.menuToasts.mesureLineArea.measureArea;
+        }
+        $scope.measureLines.push({
+            name: next + ". " + nam,
+            id: next,
+            latlng: [],
+            latlngs: [],
+            feature: false,
+            show: true,
+            measure: 0
+        });
+        if($scope.panelName.fonk=="openDrawRulerByManuel"){
+            var nam =$rootScope.lang.menuToasts.mesureLineArea.measureline;
+        }
+        if($scope.panelName.fonk=="openDrawAreaByMouse"){
+            var nam =$rootScope.lang.menuToasts.mesureLineArea.measureArea;
+        }
+        $scope.measureName = next + ". " +nam;
+        $rootScope.measureLines = $scope.measureLines;
         $scope.measureLineLatLng = $scope.measureLines[$scope.measureCalc].latlng || [];
-        $scope.sayi = $scope.measureLineLatLng.length+1;
-        $rootScope.measureLineLatLngLenght=$scope.sayi;
-        $scope.lng="";
-        $scope.lat="";
+        $scope.sayi = $scope.measureLineLatLng.length + 1;
+        $rootScope.measureLineLatLngLenght = $scope.sayi;
+        $scope.lng = "";
+        $scope.lat = "";
     };
 
     $scope.addLatLngToLine = function (lng, lat) {
-        if (lng != null && lat!=null) {
+        if (lng != null && lat != null) {
             $scope.measureLines[$scope.measureCalc].latlng.push({sayi: $scope.sayi, lng: lng, lat: lat});
-            $scope.measureLines[$scope.measureCalc].latlngs.push([lat,lng]);
+            $scope.measureLines[$scope.measureCalc].latlngs.push([lat, lng]);
             $rootScope.measureLines = $scope.measureLines;
             $scope.sayi += 1;
-            $rootScope.measureLineLatLngLenght=$scope.sayi;
-            var measureLine = L.polyline($scope.measureLines[$scope.measureCalc].latlng, {color: 'green'});
-            var geojson = measureLine.toGeoJSON();
-            var measureL = turf.lineDistance(geojson, 'kilometers');
-            $scope.measureLines[$scope.measureCalc].measure = turf.round(measureL*1000,3);
-            if($scope.measureLines[$scope.measureCalc].feature==false){
-                $scope.measureLines[$scope.measureCalc].feature =measureLine;
-                measureLine.addTo($rootScope.leaflet);
-            }else{
-                $scope.measureLines[$scope.measureCalc].feature.remove();
-                $scope.measureLines[$scope.measureCalc].feature =measureLine;
-                measureLine.addTo($rootScope.leaflet);
+            $rootScope.measureLineLatLngLenght = $scope.sayi;
+            var dz =$scope.measureLines[$scope.measureCalc].latlng;
+            changeMeasueGeometry();
+            /*if($scope.panelName.fonk=="openDrawRulerByManuel"){
+                var measureLine = L.polyline(dz, {color: 'green'});
             }
-        }else{
-            $rootScope.$emit("message",{
-                status:"warning",
-                header:$rootScope.lang.general.warning,
-                content:$rootScope.lang.menuToasts.mesureLineArea.alerts.alert1,
-                time:"auto"});
+            if($scope.panelName.fonk=="openDrawAreaByMouse"){
+                var measureLine = L.polygon(dz, {color: 'green'});
+            }
+            var geojson = measureLine.toGeoJSON();
+
+            if($scope.panelName.fonk=="openDrawRulerByManuel"){
+                var measureL = turf.lineDistance(geojson, $scope.measureType);
+                $scope.measureLines[$scope.measureCalc].measure = turf.round(measureL * 1000, 3);
+            }
+            if($scope.panelName.fonk=="openDrawAreaByMouse"){
+                var measureL = turf.area(geojson, $scope.measureType);
+                $scope.measureLines[$scope.measureCalc].measure = turf.round(measureL * 1, 3);
+            }
+
+            if ($scope.measureLines[$scope.measureCalc].feature == false) {
+                $scope.measureLines[$scope.measureCalc].feature = measureLine;
+                measureLine.addTo($rootScope.leaflet);
+            } else {
+                $scope.measureLines[$scope.measureCalc].feature.remove();
+                $scope.measureLines[$scope.measureCalc].feature = measureLine;
+                measureLine.addTo($rootScope.leaflet);
+            }*/
+        } else {
+            $rootScope.$emit("message", {
+                status: "warning",
+                header: $rootScope.lang.general.warning,
+                content: $rootScope.lang.menuToasts.mesureLineArea.alerts.alert1,
+                time: "auto"
+            });
         }
     };
     $scope.removeLatLngToLine = function (i) {
-        console.log($scope.measureLineLatLng);
-        $scope.measureLineLatLng.splice(i, 1);
-        var measureLine = L.polyline($scope.measureLines[$scope.measureCalc].latlng, {color: 'green'});
-        var geojson = measureLine.toGeoJSON();
-        var measureL = turf.lineDistance(geojson, 'kilometers');
-        $scope.measureLines[$scope.measureCalc].measure = turf.round(measureL*1000,3);
-        if($scope.measureLines[$scope.measureCalc].feature==false){
-            $scope.measureLines[$scope.measureCalc].feature =measureLine;
+        var newi = false;
+        for(a in $scope.measureLineLatLng){
+            if($scope.measureLineLatLng[a].sayi==i){
+                newi=a;
+            }
+        }
+        if(newi!==false && newi>=0){
+            $scope.measureLineLatLng.splice(newi, 1);
+            $scope.showLocation(0,0,false);
+            changeMeasueGeometry();
+        }
+
+    };
+
+
+    $scope.changeLat = function (ind, lat,j) {
+        var ij = 0;
+        if (lat == "" || lat == null) {
+            lat = "";
+        }
+        if (lat >= -90 && lat <= 90) {
+            lat = parseFloat(lat);
+            if (ind == null) {
+                $scope.lat = lat;
+            } else {
+                var a = $scope.measureLines[ind].latlng;
+                for(i in a){
+                    if(a[i].sayi==j){
+                        ij=i;
+                        a[i].lat=lat;
+                        $scope.measureLines[ind].latlngs[i][0]=lat;
+                    }
+                }
+            }
+        } else {
+            $rootScope.$emit("message", {
+                status: "warning",
+                header: $rootScope.lang.general.warning,
+                content: $rootScope.lang.menuToasts.mesureLineArea.alerts.alert3,
+                time: "auto"
+            });
+
+            if (ind == null) {
+                $scope.lat = "";
+            } else {
+                var a = $scope.measureLines[ind].latlng;
+                for(i in a){
+                    if(a[i].sayi==j){
+                        $scope.measureLineLatLng[i].lat = 0;
+                    }
+                }
+
+            }
+        }
+        changeMeasueGeometry();
+
+    };
+    $scope.changeLng = function (ind, lng,j) {
+        var ij = 0;
+        if (lng == "" || lng == null) {
+            lng = "";
+        }
+        if (lng >= -180 && lng <= 180) {
+            lng = parseFloat(lng);
+            if (ind == null) {
+                $scope.lng = lng;
+            } else {
+                var a = $scope.measureLines[ind].latlng;
+                for(i in a){
+
+                    if(a[i].sayi==j){
+                        ij=i;
+                        a[i].lng=lng;
+                        $scope.measureLines[ind].latlngs[i][1]=lng;
+                    }
+                }
+            }
+        } else {
+            $rootScope.$emit("message", {
+                status: "warning",
+                header: $rootScope.lang.general.warning,
+                content: $rootScope.lang.menuToasts.mesureLineArea.alerts.alert3,
+                time: "auto"
+            });
+
+            if (ind == null) {
+                $scope.lng = "";
+            } else {
+                $scope.measureLineLatLng[ij].lng = 0;
+            }
+        }
+        changeMeasueGeometry();
+
+    };
+
+    function changeMeasueGeometry() {
+        if($scope.panelName.fonk=="openDrawRulerByManuel"){
+            var measureLine = L.polyline($scope.measureLines[$scope.measureCalc].latlng, {color: 'green'});
+            var geojson = measureLine.toGeoJSON();
+            var measureL = turf.lineDistance(geojson, $scope.measureType);
+            $scope.measureLines[$scope.measureCalc].measure = turf.round(measureL * 1000, 3);
+        }
+        if($scope.panelName.fonk=="openDrawAreaByMouse"){
+            var measureLine = L.polygon($scope.measureLines[$scope.measureCalc].latlng, {color: 'green'});
+            var geojson = measureLine.toGeoJSON();
+            var measureL = turf.lineDistance(geojson, $scope.measureType);
+            $scope.measureLines[$scope.measureCalc].measure = turf.round(measureL * 1, 3);
+        }
+        if ($scope.measureLines[$scope.measureCalc].feature == false) {
+            $scope.measureLines[$scope.measureCalc].feature = measureLine;
             measureLine.addTo($rootScope.leaflet);
 
-        }else{
+        } else {
             $scope.measureLines[$scope.measureCalc].feature.remove();
-            $scope.measureLines[$scope.measureCalc].feature =measureLine;
+            $scope.measureLines[$scope.measureCalc].feature = measureLine;
             measureLine.addTo($rootScope.leaflet);
         }
+    }
 
-    };
+    function clickMap(e) {
+        var lat = turf.round(e.latlng.lat, 6);
+        var lng = turf.round(e.latlng.lng, 6);
+        $rootScope.clickLat = lat;
+        $rootScope.clickLng = lng;
+        $scope.lng = lng;
+        $scope.lat = lat;
+        $scope.lastPoint = {lat:lat,lng:lng};
+        $scope.addLatLngToLine($scope.lng, $scope.lat);
+    }
 
-    $scope.lngControl = function (ind,lng) {
-
-        if(lng=="" || lng==null){lng="";}
-        if (lng>=-180 && lng<=180) {
-            lng=parseFloat(lng);
-            if(ind==null){
-                $scope.lng=lng;
-            }else{
-                $scope.measureLineLatLng[ind].lng=lng;
-            }
-
-        }else{
-            $rootScope.$emit("message",{
-                status:"warning",
-                header:$rootScope.lang.general.warning,
-                content:$rootScope.lang.menuToasts.mesureLineArea.alerts.alert2,
-                time:"auto"});
-            if(ind==null){
-                $scope.lng="";
-            }else{
-                $scope.measureLineLatLng[ind].lng=0;
-            }
-        }
-    };
-    
-    
-    $scope.latControl=function (ind,lat) {
-
-        if(lat=="" || lat==null){lat="";}
-        if (lat>=-90 && lat<=90) {
-            lat=parseFloat(lat);
-            if(ind==null){
-                $scope.lat=lat;
-            }else{
-                $scope.measureLineLatLng[ind].lat=lat;
-            }
-        }else{
-            $rootScope.$emit("message",{
-                status:"warning",
-                header:$rootScope.lang.general.warning,
-                content:$rootScope.lang.menuToasts.mesureLineArea.alerts.alert3,
-                time:"auto"});
-
-            if(ind==null){
-                $scope.lat="";
-            }else{
-                $scope.measureLineLatLng[ind].lat=0;
-            }
-        }
-    };
-
-    
-
-    $scope.readyGetPoint=function(a,b){
-        $rootScope.leaflet.on("click",function (e) {
-            var lat = turf.round(e.latlng.lat, 6);
-            var lng = turf.round(e.latlng.lng, 6);
-            $rootScope.clickLat =lat;
-            $rootScope.clickLng = lng;
-            $scope.lng=lng;
-            $scope.lat=lat;
-            $scope.addLatLngToLine($scope.lng,$scope.lat);
-        });
-    };
     $scope.openGetLocationPoint = function (durum) {
-        if(durum==true){
+        if (durum == true) {
             $scope.clickMapAddPoint = true;
-        }else{
+            $rootScope.clickMapAddPoint=true;
+            $rootScope.leaflet.on("click", clickMap);
+            $rootScope.leaflet.on("mousemove", mouveMap);
+            angular.element(document.getElementById('map')).css("cursor","crosshair");
+        } else {
             $scope.clickMapAddPoint = false;
+            $rootScope.clickMapAddPoint=false;
+            $rootScope.leaflet.off("click", clickMap);
+            $rootScope.leaflet.off("mousemove", mouveMap);
+            lastLine.remove();
+            measureDivicon.remove();
+            angular.element(document.getElementById('map')).css("cursor","pointer");
+        }
+
+    }
+
+    $scope.deleteMeasureLine=function (i) {
+        i=parseInt(i);
+        for(a in $scope.measureLines){
+            if($scope.measureLines[a].id==i){
+                $scope.measureLines[a].feature.remove();
+                $scope.measureLines.splice(a, 1);
+            }
+        }
+    };
+    $scope.showMeasureLine = function (i) {
+        i=parseInt(i);
+        for(a in $scope.measureLines){
+            if($scope.measureLines[a].id==i){
+                var feat = $scope.measureLines[a].feature;
+                feat.setStyle({color:"red"});
+                var bbx = feat.getBounds();
+                $rootScope.leaflet.fitBounds(bbx);
+                $timeout(function () {
+                    feat.setStyle({color:"green"});
+                },1000);
+
+            }
+        }
+    };
+    var lastLine = L.polyline([[0,0],[0,0]], {color: 'red',dashArray:"10 10"});
+    var measureDivicon =  L.marker([0,0], {icon:L.divIcon({
+        className: "textLabelclass",
+        html: '<div><span id="measureDivIcon"></span></div>'
+    })});
+    function mouveMap(e) {
+        if($scope.lastPoint!==false){
+        $scope.nowPoint = {lat:e.latlng.lat,lng:e.latlng.lng};
+        lastLine.remove();
+        measureDivicon.remove();
+        var latlngs = [$scope.lastPoint,$scope.nowPoint];
+        lastLine = L.polyline(latlngs, {color: 'red',dashArray:"5 5"});
+        lastLine.addTo($rootScope.leaflet);
+        var defa = $scope.measureLines[$scope.measureCalc].measure;
+        var mes = defa+$rootScope.leaflet.distance($scope.lastPoint,$scope.nowPoint);
+        mes = turf.round(mes * 1, 3);
+        var html = '<div><span id="measureDivIcon">'+mes+'m</span></div>';
+        measureDivicon =  L.marker($scope.nowPoint, {icon:L.divIcon({
+            className: "textLabelclass",
+            html: html
+        })});
+        measureDivicon.addTo($rootScope.leaflet);
+        }
+    }
+    $scope.showLocation=function(lat,lng,status){
+        if(status==true){
+            var latlng = L.latLng(lat,lng);
+            var nokta  = L.circleMarker(latlng,{radius:10,color:"red"});
+            if($scope.onMouseOverPoint==false){
+                $scope.onMouseOverPoint=nokta;
+                $scope.onMouseOverPoint.addTo($rootScope.leaflet);
+
+            }else{
+                $scope.onMouseOverPoint.setLatLng(latlng);
+            }
+        }else{
+
+            $scope.onMouseOverPoint.remove();
+            $scope.onMouseOverPoint=false;
         }
 
     }

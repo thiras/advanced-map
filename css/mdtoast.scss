@@ -10,38 +10,35 @@ md-toast {
 
 }*/
 
-
-
 md-toast {
-z-index: 15;
-  width:390px;
+  z-index: 15;
+  width: 390px;
   display: inline-flex;
   .md-toast-content {
     text-align: left;
     background: #ffffff;
     padding: 3px !important;
 
-    md-icon{
+    md-icon {
       outline: none;
       cursor: pointer;
     }
   }
 
-
-  form{
+  form {
 
     margin-top: -62px;
     margin-left: -11px;
     margin-right: -3px;
     padding: 0;
   }
-  .searchButton{
+  .searchButton {
     background-color: #2196f3 !important;
-    md-icon{
+    md-icon {
       color: #f4f7fa !important;
     }
   }
-  .closeButton{
+  .closeButton {
     margin-right: 20px !important;
     background-color: #F5F5F5 !important; /*#dadada*/
     color: #7d7d7d !important;
@@ -49,17 +46,16 @@ z-index: 15;
 
 }
 
-md-toast#drawTool{
+md-toast#drawTool {
 
-  .md-toast-content{
-    color:#34495e;
+  .md-toast-content {
+    color: #34495e;
 
   }
 
 }
 
-
-md-toast#menuToasts{
+md-toast#menuToasts {
 
   position: fixed;
   top: 58px;
@@ -72,24 +68,21 @@ md-toast#menuToasts{
 
   .md-toast-content {
     width: 400px;
-    height:auto !important;
+    height: auto !important;
     display: inline-table;
 
-
-      color:#2196f3;
+    color: #2196f3;
 
   }
-  h2{
-    color:#fff;
+  h2 {
+    color: #fff;
   }
-
 
 }
 
-#findParcelToast{
+#findParcelToast {
 
-
-  md-input-container{
+  md-input-container {
 
     margin-bottom: -20px;
     margin-top: 4px;
@@ -97,34 +90,37 @@ md-toast#menuToasts{
   }
 }
 
-md-toast#findProprietary{
+md-toast#findProprietary {
 
   @extend #menuToasts;
 
-  md-input-container{
+  md-input-container {
 
     margin-top: 5px;
     margin-bottom: -20px;
   }
 }
 
-md-toast#fndBldLsToast{
-
-
+md-toast#fndBldLsToast {
 
   @extend #menuToasts;
 
 }
-#calculatebymanuel{
+
+#calculatebymanuel {
 
   @extend #menuToasts;
 }
 
+#calculatearea {
 
-#listLtdLng{
+  @extend #menuToasts;
+}
 
-  md-input-container{
+#listLtdLng {
 
-    height:15px;
+  md-input-container {
+
+    height: 15px;
   }
 }

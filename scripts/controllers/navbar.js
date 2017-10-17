@@ -1,4 +1,4 @@
-app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $rootScope,$mdToast) {
+app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $rootScope, $mdToast) {
 
     /*navbar menusu event ve fonksiyonları içeririr*/
     $scope.menuJSON = $accordion;
@@ -37,11 +37,11 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
 
 
     $scope.factoryDesign = function (fn) {
-
+        $rootScope.menuPanelName=fn;
         $scope[fn["fonk"]]();
     }
 
-    $scope.findAdressPanel=function () {
+    $scope.findAdressPanel = function () {
         $rootScope.$emit("closeNavbar", "closeNavbar");
         $mdToast.show({
             hideDelay: 0,
@@ -51,7 +51,7 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
         });
     };
 
-    $scope.findParcellPanel=function () {
+    $scope.findParcellPanel = function () {
         $rootScope.$emit("closeNavbar", "closeNavbar");
         $mdToast.show({
             hideDelay: 0,
@@ -61,7 +61,7 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
         });
     };
 
-    $scope.findTaxiAtAdress=function () {
+    $scope.findTaxiAtAdress = function () {
         $rootScope.$emit("closeNavbar", "closeNavbar");
         $mdToast.show({
             hideDelay: 0,
@@ -71,7 +71,7 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
         });
     };
 
-    $scope.findPharmacyAtAdress=function () {
+    $scope.findPharmacyAtAdress = function () {
         $rootScope.$emit("closeNavbar", "closeNavbar");
         $mdToast.show({
             hideDelay: 0,
@@ -82,7 +82,7 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
     };
 
 
-    $scope.findProprietary=function () {
+    $scope.findProprietary = function () {
 
         $rootScope.$emit("closeNavbar", "closeNavbar");
         $mdToast.show({
@@ -93,7 +93,7 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
         });
 
     }
-    $scope.findBuildingLicence=function () {
+    $scope.findBuildingLicence = function () {
 
         $rootScope.$emit("closeNavbar", "closeNavbar");
         $mdToast.show({
@@ -104,25 +104,25 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
         });
     }
 
-    $scope.openHelpUsingApp=function (ev) {
+    $scope.openHelpUsingApp = function (ev) {
 
         $mdDialog.show({
-            controller:'menuCtrl',
+            controller: 'menuCtrl',
             templateUrl: 'html/help/help1.html',
             parent: angular.element(document.body),
             targetEvent: ev,
-            clickOutsideToClose:true,
+            clickOutsideToClose: true,
             fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
         })
-            .then(function(answer) {
+            .then(function (answer) {
                 $scope.status = 'You said the information was "' + answer + '".';
-            }, function() {
+            }, function () {
                 $scope.status = 'You cancelled the dialog.';
             });
     }
 
 
-    $scope.openDrawRulerByManuel=function () {
+    $scope.openDrawRulerByManuel = function () {
         $rootScope.$emit("closeNavbar", "closeNavbar");
         $mdToast.show({
             hideDelay: 0,
@@ -133,14 +133,26 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
 
     };
 
-   /* $scope.openDrawAreaByManuel=function () {
+    $scope.openDrawAreaByMouse=function () {
         $rootScope.$emit("closeNavbar", "closeNavbar");
         $mdToast.show({
             hideDelay: 0,
             position: 'top left',
             controller: 'menuCtrl',
-            templateUrl: 'html/menuToast/calculatebymanualToast.html',
+            templateUrl: 'html/menuToast/calculateareaToast.html',
         });
+
+
     }
-*/
+
+    /* $scope.openDrawAreaByManuel=function () {
+         $rootScope.$emit("closeNavbar", "closeNavbar");
+         $mdToast.show({
+             hideDelay: 0,
+             position: 'top left',
+             controller: 'menuCtrl',
+             templateUrl: 'html/menuToast/calculatebymanualToast.html',
+         });
+     }
+ */
 });

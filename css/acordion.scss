@@ -8,9 +8,7 @@ button.accordion {
   text-align: left;
   outline: none;
   font-size: 15px;
-@include vp-transition(all 0.4s);
-
-
+  @include vp-transition(all 0.4s);
 
 }
 
@@ -32,28 +30,38 @@ button.accordion.active:after {
 }
 
 div.panel {
-  background-color:#eeeeee;
+  background-color: #eeeeee;
 
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 
-  md-list{
-    padding:0;
-    width:100%;
+  md-list {
+    padding: 0;
+    width: 100%;
   }
 
-  md-list-item{
+  md-list-item {
     cursor: pointer;
     background: white;
-    border-bottom:1px solid rgba(0,0,0,0.12);
-    color:#555;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    color: #555;
     font-size: .8em;
   }
 
-
 }
-.accordion-icons{
 
-  margin-top:-6.5px;
+.accordion-icons {
+
+  margin-top: -6.5px;
+}
+#measureDivIcon{
+  display: inline-flex;
+  margin-left: 20px;
+  background-color: #939393;
+  padding: 4px;
+  border-radius: 20px;
+  color: #fff;
+  border: 1px solid #777;
+  width: auto;
 }
