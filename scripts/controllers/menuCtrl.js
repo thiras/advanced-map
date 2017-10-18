@@ -35,7 +35,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.buildConstName = $rootScope.buildLicense.buildConstName;
     $scope.clickMapAddPoint = $rootScope.clickMapAddPoint || false;
     $scope.buildTypes = [
-        {value: 1, text: "Anıtkabir"},
+        {value: 1, text: "Anıt"},
         {value: 2, text: "Cami"},
         {value: 3, text: "Çeşme"},
         {value: 4, text: "Darül Hüffaz"},
