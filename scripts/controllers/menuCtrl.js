@@ -642,6 +642,19 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
     }
 
+
+    $scope.showPharmacy = function () {
+
+        $scope.dataShowPharmacy = {
+            pharmacyName: $scope.pharmacyName,
+            dutyPharmayControl: $scope.dutyPharmayControl,
+            secilenIl:$scope.secilenIl,
+            secilenIlce:$scope.secilenIlce,
+            secilenMahalle:$scope.secilenMahalle
+        };
+        alert(JSON.stringify($scope.dataShowPharmacy));
+
+    }
     //$rootScope.$emit("opendialog",{status:"warning",header:"Deneme Başlığı",content:"İçerik Buraya Gelecek",time:2000});
 
 });
