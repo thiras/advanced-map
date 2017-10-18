@@ -19,6 +19,8 @@
 
 * [Ali Kılıç](https://github.com/gislayer)
 
+*dılo abinin yeri
+
 
 
 angular.element(body).scope().leaflet.createMap(iat,lng);
