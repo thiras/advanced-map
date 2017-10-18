@@ -97,7 +97,6 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
     };
 
-
     $scope.changeIlce = function (ilid) {
 
         $scope.filterIlce = {};
@@ -165,8 +164,6 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
 
     }
-
-
     $scope.changeYol = function (mahalleid) {
         $scope.filterYol = {};
         for (i in $scope.mahalle) {
@@ -208,8 +205,6 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             }
         }
     }
-
-
     $scope.changeKapiNo = function (yolid) {
         $scope.filterNumarataj = {};
         for (i in $scope.yol) {
@@ -255,7 +250,6 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             }
         }
     }
-
     $scope.showKapiNo = function (numaratajid) {
 
         for (i in $scope.numarataj) {
@@ -298,10 +292,10 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         }
     }
 
-
     $scope.close = function () {
         $mdDialog.cancel();
     };
+
     if($scope.panelName.fonk=="openDrawRulerByManuel"){
         var nam =$rootScope.lang.menuToasts.mesureLineArea.measureline;
     }
@@ -317,6 +311,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         show: true,
         measure: 0
     }];
+
     $rootScope.measureLines = $rootScope.measureLines || $scope.measureLines;
     $scope.measureCalc = $rootScope.measureCalc || 0;
     $scope.measureName = $scope.measureLines[$scope.measureCalc].name;
@@ -373,31 +368,6 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             $rootScope.measureLineLatLngLenght = $scope.sayi;
             var dz =$scope.measureLines[$scope.measureCalc].latlng;
             changeMeasueGeometry();
-            /*if($scope.panelName.fonk=="openDrawRulerByManuel"){
-                var measureLine = L.polyline(dz, {color: 'green'});
-            }
-            if($scope.panelName.fonk=="openDrawAreaByMouse"){
-                var measureLine = L.polygon(dz, {color: 'green'});
-            }
-            var geojson = measureLine.toGeoJSON();
-
-            if($scope.panelName.fonk=="openDrawRulerByManuel"){
-                var measureL = turf.lineDistance(geojson, $scope.measureType);
-                $scope.measureLines[$scope.measureCalc].measure = turf.round(measureL * 1000, 3);
-            }
-            if($scope.panelName.fonk=="openDrawAreaByMouse"){
-                var measureL = turf.area(geojson, $scope.measureType);
-                $scope.measureLines[$scope.measureCalc].measure = turf.round(measureL * 1, 3);
-            }
-
-            if ($scope.measureLines[$scope.measureCalc].feature == false) {
-                $scope.measureLines[$scope.measureCalc].feature = measureLine;
-                measureLine.addTo($rootScope.leaflet);
-            } else {
-                $scope.measureLines[$scope.measureCalc].feature.remove();
-                $scope.measureLines[$scope.measureCalc].feature = measureLine;
-                measureLine.addTo($rootScope.leaflet);
-            }*/
         } else {
             $rootScope.$emit("message", {
                 status: "warning",
@@ -623,6 +593,8 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         }
 
     }
+
+    alert("Dılonun Deişikliği");
 
 
 
