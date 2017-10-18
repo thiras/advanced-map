@@ -15,7 +15,7 @@
 
 
 * Dılo sürücü </br>
-*FFF
+
 * [Ali Kılıç](https://github.com/gislayer)
 
 
