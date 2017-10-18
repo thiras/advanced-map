@@ -4,6 +4,7 @@
 * Çoklu dil desteği mevcut
 * gelişmiş çizim editörü
 * socket desteği
+*deneme deneme
 
 
 
