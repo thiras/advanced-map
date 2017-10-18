@@ -780,6 +780,12 @@ md-toast#findProprietary md-input-container {
 #listLtdLng md-input-container {
   height: 15px; }
 
+#closeDrawToast {
+  margin-left: 3px;
+  cursor: pointer; }
+  #closeDrawToast:hover {
+    color: red; }
+
 .grayfilter {
   filter: grayscale(100%);
   -webkit-transition: 0.3s all;

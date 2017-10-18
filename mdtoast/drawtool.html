@@ -1,4 +1,4 @@
-<md-toast id="drawTool">
+<md-toast   id="drawTool">
  <span class="md-toast-text" flex>{{lang.toolEdit.label}}</span>
 <md-menu-bar style="padding: 0;">
     <md-menu>
@@ -46,5 +46,8 @@
 
     </md-icon>
     </md-button>
-    <md-button class="md-raised md-warn md-button md-ink-ripple md-button" style="margin-left:3px;" ng-click="closeToast()" md-svg-src="img/icons/plus.svg">kapat</md-button>
+    <md-button class="md-icon-button test-tooltip" aria-label="Refresh" id="closeDrawToast" ng-click="closeToast()" md-svg-src="img/icons/plus.svg">
+        <md-tooltip>{{lang.general.close}}</md-tooltip>
+        <i class="material-icons">close</i>
+    </md-button>
 </md-toast>

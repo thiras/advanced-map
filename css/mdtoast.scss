@@ -46,7 +46,11 @@ md-toast {
 
 }
 
+
 md-toast#drawTool {
+
+
+
 
   .md-toast-content {
     color: #34495e;
@@ -124,3 +128,16 @@ md-toast#fndBldLsToast {
     height: 15px;
   }
 }
+
+#closeDrawToast{
+
+margin-left:3px;
+  cursor: pointer;
+
+  &:hover{
+
+    color:red;
+
+  }
+}
+

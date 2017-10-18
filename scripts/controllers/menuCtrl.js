@@ -648,11 +648,27 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         $scope.dataShowPharmacy = {
             pharmacyName: $scope.pharmacyName,
             dutyPharmayControl: $scope.dutyPharmayControl,
-            secilenIl:$scope.secilenIl,
-            secilenIlce:$scope.secilenIlce,
-            secilenMahalle:$scope.secilenMahalle
+            secilenIl: $scope.secilenIl,
+            secilenIlce: $scope.secilenIlce,
+            secilenMahalle: $scope.secilenMahalle
         };
         alert(JSON.stringify($scope.dataShowPharmacy));
+
+    }
+
+    $scope.showBuildingLis = function () {
+
+
+        $scope.dataShowBuildlis = {
+            buildOwnerName: $scope.buildOwnerName,
+            buildConstName: $scope.buildConstName,
+            secilenIl: $scope.secilenIl,
+            secilenIlce:$scope.secilenIlce,
+            secilenMahalle:$scope.secilenMahalle
+
+        }
+
+        alert(JSON.stringify($scope.dataShowBuildlis));
 
     }
     //$rootScope.$emit("opendialog",{status:"warning",header:"Deneme Başlığı",content:"İçerik Buraya Gelecek",time:2000});
