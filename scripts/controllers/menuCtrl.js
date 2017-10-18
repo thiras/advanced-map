@@ -594,7 +594,6 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
     }
 
-    alert("Dılonun Deişikliği");
 
 
 
