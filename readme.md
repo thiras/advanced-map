@@ -19,7 +19,6 @@
 
 * [Ali Kılıç](https://github.com/gislayer)
 
-*dılo abinin yeri
 
 
 
