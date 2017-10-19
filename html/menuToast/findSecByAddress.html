@@ -25,6 +25,13 @@
                        </md-input-container>
                     </md-list-item>
 
+                    <md-list-item>
+                        <md-input-container layout-fill>
+                            <md-select ng-model="securityMdselectType" placeholder="{{lang.menu.menu11.paceholderSecType}}">
+                                <md-option ng-click="setSecurityCenterType(data.value)" ng-value="data.value" ng-repeat="data in securityType">{{data.text}}</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </md-list-item>
 
                     <md-list-item>
                         <md-input-container layout-fill>

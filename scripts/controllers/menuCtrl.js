@@ -34,7 +34,8 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.buildOwnerName = $rootScope.buildLicense.buildOwnerName;
     $scope.buildConstName = $rootScope.buildLicense.buildConstName;
     $scope.clickMapAddPoint = $rootScope.clickMapAddPoint || false;
-    $scope.healthTypes=$rootScope.lang.menu.menu10.category;
+    $scope.healthTypes=$rootScope.lang.menu.menu10.category; /* sağlık merkezileri için mdSelect adress yardımı ile*/
+    $scope.securityType=$rootScope.lang.menu.menu11.category;
     $scope.buildTypes = [
         {value: 1, text: "Anıt"},
         {value: 2, text: "Cami"},
@@ -734,6 +735,14 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.setHealthCenterType=function (a) {
 
         $rootScope.HealthCenterType=a;
+
+
+    }
+
+    $scope.setSecurityCenterType=function (b) {
+
+        $rootScope.securityMdselectType=b;
+
 
 
     }
