@@ -21,13 +21,13 @@
                 <md-list id="findParcelToast">
                     <md-list-item>
                        <md-input-container layout-fill>
-                           <input type="text" ng-keyup="setScrtyCenterName()" ng-model="scrtyCenterName" placeholder="{{lang.menuToasts.security.findInsSecadress.placeholder1}}">
+                           <input type="text" ng-keyup="setScrtyCenterName()" ng-model="CenterName" placeholder="{{lang.menuToasts.security.findInsSecadress.placeholder1}}">
                        </md-input-container>
                     </md-list-item>
 
                     <md-list-item>
                         <md-input-container layout-fill>
-                            <md-select ng-model="securityMdselectType" placeholder="{{lang.menu.menu11.paceholderSecType}}">
+                            <md-select ng-model="selectType" placeholder="{{lang.menu.menu11.paceholderSecType}}">
                                 <md-option ng-click="setSecurityCenterType(data.value)" ng-value="data.value" ng-repeat="data in securityType">{{data.text}}</md-option>
                             </md-select>
                         </md-input-container>

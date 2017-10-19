@@ -34,8 +34,9 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.buildOwnerName = $rootScope.buildLicense.buildOwnerName;
     $scope.buildConstName = $rootScope.buildLicense.buildConstName;
     $scope.clickMapAddPoint = $rootScope.clickMapAddPoint || false;
-    $scope.healthTypes=$rootScope.lang.menu.menu10.category; /* sağlık merkezileri için mdSelect adress yardımı ile*/
-    $scope.securityType=$rootScope.lang.menu.menu11.category;
+    $scope.healthTypes = $rootScope.lang.menu.menu10.category;
+    /* sağlık merkezileri için mdSelect adress yardımı ile*/
+
     $scope.buildTypes = [
         {value: 1, text: "Anıt"},
         {value: 2, text: "Cami"},
@@ -693,7 +694,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
         $scope.datashowInsByAdrs = {
             InstitutionsName: $scope.InstitutionsName,
-            HealthCenterType:$scope.HealthCenterType,
+            HealthCenterType: $scope.HealthCenterType,
             secilenIl: $scope.secilenIl,
             secilenIlce: $scope.secilenIlce,
             secilenMahalle: $scope.secilenMahalle,
@@ -718,13 +719,6 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
     }
 
-    $scope.setScrtyCenterName = function () {
-
-        $rootScope.scrtyCenterName = $scope.scrtyCenterName;
-
-
-    }
-
 
     $scope.setInstitutionsName = function () {
 
@@ -732,52 +726,63 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     }
 
 
-    $scope.setHealthCenterType=function (a) {
+    $scope.setHealthCenterType = function (a) {
 
-        $rootScope.HealthCenterType=a;
-
-
-    }
-
-    $scope.setSecurityCenterType=function (b) {
-
-        $rootScope.securityMdselectType=b;
-
+        $rootScope.HealthCenterType = a;
 
 
     }
+
+
     //$rootScope.$emit("opendialog",{status:"warning",header:"Deneme Başlığı",content:"İçerik Buraya Gelecek",time:2000});
 
 
     // POI için yazılan kodlar --->
-    $scope.poiFrsqrMainCat = $rootScope.poi.poiFrsqrMainCat || [{value:1,text:"Sanat ve Eğlence",status:false},{value:2,text:"Kolej ve Üniversite",status:false},{value:3,text:"Mağazalar",status:false}];
+    $scope.poiFrsqrMainCat = $rootScope.poi.poiFrsqrMainCat || [{
+        value: 1,
+        text: "Sanat ve Eğlence",
+        status: false
+    }, {value: 2, text: "Kolej ve Üniversite", status: false}, {value: 3, text: "Mağazalar", status: false}];
     $scope.filterPOISecCat = $rootScope.poi.filterPOISecCat || false;
     $scope.chooseMainCat = $rootScope.poi.chooseMainCat || false;
     $scope.chooseSecCat = $rootScope.poi.chooseSecCat || false;
     $scope.poiFrsqSecCat = [
-        {mainid:"1",options:[{value:1,text:"Müzeler",status:false},{value:2,text:"Konser Alanları",status:false}]},
-        {mainid:"2",options:[{value:1,text:"Üniversiteler",status:false},{value:2,text:"Okullar",status:false}]},
-        {mainid:"3",options:[{value:1,text:"Giyim Mağazaları",status:false},{value:2,text:"Ev Eşyaları",status:false}]}
-        ];
-    $scope.changePOISecCat=function (mainid) {
+        {
+            mainid: "1",
+            options: [{value: 1, text: "Müzeler", status: false}, {value: 2, text: "Konser Alanları", status: false}]
+        },
+        {
+            mainid: "2",
+            options: [{value: 1, text: "Üniversiteler", status: false}, {value: 2, text: "Okullar", status: false}]
+        },
+        {
+            mainid: "3",
+            options: [{value: 1, text: "Giyim Mağazaları", status: false}, {
+                value: 2,
+                text: "Ev Eşyaları",
+                status: false
+            }]
+        }
+    ];
+    $scope.changePOISecCat = function (mainid) {
         debugger;
-        mainid=parseInt(mainid);
-        for(i in $scope.poiFrsqrMainCat){
-            if(mainid==$scope.poiFrsqrMainCat[i].value){
-                $scope.poiFrsqrMainCat[i].status=true;
-                $scope.chooseMainCat=mainid;
-                $rootScope.poi.chooseMainCat=mainid;
-            }else{
-                $scope.poiFrsqrMainCat[i].status=false;
+        mainid = parseInt(mainid);
+        for (i in $scope.poiFrsqrMainCat) {
+            if (mainid == $scope.poiFrsqrMainCat[i].value) {
+                $scope.poiFrsqrMainCat[i].status = true;
+                $scope.chooseMainCat = mainid;
+                $rootScope.poi.chooseMainCat = mainid;
+            } else {
+                $scope.poiFrsqrMainCat[i].status = false;
             }
         }
-        $rootScope.poi.poiFrsqrMainCat=$scope.poiFrsqrMainCat;
+        $rootScope.poi.poiFrsqrMainCat = $scope.poiFrsqrMainCat;
         $scope.filterPOISecCat = [];
-        for(i in $scope.poiFrsqSecCat){
+        for (i in $scope.poiFrsqSecCat) {
             var ctrlmainid = parseInt($scope.poiFrsqSecCat[i].mainid);
-            if(mainid==ctrlmainid){
+            if (mainid == ctrlmainid) {
                 var opt = $scope.poiFrsqSecCat[i].options;
-                for(j in opt){
+                for (j in opt) {
                     $scope.filterPOISecCat.push(opt[j]);
                 }
                 $rootScope.poi.filterPOISecCat = $scope.filterPOISecCat;
@@ -785,19 +790,19 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         }
     };
     $scope.selectPOISecCat = function (id) {
-        id=parseInt(id);
-        for(i in $rootScope.poi.filterPOISecCat){
+        id = parseInt(id);
+        for (i in $rootScope.poi.filterPOISecCat) {
             var secCat = $rootScope.poi.filterPOISecCat[i].value;
-            secCat=parseInt(secCat);
-            if(id==secCat){
-                $rootScope.poi.filterPOISecCat[i].status=true;
-                $scope.chooseSecCat=id;
-                $rootScope.poi.chooseSecCat=id;
-            }else{
-                $rootScope.poi.filterPOISecCat[i].status=false;
+            secCat = parseInt(secCat);
+            if (id == secCat) {
+                $rootScope.poi.filterPOISecCat[i].status = true;
+                $scope.chooseSecCat = id;
+                $rootScope.poi.chooseSecCat = id;
+            } else {
+                $rootScope.poi.filterPOISecCat[i].status = false;
             }
         }
-        $scope.filterPOISecCat=$rootScope.poi.filterPOISecCat;
+        $scope.filterPOISecCat = $rootScope.poi.filterPOISecCat;
 
     };
     $scope.showPOIbyAdress = function () {
@@ -811,6 +816,22 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         alert(JSON.stringify($scope.datashowPOIbyAdress));
     };
     //<--- POI İçin Yazılan Kodlar
+
+
+    /* Security için Yazılan Kodlar */
+    $scope.securityType = $rootScope.security.types || $rootScope.lang.menu.menu11.category;
+    $rootScope.security.types = $scope.securityType;
+    $scope.setScrtyCenterName = function () {
+
+        $rootScope.CenterName = $scope.CenterName;
+    };
+    $scope.setSecurityCenterType = function (b) {
+
+        $rootScope.selectType = b;
+
+    };
+
+    /* Security için Yazılan Kodlar */
 
 
 });

@@ -154,7 +154,7 @@
       "menu1e2": "En Yakın Polis Karakolunu Bul",
       "menu1e4": "En Yakın Askeri Bölgeyi Bul",
       "menu1e5": "Adres Yardımı ile Güvenlik Merkezi Bul",
-      "category":[{"value":"1","text":"Polis Karakolları"},{"value":"1","text":"Askeri Merkezler"}],
+      "category":[{"value":"1","text":"Polis Karakolları"},{"value":"2","text":"Askeri Merkezler"}],
       "paceholderSecType":"Güvenlik Merkezi Tipi"
     },
     "menu12": {
