@@ -20,25 +20,9 @@
 
                 <md-list id="findParcelToast">
                     <md-list-item>
-                        <md-input-container layout-fill class="md-icon-float md-input-has-value">
-                            <label ng-click="delegateClick()" tabindex="-1" class="ng-binding ng-scope" role="button"
-                                   for="input_17">{{lang.menuToasts.findParcell.landNo}}</label>
-                            <input autocomplete="on" type="text" ng-keyup="setParcellLandNo()" ng-model="parcellLandNo"
-                                   class="ng-pristine ng-valid md-input ng-not-empty ng-touched" id="input_17"
-                                   aria-invalid="false" style="">
-                            <div class="md-errors-spacer"></div>
-                        </md-input-container>
-                    </md-list-item>
-
-                    <md-list-item>
-                        <md-input-container layout-fill class="md-icon-float md-input-has-value">
-                            <label ng-click="delegateClick()" tabindex="-1" class="ng-binding ng-scope" role="button"
-                                   for="input_16">{{lang.menuToasts.findParcell.parcellNo}}</label>
-                            <input autocomplete="on" type="text" ng-keyup="setParcellNo()" ng-model="parcellNo"
-                                   class="ng-pristine ng-valid md-input ng-not-empty ng-touched" id="input_16"
-                                   aria-invalid="false" style="">
-                            <div class="md-errors-spacer"></div>
-                        </md-input-container>
+                       <md-input-container layout-fill>
+                           <input type="text" placeholder="{{lang.menuToasts.security.findInsSecadress.placeholder1}}">
+                       </md-input-container>
                     </md-list-item>
 
 

@@ -83,6 +83,21 @@
         "alert2":"The Latitude value must be between +180 and -180"
       }
     }
+    ,
+    "HealthInstitutions":{
+
+      "findInsByadress":{
+
+        "placeholder1":"Health Institutions Name"
+      }
+
+    },
+    "security":{
+      "findInsSecadress":{
+        "placeholder1":"security center name"
+
+      }
+    }
   },
   "menu": {
     "menu1": {
