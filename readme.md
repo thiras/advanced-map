@@ -19,7 +19,7 @@
 
 * [Ali Kılıç](https://github.com/gislayer)
 
-
+*.
 
 
 angular.element(body).scope().leaflet.createMap(iat,lng);

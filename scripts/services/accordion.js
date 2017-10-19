@@ -128,16 +128,12 @@ app.service("$accordion", function ($rootScope) {
                     label: lang.menu.menu9.menu1e1,
                     fonk: "menu"
                 },
-                menu3e1: {
-                    label: lang.menu.menu9.menu1e2,
-                    fonk: "menu"
+                menu3e3: {
+                    label: lang.menu.menu9.menu1e4,
+                    fonk: "findPOIbyAdress"
                 },
                 menu3e2: {
                     label: lang.menu.menu9.menu1e3,
-                    fonk: "menu"
-                },
-                menu3e3: {
-                    label: lang.menu.menu9.menu1e4,
                     fonk: "menu"
                 }
             }

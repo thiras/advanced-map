@@ -50,6 +50,16 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
             templateUrl: 'html/menuToast/findAdressToast.html',
         });
     };
+    $scope.findPOIbyAdress = function () {
+        $rootScope.$emit("closeNavbar", "closeNavbar");
+        $mdToast.show({
+            hideDelay: 0,
+            position: 'top right',
+            controller: 'menuCtrl',
+            templateUrl: 'html/menuToast/findPOIbyAdress.html',
+        });
+    };
+
 
     $scope.findParcellPanel = function () {
         $rootScope.$emit("closeNavbar", "closeNavbar");

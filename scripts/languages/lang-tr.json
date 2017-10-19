@@ -82,19 +82,18 @@
       }
     },
     "HealthInstitutions":{
-
-      "findInsByadress":{
-
-        "placeholder1":"Sağlık Merkezi ismi"
-      }
-
+      "findInsByadress":{"placeholder1":"Sağlık Merkezi İsmi"}
     },
     "security":{
       "findInsSecadress":{
         "placeholder1":"Güvenlik Merkezi ismi",
         "label":"Address ile Güvenlik Merkezi  Paneli"
-
       }
+    },
+    "findPOI":{
+      "label":"Adres ile POI Noktası Bulma Paneli",
+      "mainCat":"Ana Kategori",
+      "secCat":"Alt Kategori"
     }
   },
   "menu":{
