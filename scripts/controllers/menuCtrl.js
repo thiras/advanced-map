@@ -34,6 +34,8 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.buildOwnerName = $rootScope.buildLicense.buildOwnerName;
     $scope.buildConstName = $rootScope.buildLicense.buildConstName;
     $scope.clickMapAddPoint = $rootScope.clickMapAddPoint || false;
+    $scope.healthTypes=$rootScope.lang.menu.menu10.category; /* sağlık merkezileri için mdSelect adress yardımı ile*/
+    $scope.securityType=$rootScope.lang.menu.menu11.category;
     $scope.buildTypes = [
         {value: 1, text: "Anıt"},
         {value: 2, text: "Cami"},
@@ -687,10 +689,11 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     }
 
 
-    $scope.showInsbyAddress=function () {
+    $scope.showInsbyAddress = function () {
 
         $scope.datashowInsByAdrs = {
             InstitutionsName: $scope.InstitutionsName,
+            HealthCenterType:$scope.HealthCenterType,
             secilenIl: $scope.secilenIl,
             secilenIlce: $scope.secilenIlce,
             secilenMahalle: $scope.secilenMahalle,
@@ -700,10 +703,10 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         alert(JSON.stringify($scope.datashowInsByAdrs))
     }
 
-    $scope.showSecFindbyAdrs=function () {
+    $scope.showSecFindbyAdrs = function () {
 
 
-        $scope.datashowSecFindbyAdrs= {
+        $scope.datashowSecFindbyAdrs = {
             scrtyCenterName: $scope.scrtyCenterName,
             secilenIl: $scope.secilenIl,
             secilenIlce: $scope.secilenIlce,
@@ -712,6 +715,35 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         }
 
         alert(JSON.stringify($scope.datashowSecFindbyAdrs))
+
+    }
+
+    $scope.setScrtyCenterName = function () {
+
+        $rootScope.scrtyCenterName = $scope.scrtyCenterName;
+
+
+    }
+
+
+    $scope.setInstitutionsName = function () {
+
+        $rootScope.InstitutionsName = $scope.InstitutionsName;
+    }
+
+
+    $scope.setHealthCenterType=function (a) {
+
+        $rootScope.HealthCenterType=a;
+
+
+    }
+
+    $scope.setSecurityCenterType=function (b) {
+
+        $rootScope.securityMdselectType=b;
+
+
 
     }
     //$rootScope.$emit("opendialog",{status:"warning",header:"Deneme Başlığı",content:"İçerik Buraya Gelecek",time:2000});

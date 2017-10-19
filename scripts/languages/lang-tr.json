@@ -118,7 +118,7 @@
       "label": "Eczane",
       "menu1e1": "Adres Yardımı ile Eczane Bul",
       "menu1e2": "En Yakın Eczaneyi Bul",
-      "menu1e3": "Nöbetçi Eczaneleri Bul"
+      "menu1e3": "En Yakın Nöbetçi Eczaneleri Bul"
     },
     "menu5": {
       "label": "Taksi",
@@ -144,18 +144,18 @@
     "menu10": {
       "label": "Sağlık Merkezleri",
       "menu1e1":"Aile Hekimini Bul",
-      "menu1e2":"Adres Yardımı ile Hastane Bul",
       "menu1e3":"En Yakın Hastaneyi Bul",
       "menu1e4":"En Yakın Sağlık Ocağını Bul",
-      "menu1e5":"Address ile Sağlık Merkezi Bul"
+      "menu1e5":"Adres Yardımı ile Sağlık Merkezi Bul",
+      "category":[{"value":"1","text":"Hospitals"},{"value":"2","text":"Private Hospitals"},{"value":"3","text":"Military Hospitals"},{"value":"4","text":"Health Burners"},{"value":"5","text":"Policlinics"},{"value":"6","text":"Dispensaries"}]
     },
     "menu11": {
       "label": "Güvenlik Merkezleri",
-      "menu1e1": "Adres Yardımı ile Polis Karakolu Bul",
       "menu1e2": "En Yakın Polis Karakolunu Bul",
-      "menu1e3": "Adres Yardımı ile Askeri Bölgeyi Bul",
       "menu1e4": "En Yakın Askeri Bölgeyi Bul",
-      "menu1e5":"Address ile Güvenlik merkezi Bul"
+      "menu1e5": "Adres Yardımı ile Güvenlik Merkezi Bul",
+      "category":[{"value":"1","text":"Polis Karakolları"},{"value":"1","text":"Askeri Merkezler"}],
+      "paceholderSecType":"Güvenlik Merkezi Tipi"
     },
     "menu12": {
       "label": "Güzergah & Navigasyon",
