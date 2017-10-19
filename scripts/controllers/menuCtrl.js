@@ -721,6 +721,12 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
 
     }
+
+
+    $scope.setInstitutionsName=function () {
+
+        $rootScope.InstitutionsName=$scope.InstitutionsName;
+    }
     //$rootScope.$emit("opendialog",{status:"warning",header:"Deneme Başlığı",content:"İçerik Buraya Gelecek",time:2000});
 
 });
