@@ -3,8 +3,12 @@
         <form>
             <md-toolbar md-ink-ripple>
                 <div class="md-toolbar-tools">
-                    <h2><md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">timeline</md-icon>
-                        <span class="md-subhead" style="color: #ffffff;">{{lang.menuToasts.mesureLineArea.label}}</span></h2>
+                    <h2>
+                        <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img"
+                                 aria-hidden="true">timeline
+                        </md-icon>
+                        <span class="md-subhead" style="color: #ffffff;">{{lang.menuToasts.mesureLineArea.label}}</span>
+                    </h2>
                     <span flex></span>
                     <md-button class="md-icon-button" ng-click="cancel()">
                         <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
@@ -14,81 +18,105 @@
             <md-dialog-content style="style:100%">
                 <md-content style="max-height: 45vh">
 
-                <md-list layout-padding>
+                    <md-list layout-padding>
 
 
-                    <md-list-item style="padding: 0; margin-top:10px;">
-                        <md-input-container layout-fill>
-                            <md-select ng-change="activeMeasureType();" ng-model="measureType" placeholder="{{lang.menuToasts.mesureLineArea.measureTypes[0]}}">
-                                <md-select-header>
-                                    <span> {{lang.menuToasts.mesureLineArea.measureTypes[0]}} </span>
-                                </md-select-header>
-                                <md-option ng-value="deger.value" ng-click=""
-                                           ng-repeat="(ozellik, deger) in mesureTypesOpt">
-                                    {{deger.text}}
-                                </md-option>
+                        <md-list-item style="padding: 0; margin-top:10px;">
+                            <md-input-container layout-fill>
+                                <md-select ng-change="activeMeasureType();" ng-model="measureType"
+                                           placeholder="{{lang.menuToasts.mesureLineArea.measureTypes[0]}}">
+                                    <md-select-header>
+                                        <span> {{lang.menuToasts.mesureLineArea.measureTypes[0]}} </span>
+                                    </md-select-header>
+                                    <md-option ng-value="deger.value" ng-click=""
+                                               ng-repeat="(ozellik, deger) in mesureTypesOpt">
+                                        {{deger.text}}
+                                    </md-option>
 
-                            </md-select>
-                            {{navbarCtrl.ilce}}
-                        </md-input-container>
-                    </md-list-item>
-
-
-                    <md-list-item style="padding: 0; margin-top:10px;">
-                        <md-input-container layout-fill class="md-icon-float md-input-has-value">
-                            <label ng-click="delegateClick()" tabindex="-1" class="ng-binding ng-scope" role="button"
-                                   for="input_17">{{lang.menuToasts.mesureLineArea.mesureName}}</label>
-                            <input autocomplete="on" type="text" ng-keyup="setMeasureName()" ng-model="measureName"
-                                   class="ng-pristine ng-valid md-input ng-not-empty ng-touched" id="input_17"
-                                   aria-invalid="false" style="">
-                            <div class="md-errors-spacer"></div>
-                        </md-input-container>
-                    </md-list-item>
-
-                    <md-list-item  style="padding: 0; margin-top:10px;">
-
-                        <div flex="10" style="margin:0; margin-top:-14px">
-                           {{sayi || 1}}
-                        </div>
-                        <md-input-container style="margin: 0;" flex="30" >
-                            <input type="number" max="90" min="-90"  ng-keyup="latControl(null,lat)" placeholder="{{lang.menuToasts.mesureLineArea.lat}}" ng-model="lat">
-                        </md-input-container>
-                        <md-input-container style="margin: 0;" flex="30" >
-                            <input type="number" max="180" min="-180" ng-keyup="lngControl(null,lng)" placeholder="{{lang.menuToasts.mesureLineArea.lng}}" ng-model="lng">
-                        </md-input-container>
-                        <div style="margin: 0;" flex="15">
-                            <md-button aa="<!--ng-disabled=!lng  || !lat-->" ng-click="addLatLngToLine(lng,lat)" id="plsButton" class="md-fab md-mini">
-                                <md-icon md-svg-src="img/icons/plus.svg"></md-icon>
-                            </md-button>
-                        </div>
-                        <div style="margin: 0;" flex="15">
-
-                            <md-button ng-if="clickMapAddPoint" aa="<!--ng-disabled=!lng  || !lat-->" ng-click="openGetLocationPoint(false)" id="plsButton" class="md-fab md-mini"><md-icon style="color:#2196f3;" class="mat-icon material-icons accordion-icons" role="img" aria-hidden="true">location_on</md-icon>
-                            </md-button>
-                            <md-button ng-if="!clickMapAddPoint" aa="<!--ng-disabled=!lng  || !lat-->" ng-click="openGetLocationPoint(true)" id="plsButton" class="md-fab md-mini"><md-icon style="color:#aaa;" class="mat-icon material-icons accordion-icons" role="img" aria-hidden="true">location_off</md-icon>
-                            </md-button>
-                        </div>
-
-                    </md-list-item>
-
-                    <md-divider></md-divider>
+                                </md-select>
+                                {{navbarCtrl.ilce}}
+                            </md-input-container>
+                        </md-list-item>
 
 
-                    <md-list-item style="padding:0;" id="listlatLng"  layout="row" flex ng-repeat="veri in measureLineLatLng | reverse">
-                        <md-input-container style="margin:0;"  flex="5">
-                           <div style="margin-top: -18px;">{{veri.sayi}}</div>
-                        </md-input-container>
-                        <md-input-container style="margin:0;" flex="40">
-                            <input ng-model="veri.lat" ng-keyup="changeLat(measureCalc,veri.lat,veri.sayi);" type="number" ng-value="veri.lat">
-                        </md-input-container>
-                        <md-input-container style="margin:0;" flex="40">
-                            <input ng-model="veri.lng" ng-keyup="changeLng(measureCalc,veri.lng,veri.sayi);" type="number" ng-value="veri.lng">
-                        </md-input-container>
-                        <md-input-container style="margin:0;" flex="15">
-                            <md-button style="margin-top: -30px;" ng-click="removeLatLngToLine(veri.sayi)" ng-mouseover = "showLocation(veri.lat,veri.lng,true);" ng-mouseout = "showLocation(veri.lat,veri.lng,false);" id="listlatLngBtn" class="md-raised md-warn  md-button md-ink-ripple md-button"><md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">delete_forever</md-icon></md-button></md-input-container>
-                    </md-list-item>
+                        <md-list-item style="padding: 0; margin-top:10px;">
+                            <md-input-container layout-fill class="md-icon-float md-input-has-value">
+                                <label ng-click="delegateClick()" tabindex="-1" class="ng-binding ng-scope"
+                                       role="button"
+                                       for="input_17">{{lang.menuToasts.mesureLineArea.mesureName}}</label>
+                                <input autocomplete="on" type="text" ng-keyup="setMeasureName()" ng-model="measureName"
+                                       class="ng-pristine ng-valid md-input ng-not-empty ng-touched" id="input_17"
+                                       aria-invalid="false" style="">
+                                <div class="md-errors-spacer"></div>
+                            </md-input-container>
+                        </md-list-item>
 
-                </md-list>
+                        <md-list-item style="padding: 0; margin-top:10px;">
+
+                            <div flex="10" style="margin:0; margin-top:-14px">
+                                {{sayi || 1}}
+                            </div>
+                            <md-input-container style="margin: 0;" flex="30">
+                                <input type="number" max="90" min="-90" ng-keyup="latControl(null,lat)"
+                                       placeholder="{{lang.menuToasts.mesureLineArea.lat}}" ng-model="lat">
+                            </md-input-container>
+                            <md-input-container style="margin: 0;" flex="30">
+                                <input type="number" max="180" min="-180" ng-keyup="lngControl(null,lng)"
+                                       placeholder="{{lang.menuToasts.mesureLineArea.lng}}" ng-model="lng">
+                            </md-input-container>
+                            <div style="margin: 0;" flex="15">
+                                <md-button aa="<!--ng-disabled=!lng  || !lat-->" ng-click="addLatLngToLine(lng,lat)"
+                                           id="plsButton" class="md-fab md-mini">
+                                    <md-icon md-svg-src="img/icons/plus.svg"></md-icon>
+                                </md-button>
+                            </div>
+                            <div style="margin: 0;" flex="15">
+
+                                <md-button ng-if="clickMapAddPoint" aa="<!--ng-disabled=!lng  || !lat-->"
+                                           ng-click="openGetLocationPoint(false)" id="plsButton" class="md-fab md-mini">
+                                    <md-icon style="color:#2196f3;" class="mat-icon material-icons accordion-icons"
+                                             role="img" aria-hidden="true">location_on
+                                    </md-icon>
+                                </md-button>
+                                <md-button ng-if="!clickMapAddPoint" aa="<!--ng-disabled=!lng  || !lat-->"
+                                           ng-click="openGetLocationPoint(true)" id="plsButton" class="md-fab md-mini">
+                                    <md-icon style="color:#aaa;" class="mat-icon material-icons accordion-icons"
+                                             role="img" aria-hidden="true">location_off
+                                    </md-icon>
+                                </md-button>
+                            </div>
+
+                        </md-list-item>
+
+                        <md-divider></md-divider>
+
+
+                        <md-list-item style="padding:0;" id="listlatLng" layout="row" flex
+                                      ng-repeat="veri in measureLineLatLng | reverse">
+                            <md-input-container style="margin:0;" flex="5">
+                                <div style="margin-top: -18px;">{{veri.sayi}}</div>
+                            </md-input-container>
+                            <md-input-container style="margin:0;" flex="40">
+                                <input ng-model="veri.lat" ng-keyup="changeLat(measureCalc,veri.lat,veri.sayi);"
+                                       type="number" ng-value="veri.lat">
+                            </md-input-container>
+                            <md-input-container style="margin:0;" flex="40">
+                                <input ng-model="veri.lng" ng-keyup="changeLng(measureCalc,veri.lng,veri.sayi);"
+                                       type="number" ng-value="veri.lng">
+                            </md-input-container>
+                            <md-input-container style="margin:0;" flex="15">
+                                <md-button style="margin-top: -30px;" ng-click="removeLatLngToLine(veri.sayi)"
+                                           ng-mouseover="showLocation(veri.lat,veri.lng,true);"
+                                           ng-mouseout="showLocation(veri.lat,veri.lng,false);" id="listlatLngBtn"
+                                           class="md-raised md-warn  md-button md-ink-ripple md-button">
+                                    <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img"
+                                             aria-hidden="true">delete_forever
+                                    </md-icon>
+                                </md-button>
+                            </md-input-container>
+                        </md-list-item>
+
+                    </md-list>
                 </md-content>
             </md-dialog-content>
             <md-dialog-actions layout="row">
@@ -110,20 +138,26 @@
             <md-dialog-content ng-if="measureLines" layout-fill>
                 <md-list>
                     <md-content style="max-height: 35vh">
-                    <md-list-item style="padding-left: 20px;" ng-repeat="(i,obj) in measureLines | reverse ">
-                        <div flex="40">{{i==measureCalc ?obj.name:obj.name}}</div>
-                        <div flex="30">{{obj.measure}} m</div>
-                        <div flex="15">
-                            <md-button style="margin:0;" md-ink-ripple class="md-fab md-mini" ng-click="deleteMeasureLine(obj.id);">
-                                <md-icon style="color:#757575;" role="img" aria-hidden="true"  class="ng-scope material-icons">delete_forever</md-icon>
-                            </md-button>
-                        </div>
-                        <div flex="15">
-                            <md-button style="margin:0;" md-ink-ripple class="md-fab md-mini" ng-click="showMeasureLine(obj.id);">
-                                <md-icon style="color:#757575;" role="img" aria-hidden="true" class="ng-scope material-icons">queue_play_next</md-icon>
-                            </md-button>
-                        </div>
-                    </md-list-item>
+                        <md-list-item style="padding-left: 20px;" ng-repeat="(i,obj) in measureLines | reverse ">
+                            <div flex="40">{{i==measureCalc ?obj.name:obj.name}}</div>
+                            <div flex="30">{{obj.measure}} m</div>
+                            <div flex="15">
+                                <md-button style="margin:0;" md-ink-ripple class="md-fab md-mini"
+                                           ng-click="deleteMeasureLine(obj.id);">
+                                    <md-icon style="color:#757575;" role="img" aria-hidden="true"
+                                             class="ng-scope material-icons">delete_forever
+                                    </md-icon>
+                                </md-button>
+                            </div>
+                            <div flex="15">
+                                <md-button style="margin:0;" md-ink-ripple class="md-fab md-mini"
+                                           ng-click="showMeasureLine(obj.id);">
+                                    <md-icon style="color:#757575;" role="img" aria-hidden="true"
+                                             class="ng-scope material-icons">queue_play_next
+                                    </md-icon>
+                                </md-button>
+                            </div>
+                        </md-list-item>
                     </md-content>
                 </md-list>
 

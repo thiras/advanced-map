@@ -687,7 +687,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     }
 
 
-    $scope.showInsbyAddress=function () {
+    $scope.showInsbyAddress = function () {
 
         $scope.datashowInsByAdrs = {
             InstitutionsName: $scope.InstitutionsName,
@@ -700,11 +700,11 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         alert(JSON.stringify($scope.datashowInsByAdrs))
     }
 
-    $scope.showSecFindbyAdrs=function () {
+    $scope.showSecFindbyAdrs = function () {
 
 
-        $scope.datashowSecFindbyAdrs= {
-            scrtyCenterName: $scope.setScrtyCenterName,
+        $scope.datashowSecFindbyAdrs = {
+            scrtyCenterName: $scope.scrtyCenterName,
             secilenIl: $scope.secilenIl,
             secilenIlce: $scope.secilenIlce,
             secilenMahalle: $scope.secilenMahalle,
@@ -715,17 +715,17 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
     }
 
-    $scope.setScrtyCenterName=function () {
+    $scope.setScrtyCenterName = function () {
 
-        $rootScope.scrtyCenterName=$scope.scrtyCenterName;
+        $rootScope.scrtyCenterName = $scope.scrtyCenterName;
 
 
     }
 
 
-    $scope.setInstitutionsName=function () {
+    $scope.setInstitutionsName = function () {
 
-        $rootScope.InstitutionsName=$scope.InstitutionsName;
+        $rootScope.InstitutionsName = $scope.InstitutionsName;
     }
     //$rootScope.$emit("opendialog",{status:"warning",header:"Deneme Başlığı",content:"İçerik Buraya Gelecek",time:2000});
 
