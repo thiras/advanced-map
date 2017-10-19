@@ -38,6 +38,7 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
         buildOwnerName: "",
         buildConstName: ""
     };
+    $rootScope.poi={};
     document.querySelector('title').innerText = $rootScope.lang.general.title;
     $rootScope.parcell = {
         parcellLandNo: "",

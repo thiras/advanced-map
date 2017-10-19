@@ -637,7 +637,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             secilenIl: $scope.secilenIl,
             secilenIlce: $scope.secilenIlce,
             secilenMahalle: $scope.secilenMahalle,
-        }
+        };
         alert(JSON.stringify($scope.dataShowTaxi));
 
     }
@@ -715,5 +715,70 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
     }
     //$rootScope.$emit("opendialog",{status:"warning",header:"Deneme Başlığı",content:"İçerik Buraya Gelecek",time:2000});
+
+
+    // POI için yazılan kodlar --->
+    $scope.poiFrsqrMainCat = $rootScope.poi.poiFrsqrMainCat || [{value:1,text:"Sanat ve Eğlence",status:false},{value:2,text:"Kolej ve Üniversite",status:false},{value:3,text:"Mağazalar",status:false}];
+    $scope.filterPOISecCat = $rootScope.poi.filterPOISecCat || false;
+    $scope.chooseMainCat = $rootScope.poi.chooseMainCat || false;
+    $scope.chooseSecCat = $rootScope.poi.chooseSecCat || false;
+    $scope.poiFrsqSecCat = [
+        {mainid:"1",options:[{value:1,text:"Müzeler",status:false},{value:2,text:"Konser Alanları",status:false}]},
+        {mainid:"2",options:[{value:1,text:"Üniversiteler",status:false},{value:2,text:"Okullar",status:false}]},
+        {mainid:"3",options:[{value:1,text:"Giyim Mağazaları",status:false},{value:2,text:"Ev Eşyaları",status:false}]}
+        ];
+    $scope.changePOISecCat=function (mainid) {
+        debugger;
+        mainid=parseInt(mainid);
+        for(i in $scope.poiFrsqrMainCat){
+            if(mainid==$scope.poiFrsqrMainCat[i].value){
+                $scope.poiFrsqrMainCat[i].status=true;
+                $scope.chooseMainCat=mainid;
+                $rootScope.poi.chooseMainCat=mainid;
+            }else{
+                $scope.poiFrsqrMainCat[i].status=false;
+            }
+        }
+        $rootScope.poi.poiFrsqrMainCat=$scope.poiFrsqrMainCat;
+        $scope.filterPOISecCat = [];
+        for(i in $scope.poiFrsqSecCat){
+            var ctrlmainid = parseInt($scope.poiFrsqSecCat[i].mainid);
+            if(mainid==ctrlmainid){
+                var opt = $scope.poiFrsqSecCat[i].options;
+                for(j in opt){
+                    $scope.filterPOISecCat.push(opt[j]);
+                }
+                $rootScope.poi.filterPOISecCat = $scope.filterPOISecCat;
+            }
+        }
+    };
+    $scope.selectPOISecCat = function (id) {
+        id=parseInt(id);
+        for(i in $rootScope.poi.filterPOISecCat){
+            var secCat = $rootScope.poi.filterPOISecCat[i].value;
+            secCat=parseInt(secCat);
+            if(id==secCat){
+                $rootScope.poi.filterPOISecCat[i].status=true;
+                $scope.chooseSecCat=id;
+                $rootScope.poi.chooseSecCat=id;
+            }else{
+                $rootScope.poi.filterPOISecCat[i].status=false;
+            }
+        }
+        $scope.filterPOISecCat=$rootScope.poi.filterPOISecCat;
+
+    };
+    $scope.showPOIbyAdress = function () {
+        $scope.datashowPOIbyAdress = {
+            poimainid: $scope.chooseMainCat,
+            poisecid: $scope.chooseSecCat,
+            secilenIl: $scope.secilenIl,
+            secilenIlce: $scope.secilenIlce,
+            secilenMahalle: $scope.secilenMahalle,
+        };
+        alert(JSON.stringify($scope.datashowPOIbyAdress));
+    };
+    //<--- POI İçin Yazılan Kodlar
+
 
 });
