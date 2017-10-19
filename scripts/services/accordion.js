@@ -147,6 +147,10 @@ app.service("$accordion", function ($rootScope) {
             fonk: "menu",
             icon: "local_florist",
             submenu: {
+                menu5e4:{
+                    label:lang.menu.menu10.menu1e5,
+                    fonk:"findInstitutionsbyAddress"
+                },
                 menu3e1: {
                     label: lang.menu.menu10.menu1e1,
                     fonk: "findMyDoctor"
@@ -162,10 +166,6 @@ app.service("$accordion", function ($rootScope) {
                 menu4e3: {
                     label: lang.menu.menu10.menu1e4,
                     fonk: "findNearHospital"
-                },
-                menu5e4:{
-                    label:lang.menu.menu10.menu1e5,
-                    fonk:"findInstitutionsbyAddress"
                 }
             }
         },
@@ -174,6 +174,11 @@ app.service("$accordion", function ($rootScope) {
             fonk: "menu",
             icon: "security",
             submenu: {
+                menu5e3:{
+                    label: lang.menu.menu11.menu1e5,
+                    fonk: "findSecrtyByAdrs"
+
+                },
                 menu3e1: {
                     label: lang.menu.menu11.menu1e1,
                     fonk: "menu"
@@ -189,12 +194,8 @@ app.service("$accordion", function ($rootScope) {
                 menu4e3: {
                     label: lang.menu.menu11.menu1e4,
                     fonk: "menu"
-                },
-                menu5e3:{
-                    label: lang.menu.menu11.menu1e5,
-                    fonk: "findSecrtyByAdrs"
-
                 }
+
             }
         },
         menu12: {
