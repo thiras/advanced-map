@@ -7,7 +7,6 @@ app.service("$getlang", function ($http) {
         });
         return $existLang ? $existLang : "en";
     })();
-    /*$lang="tr";*/
 
     var $url = "scripts/languages/lang-" + $lang + ".json";
     return $http.get($url).then(function (a) {

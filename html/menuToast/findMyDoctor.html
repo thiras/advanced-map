@@ -19,7 +19,7 @@
                 <md-list>
                     <md-list-item>
                         <md-input-container layout-fill style="margin-top: 5px; margin-bottom: -20px;">
-                            <input ng-keyup="setTaxiName()" type="text" ng-model="taxiName" placeholder="{{lang.menuToasts.HealthInstitutions.findMyDoctor.placeholderCardNo}}">
+                            <input ng-keyup="setCardIdNo()" type="text" ng-model="cardIdNo" placeholder="{{lang.menuToasts.HealthInstitutions.findMyDoctor.placeholderCardNo}}">
                         </md-input-container>
                     </md-list-item>
                     <md-list-item>
@@ -76,7 +76,7 @@
             <md-dialog-actions layout="row">
                 <span flex></span>
 
-                <md-button class="md-raised searchButton md-button md-ink-ripple md-button" ng-click="showTaxi()">
+                <md-button class="md-raised searchButton md-button md-ink-ripple md-button" ng-click="showMyDoctor()">
                     <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">
                         search
                     </md-icon>

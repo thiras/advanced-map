@@ -815,4 +815,28 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     /* Sağlık Merkezi için Yazılan Kodlar*/
 
 
+
+    /* show my find dr baş */
+
+    $scope.showMyDoctor=function () {
+
+
+        $scope.showHealthInst={
+            cardIdNo:$scope.cardIdNo,
+            secilenIl:$scope.secilenIl,
+            secilenIlce:$scope.secilenIlce,
+            secilenMahalle:$scope.secilenMahalle
+
+        };
+
+        alert(JSON.stringify($scope.showHealthInst))
+    }
+
+    /* show my find dr son*/
+
+
+    $scope.setCardIdNo=function () {
+
+        $rootScope.cardIdNo=$scope.cardIdNo;
+    }
 });
