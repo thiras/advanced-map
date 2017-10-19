@@ -162,6 +162,10 @@ app.service("$accordion", function ($rootScope) {
                 menu4e3: {
                     label: lang.menu.menu10.menu1e4,
                     fonk: "findNearHospital"
+                },
+                menu5e4:{
+                    label:lang.menu.menu10.menu1e5,
+                    fonk:"findInstitutionsbyAddress"
                 }
             }
         },
@@ -185,6 +189,11 @@ app.service("$accordion", function ($rootScope) {
                 menu4e3: {
                     label: lang.menu.menu11.menu1e4,
                     fonk: "menu"
+                },
+                menu5e3:{
+                    label: lang.menu.menu11.menu1e5,
+                    fonk: "findSecrtyByAdrs"
+
                 }
             }
         },

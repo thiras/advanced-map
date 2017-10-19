@@ -121,6 +121,19 @@ md-toast#fndBldLsToast {
   @extend #menuToasts;
 }
 
+
+#findInstByaddress{
+
+  @extend  #menuToasts;
+}
+
+
+#findSecByAddress{
+
+  @extend #menuToasts;
+}
+
+
 #listLtdLng {
 
   md-input-container {

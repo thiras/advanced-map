@@ -137,17 +137,19 @@
     },
     "menu10": {
       "label": "Health Institutions",
-      "menu1e1": "Find Family Physician",
-      "menu1e2": "Find Hospital In Address",
-      "menu1e3": "Find Nearest Hospital",
-      "menu1e4": "Find the Nearest Health Care Center"
+      "menu1e1":"Find Family Physician",
+      "menu1e2":"Find Hospital In Address",
+      "menu1e3":"Find Nearest Hospital",
+      "menu1e4":"Find the Nearest Health Care Center",
+      "menu1e5": "Find Institutions by Address"
     },
     "menu11": {
       "label": "Security Centers",
       "menu1e1": "Police Station in Town",
       "menu1e2": "Nearest Police Station",
       "menu1e3": "Military Center in the Region",
-      "menu1e4": "Nearest Military Center"
+      "menu1e4": "Nearest Military Center",
+      "menu1e5": "Find Center by Address"
     },
     "menu12": {
       "label": "Route & Navigation",

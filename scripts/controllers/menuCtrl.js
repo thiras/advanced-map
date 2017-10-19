@@ -663,13 +663,27 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             buildOwnerName: $scope.buildOwnerName,
             buildConstName: $scope.buildConstName,
             secilenIl: $scope.secilenIl,
-            secilenIlce:$scope.secilenIlce,
-            secilenMahalle:$scope.secilenMahalle
+            secilenIlce: $scope.secilenIlce,
+            secilenMahalle: $scope.secilenMahalle
 
         }
 
         alert(JSON.stringify($scope.dataShowBuildlis));
 
+    }
+
+    $scope.showProprietry = function () {
+
+
+        $scope.datashowProprietry = {
+            build: $scope.build,
+            secilenIl: $scope.secilenIl,
+            secilenIlce: $scope.secilenIlce,
+            secilenMahalle: $scope.secilenMahalle,
+
+        }
+
+        alert(JSON.stringify($scope.datashowProprietry))
     }
     //$rootScope.$emit("opendialog",{status:"warning",header:"Deneme Başlığı",content:"İçerik Buraya Gelecek",time:2000});
 

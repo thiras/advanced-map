@@ -145,6 +145,30 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
 
     }
 
+
+    $scope.findInstitutionsbyAddress=function () {
+
+
+        $rootScope.$emit("closeNavbar", "closeNavbar");
+        $mdToast.show({
+            hideDelay: 0,
+            controller: 'menuCtrl',
+            templateUrl: 'html/menuToast/findInstitutionsbyAddress.html',
+        });
+
+    }
+
+
+    $scope.findSecrtyByAdrs=function () {
+
+        $rootScope.$emit("closeNavbar", "closeNavbar");
+        $mdToast.show({
+            hideDelay: 0,
+            controller: 'menuCtrl',
+            templateUrl: 'html/menuToast/findSecByAddress.html',
+        });
+    }
+
     /* $scope.openDrawAreaByManuel=function () {
          $rootScope.$emit("closeNavbar", "closeNavbar");
          $mdToast.show({
