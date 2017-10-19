@@ -704,7 +704,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
 
         $scope.datashowSecFindbyAdrs= {
-            scrtyCenterName: $scope.scrtyCenterName,
+            scrtyCenterName: $scope.setScrtyCenterName,
             secilenIl: $scope.secilenIl,
             secilenIlce: $scope.secilenIlce,
             secilenMahalle: $scope.secilenMahalle,
@@ -712,6 +712,13 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         }
 
         alert(JSON.stringify($scope.datashowSecFindbyAdrs))
+
+    }
+
+    $scope.setScrtyCenterName=function () {
+
+        $rootScope.scrtyCenterName=$scope.scrtyCenterName;
+
 
     }
     //$rootScope.$emit("opendialog",{status:"warning",header:"Deneme Başlığı",content:"İçerik Buraya Gelecek",time:2000});
