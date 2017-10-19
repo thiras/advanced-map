@@ -1,4 +1,7 @@
 .md-button:disabled {
   cursor: not-allowed !important; }
 
+#searchbox * {
+  /* @include vp-user-select(none);*/ }
+
 /*# sourceMappingURL=disabled.css.map */

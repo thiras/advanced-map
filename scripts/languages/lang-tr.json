@@ -1,48 +1,48 @@
 {
   "general": {
-    "title":"BalistaGIS Software",
-    "close":"Kapat",
-    "save":"Kaydet",
-    "have":"Mevcut",
-    "add":"Ekle",
-    "createLayer":"Katman Oluştur",
-    "leafletAttr":"Balista Bilişim Yazılım A.Ş",
-    "moduls":"Modüller",
-    "signup":"Kayıt Ol",
-    "ignore":"Vazgeç",
-    "cancel":"İptal",
-    "smallint":"Küçük Sayı",
-    "integer":"Normal Sayı",
-    "bigint":"Büyük Sayı",
-    "real":"Küçük Ondalıklı Sayı",
-    "double":"Büyük Ondalıklı Sayı",
-    "text":"Yazı",
-    "date":"Tarih",
-    "timestamp":"Tarih - Saat",
-    "boolean":"Mantıksal Değer 1/0",
-    "delete":"Sil",
+    "title": "BalistaGIS Software",
+    "close": "Kapat",
+    "save": "Kaydet",
+    "have": "Mevcut",
+    "add": "Ekle",
+    "createLayer": "Katman Oluştur",
+    "leafletAttr": "Balista Bilişim Yazılım A.Ş",
+    "moduls": "Modüller",
+    "signup": "Kayıt Ol",
+    "ignore": "Vazgeç",
+    "cancel": "İptal",
+    "smallint": "Küçük Sayı",
+    "integer": "Normal Sayı",
+    "bigint": "Büyük Sayı",
+    "real": "Küçük Ondalıklı Sayı",
+    "double": "Büyük Ondalıklı Sayı",
+    "text": "Yazı",
+    "date": "Tarih",
+    "timestamp": "Tarih - Saat",
+    "boolean": "Mantıksal Değer 1/0",
+    "delete": "Sil",
     "search": "Ara",
-    "warning":"Uyarı !...",
-    "gotit":"Anladım !"
+    "warning": "Uyarı !...",
+    "gotit": "Anladım !"
   },
-  "menuToasts":{
-    "general":{
-      "provinceList":"İl Listesi",
-      "countylist":"İlçe Listesi",
-      "neighborhoodlist":"Mahalle Listesi",
-      "provinces":"İller",
-      "counties":"İlçeler",
-      "neighborhoods":"Mahalleler"
+  "menuToasts": {
+    "general": {
+      "provinceList": "İl Listesi",
+      "countylist": "İlçe Listesi",
+      "neighborhoodlist": "Mahalle Listesi",
+      "provinces": "İller",
+      "counties": "İlçeler",
+      "neighborhoods": "Mahalleler"
     },
-    "findAdress":{
-      "label":"Adres Bulma Paneli",
-      "streetlist":"Cadde Sokak Listesi",
-      "doornumber":"Kapı Numarası Listesi",
-      "streets":"Cadde Sokak",
-      "doornumbers":"Kapı Numaraları"
+    "findAdress": {
+      "label": "Adres Bulma Paneli",
+      "streetlist": "Cadde Sokak Listesi",
+      "doornumber": "Kapı Numarası Listesi",
+      "streets": "Cadde Sokak",
+      "doornumbers": "Kapı Numaraları"
     },
-    "findParcell":{
-      "label":"Parsel Bulma Paneli",
+    "findParcell": {
+      "label": "Parsel Bulma Paneli",
       "landNo": "Ada No : ",
       "parcellNo": "Parsel No : "
     },
@@ -60,47 +60,58 @@
       "label": "Tescilli Yapı Bulma Paneli",
       "mdselect1placeholder": "Yapı Türü"
     },
-    "findBuildingLic":{
-      "label":"İnşaat Ruhsat",
-      "ownerName":"Mülkiyet Sahibinin Adı Soyadı",
-      "BuilderName":"Müteahhit Adı Soyadı"
+    "findBuildingLic": {
+      "label": "İnşaat Ruhsat",
+      "ownerName": "Mülkiyet Sahibinin Adı Soyadı",
+      "BuilderName": "Müteahhit Adı Soyadı"
     },
-    "mesureLineArea":{
-      "label":"Uzunluk Ölçümü",
-      "mesureName":"Ölçüm Adı : ",
-      "measure":"Ölçüm",
-      "measureline":"Ölçüm Çizgisi",
-      "lat":"Enlem",
-      "lng":"Boylam",
-      "getPointMap":"Haritadan Nokta Topla",
-      "measureTypes":["Ölçü Birimleri","Derece","Radyan","Mil","Kilometre"],
-      "newMesure":"Yeni Hesaplama",
-      "alerts":{
-        "alert1":"Lütfen Enlem & Boylam Bilgisini Giriniz",
-        "alert3":"Enlem Değeri +90 ile -90 Derece Aralığında olmalıdır. Girdiğiniz Değer Kabul Edilemez.",
-        "alert2":"Boylam Değeri +180 ile -180 Derece Aralığında olmalıdır. Girdiğiniz Değer Kabul Edilemez."
+    "mesureLineArea": {
+      "label": "Uzunluk Ölçümü",
+      "mesureName": "Ölçüm Adı : ",
+      "measure": "Ölçüm",
+      "measureline": "Ölçüm Çizgisi",
+      "lat": "Enlem",
+      "lng": "Boylam",
+      "getPointMap": "Haritadan Nokta Topla",
+      "measureTypes": [
+        "Ölçü Birimleri",
+        "Derece",
+        "Radyan",
+        "Mil",
+        "Kilometre"
+      ],
+      "newMesure": "Yeni Hesaplama",
+      "alerts": {
+        "alert1": "Lütfen Enlem & Boylam Bilgisini Giriniz",
+        "alert3": "Enlem Değeri +90 ile -90 Derece Aralığında olmalıdır. Girdiğiniz Değer Kabul Edilemez.",
+        "alert2": "Boylam Değeri +180 ile -180 Derece Aralığında olmalıdır. Girdiğiniz Değer Kabul Edilemez."
       }
     },
-    "HealthInstitutions":{
-      "findInsByadress":{"placeholder1":"Sağlık Merkezi İsmi"}
-    },
-    "security":{
-      "findInsSecadress":{
-        "placeholder1":"Güvenlik Merkezi ismi",
-        "label":"Address ile Güvenlik Merkezi  Paneli"
+    "HealthInstitutions": {
+      "findInsByadress": {
+        "placeholder1": "Sağlık Merkezi İsmi"
+      },
+      "findMyDoctor": {
+        "placeholderCardNo": "Tc Kimlik No"
       }
     },
-    "findPOI":{
-      "label":"Adres ile POI Noktası Bulma Paneli",
-      "mainCat":"Ana Kategori",
-      "secCat":"Alt Kategori"
+    "security": {
+      "findInsSecadress": {
+        "placeholder1": "Güvenlik Merkezi ismi",
+        "label": "Address ile Güvenlik Merkezi  Paneli"
+      }
+    },
+    "findPOI": {
+      "label": "Adres ile POI Noktası Bulma Paneli",
+      "mainCat": "Ana Kategori",
+      "secCat": "Alt Kategori"
     }
   },
-  "menu":{
-    "menu1":{
-      "label":"Adres Bul",
-      "menu1e1":"Seçerek Adrese Git",
-      "menu1e2":"Haritayı Tıklayarak"
+  "menu": {
+    "menu1": {
+      "label": "Adres Bul",
+      "menu1e1": "Seçerek Adrese Git",
+      "menu1e2": "Haritayı Tıklayarak"
     },
     "menu2": {
       "label": "Parsel Bul",
@@ -135,27 +146,61 @@
       "menu1e1": "Yapı Ruhsatı Bul"
     },
     "menu9": {
-      "label":"Önemli Merkezler & POI Noktaları",
-      "menu1e1":"Yakınımda  Neler Var ?",
-      "menu1e2":"Belirli Bir Türde POI Noktalarını Bul",
-      "menu1e3":"Alan Çizerek POI Noktalarını Bul",
-      "menu1e4":"Adres Belirterek POI Noktalarını Bul"
+      "label": "Önemli Merkezler & POI Noktaları",
+      "menu1e1": "Yakınımda  Neler Var ?",
+      "menu1e2": "Belirli Bir Türde POI Noktalarını Bul",
+      "menu1e3": "Alan Çizerek POI Noktalarını Bul",
+      "menu1e4": "Adres Belirterek POI Noktalarını Bul"
     },
     "menu10": {
       "label": "Sağlık Merkezleri",
-      "menu1e1":"Aile Hekimini Bul",
-      "menu1e3":"En Yakın Hastaneyi Bul",
-      "menu1e4":"En Yakın Sağlık Ocağını Bul",
-      "menu1e5":"Adres Yardımı ile Sağlık Merkezi Bul",
-      "category":[{"value":"1","text":"Hastaneler"},{"value":"2","text":"Özel Hastaneler"},{"value":"3","text":"Askeri Hastaneler"},{"value":"4","text":"Sağlık Ocaklar"},{"value":"5","text":"Poliklinikler"},{"value":"6","text":"Dispanserler"}]
+      "menu1e1": "Aile Hekimini Bul",
+      "menu1e3": "En Yakın Hastaneyi Bul",
+      "menu1e4": "En Yakın Sağlık Ocağını Bul",
+      "menu1e5": "Adres Yardımı ile Sağlık Merkezi Bul",
+      "category": [
+        {
+          "value": "1",
+          "text": "Hastaneler"
+        },
+        {
+          "value": "2",
+          "text": "Özel Hastaneler"
+        },
+        {
+          "value": "3",
+          "text": "Askeri Hastaneler"
+        },
+        {
+          "value": "4",
+          "text": "Sağlık Ocaklar"
+        },
+        {
+          "value": "5",
+          "text": "Poliklinikler"
+        },
+        {
+          "value": "6",
+          "text": "Dispanserler"
+        }
+      ]
     },
     "menu11": {
       "label": "Güvenlik Merkezleri",
       "menu1e2": "En Yakın Polis Karakolunu Bul",
       "menu1e4": "En Yakın Askeri Bölgeyi Bul",
       "menu1e5": "Adres Yardımı ile Güvenlik Merkezi Bul",
-      "category":[{"value":"1","text":"Polis Karakolları"},{"value":"2","text":"Askeri Merkezler"}],
-      "paceholderSecType":"Güvenlik Merkezi Tipi"
+      "category": [
+        {
+          "value": "1",
+          "text": "Polis Karakolları"
+        },
+        {
+          "value": "2",
+          "text": "Askeri Merkezler"
+        }
+      ],
+      "paceholderSecType": "Güvenlik Merkezi Tipi"
     },
     "menu12": {
       "label": "Güzergah & Navigasyon",
@@ -178,130 +223,127 @@
       "label": "İletişim",
       "menu1e1": "Adres ve Telefon Bilgileri",
       "menu1e2": "Bize Ulaşın",
-      "menu1e3":"Destek Talebi Oluştur"
+      "menu1e3": "Destek Talebi Oluştur"
     }
   },
-  "toolEdit":{
-    "label":"Edit",
-    "draw":{
-      "polygon":"Yeni Bir Polygon Çiz",
-      "polyRectangle":"Yeni Bir Dikdörtgen Çiz",
-      "polyCircile":"Yeni Bir Daire Çiz",
-      "polyEllips":"Yeni Bir Elips Çiz",
-      "polyArc":"Yeni Bir Kapalı Yay Çiz",
-      "polyLineBezier":"Yeni Bir Kapalı Bezier Çiz",
-      "line":"Yeni Bir Çizgi Çiz",
-      "lineRectangle":"Yeni Bir Dikdörtgen Çiz",
-      "lineCircle":"Yeni Bir Çember Çiz",
-      "lineArc":"Yeni Bir Yay Çiz",
-      "lineBezier":"Yeni Bir Bezier Çiz",
-      "point":"Yeni Bir Nokta At",
-      "marker":"Yeni Bir Marker At",
-      "edit":"Çizili Geometrileri Düzenle",
-      "delete":"Çizili Katmanları Sil"
+  "toolEdit": {
+    "label": "Edit",
+    "draw": {
+      "polygon": "Yeni Bir Polygon Çiz",
+      "polyRectangle": "Yeni Bir Dikdörtgen Çiz",
+      "polyCircile": "Yeni Bir Daire Çiz",
+      "polyEllips": "Yeni Bir Elips Çiz",
+      "polyArc": "Yeni Bir Kapalı Yay Çiz",
+      "polyLineBezier": "Yeni Bir Kapalı Bezier Çiz",
+      "line": "Yeni Bir Çizgi Çiz",
+      "lineRectangle": "Yeni Bir Dikdörtgen Çiz",
+      "lineCircle": "Yeni Bir Çember Çiz",
+      "lineArc": "Yeni Bir Yay Çiz",
+      "lineBezier": "Yeni Bir Bezier Çiz",
+      "point": "Yeni Bir Nokta At",
+      "marker": "Yeni Bir Marker At",
+      "edit": "Çizili Geometrileri Düzenle",
+      "delete": "Çizili Katmanları Sil"
     }
   },
-  "login":{
-    "login":"Giriş Yap",
-    "signin":"Kullanıcı Girişi",
-    "signinForm":"Üye Giriş Formu",
-    "signUpForm":"Yeni Üye Kayıt Formu",
-    "name":"Ad Soyad",
-    "phoneNumber":"Telefon Numarası",
-    "email":"Email Adresi",
-    "adress":"Adresi",
-    "contract":"<a href='#' accept-agreement>Sözleşme</a>'yi Okudum Kabul Ediyorum"
+  "login": {
+    "login": "Giriş Yap",
+    "signin": "Kullanıcı Girişi",
+    "signinForm": "Üye Giriş Formu",
+    "signUpForm": "Yeni Üye Kayıt Formu",
+    "name": "Ad Soyad",
+    "phoneNumber": "Telefon Numarası",
+    "email": "Email Adresi",
+    "adress": "Adresi",
+    "contract": "<a href='#' accept-agreement>Sözleşme</a>'yi Okudum Kabul Ediyorum"
   },
-  "searchBox":{
-    "btnMenuOnOff":"Menü Aç/Kapat",
-    "inptSearchBox":"İlçe, Mahalle, Hastane, Okul ...",
-    "btnSearch":"Arama Yap",
-    "btnLayer":"Katman Kutusunu Aç"
+  "searchBox": {
+    "btnMenuOnOff": "Menü Aç/Kapat",
+    "inptSearchBox": "İlçe, Mahalle, Hastane, Okul ...",
+    "btnSearch": "Arama Yap",
+    "btnLayer": "Katman Kutusunu Aç"
   },
-  "leftmenu":{
-    "label":"Basemap Haritalar & Analizler",
-    "basemap":"Basemap Haritalar",
-    "satallite":"Uydu Görüntüleri",
-    "analysis":"Analizler",
-    "freemaps":"Ücretsiz Haritalar",
-    "opacity":"Şeffaflık"
+  "leftmenu": {
+    "label": "Basemap Haritalar & Analizler",
+    "basemap": "Basemap Haritalar",
+    "satallite": "Uydu Görüntüleri",
+    "analysis": "Analizler",
+    "freemaps": "Ücretsiz Haritalar",
+    "opacity": "Şeffaflık"
   },
-  "vlList":{
-    "label":"Vektör Katman Listesi",
-    "iconAdLayer":"Yeni Katman Ekle",
-    "iconConnectDB":"Veritabanına Bağlan",
-    "iconSearchDB":"Veritabanını Listele",
-    "iconRefresh":"Seçili Katmanı Güncelle",
-    "iconEdit":"Seçili Katmanın Çizim Özelliklerini Aç",
-    "iconDown":"Katmanı Alt Kata İndir",
-    "iconUp":"Katmanı Üst Kata Çıkar",
-    "iconBottom":"Katmanı En Alta İndir",
-    "iconTop":"Katmanı En Üste Çıkar",
-    "iconSettings":"Seçili Katmanın Ayar Panelini Aç",
-    "iconCloudDown":"Seçili Katmanı İndir",
-    "iconCloudUp":"Seçili Katmanı Sisteme Gönder",
-    "iconZoom":"Katmanı Haritaya Sığdır",
-    "iconSnap":"Katmanın Nokta Yakalama Özelliğini Aç",
-    "iconLayerSetting":"Katmanın Ayar Panelini Aç",
-    "iconRemove":"Katmanı Listeden Kaldır",
-    "dialogs":{
+  "vlList": {
+    "label": "Vektör Katman Listesi",
+    "iconAdLayer": "Yeni Katman Ekle",
+    "iconConnectDB": "Veritabanına Bağlan",
+    "iconSearchDB": "Veritabanını Listele",
+    "iconRefresh": "Seçili Katmanı Güncelle",
+    "iconEdit": "Seçili Katmanın Çizim Özelliklerini Aç",
+    "iconDown": "Katmanı Alt Kata İndir",
+    "iconUp": "Katmanı Üst Kata Çıkar",
+    "iconBottom": "Katmanı En Alta İndir",
+    "iconTop": "Katmanı En Üste Çıkar",
+    "iconSettings": "Seçili Katmanın Ayar Panelini Aç",
+    "iconCloudDown": "Seçili Katmanı İndir",
+    "iconCloudUp": "Seçili Katmanı Sisteme Gönder",
+    "iconZoom": "Katmanı Haritaya Sığdır",
+    "iconSnap": "Katmanın Nokta Yakalama Özelliğini Aç",
+    "iconLayerSetting": "Katmanın Ayar Panelini Aç",
+    "iconRemove": "Katmanı Listeden Kaldır",
+    "dialogs": {
       "laySet": {
-        "label":"Katman Ayarı",
-        "tab1":{
-          "label":"Veriler"
+        "label": "Katman Ayarı",
+        "tab1": {
+          "label": "Veriler"
         },
-        "tab2":{
-          "label":"Genel",
-          "h1":"Katmanın Genel bilgileri",
-          "inptLayNam":"Katman Adı",
-          "inptLayDesc":"Katmanın Açıklaması",
-          "inptMinZoom":"Görünebilir Minimum Zoom Seviyesi",
-          "inptMaxZoom":"Görünebilir Maximum Zoom Seviyesi",
-          "inptAutoSave":"Otomatik Kayıt Hatırlatma Süresi (dk)"
+        "tab2": {
+          "label": "Genel",
+          "h1": "Katmanın Genel bilgileri",
+          "inptLayNam": "Katman Adı",
+          "inptLayDesc": "Katmanın Açıklaması",
+          "inptMinZoom": "Görünebilir Minimum Zoom Seviyesi",
+          "inptMaxZoom": "Görünebilir Maximum Zoom Seviyesi",
+          "inptAutoSave": "Otomatik Kayıt Hatırlatma Süresi (dk)"
         },
-        "tab3":{
-          "label":"Görünüm",
-          "h11":"KATMANIN İLK AÇILIŞINDAKİ GÖRÜNÜR SİTİLİ",
-          "h12":"MOUSE KATMANIN ÜZERİNDEYKEN GÖRÜNÜM SİTİLİ",
-          "h13":"KATMAN SEÇİLİ DURUMDAYKEN GÖRÜNÜM SİTİLİ",
-          "layObj":"KATMANIN NESNESİ",
-          "layStatus":"DURUM",
-          "layColor":"RENK",
-          "layHex":"HEX",
-          "layWidth":"KALINLIK",
-          "layOpacity":"OPAKLIK",
-          "layLineStyle":"Çizgi Özellikleri",
-          "layFillStyle":"Dolgu Özellikleri"
+        "tab3": {
+          "label": "Görünüm",
+          "h11": "KATMANIN İLK AÇILIŞINDAKİ GÖRÜNÜR SİTİLİ",
+          "h12": "MOUSE KATMANIN ÜZERİNDEYKEN GÖRÜNÜM SİTİLİ",
+          "h13": "KATMAN SEÇİLİ DURUMDAYKEN GÖRÜNÜM SİTİLİ",
+          "layObj": "KATMANIN NESNESİ",
+          "layStatus": "DURUM",
+          "layColor": "RENK",
+          "layHex": "HEX",
+          "layWidth": "KALINLIK",
+          "layOpacity": "OPAKLIK",
+          "layLineStyle": "Çizgi Özellikleri",
+          "layFillStyle": "Dolgu Özellikleri"
         },
-        "tab4":{
-          "label":"Sorgular"
-        }
-
-      },
-      "addNewVecLay":{
-        "label":"Yeni Katman Ekleme Paneli",
-        "createNewLayer":"Yeni Katman Oluştur",
-        "tab1":{
-          "label":"Yetkili Katmanlar"
-        },
-        "tab2":{
-          "label":"Oluşturulan Katmanlar"
+        "tab4": {
+          "label": "Sorgular"
         }
       },
-      "createNewVecLay":{
-        "label":"YENİ VEKTÖR KATMANI OLUŞTURMA",
-        "layname":"Katman Adı Giriniz",
-        "descrpt":"Açıklama Giriniz",
-        "type":"Vektör Katman Tipi Seçiniz",
-        "crs":"Crs giriniz",
-        "layerMainInfo":"Katman Bilgileri Giiş Formu",
-        "layTabProp":"Katman Tablo Sütunları Giriş Formu",
+      "addNewVecLay": {
+        "label": "Yeni Katman Ekleme Paneli",
+        "createNewLayer": "Yeni Katman Oluştur",
+        "tab1": {
+          "label": "Yetkili Katmanlar"
+        },
+        "tab2": {
+          "label": "Oluşturulan Katmanlar"
+        }
+      },
+      "createNewVecLay": {
+        "label": "YENİ VEKTÖR KATMANI OLUŞTURMA",
+        "layname": "Katman Adı Giriniz",
+        "descrpt": "Açıklama Giriniz",
+        "type": "Vektör Katman Tipi Seçiniz",
+        "crs": "Crs giriniz",
+        "layerMainInfo": "Katman Bilgileri Giiş Formu",
+        "layTabProp": "Katman Tablo Sütunları Giriş Formu",
         "select ": "BİR TİP SEÇ",
-        "alreadyHavefile":"VAR OLAN SUTUNLAR",
-        "writeFieldName":"Sütün Adı Giriniz"
-
+        "alreadyHavefile": "VAR OLAN SUTUNLAR",
+        "writeFieldName": "Sütün Adı Giriniz"
       }
     }
   }
-
 }

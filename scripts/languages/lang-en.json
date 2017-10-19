@@ -89,6 +89,11 @@
       "findInsByadress":{
 
         "placeholder1":"Health Institutions Name"
+      },
+      "findMyDoctor":{
+
+        "placeholderCardNo":"Id Card No"
+
       }
 
     },
