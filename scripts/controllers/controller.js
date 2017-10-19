@@ -40,6 +40,7 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
     };
     $rootScope.poi={};
     $rootScope.security = {};
+    $rootScope.health = {};
     document.querySelector('title').innerText = $rootScope.lang.general.title;
     $rootScope.parcell = {
         parcellLandNo: "",

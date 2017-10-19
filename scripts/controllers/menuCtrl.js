@@ -34,7 +34,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.buildOwnerName = $rootScope.buildLicense.buildOwnerName;
     $scope.buildConstName = $rootScope.buildLicense.buildConstName;
     $scope.clickMapAddPoint = $rootScope.clickMapAddPoint || false;
-    $scope.healthTypes = $rootScope.lang.menu.menu10.category;
+
     /* sağlık merkezileri için mdSelect adress yardımı ile*/
 
     $scope.buildTypes = [
@@ -690,25 +690,14 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     }
 
 
-    $scope.showInsbyAddress = function () {
 
-        $scope.datashowInsByAdrs = {
-            InstitutionsName: $scope.InstitutionsName,
-            HealthCenterType: $scope.HealthCenterType,
-            secilenIl: $scope.secilenIl,
-            secilenIlce: $scope.secilenIlce,
-            secilenMahalle: $scope.secilenMahalle,
-
-        }
-
-        alert(JSON.stringify($scope.datashowInsByAdrs))
-    }
 
     $scope.showSecFindbyAdrs = function () {
 
 
         $scope.datashowSecFindbyAdrs = {
-            scrtyCenterName: $scope.scrtyCenterName,
+            securityCenterName: $scope.securtiyCenterName,
+            securitySelectType:$scope.securitySelectType,
             secilenIl: $scope.secilenIl,
             secilenIlce: $scope.secilenIlce,
             secilenMahalle: $scope.secilenMahalle,
@@ -720,18 +709,10 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     }
 
 
-    $scope.setInstitutionsName = function () {
-
-        $rootScope.InstitutionsName = $scope.InstitutionsName;
-    }
 
 
-    $scope.setHealthCenterType = function (a) {
-
-        $rootScope.HealthCenterType = a;
 
 
-    }
 
 
     //$rootScope.$emit("opendialog",{status:"warning",header:"Deneme Başlığı",content:"İçerik Buraya Gelecek",time:2000});
@@ -821,17 +802,40 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     /* Security için Yazılan Kodlar */
     $scope.securityType = $rootScope.security.types || $rootScope.lang.menu.menu11.category;
     $rootScope.security.types = $scope.securityType;
+    $scope.securtiyCenterName = $rootScope.security.securtiyCenterName || "";
     $scope.setScrtyCenterName = function () {
-
-        $rootScope.CenterName = $scope.CenterName;
+        $rootScope.security.securtiyCenterName = $scope.securtiyCenterName;
     };
     $scope.setSecurityCenterType = function (b) {
-
-        $rootScope.selectType = b;
+        $rootScope.securitySelectType = b;
 
     };
-
     /* Security için Yazılan Kodlar */
+
+    /* Sağlık Merkezi için Yazılan Kodlar*/
+    $scope.healthTypes = $rootScope.lang.menu.menu10.category;
+    $scope.InstitutionsName=$rootScope.health.InstitutionsName || "";
+    $rootScope.health.InstitutionsName=$scope.InstitutionsName;
+    $rootScope.HealthCenterType= $rootScope.health.HealthCenterType || false;
+    $scope.showInsbyAddress = function () {
+        $scope.datashowInsByAdrs = {
+            InstitutionsName: $scope.InstitutionsName,
+            HealthCenterType: $scope.HealthCenterType,
+            secilenIl: $scope.secilenIl,
+            secilenIlce: $scope.secilenIlce,
+            secilenMahalle: $scope.secilenMahalle,
+
+        }
+        alert(JSON.stringify($scope.datashowInsByAdrs))
+    };
+    $scope.setInstitutionsName = function () {
+        $rootScope.health.InstitutionsName = $scope.InstitutionsName;
+    };
+    $scope.setHealthCenterType = function (a) {
+        $rootScope.HealthCenterType = a;
+        $rootScope.health.HealthCenterType = $scope.HealthCenterType;
+    };
+    /* Sağlık Merkezi için Yazılan Kodlar*/
 
 
 });

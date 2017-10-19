@@ -163,7 +163,7 @@
       "menu1e3":"Find Nearest Hospital",
       "menu1e4":"Find the Nearest Health Care Center",
       "menu1e5": "Find Institutions by Address",
-      "category":[{"value":"1","text":"Hastaneler"},{"value":"2","text":"Özel Hastaneler"},{"value":"3","text":"Askeri Hastaneler"},{"value":"4","text":"Sağlık Ocaklar"},{"value":"5","text":"Poliklinikler"},{"value":"6","text":"Dispanserler"}]
+      "category":[{"value":"1","text":"Hospitals"},{"value":"2","text":"Private Hospitals"},{"value":"3","text":"Military Hospitals"},{"value":"4","text":"Health Burners"},{"value":"5","text":"Policlinics"},{"value":"6","text":"Dispensaries"}]
     },
     "menu11": {
       "label": "Security Centers",

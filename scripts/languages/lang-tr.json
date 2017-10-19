@@ -147,7 +147,7 @@
       "menu1e3":"En Yakın Hastaneyi Bul",
       "menu1e4":"En Yakın Sağlık Ocağını Bul",
       "menu1e5":"Adres Yardımı ile Sağlık Merkezi Bul",
-      "category":[{"value":"1","text":"Hospitals"},{"value":"2","text":"Private Hospitals"},{"value":"3","text":"Military Hospitals"},{"value":"4","text":"Health Burners"},{"value":"5","text":"Policlinics"},{"value":"6","text":"Dispensaries"}]
+      "category":[{"value":"1","text":"Hastaneler"},{"value":"2","text":"Özel Hastaneler"},{"value":"3","text":"Askeri Hastaneler"},{"value":"4","text":"Sağlık Ocaklar"},{"value":"5","text":"Poliklinikler"},{"value":"6","text":"Dispanserler"}]
     },
     "menu11": {
       "label": "Güvenlik Merkezleri",
