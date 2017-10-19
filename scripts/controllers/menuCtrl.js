@@ -685,6 +685,35 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
         alert(JSON.stringify($scope.datashowProprietry))
     }
+
+
+    $scope.showInsbyAddress=function () {
+
+        $scope.datashowInsByAdrs = {
+            InstitutionsName: $scope.InstitutionsName,
+            secilenIl: $scope.secilenIl,
+            secilenIlce: $scope.secilenIlce,
+            secilenMahalle: $scope.secilenMahalle,
+
+        }
+
+        alert(JSON.stringify($scope.datashowInsByAdrs))
+    }
+
+    $scope.showSecFindbyAdrs=function () {
+
+
+        $scope.datashowSecFindbyAdrs= {
+            scrtyCenterName: $scope.scrtyCenterName,
+            secilenIl: $scope.secilenIl,
+            secilenIlce: $scope.secilenIlce,
+            secilenMahalle: $scope.secilenMahalle,
+
+        }
+
+        alert(JSON.stringify($scope.datashowSecFindbyAdrs))
+
+    }
     //$rootScope.$emit("opendialog",{status:"warning",header:"Deneme Başlığı",content:"İçerik Buraya Gelecek",time:2000});
 
 });

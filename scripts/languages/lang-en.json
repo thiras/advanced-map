@@ -93,8 +93,10 @@
 
     },
     "security":{
+
       "findInsSecadress":{
-        "placeholder1":"security center name"
+        "placeholder1":"security center name",
+        "label":"Find Security by Address Panel"
 
       }
     }

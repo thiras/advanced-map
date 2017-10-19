@@ -80,6 +80,21 @@
         "alert3":"Enlem Değeri +90 ile -90 Derece Aralığında olmalıdır. Girdiğiniz Değer Kabul Edilemez.",
         "alert2":"Boylam Değeri +180 ile -180 Derece Aralığında olmalıdır. Girdiğiniz Değer Kabul Edilemez."
       }
+    },
+    "HealthInstitutions":{
+
+      "findInsByadress":{
+
+        "placeholder1":"Sağlık Merkezi ismi"
+      }
+
+    },
+    "security":{
+      "findInsSecadress":{
+        "placeholder1":"Güvenlik Merkezi ismi",
+        "label":"Address ile Güvenlik Merkezi  Paneli"
+
+      }
     }
   },
   "menu":{
@@ -121,25 +136,27 @@
       "menu1e1": "Yapı Ruhsatı Bul"
     },
     "menu9": {
-      "label": "Önemli Merkezler & POI Noktaları",
-      "menu1e1": "Yakınımda  Neler Var ?",
-      "menu1e2": "Belirli Bir Türde POI Noktalarını Bul",
-      "menu1e3": "Alan Çizerek POI Noktalarını Bul",
-      "menu1e4": "Adres Belirterek POI Noktalarını Bul"
+      "label":"Önemli Merkezler & POI Noktaları",
+      "menu1e1":"Yakınımda  Neler Var ?",
+      "menu1e2":"Belirli Bir Türde POI Noktalarını Bul",
+      "menu1e3":"Alan Çizerek POI Noktalarını Bul",
+      "menu1e4":"Adres Belirterek POI Noktalarını Bul"
     },
     "menu10": {
       "label": "Sağlık Merkezleri",
-      "menu1e1": "Aile Hekimini Bul",
-      "menu1e2": "Adres Yardımı ile Hastane Bul",
-      "menu1e3": "En Yakın Hastaneyi Bul",
-      "menu1e4": "En Yakın Sağlık Ocağını Bul"
+      "menu1e1":"Aile Hekimini Bul",
+      "menu1e2":"Adres Yardımı ile Hastane Bul",
+      "menu1e3":"En Yakın Hastaneyi Bul",
+      "menu1e4":"En Yakın Sağlık Ocağını Bul",
+      "menu1e5":"Address ile Sağlık Merkezi Bul"
     },
     "menu11": {
       "label": "Güvenlik Merkezleri",
       "menu1e1": "Adres Yardımı ile Polis Karakolu Bul",
       "menu1e2": "En Yakın Polis Karakolunu Bul",
       "menu1e3": "Adres Yardımı ile Askeri Bölgeyi Bul",
-      "menu1e4": "En Yakın Askeri Bölgeyi Bul"
+      "menu1e4": "En Yakın Askeri Bölgeyi Bul",
+      "menu1e5":"Address ile Güvenlik merkezi Bul"
     },
     "menu12": {
       "label": "Güzergah & Navigasyon",

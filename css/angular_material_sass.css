@@ -712,17 +712,6 @@ label.radioLayers {
   .vectorLayerName td {
     width: 22px; }
 
-/*
-
-md-toast {
-  left: 0;
-  bottom: 0;
-  display: inline-flex;
-  max-width: 100%;
-  min-width: 0;
-  border-radius: 0;
-
-}*/
 md-toast {
   z-index: 15;
   width: 390px;
