@@ -99,6 +99,11 @@
         "label":"Find Security by Address Panel"
 
       }
+    },
+    "findPOI":{
+      "label":"Find POI Point by Adress Panel",
+      "mainCat":"Main Category",
+      "secCat":"Second Category"
     }
   },
   "menu": {
