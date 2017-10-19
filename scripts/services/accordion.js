@@ -155,10 +155,6 @@ app.service("$accordion", function ($rootScope) {
                     label: lang.menu.menu10.menu1e1,
                     fonk: "findMyDoctor"
                 },
-                menu3e2: {
-                    label: lang.menu.menu10.menu1e2,
-                    fonk: "findHospital"
-                },
                 menu3e3: {
                     label: lang.menu.menu10.menu1e3,
                     fonk: "findNearPoliclinic"
@@ -179,16 +175,8 @@ app.service("$accordion", function ($rootScope) {
                     fonk: "findSecrtyByAdrs"
 
                 },
-                menu3e1: {
-                    label: lang.menu.menu11.menu1e1,
-                    fonk: "menu"
-                },
                 menu3e2: {
                     label: lang.menu.menu11.menu1e2,
-                    fonk: "menu"
-                },
-                menu3e3: {
-                    label: lang.menu.menu11.menu1e3,
                     fonk: "menu"
                 },
                 menu4e3: {

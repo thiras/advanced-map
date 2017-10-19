@@ -34,6 +34,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.buildOwnerName = $rootScope.buildLicense.buildOwnerName;
     $scope.buildConstName = $rootScope.buildLicense.buildConstName;
     $scope.clickMapAddPoint = $rootScope.clickMapAddPoint || false;
+    $scope.healthTypes=$rootScope.lang.menu.menu10.category;
     $scope.buildTypes = [
         {value: 1, text: "Anıt"},
         {value: 2, text: "Cami"},
@@ -691,6 +692,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
         $scope.datashowInsByAdrs = {
             InstitutionsName: $scope.InstitutionsName,
+            HealthCenterType:$scope.HealthCenterType,
             secilenIl: $scope.secilenIl,
             secilenIlce: $scope.secilenIlce,
             secilenMahalle: $scope.secilenMahalle,
@@ -726,6 +728,14 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.setInstitutionsName = function () {
 
         $rootScope.InstitutionsName = $scope.InstitutionsName;
+    }
+
+
+    $scope.setHealthCenterType=function (a) {
+
+        $rootScope.HealthCenterType=a;
+
+
     }
     //$rootScope.$emit("opendialog",{status:"warning",header:"Deneme Başlığı",content:"İçerik Buraya Gelecek",time:2000});
 

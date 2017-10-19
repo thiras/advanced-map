@@ -143,7 +143,7 @@
       "label": "Pharmacy",
       "menu1e1": "Find Pharmacy By Adress",
       "menu1e2": "Find Nearest Pharmacy",
-      "menu1e3": "find Sentinel Pharmacy"
+      "menu1e3": "Find Nearest Sentinel Pharmacy"
     },
     "menu9": {
       "label": "important centers and poi points",
@@ -155,18 +155,16 @@
     "menu10": {
       "label": "Health Institutions",
       "menu1e1":"Find Family Physician",
-      "menu1e2":"Find Hospital In Address",
       "menu1e3":"Find Nearest Hospital",
       "menu1e4":"Find the Nearest Health Care Center",
-      "menu1e5": "Find Institutions by Address"
+      "menu1e5": "Find Institutions by Address",
+      "category":[{"value":"1","text":"Hastaneler"},{"value":"2","text":"Özel Hastaneler"},{"value":"3","text":"Askeri Hastaneler"},{"value":"4","text":"Sağlık Ocaklar"},{"value":"5","text":"Poliklinikler"},{"value":"6","text":"Dispanserler"}]
     },
     "menu11": {
       "label": "Security Centers",
-      "menu1e1": "Police Station in Town",
       "menu1e2": "Nearest Police Station",
-      "menu1e3": "Military Center in the Region",
       "menu1e4": "Nearest Military Center",
-      "menu1e5": "Find Center by Address"
+      "menu1e5": "Find Security Center by Address"
     },
     "menu12": {
       "label": "Route & Navigation",
