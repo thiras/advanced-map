@@ -602,8 +602,6 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         }
 
     }
-
-
     $scope.showParcell = function () {
 
 
@@ -617,7 +615,6 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         alert(JSON.stringify($scope.dataShowParcell));
 
     }
-
     $scope.showAddress = function () {
 
 
@@ -631,7 +628,6 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
         alert(JSON.stringify($scope.dataShowAddress));
     }
-
     $scope.showTaxi = function () {
 
         $scope.dataShowTaxi = {
@@ -644,8 +640,6 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         alert(JSON.stringify($scope.dataShowTaxi));
 
     }
-
-
     $scope.showPharmacy = function () {
 
         $scope.dataShowPharmacy = {
@@ -658,7 +652,6 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         alert(JSON.stringify($scope.dataShowPharmacy));
 
     }
-
     $scope.showBuildingLis = function () {
 
 
@@ -674,7 +667,6 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         alert(JSON.stringify($scope.dataShowBuildlis));
 
     }
-
     $scope.showProprietry = function () {
 
 
@@ -688,10 +680,6 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
         alert(JSON.stringify($scope.datashowProprietry))
     }
-
-
-
-
     $scope.showSecFindbyAdrs = function () {
 
 
@@ -707,16 +695,6 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         alert(JSON.stringify($scope.datashowSecFindbyAdrs))
 
     }
-
-
-
-
-
-
-
-
-    //$rootScope.$emit("opendialog",{status:"warning",header:"Deneme Başlığı",content:"İçerik Buraya Gelecek",time:2000});
-
 
     // POI için yazılan kodlar --->
     $scope.poiFrsqrMainCat = $rootScope.poi.poiFrsqrMainCat || [{
@@ -797,7 +775,6 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         alert(JSON.stringify($scope.datashowPOIbyAdress));
     };
     //<--- POI İçin Yazılan Kodlar
-
 
     /* Security için Yazılan Kodlar */
     $scope.securityType = $rootScope.security.types || $rootScope.lang.menu.menu11.category;

@@ -177,7 +177,27 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
             controller: 'menuCtrl',
             templateUrl: 'html/menuToast/findSecByAddress.html',
         });
-    }
+    };
+
+
+    /* aile hekimi sorgula baş prompt*/
+
+
+    $scope.findMyDoctor = function(ev) {
+
+        $rootScope.$emit("closeNavbar", "closeNavbar");
+        $mdToast.show({
+            hideDelay: 0,
+            position: 'top left',
+            controller: 'menuCtrl',
+            templateUrl: 'html/menuToast/findMyDoctor.html',
+        });
+
+
+    };
+
+    /* aile hekimi sorgula son prompt*/
+
 
     /* $scope.openDrawAreaByManuel=function () {
          $rootScope.$emit("closeNavbar", "closeNavbar");
