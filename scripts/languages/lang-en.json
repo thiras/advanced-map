@@ -117,7 +117,8 @@
         "lineShowTime":"Show Motion Hours",
         "showBus":"Show Running Tools",
         "pointShow":"Stop Number Enter",
-        "pointLocation":"Nearby Tools Near You"
+        "pointLocation":"Nearby Tools Near You",
+        "deneme":"deneme"
       }
     }
   },

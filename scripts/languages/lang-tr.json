@@ -107,7 +107,8 @@
         "lineShowTime":"Hareket Saatlerini Göster",
         "showBus":"Çalışan Araçları Göster",
         "pointShow":"Durak Numarası Giriniz",
-        "pointLocation":"Bulunduğunuz Noktaya Yakın Araçlar"
+        "pointLocation":"Bulunduğunuz Noktaya Yakın Araçlar",
+        "deneme":"deneme"
       }
     }
   },
