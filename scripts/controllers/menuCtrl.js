@@ -34,6 +34,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.buildOwnerName = $rootScope.buildLicense.buildOwnerName;
     $scope.buildConstName = $rootScope.buildLicense.buildConstName;
     $scope.clickMapAddPoint = $rootScope.clickMapAddPoint || false;
+    $scope.vehicles=$rootScope.lang.menuToasts.tranport.busmini.autoCarType;
 
     /* sağlık merkezileri için mdSelect adress yardımı ile*/
 

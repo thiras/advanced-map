@@ -19,13 +19,14 @@
             <md-dialog-content style="style:100%">
                 <md-content style="max-height: 45vh">
 
+                    <md-list>
                     <md-list-item>
                         <md-input-container layout-fill>
                             <md-select ng-model="secilenIl" placeholder="{{lang.menuToasts.general.provinceList}}">
                                 <md-select-header>
                                     <span> {{lang.menuToasts.general.provinces}} </span>
                                 </md-select-header>
-                                <md-option ng-value="deger.id"
+                                <md-option ng-value="deger.id" ng-click="changeIlce(deger.id)"
                                            ng-repeat="(ozellik, deger) in il" ng-selected="deger.id == secilenIl">
                                     {{deger.label}}
                                 </md-option>
@@ -34,24 +35,24 @@
                             {{navbarCtrl.ilce}}
                         </md-input-container>
 
+                    </md-list-item>
                         <md-list-item>
-                            <md-input-container layout-fill>
-                                <md-select ng-model="vehicle" placeholder="{{lang.menuToasts.general.provinceList}}">
-                                    <md-select-header>
-                                        <span> {{lang.menuToasts.general.provinces}} </span>
-                                    </md-select-header>
-                                    <md-option ng-value="deger.id"
-                                               ng-repeat="(ozellik, deger) in il" ng-selected="deger.id == secilenIl">
-                                        {{deger.label}}
-                                    </md-option>
+                        <md-input-container layout-fill>
+                            <md-select ng-model="vehicle" placeholder="{{lang.menuToasts.tranport.busmini.autoCarTypeName}}">
+                                <md-select-header>
+                                    <span>{{lang.menuToasts.tranport.busmini.autoCarTypeName}}</span>
+                                </md-select-header>
+                                <md-option ng-value="deger.value" ng-click="changeIlce(deger.id)"
+                                           ng-repeat="(ozellik, deger) in vehicles" ng-selected="deger.id == secilenIl">
+                                    {{deger.text}}
+                                </md-option>
 
-                                </md-select>
-                                {{navbarCtrl.ilce}}
-                            </md-input-container>
-
-                        </md-list-item>
+                            </md-select>
+                            {{navbarCtrl.ilce}}
+                        </md-input-container>
 
                     </md-list-item>
+                    </md-list>
 
 
 
