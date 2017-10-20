@@ -125,9 +125,15 @@
       "label": "Adres ile POI Noktası Bulma Paneli",
       "mainCat": "Ana Kategori",
       "secCat": "Alt Kategori"
+<<<<<<< HEAD
 
     }
   }},
+=======
+    }
+  }
+  },
+>>>>>>> 3f5a9e87787ba55117e3197883531d50136c3b8d
   "menu": {
     "menu1": {
       "label": "Adres Bul",
@@ -367,4 +373,5 @@
       }
     }
   }
+
 }
