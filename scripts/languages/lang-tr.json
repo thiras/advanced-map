@@ -101,7 +101,6 @@
         "label": "Address ile Güvenlik Merkezi  Paneli"
       }
     },
-<<<<<<< HEAD
     "findPOI":{
       "label":"Adres ile POI Noktası Bulma Paneli",
       "mainCat":"Ana Kategori",
@@ -121,14 +120,13 @@
         "pointShow":"Durak Numarası Giriniz",
         "pointLocation":"Bulunduğunuz Noktaya Yakın Araçlar",
         "deneme":"deneme"
-      }
-=======
+      },
     "findPOI": {
       "label": "Adres ile POI Noktası Bulma Paneli",
       "mainCat": "Ana Kategori",
       "secCat": "Alt Kategori"
->>>>>>> dilo/harita
     }
+  }
   },
   "menu": {
     "menu1": {
@@ -369,4 +367,5 @@
       }
     }
   }
+
 }
