@@ -109,6 +109,22 @@
       "label":"Find POI Point by Adress Panel",
       "mainCat":"Main Category",
       "secCat":"Second Category"
+    },
+    "tranport":{
+      "busmini":{
+        "label":"Route / Departure Time Information for Bus and Minibus",
+        "autoCarTypeName":"Vehicle Type",
+        "autoCarType":[{"value":1,"text":"Bus","status":true},{"value":2,"text":"Mini Bus","status":true}],
+        "busLines":"busLines",
+        "miniBusLines":"miniBusLines",
+        "lineNumberName":"Enter Line Number or Line Name",
+        "lineShowButon":"Show Line",
+        "lineShowTime":"Show Motion Hours",
+        "showBus":"Show Running Tools",
+        "pointShow":"Stop Number Enter",
+        "pointLocation":"Nearby Tools Near You",
+        "deneme":"deneme"
+      }
     }
   },
   "menu": {

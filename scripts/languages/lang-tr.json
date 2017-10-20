@@ -101,10 +101,33 @@
         "label": "Address ile Güvenlik Merkezi  Paneli"
       }
     },
+<<<<<<< HEAD
+    "findPOI":{
+      "label":"Adres ile POI Noktası Bulma Paneli",
+      "mainCat":"Ana Kategori",
+      "secCat":"Alt Kategori"
+    },
+    "tranport":{
+      "busmini":{
+        "label":"Otobüs ve Minibüs için Güzergah/Hareket Saati Bilgileri",
+        "autoCarTypeName":"Vasıta Türünü Seçiniz",
+        "autoCarType":[{"value":1,"text":"Otobüs","status":true},{"value":2,"text":"Minibüs","status":true}],
+        "busLines":"busLines",
+        "miniBusLines":"miniBusLines",
+        "lineNumberName":"Hat Numarası ya da Hat Adını Giriniz",
+        "lineShowButon":"Hattı Göster",
+        "lineShowTime":"Hareket Saatlerini Göster",
+        "showBus":"Çalışan Araçları Göster",
+        "pointShow":"Durak Numarası Giriniz",
+        "pointLocation":"Bulunduğunuz Noktaya Yakın Araçlar",
+        "deneme":"deneme"
+      }
+=======
     "findPOI": {
       "label": "Adres ile POI Noktası Bulma Paneli",
       "mainCat": "Ana Kategori",
       "secCat": "Alt Kategori"
+>>>>>>> dilo/harita
     }
   },
   "menu": {
