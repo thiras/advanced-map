@@ -40,7 +40,7 @@ app.service("$accordion", function ($rootScope) {
             submenu: {
                 menu3e1: {
                     label: lang.menu.menu3.menu1e1,
-                    fonk: "findBusDialog"
+                    fonk: "findBusMiniBus"
                 },
                 menu3e2: {
                     label: lang.menu.menu3.menu1e2,

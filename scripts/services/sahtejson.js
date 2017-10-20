@@ -1491,7 +1491,7 @@ app.service("$sahtejson",function () {
         }
     },
 
-};-
+};
 
   this.busLines = {
     line1:{

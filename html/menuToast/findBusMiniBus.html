@@ -1,0 +1,81 @@
+<md-toast id="findbusandminibus">
+    <div class="md-toast-content" layout-padding>
+
+        <form>
+            <md-toolbar md-ink-ripple>
+                <div class="md-toolbar-tools">
+                    <h2>
+                        <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img"
+                                 aria-hidden="true">directions_bus
+                        </md-icon>
+                        <span class="md-subhead" style="color: #ffffff;">{{lang.menuToasts.tranport.busmini.label}}</span>
+                    </h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="cancel()">
+                        <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-dialog-content style="style:100%">
+                <md-content style="max-height: 45vh">
+
+                    <md-list-item>
+                        <md-input-container layout-fill>
+                            <md-select ng-model="secilenIl" placeholder="{{lang.menuToasts.general.provinceList}}">
+                                <md-select-header>
+                                    <span> {{lang.menuToasts.general.provinces}} </span>
+                                </md-select-header>
+                                <md-option ng-value="deger.id"
+                                           ng-repeat="(ozellik, deger) in il" ng-selected="deger.id == secilenIl">
+                                    {{deger.label}}
+                                </md-option>
+
+                            </md-select>
+                            {{navbarCtrl.ilce}}
+                        </md-input-container>
+
+                        <md-list-item>
+                            <md-input-container layout-fill>
+                                <md-select ng-model="vehicle" placeholder="{{lang.menuToasts.general.provinceList}}">
+                                    <md-select-header>
+                                        <span> {{lang.menuToasts.general.provinces}} </span>
+                                    </md-select-header>
+                                    <md-option ng-value="deger.id"
+                                               ng-repeat="(ozellik, deger) in il" ng-selected="deger.id == secilenIl">
+                                        {{deger.label}}
+                                    </md-option>
+
+                                </md-select>
+                                {{navbarCtrl.ilce}}
+                            </md-input-container>
+
+                        </md-list-item>
+
+                    </md-list-item>
+
+
+
+                </md-content>
+            </md-dialog-content>
+            <md-dialog-actions layout="row">
+                <span flex></span>
+
+
+                <md-button class="md-raised searchButton md-button md-ink-ripple md-button" ng-click="newMeasureLine()">
+                    <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">
+                        timeline
+                    </md-icon>
+                    {{lang.menuToasts.mesureLineArea.newMesure}}
+                </md-button>
+
+                <md-button class="md-raised closeButton md-button md-ink-ripple md-button" ng-click="cancel()"
+                           style="margin-right:20px;">
+                    {{lang.general.close}}
+                </md-button>
+            </md-dialog-actions>
+
+        </form>
+
+    </div>
+
+</md-toast>

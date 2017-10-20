@@ -197,19 +197,22 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
     };
 
 
+
+    /* aile hekimi sorgula son prompt*/
+    /* findminibus */
+
     $scope.findBusMiniBus=function () {
 
         $rootScope.$emit("closeNavbar", "closeNavbar");
         $mdToast.show({
             hideDelay: 0,
             position: 'top left',
-            controller: 'findbusminibus',
+            controller: 'menuCtrl',
             templateUrl: 'html/menuToast/findBusMiniBus.html',
         });
     }
-    /* aile hekimi sorgula son prompt*/
 
-
+    /*findminibus*/
     /* $scope.openDrawAreaByManuel=function () {
          $rootScope.$emit("closeNavbar", "closeNavbar");
          $mdToast.show({
