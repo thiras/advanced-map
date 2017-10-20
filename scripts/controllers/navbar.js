@@ -1,4 +1,4 @@
-app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $rootScope, $mdToast) {
+app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $rootScope, $mdToast,$mdSidenav) {
 
     /*navbar menusu event ve fonksiyonları içeririr*/
     $scope.menuJSON = $accordion;
