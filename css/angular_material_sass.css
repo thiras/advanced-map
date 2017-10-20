@@ -738,7 +738,7 @@ md-toast {
 md-toast#drawTool .md-toast-content {
   color: #34495e; }
 
-md-toast#menuToasts, md-toast#findProprietary, md-toast#fndBldLsToast, md-toast#calculatebymanuel, md-toast#calculatearea, md-toast#findInstByaddress, md-toast#findSecByAddress, md-toast#findMyDoctor {
+md-toast#menuToasts, md-toast#findProprietary, md-toast#fndBldLsToast, md-toast#calculatebymanuel, md-toast#calculatearea, md-toast#findInstByaddress, md-toast#findSecByAddress, md-toast#findMyDoctor, md-toast#findbusandminibus {
   position: fixed;
   top: 58px;
   left: 10px;
@@ -747,12 +747,12 @@ md-toast#menuToasts, md-toast#findProprietary, md-toast#fndBldLsToast, md-toast#
   margin: 0;
   height: 100%;
   z-index: 20; }
-  md-toast#menuToasts .md-toast-content, md-toast#findProprietary .md-toast-content, md-toast#fndBldLsToast .md-toast-content, md-toast#calculatebymanuel .md-toast-content, md-toast#calculatearea .md-toast-content, md-toast#findInstByaddress .md-toast-content, md-toast#findSecByAddress .md-toast-content, md-toast#findMyDoctor .md-toast-content {
+  md-toast#menuToasts .md-toast-content, md-toast#findProprietary .md-toast-content, md-toast#fndBldLsToast .md-toast-content, md-toast#calculatebymanuel .md-toast-content, md-toast#calculatearea .md-toast-content, md-toast#findInstByaddress .md-toast-content, md-toast#findSecByAddress .md-toast-content, md-toast#findMyDoctor .md-toast-content, md-toast#findbusandminibus .md-toast-content {
     width: 400px;
     height: auto !important;
     display: inline-table;
     color: #2196f3; }
-  md-toast#menuToasts h2, md-toast#findProprietary h2, md-toast#fndBldLsToast h2, md-toast#calculatebymanuel h2, md-toast#calculatearea h2, md-toast#findInstByaddress h2, md-toast#findSecByAddress h2, md-toast#findMyDoctor h2 {
+  md-toast#menuToasts h2, md-toast#findProprietary h2, md-toast#fndBldLsToast h2, md-toast#calculatebymanuel h2, md-toast#calculatearea h2, md-toast#findInstByaddress h2, md-toast#findSecByAddress h2, md-toast#findMyDoctor h2, md-toast#findbusandminibus h2 {
     color: #fff; }
 
 #findParcelToast md-input-container {
