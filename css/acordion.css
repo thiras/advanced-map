@@ -8,12 +8,12 @@ Error: Undefined mixin 'vp-transition'.
 8:   text-align: left;
 9:   outline: none;
 10:   font-size: 15px;
-11: @include vp-transition(all 0.4s);
+11:   @include vp-transition(all 0.4s);
 12: 
-13: 
+13: }
 14: 
-15: }
-16: 
+15: button.accordion.active, button.accordion:hover {
+16:   background: #e0e0e0;
 
 Backtrace:
 acordion.scss:11:in `vp-transition'
@@ -59,18 +59,15 @@ acordion.scss:11
 /usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
 /usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:209:in `each'
 /usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:209:in `update_stylesheets'
-/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:471:in `on_file_changed'
-/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:328:in `block in watch'
-/usr/lib/ruby/vendor_ruby/listen/event/config.rb:23:in `call'
-/usr/lib/ruby/vendor_ruby/listen/event/processor.rb:115:in `_process_changes'
-/usr/lib/ruby/vendor_ruby/listen/event/processor.rb:19:in `block in loop_for'
-/usr/lib/ruby/vendor_ruby/listen/event/processor.rb:15:in `loop'
-/usr/lib/ruby/vendor_ruby/listen/event/processor.rb:15:in `loop_for'
-/usr/lib/ruby/vendor_ruby/listen/event/loop.rb:84:in `_wait_for_changes'
-/usr/lib/ruby/vendor_ruby/listen/event/loop.rb:42:in `block in setup'
-/usr/lib/ruby/vendor_ruby/listen/internals/thread_pool.rb:6:in `block in add'
+/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:293:in `watch'
+/usr/lib/ruby/vendor_ruby/sass/plugin.rb:109:in `method_missing'
+/usr/lib/ruby/vendor_ruby/sass/exec/sass_scss.rb:379:in `watch_or_update'
+/usr/lib/ruby/vendor_ruby/sass/exec/sass_scss.rb:51:in `process_result'
+/usr/lib/ruby/vendor_ruby/sass/exec/base.rb:52:in `parse'
+/usr/lib/ruby/vendor_ruby/sass/exec/base.rb:19:in `parse!'
+/usr/bin/sass:8:in `<main>'
 */
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined mixin 'vp-transition'.\A         on line 11 of acordion.scss, in `vp-transition'\A         from line 11 of acordion.scss\A \A 6:   width: 100%;\A 7:   border: none;\A 8:   text-align: left;\A 9:   outline: none;\A 10:   font-size: 15px;\A 11: @include vp-transition(all 0.4s);\A 12: \A 13: \A 14: \A 15: }\A 16: "; }
+  content: "Error: Undefined mixin 'vp-transition'.\A         on line 11 of acordion.scss, in `vp-transition'\A         from line 11 of acordion.scss\A \A 6:   width: 100%;\A 7:   border: none;\A 8:   text-align: left;\A 9:   outline: none;\A 10:   font-size: 15px;\A 11:   @include vp-transition(all 0.4s);\A 12: \A 13: }\A 14: \A 15: button.accordion.active, button.accordion:hover {\A 16:   background: #e0e0e0;"; }

@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAA,4BAA6B;EAC3B,gBAAgB,EAAE,OAAO;;AAE3B,8BAA+B;EAC7B,gBAAgB,EAAE,OAAO",
+"sources": ["mdswitch.scss"],
 "names": [],
 "file": "mdswitch.css"
 }
