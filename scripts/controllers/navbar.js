@@ -196,6 +196,17 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
 
     };
 
+
+    $scope.findBusMiniBus=function () {
+
+        $rootScope.$emit("closeNavbar", "closeNavbar");
+        $mdToast.show({
+            hideDelay: 0,
+            position: 'top left',
+            controller: 'findbusminibus',
+            templateUrl: 'html/menuToast/findBusMiniBus.html',
+        });
+    }
     /* aile hekimi sorgula son prompt*/
 
 
