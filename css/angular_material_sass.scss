@@ -79,7 +79,11 @@ $md-iconBGColorHover: $clouds;
   left: 8px;
   position: fixed;
   z-index: 60;
-  border-radius: 5px;
+  overflow: hidden;
+  padding:.2em;
+  padding-left: 0;
+  background: #ffffff;
+
 
   md-icon {
     cursor: pointer;
@@ -94,7 +98,9 @@ $md-iconBGColorHover: $clouds;
     &:hover {
       background-color: $md-iconBGColorHover !important;
 
+
     }
+
 
     md-menu-bar {
 
@@ -104,7 +110,7 @@ $md-iconBGColorHover: $clouds;
 
   md-input-container {
 
-    height: 40px !important;
+    height: 30px !important;
     display: inline-block;
     padding: 0 !important;
     margin: 0 !important;
@@ -441,8 +447,8 @@ md-custom-toast{
   z-index:21;
   position:absolute;
   left:0.3em;
-  height:4em;
-  width:4em;
+  height:45px;
+  width:45px;
 border-radius:100%;
   bottom: 0.25em;
   outline: 0;
@@ -492,6 +498,7 @@ left:5em;
 @import "iframe";
 @import "button";
 @import "mdlist";
+@import "mdFabSpeedDial";
 
 
 

@@ -50,7 +50,10 @@
   left: 8px;
   position: fixed;
   z-index: 60;
-  border-radius: 5px; }
+  overflow: hidden;
+  padding: .2em;
+  padding-left: 0;
+  background: #ffffff; }
   #searchbox md-icon {
     cursor: pointer;
     text-align: center;
@@ -66,7 +69,7 @@
     #searchbox md-icon md-menu-bar {
       padding: 0; }
   #searchbox md-input-container {
-    height: 40px !important;
+    height: 30px !important;
     display: inline-block;
     padding: 0 !important;
     margin: 0 !important;
@@ -533,8 +536,8 @@ md-custom-toast {
   z-index: 21;
   position: absolute;
   left: 0.3em;
-  height: 4em;
-  width: 4em;
+  height: 45px;
+  width: 45px;
   border-radius: 100%;
   bottom: 0.25em;
   outline: 0;
@@ -556,8 +559,8 @@ all-fab-dials {
     overflow: hidden; }
 
   left-menu #plus {
-    height: 45px;
-    width: 45px; }
+    height: 30px;
+    width: 30px; }
   left-menu .md-button.md-fab:not(#plus) {
     padding: 0;
     height: 25px !important;
@@ -617,7 +620,7 @@ all-fab-dials {
 
 md-slider-container {
   position: fixed;
-  left: 0px;
+  left: -0.5em;
   bottom: 100px;
   width: 80px;
   height: 150px;
@@ -910,6 +913,9 @@ iframe {
 
 #calculatebymanuel md-list {
   max-height: 65vh; }
+
+#mdFabSpeedDial {
+  margin-left: -1.5em; }
 
 /*
 

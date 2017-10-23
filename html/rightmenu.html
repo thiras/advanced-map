@@ -1,8 +1,10 @@
 <drop-down-menu hide-xs>
     <md-menu  md-offset="-220 74" class="md-secondary">
             <md-button ng-click="$mdOpenMenu()" aria-label="Google Hangout" class="md-fab md-raised md-mini">
-                <md-tooltip md-direction="down">{{lang.general.moduls}}</md-tooltip>
-                <md-icon md-svg-src="img/icons/modul.svg" aria-label="Modüller"></md-icon>
+                <md-tooltip md-direction="left">{{lang.general.moduls}}</md-tooltip>
+                <md-icon style="margin-top: 0;" class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">
+                    apps
+                </md-icon>
             </md-button>
             <md-menu-content  class="grid-4" layout-padding md-whiteframe="14" width="2">
                 <div ng-click="hide()" layout-padding layout="column" class="modulButon">
@@ -50,7 +52,9 @@
             <md-tooltip md-direction="down">
                 {{lang.general.signin}}
             </md-tooltip>
-            <md-icon md-svg-src="img/icons/user1.svg" aria-label="Profil"></md-icon>
+            <md-icon style="margin-top: 0;" class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">
+                person
+            </md-icon>
         </md-button>
     </div>
 </login-dialog>

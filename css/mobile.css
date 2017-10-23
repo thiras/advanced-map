@@ -9,8 +9,8 @@
     overflow: hidden; }
 
   left-menu #plus {
-    height: 45px;
-    width: 45px; }
+    height: 30px;
+    width: 30px; }
   left-menu .md-button.md-fab:not(#plus) {
     padding: 0;
     height: 25px !important;
