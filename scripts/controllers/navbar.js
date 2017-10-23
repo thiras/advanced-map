@@ -212,7 +212,7 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
             controller: 'menuCtrl',
             templateUrl: 'html/menuToast/findBusMiniBus.html',
         });
-    }
+    },
 
     /*findminibus*/
     /* $scope.openDrawAreaByManuel=function () {
@@ -225,4 +225,16 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
          });
      }
  */
+
+
+    $scope.findTrainDialog=function () {
+        $rootScope.$emit("closeNavbar", "closeNavbar");
+        $mdToast.show({
+            hideDelay: 0,
+            position: 'top left',
+            controller: 'menuCtrl',
+            templateUrl: 'html/menuToast/findTrainTramToast.html',
+        });
+
+    };
 });
