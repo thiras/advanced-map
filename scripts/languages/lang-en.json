@@ -125,6 +125,18 @@
         "pointLocation":"Nearby Tools Near You",
         "nearPoints1":"Show to Me Near Bus Points",
         "nearPoints2":"Don't Show to Me Near Bus Points"
+      },
+      "train":{
+        "label":"Finding Tren and Tramvay Panel",
+        "trainType":"Vehicle Type",
+        "departure":"Select a Departure Station",
+        "departureText":"Departure Stations",
+        "arrival":"Select a Arrival Station",
+        "arrivalText":"Arrival Stations",
+        "nearTrainStation1":"Show Nearest Train Station",
+        "nearTrainStation2":"Don't Show Nearest Train Station",
+        "onlineTrain1":"Show Trains on Online Map",
+        "onlineTrain2":"Don't Show Trains on Online Map"
       }
     }
   },
