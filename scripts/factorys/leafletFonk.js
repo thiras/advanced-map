@@ -1,5 +1,5 @@
 "use strict";
-app.factory("$leafletFonk",function ($rootScope,$fonks,$leftmenujson) {
+app.factory("$leafletFonk",function ($rootScope,$fonks,$leftmenujson,$timeout) {
 
 
     this.showMap = function (tileLayer) {
@@ -72,5 +72,11 @@ app.factory("$leafletFonk",function ($rootScope,$fonks,$leftmenujson) {
         }
         return feature;
     };
+
+
+    $timeout(function () {
+        $rootScope.leaflet.invalidateSize();
+
+    },50);
     return this;
 });
