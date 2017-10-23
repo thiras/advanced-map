@@ -128,7 +128,8 @@
       },
       "train":{
         "label":"Finding Tren and Tramvay Panel",
-        "trainType":"Vehicle Type",
+        "trainTypeName":"Vehicle Type",
+        "trainType":[{"value":1,"text":"Train","status":false},{"value":2,"text":"Metro","status":true},{"value":3,"text":"Tram","status":false}],
         "departure":"Select a Departure Station",
         "departureText":"Departure Stations",
         "arrival":"Select a Arrival Station",

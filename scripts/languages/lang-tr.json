@@ -124,7 +124,8 @@
       },
       "train":{
         "label":"Tren ve Tramvay Bulma Paneli",
-        "trainType":"Taşıt Türü",
+        "trainTypeName":"Taşıt Türü",
+        "trainType":[{"value":1,"text":"Tren","status":false},{"value":2,"text":"Metro","status":true},{"value":3,"text":"Tramvay","status":false}],
         "departure":"Kalkış Durağı Seçiniz",
         "departureText":"Kalkış Durakları",
         "arrival":"Varış Durağı Seçiniz",
