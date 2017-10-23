@@ -49,5 +49,23 @@ app.factory("$leafletFonk",function ($rootScope,$fonks,$leftmenujson) {
             $rootScope.streetWievImgSrc = 'https://maps.googleapis.com/maps/api/streetview?size=600x300&location=' + e.latlng.lat + ',' + e.latlng.lng + '&heading=0.78&pitch=0&key=AIzaSyDHae8ceqSKf-LhFW8rgswJ6UfOmxdF_Zk';
         });*/
     };
+    this.showGeoJSON = function (geojson,obj,add,zoom) {
+        var style = obj.style || {color:"red"};
+        var bindPopupText = obj.bindPopupText || false;
+        var add = add || false;
+        var zoom = zoom || false;
+        var feature = L.geoJSON(geojson, {style: style});
+        if(bindPopupText!==false){
+            feature.bindPopup(bindPopupText);
+        }
+        if(add==!false){
+            feature.addTo($rootScope.leaflet);
+            if(zoom!==false){
+                var bbox = feature.getBounds();
+                $rootScope.leaflet.fitBounds(bbox);
+            }
+        }
+        return feature;
+    };
     return this;
 });

@@ -34,7 +34,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.buildOwnerName = $rootScope.buildLicense.buildOwnerName;
     $scope.buildConstName = $rootScope.buildLicense.buildConstName;
     $scope.clickMapAddPoint = $rootScope.clickMapAddPoint || false;
-    $scope.vehicles=$rootScope.lang.menuToasts.tranport.busmini.autoCarType;
+
 
     /* sağlık merkezileri için mdSelect adress yardımı ile*/
 
@@ -602,7 +602,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             $scope.onMouseOverPoint = false;
         }
 
-    }
+    };
     $scope.showParcell = function () {
 
 
@@ -615,7 +615,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         };
         alert(JSON.stringify($scope.dataShowParcell));
 
-    }
+    };
     $scope.showAddress = function () {
 
 
@@ -628,7 +628,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         };
 
         alert(JSON.stringify($scope.dataShowAddress));
-    }
+    };
     $scope.showTaxi = function () {
 
         $scope.dataShowTaxi = {
@@ -640,7 +640,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         };
         alert(JSON.stringify($scope.dataShowTaxi));
 
-    }
+    };
     $scope.showPharmacy = function () {
 
         $scope.dataShowPharmacy = {
@@ -652,7 +652,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         };
         alert(JSON.stringify($scope.dataShowPharmacy));
 
-    }
+    };
     $scope.showBuildingLis = function () {
 
 
@@ -663,11 +663,11 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             secilenIlce: $scope.secilenIlce,
             secilenMahalle: $scope.secilenMahalle
 
-        }
+        };
 
         alert(JSON.stringify($scope.dataShowBuildlis));
 
-    }
+    };
     $scope.showProprietry = function () {
 
 
@@ -677,10 +677,10 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             secilenIlce: $scope.secilenIlce,
             secilenMahalle: $scope.secilenMahalle,
 
-        }
+        };
 
         alert(JSON.stringify($scope.datashowProprietry))
-    }
+    };
     $scope.showSecFindbyAdrs = function () {
 
 
@@ -691,11 +691,11 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             secilenIlce: $scope.secilenIlce,
             secilenMahalle: $scope.secilenMahalle,
 
-        }
+        };
 
         alert(JSON.stringify($scope.datashowSecFindbyAdrs))
 
-    }
+    };
 
     // POI için yazılan kodlar --->
     $scope.poiFrsqrMainCat = $rootScope.poi.poiFrsqrMainCat || [{
@@ -803,7 +803,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             secilenIlce: $scope.secilenIlce,
             secilenMahalle: $scope.secilenMahalle,
 
-        }
+        };
         alert(JSON.stringify($scope.datashowInsByAdrs))
     };
     $scope.setInstitutionsName = function () {
@@ -831,7 +831,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         };
 
         alert(JSON.stringify($scope.showHealthInst))
-    }
+    };
 
     /* show my find dr son*/
 
@@ -839,5 +839,112 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.setCardIdNo=function () {
 
         $rootScope.cardIdNo=$scope.cardIdNo;
-    }
+    };
+
+
+    /*  autobus ve  minibus sorgu bas*/
+    $scope.autoCarType=$rootScope.lang.menuToasts.tranport.busmini.autoCarType;
+    $scope.busStopActive=false;
+    $scope.busStop = {};
+    $scope.busStopList = [];
+    $scope.TransportLine = false;
+    $scope.busStopFeature =false;
+    $scope.queryLineNumber=function (searchText) {
+            var a,b = false;
+            var c = parseInt($scope.autoCarTypeSelect);
+            if(c==1){
+                a="busLines";
+            }
+            if(c==2){
+                a="miniBusLines";
+            }
+            var lines = $sahtejson[a];
+            var dizi = [];
+            for(i in lines){
+                var name = lines[i].label;
+                var ilid = lines[i].ilid; ilid=parseInt(ilid);
+                var name2=name;
+                name=name.toLowerCase();
+                searchText=searchText.toLowerCase();
+                if(name.indexOf(searchText)!==-1 && ilid==$scope.secilenIl){
+                    dizi.push(name2);
+                }
+            }
+            $scope.selectedLineNumber=null;
+            return dizi;
+
+
+        };
+    $scope.selectNewBusLine=function () {
+            var val = $scope.selectedLineNumber;
+            if(val!==null){
+                var dizi = {};
+                var json = false;
+                var c = parseInt($scope.autoCarTypeSelect);
+                if(c==1){
+                    a="busLines";
+                    b="busLinesPoint";
+                }
+                if(c==2){
+                    a="miniBusLines";
+                    b="miniBusLinesPoint";
+                }
+                var lines = $sahtejson[a];
+                var points = $sahtejson[b];
+                busStopList=[];
+                for(i in lines){
+                    var name = lines[i].label;
+                    var ilid = lines[i].ilid; ilid=parseInt(ilid);
+                    var lineid = lines[i].id;
+                    if(name==val && ilid==$scope.secilenIl){
+                        dizi=lines[i];
+                        json=dizi.geojson;
+                        $scope.busStopActive=true;
+                        for(j in points){
+                            var point = points[j];
+                            var pointName = point.label;
+                            var pointid = point.id;
+                            var pointlineid=point.lineid;
+                            if(lineid==pointlineid){
+                                $scope.busStopList.push({value:pointid,text:pointName});
+                            }
+                        }
+                    }
+                }
+                if($scope.TransportLine==false){
+                    $scope.TransportLine = $leafletFonk.showGeoJSON(json,{bindPopupText:val},true,true);
+                }else{
+                    $scope.TransportLine.remove();
+                    $scope.TransportLine = $leafletFonk.showGeoJSON(json,{bindPopupText:val},true,true);
+                }
+                if ($scope.featureIl !== false) {
+                    $scope.featureIl.remove();
+                    $scope.featureIl = false;
+                    $rootScope.adress.featureIl = false;
+                }
+            }else{
+                $scope.busStopActive=false;
+            }
+
+        };
+    $scope.showBusPoint=function (pointId,stay) {
+        pointId=parseInt(pointId);
+        for(i in $sahtejson.busLinesPoint){
+            var point = $sahtejson.busLinesPoint[i];
+            var id = point.id;
+            var name = point.label;
+            if(id==pointId){
+                var geojson =point.geojson;
+                if($scope.busStopFeature==false){
+                    $scope.busStopFeature= $leafletFonk.showGeoJSON(geojson,{bindPopupText:name},true,stay);
+                }else{
+                    $scope.busStopFeature.remove();
+                    $scope.busStopFeature= $leafletFonk.showGeoJSON(geojson,{bindPopupText:name},true,stay);
+                }
+
+            }
+        }
+    };
+
+    /* otogbus ve minibus sorgu son*/
 });

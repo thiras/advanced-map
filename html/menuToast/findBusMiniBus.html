@@ -8,7 +8,8 @@
                         <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img"
                                  aria-hidden="true">directions_bus
                         </md-icon>
-                        <span class="md-subhead" style="color: #ffffff;">{{lang.menuToasts.tranport.busmini.label}}</span>
+                        <span class="md-subhead"
+                              style="color: #ffffff;">{{lang.menuToasts.tranport.busmini.label}}</span>
                     </h2>
                     <span flex></span>
                     <md-button class="md-icon-button" ng-click="cancel()">
@@ -20,40 +21,73 @@
                 <md-content style="max-height: 45vh">
 
                     <md-list>
-                    <md-list-item>
-                        <md-input-container layout-fill>
-                            <md-select ng-model="secilenIl" placeholder="{{lang.menuToasts.general.provinceList}}">
-                                <md-select-header>
-                                    <span> {{lang.menuToasts.general.provinces}} </span>
-                                </md-select-header>
-                                <md-option ng-value="deger.id" ng-click="changeIlce(deger.id)"
-                                           ng-repeat="(ozellik, deger) in il" ng-selected="deger.id == secilenIl">
-                                    {{deger.label}}
-                                </md-option>
-
-                            </md-select>
-                            {{navbarCtrl.ilce}}
-                        </md-input-container>
-
-                    </md-list-item>
                         <md-list-item>
-                        <md-input-container layout-fill>
-                            <md-select ng-model="vehicle" placeholder="{{lang.menuToasts.tranport.busmini.autoCarTypeName}}">
-                                <md-select-header>
-                                    <span>{{lang.menuToasts.tranport.busmini.autoCarTypeName}}</span>
-                                </md-select-header>
-                                <md-option ng-value="deger.value" ng-click="changeIlce(deger.id)"
-                                           ng-repeat="(ozellik, deger) in vehicles" ng-selected="deger.id == secilenIl">
-                                    {{deger.text}}
-                                </md-option>
+                            <md-input-container layout-fill>
+                                <md-select ng-model="secilenIl" placeholder="{{lang.menuToasts.general.provinceList}}">
+                                    <md-select-header>
+                                        <span> {{lang.menuToasts.general.provinces}} </span>
+                                    </md-select-header>
+                                    <md-option ng-value="deger.id" ng-click="changeIlce(deger.id)"
+                                               ng-repeat="(ozellik, deger) in il" ng-selected="deger.id == secilenIl">
+                                        {{deger.label}}
+                                    </md-option>
 
-                            </md-select>
-                            {{navbarCtrl.ilce}}
-                        </md-input-container>
+                                </md-select>
+                                {{navbarCtrl.ilce}}
+                            </md-input-container>
 
-                    </md-list-item>
+                        </md-list-item>
+                        <md-list-item>
+                            <md-input-container layout-fill>
+                                <md-select ng-model="autoCarTypeSelect"
+                                           placeholder="{{lang.menuToasts.tranport.busmini.autoCarTypeName}}">
+                                    <md-select-header>
+                                        <span>{{lang.menuToasts.tranport.busmini.autoCarTypeName}}</span>
+                                    </md-select-header>
+                                    <md-option ng-value="deger.value"
+                                               ng-repeat="(ozellik, deger) in autoCarType">
+                                        {{deger.text}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+
+                        </md-list-item>
+
+                        <md-list-item>
+
+
+                            <md-autocomplete md-selected-item-change="selectNewBusLine()" layout-fill placeholder="{{lang.menuToasts.tranport.busmini.lineNumberName}}" md-selected-item="selectedLineNumber"
+                                             md-search-text="searchText" md-items="item in queryLineNumber(searchText)"
+                                             md-item-text="item">
+                                <span md-highlight-text="searchText">{{item}}</span>
+                                <md-not-found>
+                                    No matches found.
+                                </md-not-found>
+                            </md-autocomplete>
+
+                        </md-list-item>
+
+                        <md-list-item ng-if="busStopActive">
+                            <md-input-container layout-fill>
+                                <md-select ng-model="busStop"
+                                           placeholder="{{lang.menuToasts.tranport.busmini.pointShow}}">
+                                    <md-select-header>
+                                        <span>{{lang.menuToasts.tranport.busmini.autoCarTypeName}}</span>
+                                    </md-select-header>
+                                    <md-option ng-mouseover="showBusPoint(deger.value,false);" ng-click="showBusPoint(deger.value,true);" ng-value="deger.value"
+                                               ng-repeat="(ozellik, deger) in busStopList">
+                                        {{deger.text}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+
+                        </md-list-item>
+
+
+                        <md-list-item>
+                            <md-switch ng-model="secencek">seçenek seç</md-switch>
+                        </md-list-item>
                     </md-list>
-
 
 
                 </md-content>
