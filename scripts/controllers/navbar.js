@@ -10,7 +10,9 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
 
     function buildToggler(componentId) {
         return function () {
-            $mdSidenav(componentId).toggle();
+           $timeout(function () {
+               $mdSidenav(componentId).toggle();
+           });
         };
     }
 

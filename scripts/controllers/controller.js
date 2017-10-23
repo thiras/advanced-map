@@ -86,7 +86,9 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
 
     function buildToggler(componentId) {
         return function () {
-            $mdSidenav(componentId).toggle();
+            $timeout(function () {
+                $mdSidenav(componentId).toggle();
+            });
         };
     }
 
