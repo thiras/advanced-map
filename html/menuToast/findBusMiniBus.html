@@ -85,7 +85,7 @@
 
 
                         <md-list-item>
-                            <md-switch ng-model="secencek">seçenek seç</md-switch>
+                            <md-switch ng-model="secencek">{{secencek==true ? lang.menuToasts.tranport.busmini.nearPoints1:lang.menuToasts.tranport.busmini.nearPoints2}}</md-switch>
                         </md-list-item>
                     </md-list>
 
@@ -94,14 +94,6 @@
             </md-dialog-content>
             <md-dialog-actions layout="row">
                 <span flex></span>
-
-
-                <md-button class="md-raised searchButton md-button md-ink-ripple md-button" ng-click="newMeasureLine()">
-                    <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">
-                        timeline
-                    </md-icon>
-                    {{lang.menuToasts.mesureLineArea.newMesure}}
-                </md-button>
 
                 <md-button class="md-raised closeButton md-button md-ink-ripple md-button" ng-click="cancel()"
                            style="margin-right:20px;">

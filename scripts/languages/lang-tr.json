@@ -119,7 +119,8 @@
         "showBus":"Çalışan Araçları Göster",
         "pointShow":"Durak Numarası Giriniz",
         "pointLocation":"Bulunduğunuz Noktaya Yakın Araçlar",
-        "deneme":"deneme"
+        "nearPoints1":"Yakın Durakları Göster",
+        "nearPoints2":"Yakın Durakları Gösterme !.."
       },
     "findPOI": {
       "label": "Adres ile POI Noktası Bulma Paneli",

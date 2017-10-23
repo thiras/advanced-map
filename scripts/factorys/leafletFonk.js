@@ -40,6 +40,11 @@ app.factory("$leafletFonk",function ($rootScope,$fonks,$leftmenujson) {
         }).addTo($rootScope.leaflet);
 
 
+        $rootScope.leaflet.setView([lng, lat], 7, {
+            reset: true
+        });
+
+
        /* L.marker([lat, lng]).addTo($rootScope.leaflet)
             .bindPopup($rootScope.ad + '<br> Easily customizable.')
             .openPopup();
