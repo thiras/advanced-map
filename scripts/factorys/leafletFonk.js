@@ -1,5 +1,5 @@
 "use strict";
-app.factory("$leafletFonk",function ($rootScope,$fonks,$leftmenujson,$timeout) {
+app.factory("$leafletFonk",function ($rootScope,$fonks,$leftmenujson,$timeout,$window) {
 
 
     this.showMap = function (tileLayer) {
@@ -74,9 +74,21 @@ app.factory("$leafletFonk",function ($rootScope,$fonks,$leftmenujson,$timeout) {
     };
 
 
-    $timeout(function () {
+    $window.addEventListener("load",function () {
+
+        $timeout(function () {
+            $rootScope.leaflet.invalidateSize();
+
+        });
+    });
+    /* hatta alırsa  tiles load*/
+   /* $timeout(function () {
         $rootScope.leaflet.invalidateSize();
 
-    },50);
+    });*/
+    /* hatta alırsa tiles load*/
+
+
+
     return this;
 });
