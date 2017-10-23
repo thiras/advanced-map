@@ -843,7 +843,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
 
     /*  autobus ve  minibus sorgu bas*/
-    $scope.autoCarType=$rootScope.lang.menuToasts.tranport.busmini.autoCarType;
+    $scope.autoCarType=$rootScope.lang.menuToasts.transport.busmini.autoCarType;
     $scope.busStopActive=false;
     $scope.busStop = {};
     $scope.busStopList = [];

@@ -9,7 +9,7 @@
                                  aria-hidden="true">directions_bus
                         </md-icon>
                         <span class="md-subhead"
-                              style="color: #ffffff;">{{lang.menuToasts.transport}}</span>
+                              style="color: #ffffff;">{{lang.menuToasts.transport.train.label}}</span>
                     </h2>
                     <span flex></span>
                     <md-button class="md-icon-button" ng-click="cancel()">
@@ -40,7 +40,8 @@
                         <md-list-item>
                             <md-input-container layout-fill>
                                 <md-select ng-model="autoCarTypeSelect"
-                                           placeholder="{{lang.menuToasts.tranport.busmini.autoCarTypeName}}">
+                                           placeholder="{{lang.menuToasts.transport.train.trainTypeName}}">
+                                    <!-- bu noktada kaldı devamı gelecek-->
                                     <md-select-header>
                                         <span>{{lang.menuToasts.tranport.busmini.autoCarTypeName}}</span>
                                     </md-select-header>
