@@ -110,7 +110,7 @@
       "mainCat":"Main Category",
       "secCat":"Second Category"
     },
-    "tranport":{
+    "transport":{
       "busmini":{
         "label":"Route / Departure Time Information for Bus and Minibus",
         "autoCarTypeName":"Vehicle Type",

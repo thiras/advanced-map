@@ -106,7 +106,7 @@
       "mainCat":"Ana Kategori",
       "secCat":"Alt Kategori"
     },
-    "tranport":{
+    "transport":{
       "busmini":{
         "label":"Otobüs ve Minibüs için Güzergah/Hareket Saatleri",
         "autoCarTypeName":"Vasıta Türünü Seçiniz",
