@@ -122,13 +122,18 @@
         "nearPoints1":"Yakın Durakları Göster",
         "nearPoints2":"Yakın Durakları Gösterme !.."
       },
-    "findPOI": {
-      "label": "Adres ile POI Noktası Bulma Paneli",
-      "mainCat": "Ana Kategori",
-      "secCat": "Alt Kategori"
-
-
-    }
+      "train":{
+        "label":"Tren ve Tramvay Bulma Paneli",
+        "trainType":"Taşıt Türü",
+        "departure":"Kalkış Durağı Seçiniz",
+        "departureText":"Kalkış Durakları",
+        "arrival":"Varış Durağı Seçiniz",
+        "arrivalText":"Varış Durakları",
+        "nearTrainStation1":"En Yakın Tren İstasyonunu Göster",
+        "nearTrainStation2":"En Yakın Tren İstasyonunu Gösterme",
+        "onlineTrain1":"Trenleri Haritada Göster",
+        "onlineTrain2":"Trenleri Haritada Gösterme"
+      }
   }
   },
   "menu": {
