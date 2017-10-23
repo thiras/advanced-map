@@ -1,7 +1,6 @@
 <drop-down-menu hide-xs>
-    <md-list-item>
-        <md-menu  md-offset="18 74" class="md-secondary">
-            <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
+    <md-menu  md-offset="-220 74" class="md-secondary">
+            <md-button ng-click="$mdOpenMenu()" aria-label="Google Hangout" class="md-fab md-raised md-mini">
                 <md-tooltip md-direction="down">{{lang.general.moduls}}</md-tooltip>
                 <md-icon md-svg-src="img/icons/modul.svg" aria-label="Modüller"></md-icon>
             </md-button>
@@ -41,11 +40,11 @@
 
             </md-menu-content>
         </md-menu>
-    </md-list-item>
+
 </drop-down-menu>
 
 
-<my-dialog hide-xs>
+<login-dialog hide-xs>
     <div ng-controller="AppCtrl" ng-cloak md-theme="{{theme}}" class="container">
         <md-button ng-click="showAdvanced($event)" aria-label="Google Hangout" class="md-fab md-raised md-mini">
             <md-tooltip md-direction="down">
@@ -54,4 +53,5 @@
             <md-icon md-svg-src="img/icons/user1.svg" aria-label="Profil"></md-icon>
         </md-button>
     </div>
-</my-dialog>
+</login-dialog>
+
