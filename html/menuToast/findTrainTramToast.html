@@ -57,9 +57,9 @@
                         <md-list-item>
                             <md-input-container layout-fill>
                                 <md-select ng-model="TrainLines"
-                                           placeholder="{{lang.menuToasts.tranport.busmini.pointShow}}">
+                                           placeholder="{{lang.menuToasts.transport.train.lineplaceholder}}">
                                     <md-select-header>
-                                        <span>{{lang.menuToasts.tranport.busmini.autoCarTypeName}}</span>
+                                        <span>{{lang.menuToasts.transport.train.lineplaceholder}}</span>
                                     </md-select-header>
                                     <md-option
                                             ng-click="showBusPoint(data.id,true);" ng-value="data.id"
@@ -70,29 +70,12 @@
                             </md-input-container>
                         </md-list-item>
 
-
-                        <md-list-item>
-                            <md-input-container layout-fill>
-                                <md-select ng-model="arriveStop"
-                                           placeholder="{{lang.menuToasts.tranport.busmini.pointShow}}">
-                                    <md-select-header>
-                                        <span>{{lang.menuToasts.tranport.busmini.autoCarTypeName}}</span>
-                                    </md-select-header>
-                                    <md-option
-                                            ng-click="showBusPoint(data.id,true);" ng-value="data.id"
-                                            ng-repeat="data in arriveStopData">
-                                        {{data.label}}
-                                    </md-option>
-                                </md-select>
-                            </md-input-container>
-                        </md-list-item>
-
                         <md-list-item>
                             <md-input-container layout-fill>
                                 <md-select ng-model="departureStop"
-                                           placeholder="{{lang.menuToasts.tranport.busmini.pointShow}}">
+                                           placeholder="{{lang.menuToasts.transport.train.departure}}">
                                     <md-select-header>
-                                        <span>{{lang.menuToasts.tranport.busmini.autoCarTypeName}}</span>
+                                        <span>{{lang.menuToasts.transport.train.departure}}</span>
                                     </md-select-header>
                                     <md-option
                                             ng-click="showBusPoint(deger.value,true);" ng-value="data.id"
@@ -103,6 +86,24 @@
                             </md-input-container>
 
                         </md-list-item>
+
+                        <md-list-item>
+                            <md-input-container layout-fill>
+                                <md-select ng-model="arriveStop"
+                                           placeholder="{{lang.menuToasts.transport.train.arrival}}">
+                                    <md-select-header>
+                                                <span>{{lang.menuToasts.transport.train.arrivalText}}</span>
+                                    </md-select-header>
+
+                                    <md-option
+                                            ng-click="showBusPoint(data.id,true);" ng-value="data.id"
+                                            ng-repeat="data in arriveStopData">
+                                        {{data.label}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                        </md-list-item>
+
                         <md-list-item>
                             <md-input-container layout-fill>
                                 <md-switch ng-model="secencek">{{secencek==true ?

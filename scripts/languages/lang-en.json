@@ -131,6 +131,7 @@
         "trainTypeName":"Vehicle Type",
         "trainType":[{"value":1,"text":"Train","status":false},{"value":2,"text":"Metro","status":true},{"value":3,"text":"Tram","status":false}],
         "departure":"Select a Departure Station",
+        "lineplaceholder":"Select Line",
         "departureText":"Departure Stations",
         "arrival":"Select a Arrival Station",
         "arrivalText":"Arrival Stations",
