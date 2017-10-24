@@ -44,7 +44,7 @@
                                     <md-select-header>
                                         <span>{{lang.menuToasts.transport.ship.shipTypelist}}</span>
                                     </md-select-header>
-                                    <md-option ng-value="deger.value"
+                                    <md-option ng-click="setShipTypeSelect(deger.value)" ng-value="deger.value"
                                                ng-repeat="(ozellik, deger) in shipType">
                                         {{deger.text}}
                                     </md-option>

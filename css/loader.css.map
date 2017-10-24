@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAA,8EAA+E;EAC7E,OAAO,EAAE,eAAe",
+"sources": ["loader.scss"],
 "names": [],
 "file": "loader.css"
 }

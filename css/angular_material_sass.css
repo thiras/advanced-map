@@ -898,9 +898,6 @@ md-switch.md-checked .md-bar {
 md-switch.md-checked .md-thumb {
   background-color: #03a9f4; }
 
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important; }
-
 iframe {
   width: 100%;
   min-height: 50vh; }

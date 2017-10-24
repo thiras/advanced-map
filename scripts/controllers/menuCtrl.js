@@ -959,4 +959,10 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     /* Gemi ve Feribot Kod BLoğu Baş */
     $scope.shipType = $rootScope.lang.menuToasts.transport.ship.shipType;
     /* Gemi ve Feribot Kod BLoğu Son  */
+
+
+    $scope.setShipTypeSelect=function (a) {
+
+        $rootScope.shipTypeSelect=a;
+    }
 });
