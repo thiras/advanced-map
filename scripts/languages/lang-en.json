@@ -139,6 +139,20 @@
         "nearTrainStation2":"Don't Show Nearest Train Station",
         "onlineTrain1":"Show Trains on Online Map",
         "onlineTrain2":"Don't Show Trains on Online Map"
+      },
+      "ship":{
+        "label":"Ship and Ferry Paneling",
+        "shipTypeName":"Select a Vehicle Type",
+        "shipTypelist":"Vehicle Types",
+        "shipType":[{"value":1,"text":"Ship","status":false},{"value":2,"text":"Ferry","status":true}],
+        "departure":"Select a Departure Station",
+        "departureText":"Departure Stations",
+        "arrival":"Select a Arrival Station",
+        "arrivalText":"Arrival Stations",
+        "nearShipStation1":"Show Nearest Port",
+        "nearShipStation2":"Don't Show Nearest Port",
+        "onlineShip1":"Show Ship and Ferry on Online Map",
+        "onlineShip2":"Don't Show Ship and Ferry on Online Map"
       }
     }
   },

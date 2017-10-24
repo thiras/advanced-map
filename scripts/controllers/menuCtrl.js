@@ -953,4 +953,10 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     /* otogbus ve minibus sorgu son*/
 
     $scope.trainType=$rootScope.lang.menuToasts.transport.train.trainType; //tram and train vehicles type
+
+
+
+    /* Gemi ve Feribot Kod BLoğu Baş */
+    $scope.shipType = $rootScope.lang.menuToasts.transport.ship.shipType;
+    /* Gemi ve Feribot Kod BLoğu Son  */
 });

@@ -135,6 +135,20 @@
         "nearTrainStation2":"En Yakın Tren İstasyonunu Gösterme",
         "onlineTrain1":"Trenleri Haritada Göster",
         "onlineTrain2":"Trenleri Haritada Gösterme"
+      },
+      "ship":{
+        "label":"Vapur ve Feribot Bulma Paneli",
+        "shipTypeName":"Taşıt Türü Seçiniz",
+        "shipTypelist":"Taşıt Türleri",
+        "shipType":[{"value":1,"text":"Vapur","status":false},{"value":2,"text":"Feribot","status":true}],
+        "departure":"Kalkış Durağı Seçiniz",
+        "departureText":"Kalkış Durakları",
+        "arrival":"Varış Durağı Seçiniz",
+        "arrivalText":"Varış Durakları",
+        "nearShipStation1":"En Yakın Limanı Göster",
+        "nearShipStation2":"En Yakın Limanı Gösterme",
+        "onlineShip1":"Vapur ve Feribotları Haritada Göster",
+        "onlineShip2":"Vapur ve Feribotları Haritada Gösterme"
       }
   }
   },

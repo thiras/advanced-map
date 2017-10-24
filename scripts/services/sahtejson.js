@@ -2349,5 +2349,125 @@ app.service("$sahtejson",function () {
       }
   };
 
+  this.shipLine = {
+      line1:{
+          id:1,
+          label:"Konak - Karşıyaka",
+          ilid:35,
+          geojson:{
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                  "type": "LineString",
+                  "coordinates": [
+                      [
+                          27.125072479248047,
+                          38.41862841506281
+                      ],
+                      [
+                          27.12241172790527,
+                          38.419132770390426
+                      ],
+                      [
+                          27.120952606201172,
+                          38.42202433963399
+                      ],
+                      [
+                          27.111854553222656,
+                          38.449286817153556
+                      ]
+                  ]
+              }
+          }
+      },
+      line1:{
+          id:2,
+          label:"Üçkuyular - Bostanlı",
+          ilid:35,
+          geojson:{
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                  "type": "LineString",
+                  "coordinates": [
+                      [
+                          27.07082748413086,
+                          38.405715719814005
+                      ],
+                      [
+                          27.093143463134762,
+                          38.4545297135813
+                      ]
+                  ]
+              }
+          }
+      }
+  };
+  this.shipPoint = {
+      point1:{
+          id:1,
+          lineid:1,
+          label:"Konak",
+          geosjon:{
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                      27.125072479248047,
+                      38.41862841506281
+                  ]
+              }
+          }
+      },
+      point2:{
+          id:2,
+          lineid:1,
+          label:"Karşıyaka",
+          geosjon:{
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                      27.093143463134762,
+                      38.4545297135813
+                  ]
+              }
+          }
+      },
+      point3:{
+          id:3,
+          lineid:2,
+          label:"Üçkuyular",
+          geosjon:{
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                      27.07082748413086,
+                      38.405715719814005
+                  ]
+              }
+          }
+      },
+      point4:{
+          id:4,
+          lineid:2,
+          label:"Bostanlı",
+          geosjon:{
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                  "type": "Point",
+                  "coordinates": [
+                      27.111854553222656,
+                      38.449286817153556
+                  ]
+              }
+          }
+      }
+  };
     return this;
 });
