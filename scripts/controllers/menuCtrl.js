@@ -686,7 +686,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
         $scope.datashowSecFindbyAdrs = {
             securityCenterName: $scope.securtiyCenterName,
-            securitySelectType:$scope.securitySelectType,
+            securitySelectType: $scope.securitySelectType,
             secilenIl: $scope.secilenIl,
             secilenIlce: $scope.secilenIlce,
             secilenMahalle: $scope.secilenMahalle,
@@ -792,9 +792,9 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
     /* Sağlık Merkezi için Yazılan Kodlar*/
     $scope.healthTypes = $rootScope.lang.menu.menu10.category;
-    $scope.InstitutionsName=$rootScope.health.InstitutionsName || "";
-    $rootScope.health.InstitutionsName=$scope.InstitutionsName;
-    $rootScope.HealthCenterType= $rootScope.health.HealthCenterType || false;
+    $scope.InstitutionsName = $rootScope.health.InstitutionsName || "";
+    $rootScope.health.InstitutionsName = $scope.InstitutionsName;
+    $rootScope.HealthCenterType = $rootScope.health.HealthCenterType || false;
     $scope.showInsbyAddress = function () {
         $scope.datashowInsByAdrs = {
             InstitutionsName: $scope.InstitutionsName,
@@ -816,17 +816,16 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     /* Sağlık Merkezi için Yazılan Kodlar*/
 
 
-
     /* show my find dr baş */
 
-    $scope.showMyDoctor=function () {
+    $scope.showMyDoctor = function () {
 
 
-        $scope.showHealthInst={
-            cardIdNo:$scope.cardIdNo,
-            secilenIl:$scope.secilenIl,
-            secilenIlce:$scope.secilenIlce,
-            secilenMahalle:$scope.secilenMahalle
+        $scope.showHealthInst = {
+            cardIdNo: $scope.cardIdNo,
+            secilenIl: $scope.secilenIl,
+            secilenIlce: $scope.secilenIlce,
+            secilenMahalle: $scope.secilenMahalle
 
         };
 
@@ -836,110 +835,112 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     /* show my find dr son*/
 
 
-    $scope.setCardIdNo=function () {
+    $scope.setCardIdNo = function () {
 
-        $rootScope.cardIdNo=$scope.cardIdNo;
+        $rootScope.cardIdNo = $scope.cardIdNo;
     };
 
 
     /*  autobus ve  minibus sorgu bas*/
-    $scope.autoCarType=$rootScope.lang.menuToasts.transport.busmini.autoCarType;
-    $scope.busStopActive=false;
+    $scope.autoCarType = $rootScope.lang.menuToasts.transport.busmini.autoCarType;
+    $scope.busStopActive = false;
     $scope.busStop = {};
     $scope.busStopList = [];
     $scope.TransportLine = false;
-    $scope.busStopFeature =false;
-    $scope.queryLineNumber=function (searchText) {
-            var a,b = false;
-            var c = parseInt($scope.autoCarTypeSelect);
-            if(c==1){
-                a="busLines";
+    $scope.busStopFeature = false;
+    $scope.queryLineNumber = function (searchText) {
+        var a, b = false;
+        var c = parseInt($scope.autoCarTypeSelect);
+        if (c == 1) {
+            a = "busLines";
+        }
+        if (c == 2) {
+            a = "miniBusLines";
+        }
+        var lines = $sahtejson[a];
+        var dizi = [];
+        for (i in lines) {
+            var name = lines[i].label;
+            var ilid = lines[i].ilid;
+            ilid = parseInt(ilid);
+            var name2 = name;
+            name = name.toLowerCase();
+            searchText = searchText.toLowerCase();
+            if (name.indexOf(searchText) !== -1 && ilid == $scope.secilenIl) {
+                dizi.push(name2);
             }
-            if(c==2){
-                a="miniBusLines";
+        }
+        $scope.selectedLineNumber = null;
+        return dizi;
+
+
+    };
+    $scope.selectNewBusLine = function () {
+        var val = $scope.selectedLineNumber;
+        if (val !== null) {
+            var dizi = {};
+            var json = false;
+            var c = parseInt($scope.autoCarTypeSelect);
+            if (c == 1) {
+                a = "busLines";
+                b = "busLinesPoint";
+            }
+            if (c == 2) {
+                a = "miniBusLines";
+                b = "miniBusLinesPoint";
             }
             var lines = $sahtejson[a];
-            var dizi = [];
-            for(i in lines){
+            var points = $sahtejson[b];
+            busStopList = [];
+            for (i in lines) {
                 var name = lines[i].label;
-                var ilid = lines[i].ilid; ilid=parseInt(ilid);
-                var name2=name;
-                name=name.toLowerCase();
-                searchText=searchText.toLowerCase();
-                if(name.indexOf(searchText)!==-1 && ilid==$scope.secilenIl){
-                    dizi.push(name2);
-                }
-            }
-            $scope.selectedLineNumber=null;
-            return dizi;
-
-
-        };
-    $scope.selectNewBusLine=function () {
-            var val = $scope.selectedLineNumber;
-            if(val!==null){
-                var dizi = {};
-                var json = false;
-                var c = parseInt($scope.autoCarTypeSelect);
-                if(c==1){
-                    a="busLines";
-                    b="busLinesPoint";
-                }
-                if(c==2){
-                    a="miniBusLines";
-                    b="miniBusLinesPoint";
-                }
-                var lines = $sahtejson[a];
-                var points = $sahtejson[b];
-                busStopList=[];
-                for(i in lines){
-                    var name = lines[i].label;
-                    var ilid = lines[i].ilid; ilid=parseInt(ilid);
-                    var lineid = lines[i].id;
-                    if(name==val && ilid==$scope.secilenIl){
-                        dizi=lines[i];
-                        json=dizi.geojson;
-                        $scope.busStopActive=true;
-                        for(j in points){
-                            var point = points[j];
-                            var pointName = point.label;
-                            var pointid = point.id;
-                            var pointlineid=point.lineid;
-                            if(lineid==pointlineid){
-                                $scope.busStopList.push({value:pointid,text:pointName});
-                            }
+                var ilid = lines[i].ilid;
+                ilid = parseInt(ilid);
+                var lineid = lines[i].id;
+                if (name == val && ilid == $scope.secilenIl) {
+                    dizi = lines[i];
+                    json = dizi.geojson;
+                    $scope.busStopActive = true;
+                    for (j in points) {
+                        var point = points[j];
+                        var pointName = point.label;
+                        var pointid = point.id;
+                        var pointlineid = point.lineid;
+                        if (lineid == pointlineid) {
+                            $scope.busStopList.push({value: pointid, text: pointName});
                         }
                     }
                 }
-                if($scope.TransportLine==false){
-                    $scope.TransportLine = $leafletFonk.showGeoJSON(json,{bindPopupText:val},true,true);
-                }else{
-                    $scope.TransportLine.remove();
-                    $scope.TransportLine = $leafletFonk.showGeoJSON(json,{bindPopupText:val},true,true);
-                }
-                if ($scope.featureIl !== false) {
-                    $scope.featureIl.remove();
-                    $scope.featureIl = false;
-                    $rootScope.adress.featureIl = false;
-                }
-            }else{
-                $scope.busStopActive=false;
             }
+            if ($scope.TransportLine == false) {
+                $scope.TransportLine = $leafletFonk.showGeoJSON(json, {bindPopupText: val}, true, true);
+            } else {
+                $scope.TransportLine.remove();
+                $scope.TransportLine = $leafletFonk.showGeoJSON(json, {bindPopupText: val}, true, true);
+            }
+            if ($scope.featureIl !== false) {
+                $scope.featureIl.remove();
+                $scope.featureIl = false;
+                $rootScope.adress.featureIl = false;
+            }
+        } else {
+            $scope.busStopActive = false;
+        }
 
-        };
-    $scope.showBusPoint=function (pointId,stay) {
-        pointId=parseInt(pointId);
-        for(i in $sahtejson.busLinesPoint){
+    };
+    $scope.showBusPoint = function (pointId, stay) {
+        pointId = parseInt(pointId);
+        for (i in $sahtejson.busLinesPoint) {
             var point = $sahtejson.busLinesPoint[i];
             var id = point.id;
             var name = point.label;
-            if(id==pointId){
-                var geojson =point.geojson;
-                if($scope.busStopFeature==false){
-                    $scope.busStopFeature= $leafletFonk.showGeoJSON(geojson,{bindPopupText:name},true,stay);
-                }else{
+            if (id == pointId) {
+                var geojson = point.geojson;
+                if ($scope.busStopFeature == false) {
+                    $scope.busStopFeature = $leafletFonk.showGeoJSON(geojson, {bindPopupText: name}, true, stay);
+                } else {
                     $scope.busStopFeature.remove();
-                    $scope.busStopFeature= $leafletFonk.showGeoJSON(geojson,{bindPopupText:name},true,stay);
+                    $scope.busStopFeature = $leafletFonk.showGeoJSON(geojson, {bindPopupText: name}, true, stay);
                 }
 
             }
@@ -947,4 +948,6 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     };
 
     /* otogbus ve minibus sorgu son*/
+
+    $scope.trainType=$rootScope.lang.menuToasts.transport.train.trainType; //tram and train vehicles type
 });

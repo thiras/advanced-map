@@ -43,10 +43,10 @@
                                            placeholder="{{lang.menuToasts.transport.train.trainTypeName}}">
                                     <!-- bu noktada kaldı devamı gelecek-->
                                     <md-select-header>
-                                        <span>{{lang.menuToasts.tranport.busmini.autoCarTypeName}}</span>
+                                        <span>{{lang.menuToasts.tranport.train.trainTypeName}}</span>
                                     </md-select-header>
-                                    <md-option ng-value="deger.value"
-                                               ng-repeat="(ozellik, deger) in autoCarType">
+                                    <md-option ng-value="deger.value" ng-selected="deger.status"
+                                               ng-repeat="(ozellik, deger) in trainType">
                                         {{deger.text}}
                                     </md-option>
                                 </md-select>
@@ -54,28 +54,16 @@
 
                         </md-list-item>
 
+
                         <md-list-item>
-
-
-                            <md-autocomplete md-selected-item-change="selectNewBusLine()" layout-fill placeholder="{{lang.menuToasts.tranport.busmini.lineNumberName}}" md-selected-item="selectedLineNumber"
-                                             md-search-text="searchText" md-items="item in queryLineNumber(searchText)"
-                                             md-item-text="item">
-                                <span md-highlight-text="searchText">{{item}}</span>
-                                <md-not-found>
-                                    No matches found.
-                                </md-not-found>
-                            </md-autocomplete>
-
-                        </md-list-item>
-
-                        <md-list-item ng-if="busStopActive">
                             <md-input-container layout-fill>
                                 <md-select ng-model="busStop"
                                            placeholder="{{lang.menuToasts.tranport.busmini.pointShow}}">
                                     <md-select-header>
                                         <span>{{lang.menuToasts.tranport.busmini.autoCarTypeName}}</span>
                                     </md-select-header>
-                                    <md-option ng-mouseover="showBusPoint(deger.value,false);" ng-click="showBusPoint(deger.value,true);" ng-value="deger.value"
+                                    <md-option ng-mouseover="showBusPoint(deger.value,false);"
+                                               ng-click="showBusPoint(deger.value,true);" ng-value="deger.value"
                                                ng-repeat="(ozellik, deger) in busStopList">
                                         {{deger.text}}
                                     </md-option>
@@ -86,7 +74,17 @@
 
 
                         <md-list-item>
-                            <md-switch ng-model="secencek">{{secencek==true ? lang.menuToasts.tranport.busmini.nearPoints1:lang.menuToasts.tranport.busmini.nearPoints2}}</md-switch>
+                            <md-input-container layout-fill>
+                            <md-switch ng-model="secencek">{{secencek==true ?
+                                lang.menuToasts.transport.train.nearTrainStation1:lang.menuToasts.transport.train.nearTrainStation2}}
+                            </md-switch>
+                            </md-input-container>
+                        </md-list-item>
+
+                        <md-list-item>
+                            <md-input-container layout-fill>
+                            <md-switch ng-model="secenek2">{{secenek2==true ? lang.menuToasts.transport.train.onlineTrain1:lang.menuToasts.transport.train.onlineTrain2}}</md-switch>
+                            </md-input-container>
                         </md-list-item>
                     </md-list>
 
