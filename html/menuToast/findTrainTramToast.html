@@ -31,7 +31,6 @@
                                                ng-repeat="(ozellik, deger) in il" ng-selected="deger.id == secilenIl">
                                         {{deger.label}}
                                     </md-option>
-
                                 </md-select>
                                 {{navbarCtrl.ilce}}
                             </md-input-container>
@@ -57,33 +56,67 @@
 
                         <md-list-item>
                             <md-input-container layout-fill>
-                                <md-select ng-model="busStop"
-                                           placeholder="{{lang.menuToasts.tranport.busmini.pointShow}}">
+                                <md-select ng-model="TrainLines"
+                                           placeholder="{{lang.menuToasts.transport.train.lineplaceholder}}">
                                     <md-select-header>
-                                        <span>{{lang.menuToasts.tranport.busmini.autoCarTypeName}}</span>
+                                        <span>{{lang.menuToasts.transport.train.lineplaceholder}}</span>
                                     </md-select-header>
-                                    <md-option ng-mouseover="showBusPoint(deger.value,false);"
-                                               ng-click="showBusPoint(deger.value,true);" ng-value="deger.value"
-                                               ng-repeat="(ozellik, deger) in busStopList">
-                                        {{deger.text}}
+                                    <md-option
+                                            ng-click="showBusPoint(data.id,true);" ng-value="data.id"
+                                            ng-repeat="data in trainLine">
+                                        {{data.label}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                        </md-list-item>
+
+                        <md-list-item>
+                            <md-input-container layout-fill>
+                                <md-select ng-model="departureStop"
+                                           placeholder="{{lang.menuToasts.transport.train.departure}}">
+                                    <md-select-header>
+                                        <span>{{lang.menuToasts.transport.train.departure}}</span>
+                                    </md-select-header>
+                                    <md-option
+                                            ng-click="showBusPoint(deger.value,true);" ng-value="data.id"
+                                            ng-repeat="data in departureStopData">
+                                        {{data.label}}
                                     </md-option>
                                 </md-select>
                             </md-input-container>
 
                         </md-list-item>
 
-
                         <md-list-item>
                             <md-input-container layout-fill>
-                            <md-switch ng-model="secencek">{{secencek==true ?
-                                lang.menuToasts.transport.train.nearTrainStation1:lang.menuToasts.transport.train.nearTrainStation2}}
-                            </md-switch>
+                                <md-select ng-model="arriveStop"
+                                           placeholder="{{lang.menuToasts.transport.train.arrival}}">
+                                    <md-select-header>
+                                                <span>{{lang.menuToasts.transport.train.arrivalText}}</span>
+                                    </md-select-header>
+
+                                    <md-option
+                                            ng-click="showBusPoint(data.id,true);" ng-value="data.id"
+                                            ng-repeat="data in arriveStopData">
+                                        {{data.label}}
+                                    </md-option>
+                                </md-select>
                             </md-input-container>
                         </md-list-item>
 
                         <md-list-item>
                             <md-input-container layout-fill>
-                            <md-switch ng-model="secenek2">{{secenek2==true ? lang.menuToasts.transport.train.onlineTrain1:lang.menuToasts.transport.train.onlineTrain2}}</md-switch>
+                                <md-switch ng-model="secencek">{{secencek==true ?
+                                    lang.menuToasts.transport.train.nearTrainStation1:lang.menuToasts.transport.train.nearTrainStation2}}
+                                </md-switch>
+                            </md-input-container>
+                        </md-list-item>
+
+                        <md-list-item>
+                            <md-input-container layout-fill>
+                                <md-switch ng-model="secenek2">{{secenek2==true ?
+                                    lang.menuToasts.transport.train.onlineTrain1:lang.menuToasts.transport.train.onlineTrain2}}
+                                </md-switch>
                             </md-input-container>
                         </md-list-item>
                     </md-list>
@@ -93,7 +126,6 @@
             </md-dialog-content>
             <md-dialog-actions layout="row">
                 <span flex></span>
-
                 <md-button class="md-raised closeButton md-button md-ink-ripple md-button" ng-click="cancel()"
                            style="margin-right:20px;">
                     {{lang.general.close}}
