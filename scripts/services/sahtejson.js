@@ -2285,7 +2285,7 @@ app.service("$sahtejson",function () {
       },
       station2:{
           id:2,
-          label:"Fahrettin Altay",
+          label:"Çankaya",
           lineid:1,
           geojson:{
               "type": "Feature",
@@ -2301,7 +2301,7 @@ app.service("$sahtejson",function () {
       },
       station3:{
           id:3,
-          label:"Fahrettin Altay",
+          label:"Konak",
           lineid:1,
           geojson:{
               "type": "Feature",
@@ -2317,7 +2317,7 @@ app.service("$sahtejson",function () {
       },
       station4:{
           id:4,
-          label:"Fahrettin Altay",
+          label:"Balçova",
           lineid:1,
           geojson:{
               "type": "Feature",
@@ -2333,7 +2333,7 @@ app.service("$sahtejson",function () {
       },
       station5:{
           id:5,
-          label:"Fahrettin Altay",
+          label:"Alsancak",
           lineid:1,
           geojson:{
               "type": "Feature",
