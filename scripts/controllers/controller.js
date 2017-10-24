@@ -41,6 +41,11 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
     $rootScope.poi={};
     $rootScope.security = {};
     $rootScope.health = {};
+    $rootScope.transport = {
+        shipType:[],
+        shipTypeSelect: "",
+        shipLines:[]
+    };
     document.querySelector('title').innerText = $rootScope.lang.general.title;
     $rootScope.parcell = {
         parcellLandNo: "",

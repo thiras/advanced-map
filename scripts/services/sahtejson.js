@@ -2354,6 +2354,7 @@ app.service("$sahtejson",function () {
           id:1,
           label:"Konak - Karşıyaka",
           ilid:35,
+          vehicleType:1,
           geojson:{
               "type": "Feature",
               "properties": {},
@@ -2380,10 +2381,11 @@ app.service("$sahtejson",function () {
               }
           }
       },
-      line1:{
+      line2:{
           id:2,
           label:"Üçkuyular - Bostanlı",
           ilid:35,
+          vehicleType:2,
           geojson:{
               "type": "Feature",
               "properties": {},
@@ -2408,7 +2410,7 @@ app.service("$sahtejson",function () {
           id:1,
           lineid:1,
           label:"Konak",
-          geosjon:{
+          geojson:{
               "type": "Feature",
               "properties": {},
               "geometry": {
@@ -2424,14 +2426,14 @@ app.service("$sahtejson",function () {
           id:2,
           lineid:1,
           label:"Karşıyaka",
-          geosjon:{
+          geojson:{
               "type": "Feature",
               "properties": {},
               "geometry": {
                   "type": "Point",
                   "coordinates": [
-                      27.093143463134762,
-                      38.4545297135813
+                      27.111854553222656,
+                      38.449286817153556
                   ]
               }
           }
@@ -2440,7 +2442,7 @@ app.service("$sahtejson",function () {
           id:3,
           lineid:2,
           label:"Üçkuyular",
-          geosjon:{
+          geojson:{
               "type": "Feature",
               "properties": {},
               "geometry": {
@@ -2456,18 +2458,19 @@ app.service("$sahtejson",function () {
           id:4,
           lineid:2,
           label:"Bostanlı",
-          geosjon:{
+          geojson:{
               "type": "Feature",
               "properties": {},
               "geometry": {
                   "type": "Point",
                   "coordinates": [
-                      27.111854553222656,
-                      38.449286817153556
+                      27.093143463134762,
+                      38.4545297135813
                   ]
               }
           }
       }
   };
+
     return this;
 });

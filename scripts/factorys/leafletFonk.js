@@ -55,6 +55,7 @@ app.factory("$leafletFonk",function ($rootScope,$fonks,$leftmenujson,$timeout,$w
         });*/
     };
     this.showGeoJSON = function (geojson,obj,add,zoom) {
+        debugger;
         var style = obj.style || {color:"red"};
         var bindPopupText = obj.bindPopupText || false;
         var add = add || false;
