@@ -212,7 +212,17 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
             controller: 'menuCtrl',
             templateUrl: 'html/menuToast/findBusMiniBus.html',
         });
-    },
+    };
+
+    $scope.findShipToast = function () {
+        $rootScope.$emit("closeNavbar", "closeNavbar");
+        $mdToast.show({
+            hideDelay: 0,
+            position: 'top left',
+            controller: 'menuCtrl',
+            templateUrl: 'html/menuToast/findShipToast.html',
+        });
+    };
 
     /*findminibus*/
     /* $scope.openDrawAreaByManuel=function () {

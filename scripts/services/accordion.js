@@ -48,7 +48,7 @@ app.service("$accordion", function ($rootScope) {
                 },
                 menu3e3: {
                     label: lang.menu.menu3.menu1e3,
-                    fonk: "findShipDialog"
+                    fonk: "findShipToast"
                 },
                 menu3e4: {
                     label: lang.menu.menu3.menu1e4,
