@@ -75,7 +75,9 @@ app.factory("$leafletFonk",function ($rootScope,$fonks,$leftmenujson,$timeout,$w
     };
 
 
-    $window.addEventListener("load",function () {
+    $window.addEventListener("load",function (e) {
+
+
 
         $timeout(function () {
             $rootScope.leaflet.invalidateSize();

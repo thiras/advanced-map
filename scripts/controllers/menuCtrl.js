@@ -1086,4 +1086,10 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         $rootScope.transport.showOnlineShip=!$scope.showOnlineShip;
     };
     /* Gemi ve Feribot Kod BLoğu Son  */
+
+
+    $scope.setShipTypeSelect=function (a) {
+
+        $rootScope.shipTypeSelect=a;
+    }
 });
