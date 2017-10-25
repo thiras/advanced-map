@@ -1,0 +1,127 @@
+<md-toast id="findShipToast">
+    <div class="md-toast-content" layout-padding>
+
+        <form>
+            <md-toolbar md-ink-ripple>
+                <div class="md-toolbar-tools">
+                    <h2>
+                        <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img"
+                                aria-label="close" aria-hidden="true">local_airport
+                        </md-icon>
+                        <span class="md-subhead"
+                              style="color: #ffffff;">{{lang.menuToasts.transport.aircraft.label}}</span>
+                    </h2>
+                    <span flex></span>
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" ng-click="cancel()" aria-label="Close dialog"></md-icon>
+                </div>
+            </md-toolbar>
+            <md-dialog-content style="style:100%">
+                <md-content style="max-height: 45vh">
+
+                    <md-list>
+                        <md-list-item>
+                            <md-input-container layout-fill>
+                                <md-select ng-model="secilenIl" placeholder="{{lang.menuToasts.general.provinceList}}">
+                                    <md-select-header>
+                                        <span> {{lang.menuToasts.general.provinces}} </span>
+                                    </md-select-header>
+                                    <md-option ng-value="deger.id" ng-click="changeIlce(deger.id)"
+                                               ng-repeat="(ozellik, deger) in il" ng-selected="deger.id == secilenIl">
+                                        {{deger.label}}
+                                    </md-option>
+
+                                </md-select>
+                                {{navbarCtrl.ilce}}
+                            </md-input-container>
+
+                        </md-list-item>
+
+
+                        <md-list-item>
+                            <md-input-container layout-fill>
+                                <md-select  ng-model="airport"
+                                           placeholder="{{lang.menuToasts.transport.aircraft.airportplaceholder}}">
+                                    <md-select-header>
+                                        <span>{{lang.menuToasts.transport.aircraft.airportplaceholder}}</span>
+                                    </md-select-header>
+                                    <md-option ng-click="setShipTypeSelect(deger.value)" ng-value="deger.value"
+                                               ng-repeat="(ozellik, deger) in shipType">
+                                        {{deger.text}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                        </md-list-item>
+
+
+                        <md-list-item>
+                            <md-input-container layout-fill>
+                                <md-select  ng-model="shiplineSelect"
+                                            placeholder="{{lang.menuToasts.transport.aircraft.airlinesplaceholder1}}">
+                                    <md-select-header>
+                                        <span>{{lang.menuToasts.transport.aircraft.airlinesplaceholder1}}</span>
+                                    </md-select-header>
+                                    <md-option ng-click="shipLineChange(deger.value);" ng-value="deger.value"
+                                               ng-repeat="(ozellik, deger) in shipLines">
+                                        {{deger.text}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                        </md-list-item>
+
+                        <md-list-item ng-if="shipPointActive">
+                            <md-input-container layout-fill>
+                                <md-select  ng-model="startPointNum"
+                                            placeholder="{{lang.menuToasts.transport.ship.departure}}">
+                                    <md-select-header>
+                                        <span>{{lang.menuToasts.transport.ship.departureText}}</span>
+                                    </md-select-header>
+                                    <md-option ng-click="selectShipPoint(1,deger.value);" ng-mouseover="showShipPoint(deger.value)" ng-value="deger.value"
+                                               ng-repeat="(ozellik, deger) in shipPoints">
+                                        {{deger.text}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                        </md-list-item>
+
+                        <md-list-item ng-if="shipPointActive">
+                            <md-input-container layout-fill>
+                                <md-select ng-model="finishPointNum"
+                                           placeholder="{{lang.menuToasts.transport.ship.arrival}}">
+                                    <md-select-header>
+                                        <span>{{lang.menuToasts.transport.ship.arrivalText}}</span>
+                                    </md-select-header>
+                                    <md-option ng-click="selectShipPoint(2,deger.value);" ng-mouseover="showShipPoint(deger.value)" ng-value="deger.value"
+                                               ng-repeat="(ozellik, deger) in shipPoints">
+                                        {{deger.text}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                        </md-list-item>
+
+                        <md-list-item>
+                            <md-switch ng-click="changeNearestPort();" ng-model="showNearestPort">{{showNearestPort==true ? lang.menuToasts.transport.ship.nearShipStation1:lang.menuToasts.transport.ship.nearShipStation2}}</md-switch>
+                        </md-list-item>
+                    </md-list>
+
+                    <md-list-item>
+                        <md-switch ng-click="changeOnlineShip();" ng-model="showOnlineShip">{{showOnlineShip==true ? lang.menuToasts.transport.ship.onlineShip1:lang.menuToasts.transport.ship.onlineShip2}}</md-switch>
+                    </md-list-item>
+                    </md-list>
+
+
+                </md-content>
+            </md-dialog-content>
+            <md-dialog-actions layout="row">
+                <span flex></span>
+
+                <md-button class="md-raised closeButton md-button md-ink-ripple md-button" ng-click="cancel()"
+                           style="margin-right:20px;">
+                    {{lang.general.close}}
+                </md-button>
+            </md-dialog-actions>
+
+        </form>
+
+    </div>
+
+</md-toast>

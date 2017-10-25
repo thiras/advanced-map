@@ -268,4 +268,16 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
     };
 
 
+    $scope.findAircraftDialog=function () {
+        $rootScope.$emit("closeNavbar", "closeNavbar");
+        $mdToast.show({
+            hideDelay: 0,
+            position: 'top left',
+            controller: 'menuCtrl',
+            templateUrl: 'html/menuToast/findAircraftAirVehicles.html',
+        });
+
+
+    }
+
 });

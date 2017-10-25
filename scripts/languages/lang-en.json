@@ -154,6 +154,12 @@
         "nearShipStation2":"Don't Show Nearest Port",
         "onlineShip1":"Show Ship and Ferry on Online Map",
         "onlineShip2":"Don't Show Ship and Ferry on Online Map"
+      },
+      "aircraft":{
+        "label":"Aircraft And Air Vehicles Panel",
+        "airportplaceholder":"Choose the Airport",
+        "airlinesplaceholder1":"Select the Aircraft Type",
+        "linesTypes":[{"value":1,"text":"domestic flights"},{"value":2,"text":"international flights"}]
       }
     }
   },

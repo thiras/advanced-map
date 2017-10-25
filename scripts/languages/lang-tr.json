@@ -150,6 +150,12 @@
         "nearShipStation2":"En Yakın Limanı Gösterme",
         "onlineShip1":"Vapur ve Feribotları Haritada Göster",
         "onlineShip2":"Vapur ve Feribotları Haritada Gösterme"
+      },
+      "aircraft":{
+        "label":"Uçak ve Hava Araçları Panelil",
+        "airportplaceholder":"Havalimanı Seç",
+        "airlinesplaceholder1":"Hat Tipini Seçiniz",
+        "linesTypes":[{"value":1,"text":"İç Hatlar"},{"value":2,"text":"Dış Hatlar"}]
       }
   }
   },
