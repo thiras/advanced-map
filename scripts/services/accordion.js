@@ -143,9 +143,9 @@ app.service("$accordion", function ($rootScope) {
             fonk: "menu",
             icon: "local_florist",
             submenu: {
-                menu5e4:{
-                    label:lang.menu.menu10.menu1e5,
-                    fonk:"findInstitutionsbyAddress"
+                menu5e4: {
+                    label: lang.menu.menu10.menu1e5,
+                    fonk: "findInstitutionsbyAddress"
                 },
                 menu3e1: {
                     label: lang.menu.menu10.menu1e1,
@@ -166,7 +166,7 @@ app.service("$accordion", function ($rootScope) {
             fonk: "menu",
             icon: "security",
             submenu: {
-                menu5e3:{
+                menu5e3: {
                     label: lang.menu.menu11.menu1e5,
                     fonk: "findSecrtyByAdrs"
 
@@ -207,7 +207,7 @@ app.service("$accordion", function ($rootScope) {
                     fonk: "openDrawRulerByMouse"
                 },
                 menu3e2: {
-                    label:lang.menu.menu13.menu1e2,
+                    label: lang.menu.menu13.menu1e2,
                     fonk: "openDrawRulerByManuel"
                 },
                 menu3e3: {
@@ -245,7 +245,7 @@ app.service("$accordion", function ($rootScope) {
                     fonk: "openContactAdressPhone"
                 },
                 menu3e2: {
-                    label:lang.menu.menu16.menu1e2,
+                    label: lang.menu.menu16.menu1e2,
                     fonk: "openContactWriteUs"
                 },
                 menu3e3: {
