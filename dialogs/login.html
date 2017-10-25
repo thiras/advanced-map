@@ -3,9 +3,44 @@
         <md-content>
             <md-tabs md-dynamic-height md-border-bottom>
                 <md-tab label="{{lang.login.login}}">
-                    <md-content class="md-padding">
-                        <h1 class="md-title">{{lang.login.signinForm}}</h1>
-                        burası from kayıtı
+                    <md-content class="md-padding" flex layout="row" layout-align="center center">
+                        <md-icon flex="25" layout-fill md-svg-src="img/icons/user1.svg"></md-icon>
+                        <md-list  flex="75" flex-xs="100" layout-padding>
+                            <md-list-item>
+                                <h1 class="md-title">{{lang.login.signinForm}}</h1>
+                            </md-list-item>
+                            <md-list-item>
+
+                            </md-list-item>
+                            <md-list-item>
+
+                                <md-input-container layout-fill>
+                                    <input type="text" placeholder="username" ng-model="loginUser">
+                                </md-input-container>
+                            </md-list-item>
+                            <md-list-item>
+
+                                <md-input-container layout-fill>
+                                    <input type="password" placeholder="password" ng-model="loginpass">
+                                </md-input-container>
+                            </md-list-item>
+
+                            <md-list-item>
+                                <!--başlabgıç-->
+                                <md-dialog-actions layout="row">
+                                    <span flex></span>
+
+                                    <md-button class="md-raised  md-button md-ink-ripple md-button"
+                                               style="margin-right:20px;">
+                                        login
+                                    </md-button>
+                                </md-dialog-actions>
+                                <!--son-->
+                            </md-list-item>
+                        </md-list>
+
+
+
                     </md-content>
                 </md-tab>
                 <md-tab label="{{lang.general.signup}}">
