@@ -958,6 +958,133 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
     /* Gemi ve Feribot Kod BLoğu Baş */
     $scope.shipType = $rootScope.lang.menuToasts.transport.ship.shipType;
+    $scope.shipTypeSelect = $rootScope.transport.shipTypeSelect;
+    $scope.shipLineActive=$rootScope.transport.shipLineActive || false;
+    $scope.shipLines =$rootScope.transport.shipLines ||  [];
+    $scope.shiplineSelect = $rootScope.transport.shiplineSelect || "";
+    $scope.shipTypeChange = function () {
+        $rootScope.transport.shipTypeSelect=$scope.shipTypeSelect;
+        var dizi = [];
+        $rootScope.transport.shipLineActive=true;
+        $scope.shipLineActive=true;
+        var lines = $sahtejson.shipLine;
+        for(i in lines){
+            var id = lines[i].id;
+            var label = lines[i].label;
+            var ilid = lines[i].ilid;
+            var vec = lines[i].vehicleType;
+            if(ilid==$scope.secilenIl && vec==$scope.shipTypeSelect){
+                dizi.push({value:id,text:label,status:false});
+            }
+        }
+        $scope.shipLines=dizi;
+        $rootScope.transport.shipLines=$scope.shipLines;
+
+    };
+    $scope.shipPointActive = $rootScope.transport.shipPointActive || false;
+    $scope.shipPoints = $rootScope.transport.shipPoints ||  [];
+    $scope.showLine = $rootScope.transport.showLine ||  false;
+    $scope.shipLineChange = function (id) {
+        $rootScope.transport.shiplineSelect = parseInt(id);
+        $scope.shiplineSelect = parseInt(id);
+        if ($scope.featureIl !== false) {
+            $scope.featureIl.remove();
+            $scope.featureIl = false;
+            $rootScope.adress.featureIl = false;
+        }
+        $scope.shipPointActive=true;
+        $rootScope.transport.shipPointActive=true;
+        var lines = $sahtejson.shipLine;
+        for(j in lines){
+            var ilid = lines[j].ilid;
+            var myid = lines[j].id;
+            var geojson = lines[j].geojson;
+            var label = lines[j].label;
+            if(ilid==$scope.secilenIl && myid==id){
+                if($scope.showLine==false){
+                    $scope.showLine=$leafletFonk.showGeoJSON(geojson,{bindPopupText:label,style:{color:"green"}},true,true);
+                }else{
+                    $scope.showLine.remove();
+                    $scope.showLine=$leafletFonk.showGeoJSON(geojson,{bindPopupText:label,style:{color:"green"}},true,true);
+                }
+
+            }
+        }
+        var points = $sahtejson.shipPoint;
+        var dizi = [];
+        for(i in points){
+            var id = points[i].id;
+            var label = points[i].label;
+            var lineid = points[i].lineid;
+            if(lineid==$scope.shiplineSelect){
+                dizi.push({value:id,text:label,status:false});
+            }
+        }
+        $scope.shipPoints=dizi;
+        $rootScope.transport.shipPoints=$scope.shipPoints;
+    };
+    $scope.departurePoint = $rootScope.transport.departurePoint || false;
+    $scope.shipPointDepa = $rootScope.transport.shipPointDepa || "";
+    $scope.showPoint = $rootScope.transport.showPoint || false;
+    $scope.startPoint = $rootScope.transport.startPoint || false;
+    $scope.startPointNum=$rootScope.transport.startPointNum || "";
+    $scope.finishPoint = $rootScope.transport.finishPoint || false;
+    $scope.finishPointNum=$rootScope.transport.finishPointNum || "";
+    $scope.showNearestPort = $rootScope.transport.showNearestPort || false;
+    $scope.showOnlineShip = $rootScope.transport.showOnlineShip || false;
+    $scope.showShipPoint=function(id){
+        /*$rootScope.transport.shipPointDepa = parseInt(id);
+        $scope.shipPointDepa = parseInt(id);*/
+        debugger;
+        id=parseInt(id);
+        var points = $sahtejson.shipPoint;
+        for(i in points){
+            var pointid = points[i].id;
+            var json = points[i].geojson.geometry.coordinates;
+            var latlng = L.latLng(json[1],json[0]);
+            if(id==pointid){
+                if($scope.showPoint==false){
+                    $scope.showPoint=L.marker(latlng).addTo($rootScope.leaflet);
+                }else{
+                    $scope.showPoint.setLatLng(latlng);
+                }
+            }
+        }
+
+    };
+
+    $scope.selectShipPoint=function(point,id){
+        if(point==1){
+            $scope.startPointNum = id;
+            $rootScope.transport.startPointNum = id;
+        }
+        if(point==2){
+            $scope.finishPointNum = id;
+            $rootScope.transport.finishPointNum = id;
+        }
+        var points = $sahtejson.shipPoint;
+        for(i in points){
+            var pointid = points[i].id;
+            var json = points[i].geojson.geometry.coordinates;
+            var latlng = L.latLng(json[1],json[0]);
+            if(id==pointid){
+                if($scope.showPoint==false){
+                    $scope.showPoint=L.marker(latlng).addTo($rootScope.leaflet);
+                }else{
+                    $scope.showPoint.setLatLng(latlng);
+                }
+            }
+        }
+
+    };
+    $scope.changeNearestPort = function () {
+        debugger;
+        $rootScope.transport.showNearestPort=!$scope.showNearestPort;
+    };
+    $scope.changeOnlineShip = function () {
+        debugger;
+        $rootScope.transport.showOnlineShip=!$scope.showOnlineShip;
+    };
     /* Gemi ve Feribot Kod BLoğu Son  */
 
 

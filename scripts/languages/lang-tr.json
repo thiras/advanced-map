@@ -141,6 +141,7 @@
         "shipTypeName":"Taşıt Türü Seçiniz",
         "shipTypelist":"Taşıt Türleri",
         "shipType":[{"value":1,"text":"Vapur","status":false},{"value":2,"text":"Feribot","status":true}],
+        "shipLine":"Güzergah Hatları",
         "departure":"Kalkış Durağı Seçiniz",
         "departureText":"Kalkış Durakları",
         "arrival":"Varış Durağı Seçiniz",
