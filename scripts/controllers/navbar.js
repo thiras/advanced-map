@@ -1,4 +1,4 @@
-app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $rootScope, $mdToast,$mdSidenav) {
+app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $rootScope, $mdToast,$mdSidenav,$sahtejson,$leafletFonk) {
 
     /*navbar menusu event ve fonksiyonları içeririr*/
     $scope.menuJSON = $accordion;
@@ -41,7 +41,8 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
     $scope.factoryDesign = function (fn) {
         $rootScope.menuPanelName=fn;
         $scope[fn["fonk"]]();
-    }
+    };
+
 
     $scope.findAdressPanel = function () {
         $rootScope.$emit("closeNavbar", "closeNavbar");
@@ -52,6 +53,16 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
             templateUrl: 'html/menuToast/findAdressToast.html',
         });
     };
+    $scope.findAdressClickMap=function () {
+        $rootScope.$emit("closeNavbar", "closeNavbar");
+        var boylam = 26.6342630982399;
+        var enlem = 38.31461828182103;
+        var latlng = L.latLng(enlem,boylam);
+        var lokasyon = L.marker(latlng).bindPopup("Gülbahçe Mahallesi, İzmir Teknoloji Geliştirme Bölgesi İzmir Yüksek Teknoloji Enstitüsü, 35437 Urla/İzmir").addTo($rootScope.leaflet).openPopup();
+        $rootScope.leaflet.flyTo(latlng,16);
+    };
+
+
     $scope.findPOIbyAdress = function () {
         $rootScope.$emit("closeNavbar", "closeNavbar");
         $mdToast.show({
@@ -71,6 +82,14 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
             controller: 'menuCtrl',
             templateUrl: 'html/menuToast/findParcellToast.html',
         });
+    };
+    $scope.findParcelWithLocation = function () {
+        $rootScope.$emit("closeNavbar", "closeNavbar");
+        var boylam = 26.6342630982399;
+        var enlem = 38.31461828182103;
+        var latlng = L.latLng(enlem,boylam);
+        var geojson = $sahtejson.locationParcell.parcell1.geojson;
+        $leafletFonk.showGeoJSON(geojson,{},true,true);
     };
 
     $scope.findTaxiAtAdress = function () {
@@ -247,4 +266,6 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
         });
 
     };
+
+
 });

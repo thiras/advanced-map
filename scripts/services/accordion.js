@@ -14,7 +14,7 @@ app.service("$accordion", function ($rootScope) {
                 },
                 menu1e2: {
                     label: lang.menu.menu1.menu1e2,
-                    fonk: "menu"
+                    fonk: "findAdressClickMap"
                 }
             }
         },
