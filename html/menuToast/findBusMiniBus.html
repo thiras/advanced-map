@@ -39,7 +39,7 @@
                         </md-list-item>
                         <md-list-item>
                             <md-input-container layout-fill>
-                                <md-select ng-model="autoCarTypeSelect"
+                                <md-select ng-model="autoCarTypeSelect" ng-change="setautoCarTypeSelect()"
                                            placeholder="{{lang.menuToasts.transport.busmini.autoCarTypeName}}">
                                     <md-select-header>
                                         <span>{{lang.menuToasts.transport.busmini.autoCarTypeName}}</span>
@@ -85,7 +85,7 @@
 
 
                         <md-list-item>
-                            <md-switch ng-model="secencek">{{secencek==true ? lang.menuToasts.transport.busmini.nearPoints1:lang.menuToasts.transport.busmini.nearPoints2}}</md-switch>
+                            <md-switch ng-change="setshowNearBusSwitch(showNearBusSwitch)" ng-model="showNearBusSwitch">{{showNearBusSwitch==true ? lang.menuToasts.transport.busmini.nearPoints1:lang.menuToasts.transport.busmini.nearPoints2}}</md-switch>
                         </md-list-item>
 
                     </md-list>

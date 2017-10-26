@@ -845,6 +845,20 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
 
     /*  autobus ve  minibus sorgu bas*/
+
+
+    $scope.setautoCarTypeSelect=function () {
+
+      $rootScope.autoCarTypeSelect=$scope.autoCarTypeSelect;
+    };
+
+
+    $scope.setshowNearBusSwitch=function (val) {
+
+        $rootScope.showNearBusSwitch=val;
+    }
+
+
     $scope.autoCarType = $rootScope.lang.menuToasts.transport.busmini.autoCarType;
     $scope.busStopActive = false;
     $scope.busStop = {};
