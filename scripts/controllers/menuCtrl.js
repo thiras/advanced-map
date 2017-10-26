@@ -847,16 +847,15 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     /*  autobus ve  minibus sorgu bas*/
 
 
+    $scope.setautoCarTypeSelect = function () {
 
-    $scope.setautoCarTypeSelect=function () {
-
-      $rootScope.autoCarTypeSelect=$scope.autoCarTypeSelect;
+        $rootScope.autoCarTypeSelect = $scope.autoCarTypeSelect;
     };
 
 
-    $scope.setshowNearBusSwitch=function (val) {
+    $scope.setshowNearBusSwitch = function (val) {
 
-        $rootScope.showNearBusSwitch=val;
+        $rootScope.showNearBusSwitch = val;
     }
 
 
@@ -945,7 +944,8 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             $scope.busStopActive = false;
         }
 
-        $rootScope.selectedLineNumber=$scope.selectedLineNumber; /*  hafızada tutma işlemi için*/
+        $rootScope.selectedLineNumber = $scope.selectedLineNumber;
+        /*  hafızada tutma işlemi için*/
     };
     $scope.showBusPoint = function (pointId, stay) {
         pointId = parseInt(pointId);
@@ -1239,4 +1239,36 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         i
     }
     /* Aircraft Son*/
+
+
+    $scope.searchFindBusMiniBus = function () {
+
+        $scope.dataFindBusMiniBus = {
+            secilenIl: $scope.secilenIl,
+            autoCarTypeSelect: $scope.autoCarTypeSelect,
+            selectedLineNumber: $scope.selectedLineNumber,
+            busStop: $scope.busStop,
+            showNearBusSwitch: $scope.showNearBusSwitch,
+
+        };
+
+        alert(JSON.stringify($scope.dataFindBusMiniBus));
+    };
+
+
+    $scope.searchFindTrainTram = function () {
+
+        $scope.dataFindTrainTram = {
+            secilenIl: $scope.secilenIl,
+            trainTypeName: $scope.trainTypeName,
+            TrainLines:$scope.TrainLines,
+            departureStop:$scope.departureStop,
+            arriveStop:$scope.arriveStop,
+            nearesTramSwitch:$scope.nearesTramSwitch,
+            showTramOnMap:$scope.showTramOnMap
+
+        };
+
+        alert(JSON.stringify($scope.dataFindTrainTram));
+    }
 });
