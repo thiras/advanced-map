@@ -1092,4 +1092,86 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
         $rootScope.shipTypeSelect=a;
     }
+
+    /* Aircraft Bas*/
+    $scope.airport = $rootScope.transport.aircraft.airport || false;
+    $scope.airportActive = $rootScope.transport.aircraft.airportActive || false;
+    $scope.airportList = $rootScope.transport.aircraft.airportList || [];
+    $scope.airportsGeometry = $rootScope.transport.aircraft.airportsGeometry || [];
+    $scope.airportInfo = $rootScope.transport.aircraft.airportInfo || false;
+    $scope.flightType = $rootScope.transport.aircraft.flightType || [];
+    $scope.passengerType = $rootScope.transport.aircraft.passengerType || [];
+    $scope.aircraftAjaxRequest = {};
+    $scope.filterAirports=function(ilid){
+        ilid=parseInt(ilid);
+        var dizi = [];
+        var airports = $sahtejson.airports;
+        for(i in airports){
+            var ports = airports[i];
+            var id =ports.id;
+            var label = ports.label;
+            var ilidjson = ports.ilid;
+            if(ilidjson==ilid){
+                dizi.push({value:id,text:label,status:false});
+            }
+        }
+        if(dizi.length>0){
+            $scope.airportActive=true;
+            $rootScope.transport.aircraft.airportActive=true;
+        }
+        $scope.airportList=dizi;
+        $rootScope.transport.aircraft.airportList=dizi;
+
+    };
+    $scope.selectAirport = function (airportId) {
+        debugger;
+        airportId=parseInt(airportId);
+        $scope.airportInfo=true;
+        $rootScope.transport.aircraft.airportInfo=true;
+        $scope.airport = airportId;
+        $rootScope.transport.aircraft.airport=airportId;
+        var airports = $sahtejson.airports;
+        for(i in airports){
+            var ports = airports[i];
+            var id =ports.id;
+            var label = ports.label;
+            var ilidjson = ports.ilid;
+            var geojson = ports.geojson;
+            if(id==airportId){
+                if ($scope.featureIl !== false) {
+                    $scope.featureIl.remove();
+                    $scope.featureIl = false;
+                    $rootScope.adress.featureIl = false;
+                }
+                if($scope.airportsGeometry==false){
+                    $scope.airportsGeometry = $leafletFonk.showGeoJSON(geojson,{bindPopupText:label},true,true);
+                }else{
+                    $scope.airportsGeometry.remove();
+                    $scope.airportsGeometry = $leafletFonk.showGeoJSON(geojson,{bindPopupText:label},true,true);
+                }
+
+            }
+        }
+
+
+    };
+    $scope.selectFlightType = function (id) {
+        $scope.flightType=parseInt(id);
+        $rootScope.transport.aircraft.flightType=parseInt(id);
+    };
+    $scope.selectPassengerType = function (id) {
+        $scope.passengerType=parseInt(id);
+        $rootScope.transport.aircraft.passengerType=parseInt(id);
+    };
+    $scope.showAirportInfo = function () {
+        $scope.aircraftAjaxRequest = {
+            secilenIl: $scope.secilenIl,
+            airport: $scope.airport,
+            flightType: $scope.flightType,
+            passengerType: $scope.passengerType
+
+        };
+        alert(JSON.stringify($scope.aircraftAjaxRequest));i
+    }
+    /* Aircraft Son*/
 });

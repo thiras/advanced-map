@@ -157,9 +157,11 @@
       },
       "aircraft":{
         "label":"Aircraft And Air Vehicles Panel",
-        "airportplaceholder":"Choose the Airport",
-        "airlinesplaceholder1":"Select the Aircraft Type",
-        "linesTypes":[{"value":1,"text":"domestic flights"},{"value":2,"text":"international flights"}]
+        "chooseAirports":"Choose the Airport",
+        "flightTypePH":"Select Lines",
+        "passengerTypePH":"Select Flight Direction",
+        "flightType":[{"value":1,"text":"Domestic Flights"},{"value":2,"text":"International Flights"}],
+        "passengerType":[{"value":1,"text":"Incoming Passenger"},{"value":2,"text":"Departing Passengers"}]
       }
     }
   },

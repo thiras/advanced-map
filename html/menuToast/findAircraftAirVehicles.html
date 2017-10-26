@@ -28,7 +28,7 @@
                                     <md-select-header>
                                         <span> {{lang.menuToasts.general.provinces}} </span>
                                     </md-select-header>
-                                    <md-option ng-value="deger.id" ng-click="changeIlce(deger.id)"
+                                    <md-option ng-value="deger.id" ng-click="changeIlce(deger.id); filterAirports(deger.id);"
                                                ng-repeat="(ozellik, deger) in il" ng-selected="deger.id == secilenIl">
                                         {{deger.label}}
                                     </md-option>
@@ -40,15 +40,15 @@
                         </md-list-item>
 
 
-                        <md-list-item>
-                            <md-input-container layout-fill>
+                        <md-list-item ng-if="airportActive">
+                            <md-input-container  layout-fill>
                                 <md-select ng-model="airport"
-                                           placeholder="{{lang.menuToasts.transport.aircraft.airportplaceholder}}">
+                                           placeholder="{{lang.menuToasts.transport.aircraft.chooseAirports}}">
                                     <md-select-header>
-                                        <span>{{lang.menuToasts.transport.aircraft.airportplaceholder}}</span>
+                                        <span>{{lang.menuToasts.transport.aircraft.chooseAirports}}</span>
                                     </md-select-header>
-                                    <md-option ng-click="setShipTypeSelect(deger.value)" ng-value="deger.value"
-                                               ng-repeat="(ozellik, deger) in shipType">
+                                    <md-option ng-click="selectAirport(deger.value)" ng-value="deger.value"
+                                               ng-repeat="(ozellik, deger) in airportList">
                                         {{deger.text}}
                                     </md-option>
                                 </md-select>
@@ -56,47 +56,30 @@
                         </md-list-item>
 
 
-                        <md-list-item>
+                        <md-list-item ng-if="airportInfo">
                             <md-input-container layout-fill>
-                                <md-select ng-model="shiplineSelect"
-                                           placeholder="{{lang.menuToasts.transport.aircraft.airlinesplaceholder1}}">
+                                <md-select ng-model="flightType"
+                                           placeholder="{{lang.menuToasts.transport.aircraft.flightTypePH}}">
                                     <md-select-header>
-                                        <span>{{lang.menuToasts.transport.aircraft.airlinesplaceholder1}}</span>
+                                        <span>{{lang.menuToasts.transport.aircraft.flightTypePH}}</span>
                                     </md-select-header>
-                                    <md-option ng-click="shipLineChange(deger.value);" ng-value="deger.value"
-                                               ng-repeat="(ozellik, deger) in shipLines">
+                                    <md-option ng-click="selectFlightType(deger.value);" ng-value="deger.value"
+                                               ng-repeat="(ozellik, deger) in lang.menuToasts.transport.aircraft.flightType">
                                         {{deger.text}}
                                     </md-option>
                                 </md-select>
                             </md-input-container>
                         </md-list-item>
 
-                        <md-list-item ng-if="shipPointActive">
+                        <md-list-item ng-if="airportInfo">
                             <md-input-container layout-fill>
-                                <md-select ng-model="startPointNum"
-                                           placeholder="{{lang.menuToasts.transport.ship.departure}}">
+                                <md-select ng-model="passengerType"
+                                           placeholder="{{lang.menuToasts.transport.aircraft.passengerTypePH}}">
                                     <md-select-header>
-                                        <span>{{lang.menuToasts.transport.ship.departureText}}</span>
+                                        <span>{{lang.menuToasts.transport.aircraft.passengerTypePH}}</span>
                                     </md-select-header>
-                                    <md-option ng-click="selectShipPoint(1,deger.value);"
-                                               ng-mouseover="showShipPoint(deger.value)" ng-value="deger.value"
-                                               ng-repeat="(ozellik, deger) in shipPoints">
-                                        {{deger.text}}
-                                    </md-option>
-                                </md-select>
-                            </md-input-container>
-                        </md-list-item>
-
-                        <md-list-item>
-                            <md-input-container layout-fill>
-                                <md-select ng-model="finishPointNum"
-                                           placeholder="{{lang.menuToasts.transport.ship.arrival}}">
-                                    <md-select-header>
-                                        <span>{{lang.menuToasts.transport.ship.arrivalText}}</span>
-                                    </md-select-header>
-                                    <md-option ng-click="selectShipPoint(2,deger.value);"
-                                               ng-mouseover="showShipPoint(deger.value)" ng-value="deger.value"
-                                               ng-repeat="(ozellik, deger) in shipPoints">
+                                    <md-option ng-click="selectPassengerType(deger.value);" ng-value="deger.value"
+                                               ng-repeat="(ozellik, deger) in lang.menuToasts.transport.aircraft.passengerType">
                                         {{deger.text}}
                                     </md-option>
                                 </md-select>
@@ -112,6 +95,13 @@
             </md-dialog-content>
             <md-dialog-actions layout="row">
                 <span flex></span>
+
+                <md-button class="md-raised searchButton md-button md-ink-ripple md-button" ng-click="showAirportInfo()">
+                    <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">
+                        search
+                    </md-icon>
+                    {{lang.general.search}}
+                </md-button>
 
                 <md-button class="md-raised closeButton md-button md-ink-ripple md-button" ng-click="cancel()"
                            style="margin-right:20px;">
