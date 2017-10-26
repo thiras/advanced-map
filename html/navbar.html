@@ -1,4 +1,4 @@
-<section layout="row" ng-controller="navbar">
+<section id="navbar" layout="row" ng-controller="navbar">
     <md-sidenav class="md-sidenav-left" md-component-id="left"
                 md-whiteframe="4">
         <button class="accordion">
@@ -16,7 +16,7 @@
                 </button>
                 <div class="panel">
                     <md-list>
-                        <md-list-item  ng-click="factoryDesign(deg)" ng-repeat="(prop, deg) in deger.submenu "
+                        <md-list-item ng-click="factoryDesign(deg)" ng-repeat="(prop, deg) in deger.submenu "
                                       md-ink-ripple><span style="text-transform: capitalize;">{{deg.label}}</span>
                         </md-list-item>
                     </md-list>

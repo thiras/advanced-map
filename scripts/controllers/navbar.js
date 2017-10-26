@@ -5,8 +5,7 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
     /*  menu acma ayar bas*/
     $scope.toggleLeft = buildToggler('left');
     $scope.toggleRight = buildToggler('right');
-    $scope.lang = $rootScope.lang;
-
+  $scope.lang = $rootScope.lang;
 
     function buildToggler(componentId) {
         return function () {
