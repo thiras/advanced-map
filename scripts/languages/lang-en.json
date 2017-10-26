@@ -1,6 +1,7 @@
 {
   "general": {
     "notfound":"Not found",
+    "languages":"Languages",
     "title": "BalistaGIS Software",
     "close": "Close",
     "save": "Save",

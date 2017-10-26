@@ -1,6 +1,7 @@
 {
   "general": {
     "notfound":"Sonuç bulunamadı",
+    "languages":"Diller",
     "title": "BalistaGIS Software",
     "close": "Kapat",
     "save": "Kaydet",
