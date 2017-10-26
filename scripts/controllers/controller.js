@@ -44,7 +44,8 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
     $rootScope.transport = {
         shipType:[],
         shipTypeSelect: "",
-        shipLines:[]
+        shipLines:[],
+        aircraft:{}
     };
     document.querySelector('title').innerText = $rootScope.lang.general.title;
     $rootScope.parcell = {
