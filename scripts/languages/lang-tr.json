@@ -1,5 +1,6 @@
 {
   "general": {
+    "notfound":"Sonuç bulunamadı",
     "title": "BalistaGIS Software",
     "close": "Kapat",
     "save": "Kaydet",

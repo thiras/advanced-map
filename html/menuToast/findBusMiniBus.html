@@ -19,7 +19,6 @@
             </md-toolbar>
             <md-dialog-content style="style:100%">
                 <md-content style="max-height: 45vh">
-
                     <md-list>
                         <md-list-item>
                             <md-input-container layout-fill>
@@ -50,23 +49,19 @@
                                     </md-option>
                                 </md-select>
                             </md-input-container>
-
                         </md-list-item>
-
                         <md-list-item>
-
-
-                            <md-autocomplete md-selected-item-change="selectNewBusLine()" layout-fill placeholder="{{lang.menuToasts.transport.busmini.lineNumberName}}" md-selected-item="selectedLineNumber"
+                            <md-autocomplete md-selected-item-change="selectNewBusLine()" layout-fill
+                                             placeholder="{{lang.menuToasts.transport.busmini.lineNumberName}}"
+                                             md-selected-item="selectedLineNumber"
                                              md-search-text="searchText" md-items="item in queryLineNumber(searchText)"
                                              md-item-text="item">
                                 <span md-highlight-text="searchText">{{item}}</span>
                                 <md-not-found>
-                                    No matches found.
+                                    {{lang.general.notfound}}
                                 </md-not-found>
                             </md-autocomplete>
-
                         </md-list-item>
-
                         <md-list-item ng-if="busStopActive">
                             <md-input-container layout-fill>
                                 <md-select ng-model="busStop"
@@ -74,7 +69,8 @@
                                     <md-select-header>
                                         <span>{{lang.menuToasts.transport.busmini.autoCarTypeName}}</span>
                                     </md-select-header>
-                                    <md-option ng-mouseover="showBusPoint(deger.value,false);" ng-click="showBusPoint(deger.value,true);" ng-value="deger.value"
+                                    <md-option ng-mouseover="showBusPoint(deger.value,false);"
+                                               ng-click="showBusPoint(deger.value,true);" ng-value="deger.value"
                                                ng-repeat="(ozellik, deger) in busStopList">
                                         {{deger.text}}
                                     </md-option>
@@ -85,7 +81,10 @@
 
 
                         <md-list-item>
-                            <md-switch ng-change="setshowNearBusSwitch(showNearBusSwitch)" ng-model="showNearBusSwitch">{{showNearBusSwitch==true ? lang.menuToasts.transport.busmini.nearPoints1:lang.menuToasts.transport.busmini.nearPoints2}}</md-switch>
+                            <md-switch ng-change="setshowNearBusSwitch(showNearBusSwitch)" ng-model="showNearBusSwitch">
+                                {{showNearBusSwitch==true ?
+                                lang.menuToasts.transport.busmini.nearPoints1:lang.menuToasts.transport.busmini.nearPoints2}}
+                            </md-switch>
                         </md-list-item>
 
                     </md-list>
