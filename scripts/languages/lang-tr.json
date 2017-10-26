@@ -152,10 +152,12 @@
         "onlineShip2":"Vapur ve Feribotları Haritada Gösterme"
       },
       "aircraft":{
-        "label":"Uçak ve Hava Araçları Panelil",
-        "airportplaceholder":"Havalimanı Seç",
-        "airlinesplaceholder1":"Hat Tipini Seçiniz",
-        "linesTypes":[{"value":1,"text":"İç Hatlar"},{"value":2,"text":"Dış Hatlar"}]
+        "label":"Uçak ve Hava Alanı Paneli",
+        "chooseAirports":"Havaalanı Seçiniz",
+        "flightTypePH":"Hat Türü Seçiniz",
+        "passengerTypePH":"Yolcu Türünü Seçiniz",
+        "flightType":[{"value":1,"text":"İç Hatlar"},{"value":2,"text":"Dış Hatlar"}],
+        "passengerType":[{"value":1,"text":"Gelen Yolcu"},{"value":2,"text":"Giden Yolcu"}]
       }
   }
   },
