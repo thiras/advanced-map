@@ -126,6 +126,12 @@
             </md-dialog-content>
             <md-dialog-actions layout="row">
                 <span flex></span>
+                <md-button class="md-raised searchButton md-button md-ink-ripple md-button">
+                    <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">
+                        search
+                    </md-icon>
+                    {{lang.general.search}}
+                </md-button>
                 <md-button class="md-raised closeButton md-button md-ink-ripple md-button" ng-click="cancel()"
                            style="margin-right:20px;">
                     {{lang.general.close}}
