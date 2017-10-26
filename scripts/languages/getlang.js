@@ -1,4 +1,4 @@
-app.service("$getlang", function ($http) {
+app.service("$getlang", function ($http,$rootScope) {
     var $supportLang = ["tr", "en", "ar"];
     var $lang = (function () {
         var $userLang = navigator.languages[1];
@@ -8,6 +8,7 @@ app.service("$getlang", function ($http) {
         return $existLang ? $existLang : "en";
     })();
 
+    $rootScope.langName=$lang;
     /*$lang="tr";*/
 
     var $url = "scripts/languages/lang-" + $lang + ".json";

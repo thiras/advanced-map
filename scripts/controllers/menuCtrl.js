@@ -34,9 +34,9 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.buildOwnerName = $rootScope.buildLicense.buildOwnerName;
     $scope.buildConstName = $rootScope.buildLicense.buildConstName;
     $scope.clickMapAddPoint = $rootScope.clickMapAddPoint || false;
-    $scope.trainLine=$sahtejson.trainLine;
-    $scope.departureStopData=$sahtejson.trainStation;
-    $scope.arriveStopData=$sahtejson.trainStation;
+    $scope.trainLine = $sahtejson.trainLine;
+    $scope.departureStopData = $sahtejson.trainStation;
+    $scope.arriveStopData = $sahtejson.trainStation;
 
 
     /* sağlık merkezileri için mdSelect adress yardımı ile*/
@@ -728,7 +728,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         }
     ];
     $scope.changePOISecCat = function (mainid) {
-        debugger;
+
         mainid = parseInt(mainid);
         for (i in $scope.poiFrsqrMainCat) {
             if (mainid == $scope.poiFrsqrMainCat[i].value) {
@@ -952,38 +952,80 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
     /* otogbus ve minibus sorgu son*/
 
-    $scope.trainType=$rootScope.lang.menuToasts.transport.train.trainType; //tram and train vehicles type
+    $scope.trainType = $rootScope.lang.menuToasts.transport.train.trainType; //tram and train vehicles type
 
+
+    /*tram */
+
+
+    $scope.setTrainLines = function (a) {
+
+        $rootScope.TrainLines = a;
+
+    };
+
+
+    $scope.setArriveStation = function (b) {
+
+        $rootScope.arriveStop = b;
+
+    };
+
+    $scope.setDepartureStation = function (c) {
+
+
+        $rootScope.departureStop = c;
+
+    }
+
+
+    $scope.settrainTypeName = function (a) {
+
+        $rootScope.trainTypeName = a;
+    }
+
+
+    $scope.setnearesTramSwitch = function () {
+
+        $rootScope.nearesTramSwitch = $scope.nearesTramSwitch;
+
+    }
+
+    $scope.setshowTramOnMap = function () {
+        $rootScope.showTramOnMap = $scope.showTramOnMap;
+
+    }
+    /* tram */
 
 
     /* Gemi ve Feribot Kod BLoğu Baş */
     $scope.shipType = $rootScope.lang.menuToasts.transport.ship.shipType;
     $scope.shipTypeSelect = $rootScope.transport.shipTypeSelect;
-    $scope.shipLineActive=$rootScope.transport.shipLineActive || false;
-    $scope.shipLines =$rootScope.transport.shipLines ||  [];
+    $scope.shipLineActive = $rootScope.transport.shipLineActive || false;
+    $scope.shipLines = $rootScope.transport.shipLines || [];
     $scope.shiplineSelect = $rootScope.transport.shiplineSelect || "";
     $scope.shipTypeChange = function () {
-        $rootScope.transport.shipTypeSelect=$scope.shipTypeSelect;
+        $rootScope.transport.shipTypeSelect = $scope.shipTypeSelect;
         var dizi = [];
-        $rootScope.transport.shipLineActive=true;
-        $scope.shipLineActive=true;
+        $rootScope.transport.shipLineActive = true;
+        $scope.shipLineActive = true;
         var lines = $sahtejson.shipLine;
-        for(i in lines){
+        for (i in lines) {
             var id = lines[i].id;
             var label = lines[i].label;
             var ilid = lines[i].ilid;
             var vec = lines[i].vehicleType;
-            if(ilid==$scope.secilenIl && vec==$scope.shipTypeSelect){
-                dizi.push({value:id,text:label,status:false});
+            if (ilid == $scope.secilenIl && vec == $scope.shipTypeSelect) {
+                dizi.push({value: id, text: label, status: false});
             }
         }
-        $scope.shipLines=dizi;
-        $rootScope.transport.shipLines=$scope.shipLines;
+        $scope.shipLines = dizi;
+        $rootScope.transport.shipLines = $scope.shipLines;
 
     };
     $scope.shipPointActive = $rootScope.transport.shipPointActive || false;
-    $scope.shipPoints = $rootScope.transport.shipPoints ||  [];
-    $scope.showLine = $rootScope.transport.showLine ||  false;
+    $scope.shipPoints = $rootScope.transport.shipPoints || [];
+    $scope.showLine = $rootScope.transport.showLine || false;
     $scope.shipLineChange = function (id) {
         $rootScope.transport.shiplineSelect = parseInt(id);
         $scope.shiplineSelect = parseInt(id);
@@ -992,60 +1034,66 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             $scope.featureIl = false;
             $rootScope.adress.featureIl = false;
         }
-        $scope.shipPointActive=true;
-        $rootScope.transport.shipPointActive=true;
+        $scope.shipPointActive = true;
+        $rootScope.transport.shipPointActive = true;
         var lines = $sahtejson.shipLine;
-        for(j in lines){
+        for (j in lines) {
             var ilid = lines[j].ilid;
             var myid = lines[j].id;
             var geojson = lines[j].geojson;
             var label = lines[j].label;
-            if(ilid==$scope.secilenIl && myid==id){
-                if($scope.showLine==false){
-                    $scope.showLine=$leafletFonk.showGeoJSON(geojson,{bindPopupText:label,style:{color:"green"}},true,true);
-                }else{
+            if (ilid == $scope.secilenIl && myid == id) {
+                if ($scope.showLine == false) {
+                    $scope.showLine = $leafletFonk.showGeoJSON(geojson, {
+                        bindPopupText: label,
+                        style: {color: "green"}
+                    }, true, true);
+                } else {
                     $scope.showLine.remove();
-                    $scope.showLine=$leafletFonk.showGeoJSON(geojson,{bindPopupText:label,style:{color:"green"}},true,true);
+                    $scope.showLine = $leafletFonk.showGeoJSON(geojson, {
+                        bindPopupText: label,
+                        style: {color: "green"}
+                    }, true, true);
                 }
 
             }
         }
         var points = $sahtejson.shipPoint;
         var dizi = [];
-        for(i in points){
+        for (i in points) {
             var id = points[i].id;
             var label = points[i].label;
             var lineid = points[i].lineid;
-            if(lineid==$scope.shiplineSelect){
-                dizi.push({value:id,text:label,status:false});
+            if (lineid == $scope.shiplineSelect) {
+                dizi.push({value: id, text: label, status: false});
             }
         }
-        $scope.shipPoints=dizi;
-        $rootScope.transport.shipPoints=$scope.shipPoints;
+        $scope.shipPoints = dizi;
+        $rootScope.transport.shipPoints = $scope.shipPoints;
     };
     $scope.departurePoint = $rootScope.transport.departurePoint || false;
     $scope.shipPointDepa = $rootScope.transport.shipPointDepa || "";
     $scope.showPoint = $rootScope.transport.showPoint || false;
     $scope.startPoint = $rootScope.transport.startPoint || false;
-    $scope.startPointNum=$rootScope.transport.startPointNum || "";
+    $scope.startPointNum = $rootScope.transport.startPointNum || "";
     $scope.finishPoint = $rootScope.transport.finishPoint || false;
-    $scope.finishPointNum=$rootScope.transport.finishPointNum || "";
+    $scope.finishPointNum = $rootScope.transport.finishPointNum || "";
     $scope.showNearestPort = $rootScope.transport.showNearestPort || false;
     $scope.showOnlineShip = $rootScope.transport.showOnlineShip || false;
-    $scope.showShipPoint=function(id){
+    $scope.showShipPoint = function (id) {
         /*$rootScope.transport.shipPointDepa = parseInt(id);
         $scope.shipPointDepa = parseInt(id);*/
-        debugger;
-        id=parseInt(id);
+
+        id = parseInt(id);
         var points = $sahtejson.shipPoint;
-        for(i in points){
+        for (i in points) {
             var pointid = points[i].id;
             var json = points[i].geojson.geometry.coordinates;
-            var latlng = L.latLng(json[1],json[0]);
-            if(id==pointid){
-                if($scope.showPoint==false){
-                    $scope.showPoint=L.marker(latlng).addTo($rootScope.leaflet);
-                }else{
+            var latlng = L.latLng(json[1], json[0]);
+            if (id == pointid) {
+                if ($scope.showPoint == false) {
+                    $scope.showPoint = L.marker(latlng).addTo($rootScope.leaflet);
+                } else {
                     $scope.showPoint.setLatLng(latlng);
                 }
             }
@@ -1053,24 +1101,24 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
     };
 
-    $scope.selectShipPoint=function(point,id){
-        if(point==1){
+    $scope.selectShipPoint = function (point, id) {
+        if (point == 1) {
             $scope.startPointNum = id;
             $rootScope.transport.startPointNum = id;
         }
-        if(point==2){
+        if (point == 2) {
             $scope.finishPointNum = id;
             $rootScope.transport.finishPointNum = id;
         }
         var points = $sahtejson.shipPoint;
-        for(i in points){
+        for (i in points) {
             var pointid = points[i].id;
             var json = points[i].geojson.geometry.coordinates;
-            var latlng = L.latLng(json[1],json[0]);
-            if(id==pointid){
-                if($scope.showPoint==false){
-                    $scope.showPoint=L.marker(latlng).addTo($rootScope.leaflet);
-                }else{
+            var latlng = L.latLng(json[1], json[0]);
+            if (id == pointid) {
+                if ($scope.showPoint == false) {
+                    $scope.showPoint = L.marker(latlng).addTo($rootScope.leaflet);
+                } else {
                     $scope.showPoint.setLatLng(latlng);
                 }
             }
@@ -1078,19 +1126,19 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
     };
     $scope.changeNearestPort = function () {
-        debugger;
-        $rootScope.transport.showNearestPort=!$scope.showNearestPort;
+
+        $rootScope.transport.showNearestPort = !$scope.showNearestPort;
     };
     $scope.changeOnlineShip = function () {
-        debugger;
-        $rootScope.transport.showOnlineShip=!$scope.showOnlineShip;
+
+        $rootScope.transport.showOnlineShip = !$scope.showOnlineShip;
     };
     /* Gemi ve Feribot Kod BLoğu Son  */
 
 
-    $scope.setShipTypeSelect=function (a) {
+    $scope.setShipTypeSelect = function (a) {
 
-        $rootScope.shipTypeSelect=a;
+        $rootScope.shipTypeSelect = a;
     }
 
     /* Aircraft Bas*/
@@ -1102,52 +1150,52 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.flightType = $rootScope.transport.aircraft.flightType || [];
     $scope.passengerType = $rootScope.transport.aircraft.passengerType || [];
     $scope.aircraftAjaxRequest = {};
-    $scope.filterAirports=function(ilid){
-        ilid=parseInt(ilid);
+    $scope.filterAirports = function (ilid) {
+        ilid = parseInt(ilid);
         var dizi = [];
         var airports = $sahtejson.airports;
-        for(i in airports){
+        for (i in airports) {
             var ports = airports[i];
-            var id =ports.id;
+            var id = ports.id;
             var label = ports.label;
             var ilidjson = ports.ilid;
-            if(ilidjson==ilid){
-                dizi.push({value:id,text:label,status:false});
+            if (ilidjson == ilid) {
+                dizi.push({value: id, text: label, status: false});
             }
         }
-        if(dizi.length>0){
-            $scope.airportActive=true;
-            $rootScope.transport.aircraft.airportActive=true;
+        if (dizi.length > 0) {
+            $scope.airportActive = true;
+            $rootScope.transport.aircraft.airportActive = true;
         }
-        $scope.airportList=dizi;
-        $rootScope.transport.aircraft.airportList=dizi;
+        $scope.airportList = dizi;
+        $rootScope.transport.aircraft.airportList = dizi;
 
     };
     $scope.selectAirport = function (airportId) {
-        debugger;
-        airportId=parseInt(airportId);
-        $scope.airportInfo=true;
-        $rootScope.transport.aircraft.airportInfo=true;
+
+        airportId = parseInt(airportId);
+        $scope.airportInfo = true;
+        $rootScope.transport.aircraft.airportInfo = true;
         $scope.airport = airportId;
-        $rootScope.transport.aircraft.airport=airportId;
+        $rootScope.transport.aircraft.airport = airportId;
         var airports = $sahtejson.airports;
-        for(i in airports){
+        for (i in airports) {
             var ports = airports[i];
-            var id =ports.id;
+            var id = ports.id;
             var label = ports.label;
             var ilidjson = ports.ilid;
             var geojson = ports.geojson;
-            if(id==airportId){
+            if (id == airportId) {
                 if ($scope.featureIl !== false) {
                     $scope.featureIl.remove();
                     $scope.featureIl = false;
                     $rootScope.adress.featureIl = false;
                 }
-                if($scope.airportsGeometry==false){
-                    $scope.airportsGeometry = $leafletFonk.showGeoJSON(geojson,{bindPopupText:label},true,true);
-                }else{
+                if ($scope.airportsGeometry == false) {
+                    $scope.airportsGeometry = $leafletFonk.showGeoJSON(geojson, {bindPopupText: label}, true, true);
+                } else {
                     $scope.airportsGeometry.remove();
-                    $scope.airportsGeometry = $leafletFonk.showGeoJSON(geojson,{bindPopupText:label},true,true);
+                    $scope.airportsGeometry = $leafletFonk.showGeoJSON(geojson, {bindPopupText: label}, true, true);
                 }
 
             }
@@ -1156,12 +1204,12 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
     };
     $scope.selectFlightType = function (id) {
-        $scope.flightType=parseInt(id);
-        $rootScope.transport.aircraft.flightType=parseInt(id);
+        $scope.flightType = parseInt(id);
+        $rootScope.transport.aircraft.flightType = parseInt(id);
     };
     $scope.selectPassengerType = function (id) {
-        $scope.passengerType=parseInt(id);
-        $rootScope.transport.aircraft.passengerType=parseInt(id);
+        $scope.passengerType = parseInt(id);
+        $rootScope.transport.aircraft.passengerType = parseInt(id);
     };
     $scope.showAirportInfo = function () {
         $scope.aircraftAjaxRequest = {
@@ -1171,7 +1219,8 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             passengerType: $scope.passengerType
 
         };
-        alert(JSON.stringify($scope.aircraftAjaxRequest));i
+        alert(JSON.stringify($scope.aircraftAjaxRequest));
+        i
     }
     /* Aircraft Son*/
 });
