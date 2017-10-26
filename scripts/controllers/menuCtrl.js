@@ -847,6 +847,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     /*  autobus ve  minibus sorgu bas*/
 
 
+
     $scope.setautoCarTypeSelect=function () {
 
       $rootScope.autoCarTypeSelect=$scope.autoCarTypeSelect;
@@ -944,6 +945,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             $scope.busStopActive = false;
         }
 
+        $rootScope.selectedLineNumber=$scope.selectedLineNumber; /*  hafızada tutma işlemi için*/
     };
     $scope.showBusPoint = function (pointId, stay) {
         pointId = parseInt(pointId);
