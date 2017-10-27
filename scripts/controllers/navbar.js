@@ -377,4 +377,18 @@ app.controller("navbar", function ($scope, $googleMaps,$accordion, $timeout, $md
         });
     };
 
+    $scope.findFoursquarePOI = function () {
+        debugger;
+        /*$rootScope.$emit("closeNavbar", "closeNavbar");
+        var aaa = $googleMaps.textSearch({latlng:[8.43772,27.18944],text:"konak",radius:5000});
+        console.log($googleMaps);*/
+        $rootScope.$emit("closeNavbar", "closeNavbar");
+        $mdToast.show({
+            hideDelay: 0,
+            position: 'top right',
+            controller: 'menuCtrl',
+            templateUrl: 'html/menuToast/findFoursquarePOI.html',
+        });
+    };
+
 });

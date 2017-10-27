@@ -138,6 +138,10 @@ app.service("$accordion", function ($rootScope) {
                     menu3e1: {
                         label: lang.menu.menu9.menu1e2,
                         fonk: "findGooglePOI"
+                    },
+                    menu3e4: {
+                        label: lang.menu.menu9.menu1e2,
+                        fonk: "findFoursquarePOI"
                     }
                 }
             },
