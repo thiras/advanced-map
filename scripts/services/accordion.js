@@ -152,11 +152,11 @@ app.service("$accordion", function ($rootScope) {
                     },
                     menu3e3: {
                         label: lang.menu.menu10.menu1e3,
-                        fonk: "findNearPoliclinic"
+                        fonk: "findNearHospital"
                     },
                     menu4e3: {
                         label: lang.menu.menu10.menu1e4,
-                        fonk: "findNearHospital"
+                        fonk: "findNearPoliclinic"
                     }
                 }
             },
@@ -172,11 +172,11 @@ app.service("$accordion", function ($rootScope) {
                     },
                     menu3e2: {
                         label: lang.menu.menu11.menu1e2,
-                        fonk: "menu"
+                        fonk: "findNearPolice"
                     },
                     menu4e3: {
                         label: lang.menu.menu11.menu1e4,
-                        fonk: "menu"
+                        fonk: "findNearSoldier"
                     }
 
                 }
