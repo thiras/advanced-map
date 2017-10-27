@@ -20,6 +20,13 @@ app.service("$googleMaps", function ($rootScope) {
     this.service = new google.maps.places.PlacesService(this.map);
 
     this.textSearch = function(request){
+        // openNow:true,false -> arama yapılan saatte açık olan işletmeleri bulur
+        // minPriceLevel ve maxPriceLevel 0 - 4 e fiyat pahalılığına göre aramayı kısıtlar
+        // bounds aramayı belli bir bounds aralığında yapar
+        // location ile aramayı bir noktada yapar
+        // radius ile location kullanılarak arama yapılır max 50000m dir
+        // type burada categori belirtebiliriz
+
         var r = tis.request(request.latlng,request.text,request.radius);
         tis.service = new google.maps.places.PlacesService(tis.map);
         tis.service.textSearch(r, tis.textCallback);
@@ -38,6 +45,7 @@ app.service("$googleMaps", function ($rootScope) {
     };
 
     this.textCallback = function(results,status){
+
         if (status == google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < results.length; i++) {
                 var place = results[i];

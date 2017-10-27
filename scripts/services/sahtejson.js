@@ -2742,5 +2742,45 @@ app.service("$sahtejson",function () {
       }
   };
 
+    this.googlePOITypeMain = [
+        {value:"poi",text:"POI Noktaları",status:true},
+        {value:"geocode",text:"Geocode",status:false},
+        {value:"address",text:"Address",status:false},
+        {value:"establishment",text:"Establishment",status:false},
+        {value:"regions",text:"Regions",status:false},
+        {value:"cities",text:"Cities",status:false},
+        ];
+
+  this.googlePOITypesSec ={
+      poi:[
+      {value:"accounting",text:"Accounting",status:false},
+      {value:"airport",text:"airport",status:false},
+      {value:"amusement_park",text:"amusement_park",status:false},
+      {value:"aquarium",text:"aquarium"},
+      {value:"art_gallery",text:"art_gallery",status:false},
+      {value:"atm",text:"atm",status:false},
+      {value:"bakery",text:"bakery",status:false},
+      {value:"bank",text:"bank",status:false},
+      {value:"bar",text:"bar",status:false},
+      {value:"beauty_salon",text:"beauty_salon",status:false},
+      {value:"bicycle_store",text:"bicycle_store",status:false},
+      {value:"book_store",text:"book_store",status:false},
+      {value:"bowling_alley",text:"bowling_alley",status:false},
+      {value:"bus_station",text:"bus_station",status:false},
+      {value:"cafe",text:"cafe",status:false},
+      {value:"campground",text:"campground",status:false},
+      {value:"car_dealer",text:"car_dealer",status:false},
+      {value:"car_rental",text:"car_rental",status:false},
+      {value:"car_repair",text:"car_repair",status:false},
+      {value:"library",text:"library",status:false},
+      {value:"car_wash",text:"car_wash",status:false},
+      {value:"lodging",text:"lodging",status:false},
+      {value:"park",text:"park",status:false},
+      {value:"police",text:"police",status:false}
+        ]
+  };
+
+
+
     return this;
 });

@@ -22,49 +22,59 @@
                     <md-list>
 
                         <md-list-item>
-                            <md-input-container>
-                                <md-switch ng-model="poiGoogleNearestSrch">{{poiGoogleNearestSrch ? "Yakında Arama özeliği açık":"Yakında Arama özeliği kapalı"}}</md-switch>
+                            <md-input-container style="margin: 0;">
+                                <md-switch style="margin: 0;" ng-click="poiLocActChange();" ng-model="locationActive">Yakında Arama Özeliği {{poiGoogleNearestSrch ? "Açık":"Kapalı"}}</md-switch>
                             </md-input-container>
+                        </md-list-item>
 
-                        </md-list-item>
+
+
                         <md-list-item>
-                            <md-input-container layout-fill>
-                                <input type="number" placeholder="Arama Yarıçapı(m)">
+                            <md-input-container style="margin: 0; margin-bottom: 15px;">
+                                <md-switch style="margin: 0;" ng-click="poiClickChange();" ng-model="poiClickMapActive">{{findOnClick ? "Ekranda Tıklayarak Bulma açık":"Ekranda Tıklayarak Bulma kapalı"}}</md-switch>
                             </md-input-container>
                         </md-list-item>
+
+
+
                         <md-list-item>
                             <md-input-container layout-fill>
-                                <md-select ng-model="autoCarTypeSelect" ng-change="setautoCarTypeSelect()"
-                                           placeholder="Point Türü">
+                                <input type="number" ng-keyup="googleSearchPOIRadius()" ng-model="poiRadius" placeholder="Arama Yarıçapı (m)">
+                            </md-input-container>
+                        </md-list-item>
+
+
+
+                        <md-list-item>
+                            <md-input-container layout-fill>
+                                <md-select ng-model="poiMainType"
+                                           placeholder="POI Ana Türleri">
                                     <md-select-header>
-                                        <span>{{lang.menuToasts.transport.busmini.autoCarTypeName}}</span>
+                                        <span>POI Ana Türü Seçiniz</span>
                                     </md-select-header>
-                                    <md-option ng-value="deger.value"
-                                               ng-repeat="(ozellik, deger) in autoCarType">
+                                    <md-option ng-click="changePOISecTypes(deger.value);" ng-selected="deger.status" ng-value="deger.value"
+                                               ng-repeat="(ozellik, deger) in placesMainType">
                                         {{deger.text}}
                                     </md-option>
                                 </md-select>
                             </md-input-container>
                         </md-list-item>
+
                         <md-list-item>
-                            <md-input-container layout-fill>
-                                <md-select ng-model="autoCarTypeSelect" ng-change="setautoCarTypeSelect()"
-                                           placeholder="Point Türü">
+                            <md-input-container layout-fill ng-if="poiSecTypeActive">
+                                <md-select ng-model="poiSecType"
+                                           placeholder="POI Alt Türleri">
                                     <md-select-header>
-                                        <span>{{lang.menuToasts.transport.busmini.autoCarTypeName}}</span>
+                                        <span>POI Alt Türleri</span>
                                     </md-select-header>
-                                    <md-option ng-value="deger.value"
-                                               ng-repeat="(ozellik, deger) in autoCarType">
+                                    <md-option ng-click="changePOISec(deger.value);" ng-selected="deger.status" ng-value="deger.value"
+                                               ng-repeat="(ozellik, deger) in poiSecType">
                                         {{deger.text}}
                                     </md-option>
                                 </md-select>
                             </md-input-container>
                         </md-list-item>
-                        <md-list-item>
-                            <md-input-container>
-                                <md-switch ng-model="findOnClick">{{findOnClick ? "Ekranda Tıklayarak Bulma açık":"Ekranda Tıklayarak Bulma kapalı"}}</md-switch>
-                            </md-input-container>
-                        </md-list-item>
+
 
 
 
@@ -77,7 +87,7 @@
             </md-dialog-content>
             <md-dialog-actions layout="row">
                 <span flex></span>
-                <md-button class="md-raised searchButton md-button md-ink-ripple md-button" ng-click="searchFindBusMiniBus()">
+                <md-button class="md-raised searchButton md-button md-ink-ripple md-button" ng-click="searchPOIGoogle()">
                     <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">
                         search
                     </md-icon>

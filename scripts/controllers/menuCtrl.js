@@ -1271,4 +1271,46 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
         alert(JSON.stringify($scope.dataFindTrainTram));
     }
+
+    /* Google Maps API POI bas*/
+
+    $scope.placesMainType = $sahtejson.googlePOITypeMain;
+    $scope.poiRadius = $rootScope.poi.google.poiRadius || 500;
+    $scope.googleSearchPOIRadius = function (){
+        $rootScope.poi.google.poiRadius=$scope.poiRadius;
+    };
+    $scope.locationActive = $rootScope.poi.google.locationActive || false;
+    $scope.poiLocActChange = function(){
+        $rootScope.poi.google.locationActive=!$scope.locationActive;
+    };
+    $scope.poiClickMapActive = $rootScope.poi.google.poiClickMapActive || false;
+    $scope.poiClickChange = function(){
+        $rootScope.poi.google.poiClickMapActive=!$scope.poiClickMapActive;
+    };
+    $scope.poiMainType = $rootScope.poi.google.poiMainType || [];
+    $scope.poiSecType =  $rootScope.poi.google.poiSecType || [];
+    $scope.poiSecTypeActive = $rootScope.poi.google.poiSecTypeActive || false;
+    $scope.changePOISecTypes = function(id){
+        $rootScope.poi.google.poiSecType=$sahtejson.googlePOITypesSec[id];
+        $scope.poiSecType=$sahtejson.googlePOITypesSec[id];
+        $rootScope.poi.google.poiSecTypeActive=true;
+        $scope.poiSecTypeActive=true;
+    };
+    $scope.changePOISec = function(id){
+        debugger;
+        var list = $scope.poiSecType;
+        for(i in list){
+            if(list[i].value==id){
+                list[i].status=true;
+            }else{
+                list[i].status=false;
+            }
+        }
+        $scope.poiSecType=list;
+        $rootScope.poi.google.poiSecType=$scope.poiSecType;
+    };
+    $scope.searchPOIGoogle = function(){
+
+    };
+    /* Google Maps API POI bas*/
 });

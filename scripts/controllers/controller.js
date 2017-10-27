@@ -38,7 +38,11 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
         buildOwnerName: "",
         buildConstName: ""
     };
-    $rootScope.poi={};
+    $rootScope.poi={
+        database:{},
+        google:{},
+        foursquare:{}
+    };
     $rootScope.security = {};
     $rootScope.health = {};
     $rootScope.transport = {
