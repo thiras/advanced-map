@@ -1,6 +1,8 @@
 app.directive("loginbutton", function ($http) {
     return {
+        restrict: "A",
         link: function ($scope, $el, $attr) {
+
 
             $el.bind("click", function () {
 
