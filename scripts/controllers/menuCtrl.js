@@ -1,4 +1,4 @@
-app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $timeout, $mdDialog, $leafletFonk) {
+app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $timeout, $mdDialog, $leafletFonk,$location) {
     $scope.lang = $rootScope.lang;
     $scope.il = $sahtejson.il;
     $scope.ilce = $sahtejson.ilce;
@@ -1281,7 +1281,10 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     };
     $scope.locationActive = $rootScope.poi.google.locationActive || false;
     $scope.poiLocActChange = function(){
+        debugger;
         $rootScope.poi.google.locationActive=!$scope.locationActive;
+        var point = $location.findMyLocation();
+
     };
     $scope.poiClickMapActive = $rootScope.poi.google.poiClickMapActive || false;
     $scope.poiClickChange = function(){
