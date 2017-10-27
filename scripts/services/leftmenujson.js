@@ -156,7 +156,7 @@ app.service("$leftmenujson", function ($http, $rootScope) {
                         label: "Open Street Maps Haritası",
                         opacity: 1,
                         active: true,
-                        show: false,
+                        show: true,
                         img: "img/basemapIcons/osm.png",
                         leafletMap : {
                             method:"freeWMS",

@@ -14,6 +14,7 @@
                     </md-fab-trigger>
                     <md-fab-actions>
                         <div class="md-fab-action-item" ng-repeat="nestedjsonData in fabdialjson.layers">
+                           <!-- <md-checkbox ng-model="nestedjsonData.show" style="margin: 10px 0px -25px 33px; display: -webkit-box; z-index: 21;"></md-checkbox>-->
                         <md-button  ng-class="{'borderFabdial_active2':lastActiveColor(nestedjsonData.id)}" click="{{nestedjsonData.id}}" aria-label="{{nestedjsonData.label}}" ng-if="nestedjsonData.active" class="md-fab md-raised md-mini">
                             <md-tooltip md-direction="up">{{nestedjsonData.label}}</md-tooltip>
                             <div class="md-ripple-container" ng-style="{'background':'url('+nestedjsonData.img+')','background-size':'cover'}"></div>
