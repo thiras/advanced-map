@@ -1,5 +1,6 @@
-app.service("$getlang", function ($http) {
-    var $supportLang = ["tr", "en", "ar"];
+app.service("$getlang", function ($rootScope,$http) {
+    var $supportLang = ["tr", "en", "ar", "es"];
+    $rootScope.supportLang = $supportLang;
     var $lang = (function () {
         var $userLang = navigator.languages[1];
         $existLang = $supportLang.find(function (a) {
@@ -8,7 +9,8 @@ app.service("$getlang", function ($http) {
         return $existLang ? $existLang : "en";
     })();
 
-    /*$lang="tr";*/
+    $lang="tr";
+    $rootScope.browserLangugae = $lang;
 
     var $url = "scripts/languages/lang-" + $lang + ".json";
     return $http.get($url).then(function (a) {
