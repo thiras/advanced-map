@@ -1,4 +1,4 @@
-app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $rootScope, $mdToast, $mdSidenav, $sahtejson, $leafletFonk,$markers) {
+app.controller("navbar", function ($scope, $googleMaps,$accordion, $timeout, $mdDialog, $rootScope, $mdToast, $mdSidenav, $sahtejson, $leafletFonk,$markers) {
 
     $scope.menuJSON =$accordion.json;
 
@@ -158,6 +158,13 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
         });
 
     }
+
+
+
+
+
+
+
     $scope.findBuildingLicence = function () {
 
         $rootScope.$emit("closeNavbar", "closeNavbar");
@@ -354,5 +361,20 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
 
 
     }
+
+
+    $scope.findGooglePOI = function () {
+        debugger;
+        /*$rootScope.$emit("closeNavbar", "closeNavbar");
+        var aaa = $googleMaps.textSearch({latlng:[8.43772,27.18944],text:"konak",radius:5000});
+        console.log($googleMaps);*/
+        $rootScope.$emit("closeNavbar", "closeNavbar");
+        $mdToast.show({
+            hideDelay: 0,
+            position: 'top right',
+            controller: 'menuCtrl',
+            templateUrl: 'html/menuToast/findGooglePOI.html',
+        });
+    };
 
 });
