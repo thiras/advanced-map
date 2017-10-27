@@ -1,9 +1,9 @@
 app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $rootScope, $mdToast, $mdSidenav, $sahtejson, $leafletFonk) {
 
-    $rootScope.menuJSON = $rootScope.accordion || $accordion.json;
+    $scope.menuJSON =$accordion.json;
 
     $rootScope.$on("updateAcordion", function (e, a) {
-        $rootScope.menuJSON = a;
+        $scope.menuJSON = a;
     });
     /*  menu acma ayar bas*/
     $scope.toggleLeft = buildToggler('left');
