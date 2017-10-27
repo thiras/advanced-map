@@ -21,7 +21,7 @@
                             <md-list-item>
 
                                 <md-input-container layout-fill flex-xs="100">
-                                    <input type="password" placeholder="password" ng-model="loginpass">
+                                    <input type="password" placeholder="password" ng-model="loginPass">
                                 </md-input-container>
                             </md-list-item>
 
@@ -29,7 +29,7 @@
                                 <!--başlabgıç-->
                                 <md-dialog-actions layout="row">
                                     <span flex></span>
-                                    <md-button bg-color="#5fceca" front-color="white" class="md-raised  md-button md-ink-ripple md-button"
+                                    <md-button ng-disabled="!loginUser || !loginPass" loginbutton bg-color="#5fceca" front-color="white" class="md-raised  md-button md-ink-ripple md-button"
                                                style="margin-right:20px;">
                                         login
                                     </md-button>
@@ -71,7 +71,7 @@
                                 <div ng-bind-html="agreement"></div>
                             </md-input-container>
 
-                            <md-button loginbutton
+                            <md-button
                                        ng-disabled="!user.address || !user.email || !user.phone ||  !user.name || !user.contract"
                                        class="md-raised md-primary">{{lang.login.login}}
                             </md-button>
