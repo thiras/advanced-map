@@ -1,17 +1,20 @@
-app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $rootScope, $mdToast,$mdSidenav,$sahtejson,$leafletFonk) {
+app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $rootScope, $mdToast, $mdSidenav, $sahtejson, $leafletFonk) {
 
-    /*navbar menusu event ve fonksiyonları içeririr*/
-    $scope.menuJSON = $accordion;
+    $rootScope.menuJSON = $rootScope.accordion || $accordion.json;
+
+    $rootScope.$on("updateAcordion", function (e, a) {
+        $rootScope.menuJSON = a;
+    });
     /*  menu acma ayar bas*/
     $scope.toggleLeft = buildToggler('left');
     $scope.toggleRight = buildToggler('right');
-  $scope.lang = $rootScope.lang;
+    $scope.lang = $rootScope.lang;
 
     function buildToggler(componentId) {
         return function () {
-           $timeout(function () {
-               $mdSidenav(componentId).toggle();
-           });
+            $timeout(function () {
+                $mdSidenav(componentId).toggle();
+            });
         };
     }
 
@@ -38,7 +41,7 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
 
 
     $scope.factoryDesign = function (fn) {
-        $rootScope.menuPanelName=fn;
+        $rootScope.menuPanelName = fn;
         $scope[fn["fonk"]]();
     };
 
@@ -52,13 +55,13 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
             templateUrl: 'html/menuToast/findAdressToast.html',
         });
     };
-    $scope.findAdressClickMap=function () {
+    $scope.findAdressClickMap = function () {
         $rootScope.$emit("closeNavbar", "closeNavbar");
         var boylam = 26.6342630982399;
         var enlem = 38.31461828182103;
-        var latlng = L.latLng(enlem,boylam);
+        var latlng = L.latLng(enlem, boylam);
         var lokasyon = L.marker(latlng).bindPopup("Gülbahçe Mahallesi, İzmir Teknoloji Geliştirme Bölgesi İzmir Yüksek Teknoloji Enstitüsü, 35437 Urla/İzmir").addTo($rootScope.leaflet).openPopup();
-        $rootScope.leaflet.flyTo(latlng,16);
+        $rootScope.leaflet.flyTo(latlng, 16);
     };
 
 
@@ -86,9 +89,9 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
         $rootScope.$emit("closeNavbar", "closeNavbar");
         var boylam = 26.6342630982399;
         var enlem = 38.31461828182103;
-        var latlng = L.latLng(enlem,boylam);
+        var latlng = L.latLng(enlem, boylam);
         var geojson = $sahtejson.locationParcell.parcell1.geojson;
-        $leafletFonk.showGeoJSON(geojson,{},true,true);
+        $leafletFonk.showGeoJSON(geojson, {}, true, true);
     };
 
     $scope.findTaxiAtAdress = function () {
@@ -163,7 +166,7 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
 
     };
 
-    $scope.openDrawAreaByMouse=function () {
+    $scope.openDrawAreaByMouse = function () {
         $rootScope.$emit("closeNavbar", "closeNavbar");
         $mdToast.show({
             hideDelay: 0,
@@ -176,7 +179,7 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
     }
 
 
-    $scope.findInstitutionsbyAddress=function () {
+    $scope.findInstitutionsbyAddress = function () {
 
 
         $rootScope.$emit("closeNavbar", "closeNavbar");
@@ -189,7 +192,7 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
     }
 
 
-    $scope.findSecrtyByAdrs=function () {
+    $scope.findSecrtyByAdrs = function () {
 
         $rootScope.$emit("closeNavbar", "closeNavbar");
         $mdToast.show({
@@ -203,7 +206,7 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
     /* aile hekimi sorgula baş prompt*/
 
 
-    $scope.findMyDoctor = function(ev) {
+    $scope.findMyDoctor = function (ev) {
 
         $rootScope.$emit("closeNavbar", "closeNavbar");
         $mdToast.show({
@@ -217,11 +220,10 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
     };
 
 
-
     /* aile hekimi sorgula son prompt*/
     /* findminibus */
 
-    $scope.findBusMiniBus=function () {
+    $scope.findBusMiniBus = function () {
 
         $rootScope.$emit("closeNavbar", "closeNavbar");
         $mdToast.show({
@@ -255,7 +257,7 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
  */
 
 
-    $scope.findTrainDialog=function () {
+    $scope.findTrainDialog = function () {
         $rootScope.$emit("closeNavbar", "closeNavbar");
         $mdToast.show({
             hideDelay: 0,
@@ -267,7 +269,7 @@ app.controller("navbar", function ($scope, $accordion, $timeout, $mdDialog, $roo
     };
 
 
-    $scope.findAircraftDialog=function () {
+    $scope.findAircraftDialog = function () {
         $rootScope.$emit("closeNavbar", "closeNavbar");
         $mdToast.show({
             hideDelay: 0,

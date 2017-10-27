@@ -1,4 +1,4 @@
-app.directive("mdLanguage", function ($rootScope, $changelang, $timeout) {
+app.directive("mdLanguage", function ($rootScope, $changelang, $timeout, $accordion) {
     return {
 
         restrict: "E",
@@ -32,12 +32,10 @@ app.directive("mdLanguage", function ($rootScope, $changelang, $timeout) {
                 $changelang.change($scope.langFlag.toLowerCase()).then(function (a) {
                     return a;
                 }).then(function (b) {
-
-
-                    angular.element(document.querySelector("#navbar")).scope().lang = b.data;
                     $rootScope.lang = b.data;
-
-
+                    $accordion.json = $accordion.refreshAccordion(b.data);
+                    $rootScope.$broadcast("updateAcordion", $accordion.json);
+                    $rootScope.accordion = $accordion.json;
                 });
 
 
