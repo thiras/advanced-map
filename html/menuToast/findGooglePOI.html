@@ -22,17 +22,20 @@
                     <md-list>
 
                         <md-list-item>
-                            <md-switch ng-change="setshowNearBusSwitch(showNearBusSwitch)" ng-model="showNearBusSwitch">
-                                {{showNearBusSwitch==true ?
-                                lang.menuToasts.transport.busmini.nearPoints1:lang.menuToasts.transport.busmini.nearPoints2}}
-                            </md-switch>
+                            <md-input-container>
+                                <md-switch ng-model="poiGoogleNearestSrch">{{poiGoogleNearestSrch ? "Yakında Arama özeliği açık":"Yakında Arama özeliği kapalı"}}</md-switch>
+                            </md-input-container>
+
                         </md-list-item>
-
-
+                        <md-list-item>
+                            <md-input-container layout-fill>
+                                <input type="number" placeholder="Arama Yarıçapı(m)">
+                            </md-input-container>
+                        </md-list-item>
                         <md-list-item>
                             <md-input-container layout-fill>
                                 <md-select ng-model="autoCarTypeSelect" ng-change="setautoCarTypeSelect()"
-                                           placeholder="{{lang.menuToasts.transport.busmini.autoCarTypeName}}">
+                                           placeholder="Point Türü">
                                     <md-select-header>
                                         <span>{{lang.menuToasts.transport.busmini.autoCarTypeName}}</span>
                                     </md-select-header>
@@ -41,6 +44,11 @@
                                         {{deger.text}}
                                     </md-option>
                                 </md-select>
+                            </md-input-container>
+                        </md-list-item>
+                        <md-list-item>
+                            <md-input-container>
+                                <md-switch ng-model="findOnClick">{{findOnClick ? "Ekranda Tıklayarak Bulma açık":"Ekranda Tıklayarak Bulma kapalı"}}</md-switch>
                             </md-input-container>
                         </md-list-item>
 
