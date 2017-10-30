@@ -57,6 +57,7 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
         parcellNo: "",
         parcellSearchResults: false
     };
+    $rootScope.location = {};
     $showFabDials = false;
     $scope.contextMenuShow = 0;
     $scope.mouseX = 0 + "px";

@@ -1,4 +1,4 @@
-app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $timeout, $mdDialog, $leafletFonk,$location) {
+app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $timeout, $mdDialog, $leafletFonk,$mylocation) {
     $scope.lang = $rootScope.lang;
     $scope.il = $sahtejson.il;
     $scope.ilce = $sahtejson.ilce;
@@ -37,6 +37,9 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.trainLine = $sahtejson.trainLine;
     $scope.departureStopData = $sahtejson.trainStation;
     $scope.arriveStopData = $sahtejson.trainStation;
+    $scope.locationActive = $rootScope.poi.google.locationActive || false;
+    $rootScope.myLocation = {lat:0,lng:0};
+    $scope.searchCircle = false;
 
 
     /* sağlık merkezileri için mdSelect adress yardımı ile*/
@@ -1165,6 +1168,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.airportInfo = $rootScope.transport.aircraft.airportInfo || false;
     $scope.flightType = $rootScope.transport.aircraft.flightType || [];
     $scope.passengerType = $rootScope.transport.aircraft.passengerType || [];
+
     $scope.aircraftAjaxRequest = {};
     $scope.filterAirports = function (ilid) {
         ilid = parseInt(ilid);
@@ -1275,32 +1279,88 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     /* Google Maps API POI bas*/
 
     $scope.placesMainType = $sahtejson.googlePOITypeMain;
+    $scope.locShowInterval = false;
     $scope.poiRadius = $rootScope.poi.google.poiRadius || 500;
     $scope.googleSearchPOIRadius = function (){
         $rootScope.poi.google.poiRadius=$scope.poiRadius;
-    };
-    $scope.locationActive = $rootScope.poi.google.locationActive || false;
-    $scope.poiLocActChange = function(){
-        debugger;
-        $rootScope.poi.google.locationActive=!$scope.locationActive;
-        var point = $location.findMyLocation();
+        var rad=20;
+        if($scope.poiRadius!==0 || $scope.poiRadius!==null || $scope.poiRadius!==""){
+            rad = parseInt($scope.poiRadius);
+            if(isNaN(rad)){
+                rad=20;
+            }
 
+        }
+        if(rad>50000){
+            $rootScope.$emit("message", {
+                status: "warning",
+                header: "Arama Çemberi Büyütülemiyor",
+                content: "Google tarafından belirlenmiş olan standartlar gereği arama yarıçapınız en fazla 50 km - 50000 metre kadar olabilir.",
+                time: "auto"
+            });
+            rad=50000;
+            $scope.poiRadius=rad;
+        }
+        $mylocation.setRadius(rad);
+        if($scope.searchCircle!==false){
+            $scope.searchCircle.setRadius(rad);
+        }
+    };
+    $scope.poiLocActChange = function(){
+
+        $rootScope.poi.google.locationActive=!$scope.locationActive;
+
+        if($rootScope.poi.google.locationActive==true){
+
+            $rootScope.location.myLocation = $mylocation.findMyLocation({loop:true,show:true,panto:true,flyto:true});
+
+        }else{
+            $mylocation.hiddenLocation();
+            $rootScope.poi.google.locationActive=false;
+        }
+
+        if($rootScope.poi.google.locationActive==true && $rootScope.poi.google.poiClickMapActive==true){
+            $scope.poiClickChange();
+            $scope.poiClickMapActive=false;
+            $rootScope.poi.google.poiClickMapActive=false;
+            $mylocation.hiddenLocation();
+        }
     };
     $scope.poiClickMapActive = $rootScope.poi.google.poiClickMapActive || false;
     $scope.poiClickChange = function(){
+        debugger;
         $rootScope.poi.google.poiClickMapActive=!$scope.poiClickMapActive;
+        if($rootScope.poi.google.locationActive==true && $rootScope.poi.google.poiClickMapActive==true){
+            $scope.poiLocActChange();
+            $scope.locationActive=false;
+            $rootScope.poi.google.locationActive=false;
+        }
+        if($rootScope.poi.google.poiClickMapActive==true){
+            $scope.searchCircle=L.circle([0,0], {radius: $scope.poiRadius,color:"#8bc34a"}).addTo($rootScope.leaflet);
+            $rootScope.leaflet.on("mousemove",$scope.poiCircleFollow);
+            $rootScope.leaflet.on("click",$scope.poiCircleClick);
+        }else{
+            if($scope.searchCircle!==false){
+                $scope.searchCircle.remove();
+                $scope.searchCircle=false;
+                $rootScope.leaflet.off("mousemove",$scope.poiCircleFollow);
+                $rootScope.leaflet.off("click",$scope.poiCircleClick);
+            }
+        }
     };
     $scope.poiMainType = $rootScope.poi.google.poiMainType || [];
+    $scope.poiMainTypeNum = $rootScope.poi.google.poiMainTypeNum || false;
     $scope.poiSecType =  $rootScope.poi.google.poiSecType || [];
+    $scope.poiSecTypeNum =  $rootScope.poi.google.poiSecTypeNum || false;
     $scope.poiSecTypeActive = $rootScope.poi.google.poiSecTypeActive || false;
     $scope.changePOISecTypes = function(id){
         $rootScope.poi.google.poiSecType=$sahtejson.googlePOITypesSec[id];
         $scope.poiSecType=$sahtejson.googlePOITypesSec[id];
         $rootScope.poi.google.poiSecTypeActive=true;
         $scope.poiSecTypeActive=true;
+        $scope.poiMainTypeNum=id;
     };
     $scope.changePOISec = function(id){
-        debugger;
         var list = $scope.poiSecType;
         for(i in list){
             if(list[i].value==id){
@@ -1311,6 +1371,27 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         }
         $scope.poiSecType=list;
         $rootScope.poi.google.poiSecType=$scope.poiSecType;
+        $scope.poiSecTypeNum=id;
+    };
+    $scope.poiCircleFollow = function (e) {
+        var latlng = L.latLng(e.latlng.lat,e.latlng.lng);
+        if($scope.searchCircle!==false){
+            $scope.searchCircle.setLatLng(latlng);
+        }
+    };
+    $scope.poiCircleClick = function () {
+        debugger;
+        if($scope.poiMainTypeNum!==false && $scope.poiSecTypeNum!==false){
+
+        }else{
+
+            $rootScope.$emit("message", {
+                status: "warning",
+                header: "Eksik POI Türleri",
+                content: "Arama Yapabilmek İçin Lütfen Ana ve Alt POI Türünü Belirtiniz",
+                time: "auto"
+            });
+        }
     };
     $scope.searchPOIGoogle = function(){
 
