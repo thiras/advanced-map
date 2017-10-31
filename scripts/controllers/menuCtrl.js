@@ -1276,6 +1276,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         alert(JSON.stringify($scope.dataFindTrainTram));
     }
 
+
     /* Google Maps API POI bas*/
 
     $scope.placesMainType = $sahtejson.googlePOITypeMain;
@@ -1496,4 +1497,25 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
     }
     /* Google Maps API POI bas*/
+
+/* araya şehir merkez ekleme baş*/
+    $scope.arrayPointCity=[];
+    $scope.addCityToNavigation=function (a) {
+
+
+
+
+        $scope.arrayPointCity.push(a);
+
+
+
+    }
+
+    $scope.removeCityToNavigation=function (i) {
+
+        $scope.arrayPointCity.splice(i,1);
+
+    }
+
+    /*araya şehir ekleme son*/
 });
