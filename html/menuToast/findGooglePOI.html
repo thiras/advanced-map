@@ -21,6 +21,21 @@
                 <md-content style="max-height: 45vh">
                     <md-list>
 
+
+
+                        <md-list-item>
+                            <md-autocomplete style="width:100%;"
+                                    md-selected-item-change="selectGooglePlace(item)"
+                                    placeholder="Bir Yer Arayın"
+                                    md-items="item in loadGooglePlaces(filterText)"
+                                    md-item-text="item.text"
+                                    md-search-text="filterText">
+                                <md-item-template>{{ item.text }}</md-item-template>
+                                <md-not-found>No items.</md-not-found>
+                            </md-autocomplete>
+                        </md-list-item>
+
+
                         <md-list-item>
                             <md-input-container style="margin: 0;">
                                 <md-switch style="margin: 0;" ng-click="poiLocActChange();" ng-model="locationActive">Yakında Arama Özeliği {{poiGoogleNearestSrch ? "Açık":"Kapalı"}}</md-switch>

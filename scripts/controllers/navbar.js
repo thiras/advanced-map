@@ -127,7 +127,7 @@ app.controller("navbar", function ($scope, $googleMaps,$accordion, $timeout, $md
         });
     };
     $scope.findNearestPharmacy = function () {
-        debugger;
+
         $rootScope.$emit("closeNavbar", "closeNavbar");
         var boylam = 26.642982;
         var enlem  = 38.331103;
@@ -242,7 +242,7 @@ app.controller("navbar", function ($scope, $googleMaps,$accordion, $timeout, $md
     };
 
     $scope.findNearPolice = function () {
-        debugger;
+
         $rootScope.$emit("closeNavbar", "closeNavbar");
         var boylam = 26.76466;
         var enlem  = 38.32393;
@@ -253,7 +253,7 @@ app.controller("navbar", function ($scope, $googleMaps,$accordion, $timeout, $md
     };
 
     $scope.findNearSoldier = function () {
-        debugger;
+
         $rootScope.$emit("closeNavbar", "closeNavbar");
         var boylam = 26.760292;
         var enlem  = 38.32096;
@@ -377,7 +377,7 @@ app.controller("navbar", function ($scope, $googleMaps,$accordion, $timeout, $md
     };
 
     $scope.findFoursquarePOI = function () {
-        debugger;
+
         /*$rootScope.$emit("closeNavbar", "closeNavbar");
         var aaa = $googleMaps.textSearch({latlng:[8.43772,27.18944],text:"konak",radius:5000});
         console.log($googleMaps);*/
