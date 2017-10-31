@@ -59,8 +59,8 @@
                     {{lang.general.search}}
                 </md-button>
 
-                <md-button ng-click="moreRouter=!moreRouter" class="md-raised closeButton md-button md-ink-ripple md-button">
-                    <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">
+                <md-button ng-click="moreRouter=!moreRouter" class="md-raised  md-warn md-button md-ink-ripple md-button">
+                    <md-icon  class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">
                         expand_more
                     </md-icon>
                 </md-button>
@@ -70,7 +70,7 @@
                     {{lang.general.close}}
                 </md-button>
             </md-dialog-actions>
-            <md-dialog-content ng-if="moreRouter">
+            <md-dialog-content ng-show="moreRouter">
 
                 <md-list>
 
