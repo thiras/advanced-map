@@ -715,7 +715,10 @@ label.radioLayers {
 md-toast {
   z-index: 15;
   width: 390px;
-  display: inline-flex; }
+  display: inline-flex;
+  max-height: 85vh;
+  /* max height verildi scrool olması için */
+  overflow-y: auto; }
   md-toast .md-toast-content {
     text-align: left;
     background: #ffffff;
@@ -907,6 +910,11 @@ iframe {
 
 #listLtdLngBtn {
   margin-top: -5px; }
+
+#rotaPlusIcon {
+  position: relative;
+  top: -12px;
+  left: -5px; }
 
 #calculatebymanuel md-list {
   max-height: 65vh; }

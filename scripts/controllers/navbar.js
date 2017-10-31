@@ -391,4 +391,18 @@ app.controller("navbar", function ($scope, $googleMaps,$accordion, $timeout, $md
         });
     };
 
+
+    $scope.openNavigationByAdress=function () {
+
+        $rootScope.$emit("closeNavbar", "closeNavbar");
+        $mdToast.show({
+            hideDelay: 0,
+            position: 'top right',
+            controller: 'menuCtrl',
+            templateUrl: 'html/menuToast/findRotaToast.html',
+        });
+
+
+    }
+
 });

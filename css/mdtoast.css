@@ -1,7 +1,11 @@
+@charset "UTF-8";
 md-toast {
   z-index: 15;
   width: 390px;
-  display: inline-flex; }
+  display: inline-flex;
+  max-height: 85vh;
+  /* max height verildi scrool olması için */
+  overflow-y: auto; }
   md-toast .md-toast-content {
     text-align: left;
     background: #ffffff;
