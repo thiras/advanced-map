@@ -216,7 +216,9 @@
       "menu1e1": "what is closest to me",
       "menu1e2": "Find Poi Points According to The Type",
       "menu1e3": "Find Poi Points by Drawing The Field",
-      "menu1e4": "Find Poi Points by Specifying Address"
+      "menu1e4": "Find Poi Points by Specifying Address",
+      "menu1e5": "Google İle POI Noktası Bulma",
+      "menu1e6": "Foursquare ile POI Noktası Bulma"
     },
     "menu10": {
       "label": "Health Institutions",

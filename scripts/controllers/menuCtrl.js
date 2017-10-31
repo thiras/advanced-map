@@ -1,4 +1,4 @@
-app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $timeout, $mdDialog, $leafletFonk) {
+app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $timeout, $mdDialog, $leafletFonk,$mylocation,$googleMaps) {
     $scope.lang = $rootScope.lang;
     $scope.il = $sahtejson.il;
     $scope.ilce = $sahtejson.ilce;
@@ -37,6 +37,9 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.trainLine = $sahtejson.trainLine;
     $scope.departureStopData = $sahtejson.trainStation;
     $scope.arriveStopData = $sahtejson.trainStation;
+    $scope.locationActive = $rootScope.poi.google.locationActive || false;
+    $rootScope.myLocation = {lat:0,lng:0};
+    $scope.searchCircle = false;
 
 
     /* sağlık merkezileri için mdSelect adress yardımı ile*/
@@ -1165,6 +1168,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.airportInfo = $rootScope.transport.aircraft.airportInfo || false;
     $scope.flightType = $rootScope.transport.aircraft.flightType || [];
     $scope.passengerType = $rootScope.transport.aircraft.passengerType || [];
+
     $scope.aircraftAjaxRequest = {};
     $scope.filterAirports = function (ilid) {
         ilid = parseInt(ilid);
@@ -1271,6 +1275,228 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
         alert(JSON.stringify($scope.dataFindTrainTram));
     }
+
+
+    /* Google Maps API POI bas*/
+
+    $scope.placesMainType = $sahtejson.googlePOITypeMain;
+    $scope.locShowInterval = false;
+    $scope.poiRadius = $rootScope.poi.google.poiRadius || 500;
+    $scope.googleSearchPOIRadius = function (){
+        $rootScope.poi.google.poiRadius=$scope.poiRadius;
+        var rad=20;
+        if($scope.poiRadius!==0 || $scope.poiRadius!==null || $scope.poiRadius!==""){
+            rad = parseInt($scope.poiRadius);
+            if(isNaN(rad)){
+                rad=20;
+            }
+
+        }
+        if(rad>50000){
+            $rootScope.$emit("message", {
+                status: "warning",
+                header: "Arama Çemberi Büyütülemiyor",
+                content: "Google tarafından belirlenmiş olan standartlar gereği arama yarıçapınız en fazla 50 km - 50000 metre kadar olabilir.",
+                time: "auto"
+            });
+            rad=50000;
+            $scope.poiRadius=rad;
+        }
+        $mylocation.setRadius(rad);
+        if($scope.searchCircle!==false){
+            $scope.searchCircle.setRadius(rad);
+        }
+    };
+    $scope.poiLocActChange = function(){
+
+        $rootScope.poi.google.locationActive=!$scope.locationActive;
+
+        if($rootScope.poi.google.locationActive==true){
+
+            $rootScope.location.myLocation = $mylocation.findMyLocation({loop:true,show:true,panto:true,flyto:true});
+
+        }else{
+            $mylocation.hiddenLocation();
+            $rootScope.poi.google.locationActive=false;
+        }
+
+        if($rootScope.poi.google.locationActive==true && $rootScope.poi.google.poiClickMapActive==true){
+            $scope.poiClickChange();
+            $scope.poiClickMapActive=false;
+            $rootScope.poi.google.poiClickMapActive=false;
+            $mylocation.hiddenLocation();
+        }
+    };
+    $scope.poiClickMapActive = $rootScope.poi.google.poiClickMapActive || false;
+    $scope.poiClickChange = function(){
+        $rootScope.poi.google.poiClickMapActive=!$scope.poiClickMapActive;
+        if($rootScope.poi.google.locationActive==true && $rootScope.poi.google.poiClickMapActive==true){
+            $scope.poiLocActChange();
+            $scope.locationActive=false;
+            $rootScope.poi.google.locationActive=false;
+        }
+        if($rootScope.poi.google.poiClickMapActive==true){
+            $scope.searchCircle=L.circle([0,0], {radius: $scope.poiRadius,color:"#8bc34a"}).addTo($rootScope.leaflet);
+            $rootScope.leaflet.on("mousemove",$scope.poiCircleFollow);
+            $rootScope.leaflet.on("click",$scope.poiCircleClick);
+        }else{
+            if($scope.searchCircle!==false){
+                $scope.searchCircle.remove();
+                $scope.searchCircle=false;
+                $rootScope.leaflet.off("mousemove",$scope.poiCircleFollow);
+                $rootScope.leaflet.off("click",$scope.poiCircleClick);
+            }
+        }
+    };
+    $scope.poiMainType = $rootScope.poi.google.poiMainType || [];
+    $scope.poiMainTypeNum = $rootScope.poi.google.poiMainTypeNum || false;
+    $scope.poiSecType =  $rootScope.poi.google.poiSecType || [];
+    $scope.poiSecTypeNum =  $rootScope.poi.google.poiSecTypeNum || false;
+    $scope.poiSecTypeActive = $rootScope.poi.google.poiSecTypeActive || false;
+    $scope.changePOISecTypes = function(id){
+        $rootScope.poi.google.poiSecType=$sahtejson.googlePOITypesSec[id];
+        $scope.poiSecType=$sahtejson.googlePOITypesSec[id];
+        $rootScope.poi.google.poiSecTypeActive=true;
+        $scope.poiSecTypeActive=true;
+        $scope.poiMainTypeNum=id;
+    };
+    $scope.changePOISec = function(id){
+        var list = $scope.poiSecType;
+        for(i in list){
+            if(list[i].value==id){
+                list[i].status=true;
+            }else{
+                list[i].status=false;
+            }
+        }
+        $scope.poiSecType=list;
+        $rootScope.poi.google.poiSecType=$scope.poiSecType;
+        $scope.poiSecTypeNum=id;
+    };
+    $scope.poiCircleFollow = function (e) {
+        var latlng = L.latLng(e.latlng.lat,e.latlng.lng);
+        if($scope.searchCircle!==false){
+            $scope.searchCircle.setLatLng(latlng);
+        }
+    };
+    $scope.poiCircleClick = function (e) {
+        debugger;
+        if($scope.poiMainTypeNum!==false && $scope.poiSecTypeNum!==false){
+            var point = $googleMaps.point(e.latlng.lat,e.latlng.lng);
+            var request ={
+                location: point,
+                radius: $scope.poiRadius ,
+                type:[$scope.poiSecTypeNum]
+            };
+            $googleMaps.search(request,"nearBy");
+            $scope.googleStatusControl = setInterval(function () {
+                if($googleMaps.status==true){
+                    window.clearInterval($scope.googleStatusControl);
+                    $scope.googleStatusControl=false;
+                    $scope.showPOIGoogle($googleMaps.result);
+
+                }
+            },100);
+
+        }else{
+
+            $rootScope.$emit("message", {
+                status: "warning",
+                header: "Eksik POI Türleri",
+                content: "Arama Yapabilmek İçin Lütfen Ana ve Alt POI Türünü Belirtiniz",
+                time: "auto"
+            });
+        }
+    };
+    $scope.searchPOIGoogle = function(){
+
+    };
+    $scope.totalGooglePoints = [];
+    $scope.totalGooglePointsID = [];
+    $scope.showPOIGoogle = function (result) {
+        for(i in result){
+            var point = result[i];
+            var adres = point.formatted_address;
+            if(typeof adres == "undefined"){
+                adres=point.vicinity;
+            }
+            var id = point.id;
+            var icon = point.icon;
+            var myIcon = L.icon({
+                iconUrl: icon,
+                iconSize: [16, 16],
+                iconAnchor: [8, 8],
+                popupAnchor: [-3, -16],
+            });
+            var placeid = point.place_id;
+            var name = point.name;
+            //var isopen = point.opening_hours.open_now;
+           /* var photos = [];
+            var photosm = point.photos;
+            for(i in photosm){
+                var url = photosm[i].getUrl();
+                var img = '<img src="'+url+'">';
+                photos.push(img);
+            }*/
+            var rating = point.rating;
+            var types = point.types;
+            var maintype  = types[0];
+            var lok = {lat:point.geometry.location.lat(),lng:point.geometry.location.lng()};
+            if($scope.totalGooglePointsID.indexOf(placeid)==-1){
+                $scope.totalGooglePointsID.push(placeid);
+                $scope.totalGooglePoints.push({name:name,adres:adres,id:id,placeid:placeid,rating:rating,types:types,maintype:maintype,location:lok});
+                var nokta = L.marker(lok,{icon:myIcon}).bindPopup(name).addTo($rootScope.leaflet);
+            }
+
+        }
+    };
+
+    $scope.googleFilerPlaces = [];
+    $scope.resultFindPlaceID = false;
+    $scope.resultPlaceIDInt = false;
+    $scope.findPlaceFEature = false;
+
+    $scope.loadGooglePlaces = function (filterText) {
+        $scope.googleFilerPlaces=[];
+        $scope.selectGooglePlace(filterText);
+        return $googleMaps.autoCompleteResult;
+    };
+
+    $scope.selectGooglePlace = function (item) {
+
+        if(typeof item !=="undefined"){
+            if(typeof item.value !=="undefined"){
+                //$scope.aktifGooglePalce={value:item.value,text:item.text};
+                $googleMaps.findPlaceId(item.value);
+
+
+                $scope.resultPlaceIDInt=setInterval(function () {
+                    if($googleMaps.resultFindPlaceID!==false){
+                        debugger;
+                        $scope.resultFindPlaceID=$googleMaps.resultFindPlaceID;
+                        var nokta = $scope.resultFindPlaceID;
+                        var lokasyon = {lat:nokta.geometry.location.lat(),lng:nokta.geometry.location.lng()};
+                        if($scope.findPlaceFEature==false){
+                            $scope.findPlaceFEature=L.marker(lokasyon).bindPopup(item.text).addTo($rootScope.leaflet);
+                        }else{
+                            $scope.findPlaceFEature.setLatLng(lokasyon);
+                            $scope.findPlaceFEature.setPopupContent(item.text);
+                        }
+                        $rootScope.leaflet.flyTo(lokasyon,15);
+                        window.clearInterval($scope.resultPlaceIDInt);
+                    }
+                },50);
+
+            }else {
+                $googleMaps.resultFindPlaceID = false;
+                $googleMaps.autocomplete(item);
+                $scope.googleFilerPlaces=$googleMaps.autoCompleteResult;
+            }
+
+        }
+
+    }
+    /* Google Maps API POI bas*/
 
 /* araya şehir merkez ekleme baş*/
     $scope.arrayPointCity=[];

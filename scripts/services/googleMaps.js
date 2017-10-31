@@ -6,6 +6,9 @@ app.service("$googleMaps", function ($rootScope) {
 
     this.center = new google.maps.LatLng(-33.8665433,151.1956316);
 
+    this.status = false;
+    this.result = false;
+
     this.point = function(lat,lng){
         return new google.maps.LatLng(lat,lng);
     };
@@ -19,30 +22,67 @@ app.service("$googleMaps", function ($rootScope) {
 
     this.service = new google.maps.places.PlacesService(this.map);
 
-    this.textSearch = function(request){
-        var r = tis.request(request.latlng,request.text,request.radius);
-        tis.service = new google.maps.places.PlacesService(tis.map);
-        tis.service.textSearch(r, tis.textCallback);
+    this.search = function(request,type){
+        // openNow:true,false -> arama yapılan saatte açık olan işletmeleri bulur
+        // minPriceLevel ve maxPriceLevel 0 - 4 e fiyat pahalılığına göre aramayı kısıtlar
+        // bounds aramayı belli bir bounds aralığında yapar
+        // location ile aramayı bir noktada yapar
+        // radius ile location kullanılarak arama yapılır max 50000m dir
+        // type burada categori belirtebiliriz
+        this.status = false;
+        this.result = [];
+        this.service = new google.maps.places.PlacesService(this.map);
+        if(type=="text"){
+            this.service.textSearch(request, tis.serviceCallBack);
+        }
+        if(type=="nearBy"){
+            this.service.nearbySearch(request, tis.serviceCallBack);
+        }
+        if(type=="radar"){
+            this.service.radarSearch(request, tis.serviceCallBack);
+        }
+
+
     };
 
-    this.request = function (latlng,text,radius){
-        var point = tis.point(latlng[0],latlng[1]);
-        text = text ||  "alsancak";
-        radius = radius || '50000';
-        var r = {
-            location: point,
-            radius: '50000',
-            query: text
-        };
-        return r;
+    this.autocomplete = function (text) {
+        var service = new google.maps.places.AutocompleteService();
+        service.getQueryPredictions({ input: text }, this.callBackPlaces);
     };
-
-    this.textCallback = function(results,status){
+    this.autoCompleteResult = [];
+    this.callBackPlaces = function (predictions, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
-            for (var i = 0; i < results.length; i++) {
-                var place = results[i];
-                console.log(place);
+            tis.autoCompleteResult= [];
+            for(i in predictions){
+                var res = predictions[i];
+                var text = res.description;
+                var value = res.place_id;
+                tis.autoCompleteResult.push({value:value,text:text});
             }
+        }
+    };
+    this.geocoder = new google.maps.Geocoder;
+    this.resultFindPlaceID = false;
+    this.findPlaceId = function (placeId) {
+        this.geocoder.geocode({'placeId': placeId}, function(results, status) {
+            debugger;
+            tis.resultFindPlaceID = false;
+            if (status == 'OK') {
+                tis.resultFindPlaceID = results[0];
+            }
+        });
+    };
+
+
+    this.serviceCallBack = function(results,status){
+
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            var places = [];
+            for (var i = 0; i < results.length; i++) {
+                places.push(results[i]);
+            }
+            tis.status=true;
+            tis.result=places;
         }
     };
 

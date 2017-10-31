@@ -38,7 +38,11 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
         buildOwnerName: "",
         buildConstName: ""
     };
-    $rootScope.poi={};
+    $rootScope.poi={
+        database:{},
+        google:{},
+        foursquare:{}
+    };
     $rootScope.security = {};
     $rootScope.health = {};
     $rootScope.transport = {
@@ -53,6 +57,7 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
         parcellNo: "",
         parcellSearchResults: false
     };
+    $rootScope.location = {};
     $showFabDials = false;
     $scope.contextMenuShow = 0;
     $scope.mouseX = 0 + "px";
