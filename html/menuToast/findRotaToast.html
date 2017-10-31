@@ -60,7 +60,7 @@
                 </md-button>
 
                 <md-button ng-click="moreRouter=!moreRouter" class="md-raised  md-warn md-button md-ink-ripple md-button">
-                    <md-icon  class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">
+                    <md-icon ng-style="moreRouter ? {'transform': 'rotate(180deg)'}:{'transform': 'rotate(0deg)'}" class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">
                         expand_more
                     </md-icon>
                 </md-button>
