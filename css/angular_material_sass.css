@@ -583,6 +583,9 @@ all-fab-dials {
     padding: 0;
     height: 25px !important;
     width: 35px !important; } }
+.certainly-full {
+  width: 100% !important; }
+
 .ng-leave {
   transition: 0.45s cubic-bezier(0.4, 0, 0.2, 1) all;
   opacity: 1; }
