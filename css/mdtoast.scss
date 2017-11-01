@@ -1,4 +1,7 @@
 md-toast {
+
+
+
   z-index: 15;
   width: 390px;
   display: inline-flex;
@@ -22,6 +25,7 @@ md-toast {
     margin-left: -11px;
     margin-right: -3px;
     padding: 0;
+
   }
   .searchButton {
     background-color: #2196f3 !important;
@@ -34,6 +38,8 @@ md-toast {
     background-color: #F5F5F5 !important; /*#dadada*/
     color: #7d7d7d !important;
   }
+
+
 
 }
 
