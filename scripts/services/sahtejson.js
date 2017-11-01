@@ -2743,41 +2743,198 @@ app.service("$sahtejson",function () {
   };
 
     this.googlePOITypeMain = [
-        {value:"poi",text:"POI Noktaları",status:true},
-        {value:"geocode",text:"Geocode",status:false},
-        {value:"address",text:"Address",status:false},
-        {value:"establishment",text:"Establishment",status:false},
-        {value:"regions",text:"Regions",status:false},
-        {value:"cities",text:"Cities",status:false},
+        {value:"adres",text:"Adresler",status:false},
+        {value:"beslenme",text:"Beslenme Noktaları",status:false},
+        {value:"onarim",text:"Bakım & Onarım Merkezleri",status:false},
+        {value:"dini",text:"Dini Merkezleri",status:false},
+        {value:"egitim",text:"Eğitim Noktaları",status:false},
+        {value:"eglence",text:"Eğlence Noktaları",status:false},
+        {value:"ekonomi",text:"Ekonomi Merkezleri",status:false},
+        {value:"konaklama",text:"Konaklama Noktaları",status:false},
+        {value:"magaza",text:"Mağazalar",status:true},
+        {value:"meslek",text:"Mesleki Yerler",status:false},
+        {value:"resmi",text:"Resmi Binalar",status:false},
+        {value:"saglik",text:"Sağlık Noktaları",status:false},
+        {value:"gezi",text:"Sanat & Gezi Noktaları",status:false},
+        {value:"ulasim",text:"Ulaşım Merkezleri",status:false},
+        {value:"poi",text:"Diğer POI NOktaları",status:false}
         ];
 
   this.googlePOITypesSec ={
-      poi:[
-      {value:"accounting",text:"Accounting",status:false},
-      {value:"airport",text:"airport",status:false},
-      {value:"amusement_park",text:"amusement_park",status:false},
-      {value:"aquarium",text:"aquarium"},
-      {value:"art_gallery",text:"art_gallery",status:false},
-      {value:"atm",text:"atm",status:false},
-      {value:"bakery",text:"bakery",status:false},
-      {value:"bank",text:"bank",status:false},
-      {value:"bar",text:"bar",status:false},
-      {value:"beauty_salon",text:"beauty_salon",status:false},
-      {value:"bicycle_store",text:"bicycle_store",status:false},
-      {value:"book_store",text:"book_store",status:false},
-      {value:"bowling_alley",text:"bowling_alley",status:false},
-      {value:"bus_station",text:"bus_station",status:false},
-      {value:"cafe",text:"cafe",status:false},
-      {value:"campground",text:"campground",status:false},
-      {value:"car_dealer",text:"car_dealer",status:false},
-      {value:"car_rental",text:"car_rental",status:false},
-      {value:"car_repair",text:"car_repair",status:false},
-      {value:"library",text:"library",status:false},
-      {value:"car_wash",text:"car_wash",status:false},
-      {value:"lodging",text:"lodging",status:false},
-      {value:"park",text:"park",status:false},
-      {value:"police",text:"police",status:false}
-        ]
+      gezi:[
+          {value:"shopping_mall",text:"Alışveriş Merkezi AVM",status:true},
+          {value:"natural_feature",text:"Doğal Alanlar",status:false},
+          {value:"zoo",text:"Hayvanat Bahçesi",status:false},
+          {value:"park",text:"Park",status:false},
+          {value:"painter",text:"Ressam",status:false}
+      ],
+      egitim:[
+          {value:"library",text:"Kütüphane",status:false},
+          {value:"school",text:"Okul",status:true},
+          {value:"university",text:"Üniversite",status:false}
+      ],
+      saglik:[
+          {value:"dentist",text:"Diş Doktoru",status:false},
+          {value:"doctor",text:"Doktor",status:true},
+          {value:"pharmacy",text:"Eczane",status:false},
+          {value:"physiotherapist",text:"Fizyoterapist",status:false},
+          {value:"beauty_salon",text:"Güzellik Salonu",status:false},
+          {value:"hospital",text:"Hastane",status:false},
+          {value:"hair_care",text:"Saç Bakımı",status:false},
+          {value:"health",text:"Sağlık Merkezi",status:false},
+          {value:"spa",text:"Spa",status:false},
+          {value:"gym",text:"Spor Salonu",status:false},
+          {value:"veterinary_care",text:"Veteriner",status:false}
+      ],
+      beslenme:[
+          {value:"cafe",text:"Cafe",status:false},
+          {value:"bakery",text:"Fırın",status:false},
+          {value:"food",text:"Gıda Merkezleri",status:false},
+          {value:"restaurant",text:"Restoran",status:true},
+          {value:"meal_delivery",text:"Yemek Servisi",status:false},
+          {value:"meal_takeaway",text:"Yemek Paket Servisi",status:false}
+      ],
+      eglence:[
+          {value:"aquarium",text:"Akvaryum",status:false},
+          {value:"shopping_mall",text:"Alışveriş Merkezi AVM",status:false},
+          {value:"bar",text:"Bar",status:false},
+          {value:"bowling_alley",text:"Bowling Salonu",status:false},
+          {value:"cafe",text:"Cafe",status:true},
+          {value:"natural_feature",text:"Doğal Alanlar",status:false},
+          {value:"movie_rental",text:"Film Kiralama",status:false},
+          {value:"night_club",text:"Gece Kulübü",status:false},
+          {value:"zoo",text:"Hayvanat Bahçesi",status:false},
+          {value:"campground",text:"Kamp Alanı",status:false},
+          {value:"casino",text:"Kumarhane",status:false},
+          {value:"amusement_park",text:"Lunapark",status:false},
+          {value:"locality",text:"Mekan",status:false},
+          {value:"museum",text:"Müze",status:false},
+          {value:"park",text:"Park",status:false},
+          {value:"floor",text:"Pist",status:false},
+          {value:"art_gallery",text:"Sanat Galerisi",status:false},
+          {value:"movie_theater",text:"Sinema",status:false},
+          {value:"gym",text:"Spor Salonu",status:false},
+          {value:"stadium",text:"Stadyum",status:false}
+
+      ],
+      magaza:[
+          {value:"shopping_mall",text:"Alışveriş Merkezi AVM",status:true},
+          {value:"car_dealer",text:"Araba Galerisi",status:false},
+          {value:"car_rental",text:"Araba Kiralama",status:false},
+          {value:"department_store",text:"Büyük Mağaza",status:false},
+          {value:"florist",text:"Çiçekçi",status:false},
+          {value:"shoe_store",text:"Ayakkabı Mağazası",status:false},
+          {value:"bicycle_store",text:"Bisiklet Mağazası",status:false},
+          {value:"hardware_store",text:"Donanım Mağazası",status:false},
+          {value:"electronics_store",text:"Elektronik Mağazası",status:false},
+          {value:"real_estate_agency",text:"Emlakçı",status:false},
+          {value:"home_goods_store",text:"Ev Eşyaları Mağazası",status:false},
+          {value:"pet_store",text:"Evcil Hayvan dükkanı",status:false},
+          {value:"clothing_store",text:"Giyim Mağazası",status:false},
+          {value:"book_store",text:"Kitapçı",status:false},
+          {value:"jewelry_store",text:"Kuyumcu",status:false},
+          {value:"convenience_store",text:"Market",status:false},
+          //{value:"store",text:"Mağaza",status:false},
+          {value:"locality",text:"Mekan",status:false},
+          {value:"furniture_store",text:"Mobilya Mağazası",status:false},
+          {value:"moving_company",text:"Mobil Şirket",status:false},
+          {value:"insurance_agency",text:"Sigorta Acentası",status:false},
+          {value:"liquor_store",text:"Tekel Bayi",status:false}
+      ],
+      ekonomi:[
+          {value:"atm",text:"ATM",status:false},
+          {value:"bank",text:"Banka",status:true}
+      ],
+      ulasim:[
+          {value:"transit_station",text:"Geçiş İstasyonu",status:false},
+          {value:"airport",text:"Havalimanı",status:false},
+          {value:"subway_station",text:"Metro İstasyonu",status:false},
+          {value:"bus_station",text:"Otobüs Durağı",status:true},
+          {value:"parking",text:"Otopark",status:false},
+          {value:"post_box",text:"Posta kutusu",status:false},
+          {value:"taxi_stand",text:"Taksi Durağı",status:false},
+          {value:"train_station",text:"Tren İstasyonu",status:false},
+          {value:"travel_agency",text:"Seyahat Acentası",status:false}
+      ],
+      konaklama:[
+          {value:"real_estate_agency",text:"Emlakçı",status:false},
+          {value:"lodging",text:"Oteller",status:true},
+          {value:"parking",text:"Otopark",status:false}
+      ],
+      meslek:[
+          {value:"lawyer",text:"Avukat",status:true},
+          {value:"accounting",text:"Muhasebe",status:false},
+          {value:"room",text:"Oda",status:false}
+      ],
+      dini:[
+          {value:"mosque",text:"Cami",status:true},
+          {value:"funeral_home",text:"Cenaze Yıkama Evi",status:false},
+          {value:"church",text:"Kilise",status:false},
+          {value:"place_of_worship",text:"Mescid",status:false},
+          {value:"cemetery",text:"Mezarlık",status:false},
+          {value:"synagogue",text:"Sinagog",status:false}
+      ],
+      resmi:[
+          {value:"courthouse",text:"Adliye",status:false},
+          {value:"city_hall",text:"Belediye Binası",status:true},
+          {value:"local_government_office",text:"Devlet Ofisi",status:false},
+          {value:"embassy",text:"Elçilik",status:false},
+          {value:"fire_station",text:"İtfaiye",status:false},
+          {value:"establishment",text:"Kuruluşlar",status:false},
+          {value:"finance",text:"Maliye",status:false},
+          {value:"police",text:"Polis",status:false},
+          {value:"post_office",text:"Postane",status:false}
+      ],
+      onarim:[
+          {value:"car_repair",text:"Araba Tamircisi",status:false},
+          {value:"locksmith",text:"Çilingir",status:false},
+          {value:"storage",text:"Depolama",status:false},
+          {value:"hardware_store",text:"Donanım Mağazası",status:false},
+          {value:"electrician",text:"Elektrikçi",status:false},
+          {value:"gas_station",text:"Gaz İstasyonu",status:true},
+          {value:"laundry",text:"Kuru Temizleme",status:false},
+          {value:"car_wash",text:"Oto Yıkama",status:false},
+          {value:"parking",text:"Otopark",status:false},
+          {value:"hair_care",text:"Saç Bakımı",status:false},
+          {value:"spa",text:"Spa",status:false},
+          {value:"insurance_agency",text:"Sigorta Acentası",status:false},
+          {value:"plumber",text:"Tesisatçı",status:false}
+      ],
+      diger:[
+          {value:"administrative_area_level_3",text:"administrative_area_level_3",status:false},
+          {value:"administrative_area_level_5",text:"administrative_area_level_5",status:false},
+          {value:"general_contractor",text:"Genel yüklenici",status:false},
+          {value:"neighborhood",text:"Komşuluk",status:false},
+          {value:"point_of_interest",text:"ilgi konusu",status:false},
+          {value:"postal_code",text:"posta kodu",status:false},
+          {value:"postal_code_prefix",text:"postal_code_prefix",status:false},
+          {value:"postal_code_suffix",text:"postal_code_suffix",status:false},
+          {value:"postal_town",text:"postal_town",status:false},
+          {value:"premise",text:"öncül",status:false},
+          {value:"route",text:"rota",status:false},
+          {value:"sublocality",text:"alt konumun",status:false},
+          {value:"sublocality_level_4",text:"sublocality_level_4",status:false},
+          {value:"sublocality_level_5",text:"sublocality_level_5",status:false},
+          {value:"sublocality_level_3",text:"sublocality_level_3",status:false},
+          {value:"sublocality_level_2",text:"sublocality_level_2",status:false},
+          {value:"sublocality_level_1",text:"sublocality_level_1",status:false},
+          {value:"subpremise",text:"subpremise",status:false},
+          {value:"locality",text:"mekân",status:true},
+          {value:"sublocality",text:"alt konumun",status:false}
+          ],
+      adres:[
+          {value:"country",text:"Ülkeler",status:true},
+          {value:"administrative_area_level_1,",text:"İller",status:false},
+          {value:"administrative_area_level_2",text:"İlçeler",status:false},
+          {value:"administrative_area_level_4",text:"Mahalleler",status:false},
+          {value:"route",text:"Sokak ve Caddeler",status:false},
+          {value:"street_number",text:"Kapı Numaraları",status:false},
+          {value:"geocode",text:"Coğrafi Kodlama",status:false},
+          {value:"street_address",text:"Açık adres",status:true},
+          {value:"street_number",text:"Sokak Numarası",status:false},
+          {value:"intersection",text:"Kavşak",status:false},
+          {value:"political",text:"Yerel Merkezler",status:false}
+      ]
   };
 
 

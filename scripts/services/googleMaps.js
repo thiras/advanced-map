@@ -45,9 +45,15 @@ app.service("$googleMaps", function ($rootScope) {
 
     };
 
-    this.autocomplete = function (text) {
+    this.autocomplete = function (text,type) {
+        var options = {input:text};
+      /*  var typem = [];
+        if(type!==false){
+            options["type"]=[type];
+        }*/
+
         var service = new google.maps.places.AutocompleteService();
-        service.getQueryPredictions({ input: text }, this.callBackPlaces);
+        service.getQueryPredictions(options, this.callBackPlaces);
     };
     this.autoCompleteResult = [];
     this.callBackPlaces = function (predictions, status) {
