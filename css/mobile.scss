@@ -10,14 +10,16 @@
       width: 50px;
 
     }
+
+    md-input-container {
+
+      width: calc(90% - 40px) !important;
+      overflow: hidden;
+
+    }
+
   }
 
-  md-input-container {
-
-    width: calc(90% - 40px) !important;
-    overflow: hidden;
-
-  }
 
   left-menu{
 

@@ -553,10 +553,9 @@ all-fab-dials {
     width: calc(100% - 1em); }
     #searchbox md-icon {
       width: 50px; }
-
-  md-input-container {
-    width: calc(90% - 40px) !important;
-    overflow: hidden; }
+    #searchbox md-input-container {
+      width: calc(90% - 40px) !important;
+      overflow: hidden; }
 
   left-menu #plus {
     height: 30px;
@@ -922,6 +921,7 @@ iframe {
 #mdFabSpeedDial {
   margin-left: -1.5em; }
 
+/* deneme sasslar için projede yoktur */
 /*
 
  */
