@@ -23,7 +23,7 @@
                     <md-list-item>
 
                         <md-input-container style="width:100%; margin-bottom: -20px; margin-top: 0;"
-                                            class="md-icon-float md-input-has-value">
+                                            class="md-icon-float md-input-has-value  certainly-full">
                             <label ng-click="delegateClick()" tabindex="-1" class="ng-binding ng-scope" role="button"
                                    for="input_16">{{lang.menuToasts.findPharmacy.placeHolder}}</label>
                             <input autocomplete="on" type="text" ng-model="pharmacyName" ng-keyup="setPharmacyName()"
@@ -35,7 +35,7 @@
 
                     <md-list-item>
 
-                        <md-input-container style="margin: 0;">
+                        <md-input-container class="certainly-full" style="margin: 0;">
                             <md-switch ng-change="setPharmacyDutyControl()" style="margin:0;"
                                        ng-model="dutyPharmayControl" aria-label="pharmacy">{{dutyPharmayControl==false ?
                                 lang.menuToasts.findPharmacy.onlyDutyPharmacytrue:lang.menuToasts.findPharmacy.onlyDutyPharmacyfalse}}
@@ -46,7 +46,7 @@
 
                     <md-list-item>
 
-                        <md-input-container layout-fill>
+                        <md-input-container class="certainly-full" layout-fill>
                             <md-select ng-model="secilenIl" placeholder="{{lang.menuToasts.general.provinceList}}">
                                 <md-select-header>
                                     <span> {{lang.menuToasts.general.provinces}} </span>
@@ -63,7 +63,7 @@
                     </md-list-item>
 
                     <md-list-item ng-if="isActiveIlce">
-                        <md-input-container layout-fill>
+                        <md-input-container  class="certainly-full" layout-fill>
                             <md-select ng-model="secilenIlce" placeholder="{{lang.menuToasts.general.countylist}}">
                                 <md-select-header>
                                     <span> {{lang.menuToasts.general.counties}} </span>
@@ -78,7 +78,7 @@
 
 
                     <md-list-item ng-if="isActiveMahalle">
-                        <md-input-container layout-fill>
+                        <md-input-container class="certainly-full" layout-fill>
                             <md-select ng-model="secilenMahalle"
                                        placeholder="{{lang.menuToasts.general.neighborhoodlist}}">
                                 <md-select-header>

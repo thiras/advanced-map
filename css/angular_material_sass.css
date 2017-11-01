@@ -732,6 +732,7 @@ md-toast {
   md-toast .md-toast-content {
     text-align: left;
     background: #ffffff;
+    width: 100% !important;
     padding: 3px !important; }
     md-toast .md-toast-content md-icon {
       outline: none;
