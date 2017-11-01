@@ -90,11 +90,6 @@
                             </md-input-container>
                         </md-list-item>
 
-
-
-
-
-
                     </md-list>
 
 
@@ -114,6 +109,31 @@
                     {{lang.general.close}}
                 </md-button>
             </md-dialog-actions>
+
+
+            <md-dialog-content ng-if="totalGooglePointsActive" layout-fill>
+                <md-list>
+                    <md-list-item style="padding: 12px;" ng-repeat="(i,obj) in totalGooglePoints | reverse">
+                        <div flex="70">{{obj.name}}</div>
+                        <div flex="15">
+                            <md-button style="margin:0;" md-ink-ripple class="md-fab md-mini"
+                                       ng-click="showMarkerPoiGoogle(obj.location);">
+                                <md-icon style="color:#757575;" role="img" aria-hidden="true"
+                                         class="ng-scope material-icons">location_on
+                                </md-icon>
+                            </md-button>
+                        </div>
+                        <div flex="15">
+                            <md-button style="margin:0;" md-ink-ripple class="md-fab md-mini"
+                                       ng-click="navigatePoiGoogle(obj.location);">
+                                <md-icon style="color:#757575;" role="img" aria-hidden="true"
+                                         class="ng-scope material-icons">navigation
+                                </md-icon>
+                            </md-button>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </md-dialog-content>
 
         </form>
 
