@@ -2743,6 +2743,7 @@ app.service("$sahtejson",function () {
   };
 
     this.googlePOITypeMain = [
+        {value:"0",text:"POI Ana Tür Listesi",status:true},
         {value:"adres",text:"Adresler",status:false},
         {value:"beslenme",text:"Beslenme Noktaları",status:false},
         {value:"onarim",text:"Bakım & Onarım Merkezleri",status:false},
@@ -2751,31 +2752,34 @@ app.service("$sahtejson",function () {
         {value:"eglence",text:"Eğlence Noktaları",status:false},
         {value:"ekonomi",text:"Ekonomi Merkezleri",status:false},
         {value:"konaklama",text:"Konaklama Noktaları",status:false},
-        {value:"magaza",text:"Mağazalar",status:true},
+        {value:"magaza",text:"Mağazalar",status:false},
         {value:"meslek",text:"Mesleki Yerler",status:false},
         {value:"resmi",text:"Resmi Binalar",status:false},
         {value:"saglik",text:"Sağlık Noktaları",status:false},
-        {value:"gezi",text:"Sanat & Gezi Noktaları",status:false},
+        {value:"gezi",text:"Gezi Noktaları",status:false},
         {value:"ulasim",text:"Ulaşım Merkezleri",status:false},
         {value:"poi",text:"Diğer POI NOktaları",status:false}
         ];
 
   this.googlePOITypesSec ={
       gezi:[
-          {value:"shopping_mall",text:"Alışveriş Merkezi AVM",status:true},
+          {value:"0",text:"Gezi Alanları Alt Tür Listesi",status:true},
+          {value:"shopping_mall",text:"Alışveriş Merkezi AVM",status:false},
           {value:"natural_feature",text:"Doğal Alanlar",status:false},
           {value:"zoo",text:"Hayvanat Bahçesi",status:false},
           {value:"park",text:"Park",status:false},
           {value:"painter",text:"Ressam",status:false}
       ],
       egitim:[
+          {value:"0",text:"Eğitim Merkezleri Alt Tür Listesi",status:true},
           {value:"library",text:"Kütüphane",status:false},
-          {value:"school",text:"Okul",status:true},
+          {value:"school",text:"Okul",status:false},
           {value:"university",text:"Üniversite",status:false}
       ],
       saglik:[
+          {value:"0",text:"Sağlık Merkezleri Alt Tür Listesi",status:true},
           {value:"dentist",text:"Diş Doktoru",status:false},
-          {value:"doctor",text:"Doktor",status:true},
+          {value:"doctor",text:"Doktor",status:false},
           {value:"pharmacy",text:"Eczane",status:false},
           {value:"physiotherapist",text:"Fizyoterapist",status:false},
           {value:"beauty_salon",text:"Güzellik Salonu",status:false},
@@ -2787,19 +2791,21 @@ app.service("$sahtejson",function () {
           {value:"veterinary_care",text:"Veteriner",status:false}
       ],
       beslenme:[
+          {value:"0",text:"Beslenme Merkezleri Alt Tür Listesi",status:true},
           {value:"cafe",text:"Cafe",status:false},
           {value:"bakery",text:"Fırın",status:false},
           {value:"food",text:"Gıda Merkezleri",status:false},
-          {value:"restaurant",text:"Restoran",status:true},
+          {value:"restaurant",text:"Restoran",status:false},
           {value:"meal_delivery",text:"Yemek Servisi",status:false},
           {value:"meal_takeaway",text:"Yemek Paket Servisi",status:false}
       ],
       eglence:[
+          {value:"0",text:"Eğlence Merkezleri Alt Tür Listesi",status:true},
           {value:"aquarium",text:"Akvaryum",status:false},
           {value:"shopping_mall",text:"Alışveriş Merkezi AVM",status:false},
           {value:"bar",text:"Bar",status:false},
           {value:"bowling_alley",text:"Bowling Salonu",status:false},
-          {value:"cafe",text:"Cafe",status:true},
+          {value:"cafe",text:"Cafe",status:false},
           {value:"natural_feature",text:"Doğal Alanlar",status:false},
           {value:"movie_rental",text:"Film Kiralama",status:false},
           {value:"night_club",text:"Gece Kulübü",status:false},
@@ -2818,7 +2824,8 @@ app.service("$sahtejson",function () {
 
       ],
       magaza:[
-          {value:"shopping_mall",text:"Alışveriş Merkezi AVM",status:true},
+          {value:"0",text:"Mağaza Noktaları Alt Tür Listesi",status:true},
+          {value:"shopping_mall",text:"Alışveriş Merkezi AVM",status:false},
           {value:"car_dealer",text:"Araba Galerisi",status:false},
           {value:"car_rental",text:"Araba Kiralama",status:false},
           {value:"department_store",text:"Büyük Mağaza",status:false},
@@ -2834,7 +2841,7 @@ app.service("$sahtejson",function () {
           {value:"book_store",text:"Kitapçı",status:false},
           {value:"jewelry_store",text:"Kuyumcu",status:false},
           {value:"convenience_store",text:"Market",status:false},
-          //{value:"store",text:"Mağaza",status:false},
+          {value:"store",text:"Mağaza",status:false},
           {value:"locality",text:"Mekan",status:false},
           {value:"furniture_store",text:"Mobilya Mağazası",status:false},
           {value:"moving_company",text:"Mobil Şirket",status:false},
@@ -2842,14 +2849,16 @@ app.service("$sahtejson",function () {
           {value:"liquor_store",text:"Tekel Bayi",status:false}
       ],
       ekonomi:[
+          {value:"0",text:"Banka & ATM Listesi",status:true},
           {value:"atm",text:"ATM",status:false},
-          {value:"bank",text:"Banka",status:true}
+          {value:"bank",text:"Banka",status:false}
       ],
       ulasim:[
+          {value:"0",text:"Ulaşım Noktaları Alt Tür Listesi",status:true},
           {value:"transit_station",text:"Geçiş İstasyonu",status:false},
           {value:"airport",text:"Havalimanı",status:false},
           {value:"subway_station",text:"Metro İstasyonu",status:false},
-          {value:"bus_station",text:"Otobüs Durağı",status:true},
+          {value:"bus_station",text:"Otobüs Durağı",status:false},
           {value:"parking",text:"Otopark",status:false},
           {value:"post_box",text:"Posta kutusu",status:false},
           {value:"taxi_stand",text:"Taksi Durağı",status:false},
@@ -2857,17 +2866,20 @@ app.service("$sahtejson",function () {
           {value:"travel_agency",text:"Seyahat Acentası",status:false}
       ],
       konaklama:[
+          {value:"0",text:"Otel ve Konaklama Alt Tür Listesi",status:true},
           {value:"real_estate_agency",text:"Emlakçı",status:false},
-          {value:"lodging",text:"Oteller",status:true},
+          {value:"lodging",text:"Oteller",status:false},
           {value:"parking",text:"Otopark",status:false}
       ],
       meslek:[
-          {value:"lawyer",text:"Avukat",status:true},
+          {value:"0",text:"Mesleki Yerler Alt Tür Listesi",status:true},
+          {value:"lawyer",text:"Avukat",status:false},
           {value:"accounting",text:"Muhasebe",status:false},
           {value:"room",text:"Oda",status:false}
       ],
       dini:[
-          {value:"mosque",text:"Cami",status:true},
+          {value:"0",text:"Dini Alanlar Alt Tür Listesi",status:true},
+          {value:"mosque",text:"Cami",status:false},
           {value:"funeral_home",text:"Cenaze Yıkama Evi",status:false},
           {value:"church",text:"Kilise",status:false},
           {value:"place_of_worship",text:"Mescid",status:false},
@@ -2875,8 +2887,9 @@ app.service("$sahtejson",function () {
           {value:"synagogue",text:"Sinagog",status:false}
       ],
       resmi:[
+          {value:"0",text:"Resmi Binalar Alt Tür Listesi",status:true},
           {value:"courthouse",text:"Adliye",status:false},
-          {value:"city_hall",text:"Belediye Binası",status:true},
+          {value:"city_hall",text:"Belediye Binası",status:false},
           {value:"local_government_office",text:"Devlet Ofisi",status:false},
           {value:"embassy",text:"Elçilik",status:false},
           {value:"fire_station",text:"İtfaiye",status:false},
@@ -2886,12 +2899,13 @@ app.service("$sahtejson",function () {
           {value:"post_office",text:"Postane",status:false}
       ],
       onarim:[
+          {value:"0",text:"Bakım Onarım Alt Türlerin Listesi",status:true},
           {value:"car_repair",text:"Araba Tamircisi",status:false},
           {value:"locksmith",text:"Çilingir",status:false},
           {value:"storage",text:"Depolama",status:false},
           {value:"hardware_store",text:"Donanım Mağazası",status:false},
           {value:"electrician",text:"Elektrikçi",status:false},
-          {value:"gas_station",text:"Gaz İstasyonu",status:true},
+          {value:"gas_station",text:"Gaz İstasyonu",status:false},
           {value:"laundry",text:"Kuru Temizleme",status:false},
           {value:"car_wash",text:"Oto Yıkama",status:false},
           {value:"parking",text:"Otopark",status:false},
@@ -2901,6 +2915,7 @@ app.service("$sahtejson",function () {
           {value:"plumber",text:"Tesisatçı",status:false}
       ],
       diger:[
+          {value:"0",text:"Diğer Türlerin Listesi",status:true},
           {value:"administrative_area_level_3",text:"administrative_area_level_3",status:false},
           {value:"administrative_area_level_5",text:"administrative_area_level_5",status:false},
           {value:"general_contractor",text:"Genel yüklenici",status:false},
@@ -2919,11 +2934,12 @@ app.service("$sahtejson",function () {
           {value:"sublocality_level_2",text:"sublocality_level_2",status:false},
           {value:"sublocality_level_1",text:"sublocality_level_1",status:false},
           {value:"subpremise",text:"subpremise",status:false},
-          {value:"locality",text:"mekân",status:true},
+          {value:"locality",text:"mekân",status:false},
           {value:"sublocality",text:"alt konumun",status:false}
           ],
       adres:[
-          {value:"country",text:"Ülkeler",status:true},
+          {value:"0",text:"Adres Türleri Listesi",status:true},
+          {value:"country",text:"Ülkeler",status:false},
           {value:"administrative_area_level_1,",text:"İller",status:false},
           {value:"administrative_area_level_2",text:"İlçeler",status:false},
           {value:"administrative_area_level_4",text:"Mahalleler",status:false},
