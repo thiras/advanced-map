@@ -39,7 +39,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.arriveStopData = $sahtejson.trainStation;
     $scope.locationActive = $rootScope.poi.google.locationActive || false;
     $rootScope.myLocation = {lat:0,lng:0};
-    $scope.searchCircle = false;
+
 
 
     /* sağlık merkezileri için mdSelect adress yardımı ile*/
@@ -104,6 +104,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         $timeout(function () {
             angular.element(document.querySelector("#menus")).triggerHandler("click");
         }, 10);
+
 
     };
 
@@ -1278,6 +1279,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
 
     /* Google Maps API POI bas*/
+    $scope.searchCircle = $rootScope.poi.google.searchCircle || false;
     $scope.poiGoogleResultItems = [];
     $scope.placesMainType = $sahtejson.googlePOITypeMain;
     $scope.locShowInterval = false;
@@ -1316,7 +1318,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
         if($rootScope.poi.google.locationActive==true){
 
-            $rootScope.location.myLocation = $mylocation.findMyLocation({loop:true,show:true,panto:true,flyto:true});
+            $rootScope.location.myLocation = $mylocation.findMyLocation({loop:true,show:true,panto:false,flyto:true});
 
         }else{
             $mylocation.hiddenLocation();
@@ -1332,6 +1334,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     };
     $scope.poiClickMapActive = $rootScope.poi.google.poiClickMapActive || false;
     $scope.poiClickChange = function(){
+        debugger;
         $rootScope.poi.google.poiClickMapActive=!$scope.poiClickMapActive;
         if($rootScope.poi.google.locationActive==true && $rootScope.poi.google.poiClickMapActive==true){
             $scope.poiLocActChange();
@@ -1339,47 +1342,24 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             $rootScope.poi.google.locationActive=false;
         }
         if($rootScope.poi.google.poiClickMapActive==true){
-            $scope.searchCircle=L.circle([0,0], {radius: $scope.poiRadius,color:"#8bc34a"}).addTo($rootScope.leaflet);
-            $rootScope.leaflet.on("mousemove",$scope.poiCircleFollow);
-            $rootScope.leaflet.on("click",$scope.poiCircleClick);
+            if($scope.searchCircle==false){
+                $scope.searchCircle=L.circle([0,0], {radius: $scope.poiRadius,color:"#8bc34a"}).addTo($rootScope.leaflet);
+                $rootScope.poi.google.searchCircle=$scope.searchCircle;
+                $rootScope.leaflet.on("mousemove",$scope.poiCircleFollow);
+                $rootScope.leaflet.on("click",$scope.poiCircleClick);
+            }
         }else{
             if($scope.searchCircle!==false){
                 $scope.searchCircle.remove();
                 $scope.searchCircle=false;
+                $rootScope.poi.google.searchCircle.remove();
+                $rootScope.poi.google.searchCircle=false;
                 $rootScope.leaflet.off("mousemove",$scope.poiCircleFollow);
                 $rootScope.leaflet.off("click",$scope.poiCircleClick);
             }
         }
     };
-    $scope.poiMainType = $rootScope.poi.google.poiMainType || [];
-    $scope.poiMainTypeNum = $rootScope.poi.google.poiMainTypeNum || false;
-    $scope.poiSecType =  $rootScope.poi.google.poiSecType || [];
-    $scope.poiSecTypeNum =  $rootScope.poi.google.poiSecTypeNum || false;
-    $scope.poiSecTypeActive = $rootScope.poi.google.poiSecTypeActive || false;
-    $scope.changePOISecTypes = function(id){
-        debugger;
-        $rootScope.poi.google.poiSecType=$sahtejson.googlePOITypesSec[id];
-        $scope.poiSecType=$sahtejson.googlePOITypesSec[id];
-        $rootScope.poi.google.poiSecTypeActive=true;
-        $scope.poiSecTypeActive=true;
-        $scope.poiMainTypeNum=id;
-        $rootScope.poi.google.poiMainTypeNum=id;
-    };
-    $scope.changePOISec = function(id){
-        debugger;
-        var list = $scope.poiSecType;
-        for(i in list){
-            if(list[i].value==id){
-                list[i].status=true;
-            }else{
-                list[i].status=false;
-            }
-        }
-        $scope.poiSecType=list;
-        $rootScope.poi.google.poiSecType=$scope.poiSecType;
-        $scope.poiSecTypeNum=id;
-        $rootScope.poi.google.poiSecTypeNum=id;
-    };
+
     $scope.poiCircleFollow = function (e) {
         var latlng = L.latLng(e.latlng.lat,e.latlng.lng);
         if($scope.searchCircle!==false){
@@ -1392,16 +1372,16 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     };
 
     $scope.poiGoogleSearcLoc = function (latlng) {
-        if($scope.poiMainTypeNum!==false && $scope.poiSecTypeNum!==false){
+        if($scope.poiGoogleMainTypesValue!==false && $scope.poiGoogleSecTypesValue!==false){
             var point = $googleMaps.point(latlng.lat,latlng.lng);
             var request ={
                 location: point,
                 radius: $scope.poiRadius ,
-                type:[$scope.poiSecTypeNum]
+                type:[$scope.poiGoogleSecTypesValue]
             };
             $googleMaps.search(request,"nearBy");
             $scope.googleStatusControl = setInterval(function () {
-                var a = "asdasd";
+                console.log("googleStatusControl Çalışıyor");
                 if($googleMaps.status==true && $scope.googleStatusControl!==false){
                     $scope.showPOIGoogle($googleMaps.result);
                     $scope.clearInterval($scope.googleStatusControl);
@@ -1420,11 +1400,12 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     };
     $scope.poiCircleClick = function (e) {
         debugger;
-        $scope.poiGoogleSearcLoc(e.latlng);
-
+        if($scope.searchCircle!==false){
+            $scope.poiGoogleSearcLoc(e.latlng);
+        }
     };
-    $scope.totalGooglePoints = [];
-    $scope.totalGooglePointsID = [];
+    $scope.totalGooglePoints = $rootScope.poi.google.totalGooglePoints || [];
+    $scope.totalGooglePointsID = $rootScope.poi.google.totalGooglePointsID || [];
     $scope.totalGooglePointsActive =$rootScope.poi.google.totalGooglePointsActive || false;
     $scope.showPOIGoogle = function (result) {
         for(i in result){
@@ -1455,21 +1436,24 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             var types = point.types;
             var maintype  = types[0];
             var lok = {lat:point.geometry.location.lat(),lng:point.geometry.location.lng()};
-            if($scope.totalGooglePointsID.indexOf(placeid)==-1){
+            if($rootScope.poi.google.totalGooglePointsID.indexOf(placeid)==-1){
                 $scope.totalGooglePointsActive=true;
                 $rootScope.poi.google.totalGooglePointsActive = true;
-                $scope.totalGooglePointsID.push(placeid);
-                $scope.totalGooglePoints.push({name:name,adres:adres,id:id,placeid:placeid,rating:rating,types:types,maintype:maintype,location:lok});
+                $rootScope.poi.google.totalGooglePointsID.push(placeid);
                 var nokta = L.marker(lok,{icon:myIcon}).bindPopup(name).addTo($rootScope.leaflet);
+                $rootScope.poi.google.totalGooglePoints.push({name:name,adres:adres,id:id,placeid:placeid,rating:rating,types:types,maintype:maintype,location:lok,feature:nokta});
+
             }
 
         }
+        $scope.totalGooglePoints=$rootScope.poi.google.totalGooglePoints;
+        $scope.totalGooglePointsID=$rootScope.poi.google.totalGooglePointsID;
     };
 
     $scope.googleFilerPlaces = [];
     $scope.resultFindPlaceID = false;
     $scope.resultPlaceIDInt = false;
-    $scope.findPlaceFEature = false;
+    $scope.findPlaceFeature = false;
 
     $scope.loadGooglePlaces = function (filterText) {
         $scope.googleFilerPlaces=[];
@@ -1485,8 +1469,9 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
                 //$scope.aktifGooglePalce={value:item.value,text:item.text};
                 $googleMaps.findPlaceId(item.value);
                 $scope.resultPlaceIDInt=setInterval(function () {
+                    console.log("resultPlaceIDInt Çalışıyor");
                     if($googleMaps.resultFindPlaceID!==false){
-                        debugger;
+
                         if($rootScope.poi.google.locationActive==true){
                             $scope.poiLocActChange();
                             $scope.locationActive=false;
@@ -1497,34 +1482,45 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
                         var lokasyon = {lat:nokta.geometry.location.lat(),lng:nokta.geometry.location.lng()};
                         $scope.slctGogPlcLoc=lokasyon;
                         $rootScope.poi.google.slctGogPlcLoc=lokasyon;
-                        if($scope.findPlaceFEature==false){
-                            $scope.findPlaceFEature=L.marker(lokasyon).bindPopup(item.text).addTo($rootScope.leaflet);
+                        if($scope.findPlaceFeature==false){
+                            $scope.findPlaceFeature=L.marker(lokasyon).bindPopup(item.text).addTo($rootScope.leaflet);
                             $scope.googleQueryLocation = L.circle(lokasyon, {radius: $scope.poiRadius}).addTo($rootScope.leaflet);
                         }else{
-                            $scope.findPlaceFEature.setLatLng(lokasyon);
-                            $scope.findPlaceFEature.setPopupContent(item.text);
+                            $scope.findPlaceFeature.setLatLng(lokasyon);
+                            $scope.findPlaceFeature.setPopupContent(item.text);
                             $scope.googleQueryLocation.setLatLng(lokasyon);
                         }
-                        $rootScope.leaflet.flyTo(lokasyon,15);
+                        $rootScope.leaflet.setView(lokasyon,15);
                         window.clearInterval($scope.resultPlaceIDInt);
                     }
                 },50);
 
             }else {
                 $googleMaps.resultFindPlaceID = false;
-                debugger;
-                $googleMaps.autocomplete(item,$scope.poiSecTypeNum);
+
+                $googleMaps.autocomplete(item,$scope.poiGoogleSecTypesValue);
                 $scope.googleFilerPlaces=$googleMaps.autoCompleteResult;
                 $scope.slctGogPlcLoc=false;
                 $rootScope.poi.google.slctGogPlcLoc=false;
 
             }
 
+        }else{
+            $scope.poiGoogleFeatureRemove();
         }
 
     };
+    $scope.poiGoogleFeatureRemove = function () {
+        if($scope.findPlaceFeature!==false){
+            $scope.findPlaceFeature.remove();
+            $scope.findPlaceFeature=false;
+        }
+        if($scope.googleQueryLocation!==false){
+            $scope.googleQueryLocation.remove();
+        }
+    };
     $scope.searchPOIGoogle = function(){
-        debugger;
+
         var loc = false;
 
         if($scope.locationActive == true){
@@ -1562,6 +1558,57 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.navigatePoiGoogle=function (point) {
       alert("navigasyon hazır değildir");
     };
+
+    $scope.poiGoogleMainTypes = $rootScope.poi.google.poiGoogleMainTypes || $sahtejson.googlePOITypeMain || [];
+    $scope.poiGoogleMainTypesValue = $rootScope.poi.google.poiGoogleMainTypesValue ||  false;
+    $scope.changePOISecTypes2 = function (id) {
+
+        for(i in $scope.poiGoogleMainTypes){
+            if($scope.poiGoogleMainTypes[i].value==id){
+                $scope.poiGoogleMainTypes[i].status=true;
+                $scope.poiGoogleSecTypeActive=true;
+                $rootScope.poi.google.poiGoogleSecTypeActive=true;
+                $scope.poiGoogleMainTypesValue=id;
+                $rootScope.poi.google.poiGoogleMainTypesValue=id;
+                $scope.poiGoogleSecTypes = $sahtejson.googlePOITypesSec[id];
+                $rootScope.poi.google.poiGoogleSecTypes=$sahtejson.googlePOITypesSec[id];
+            }else{
+                $scope.poiGoogleMainTypes[i].status=false;
+            }
+        }
+        $rootScope.poi.google.poiGoogleMainTypes =$scope.poiGoogleMainTypes;
+    };
+    $scope.poiGoogleSecTypeActive = $rootScope.poi.google.poiGoogleSecTypeActive || false;
+    $scope.poiGoogleSecTypes = $rootScope.poi.google.poiGoogleSecTypes || [];
+    $scope.poiGoogleSecTypesValue = $rootScope.poi.google.poiGoogleSecTypesValue ||  false;
+    $scope.changePOISec2 = function (id) {
+        for(i in $scope.poiGoogleSecTypes){
+            if($scope.poiGoogleSecTypes[i].value==id){
+                $scope.poiGoogleSecTypes[i].status=true;
+                $scope.poiGoogleSecTypeActive=true;
+                $rootScope.poi.google.poiGoogleSecTypeActive=true;
+                $scope.poiGoogleSecTypesValue=id;
+                $rootScope.poi.google.poiGoogleSecTypesValue=id;
+            }else{
+                $scope.poiGoogleSecTypes[i].status=false;
+            }
+        }
+    };
+
+    $scope.searchPOIGoogleDelete = function () {
+        for(i in $rootScope.poi.google.totalGooglePoints){
+            var nokta = $rootScope.poi.google.totalGooglePoints[i].feature.remove();
+        }
+        $scope.totalGooglePoints=[];
+        $rootScope.poi.google.totalGooglePoints=[];
+        $scope.totalGooglePointsID=[];
+        $rootScope.poi.google.totalGooglePointsID=[];
+        if($scope.showMarkerPoiGoogleMar!==false){
+            $scope.showMarkerPoiGoogleMar.remove();
+            $scope.showMarkerPoiGoogleMar=false;
+        }
+    };
+
     /* Google Maps API POI bas*/
 
 /* araya şehir merkez ekleme baş*/
