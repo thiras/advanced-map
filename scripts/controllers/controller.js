@@ -1,5 +1,4 @@
 app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav, $rootScope, $window, $storage, $leftmenujson, $leafletFonk, $getlang, $mdDialog) {
-
     var lang = await $getlang;
     $rootScope.lang = lang.data;
     $rootScope.adress = {
