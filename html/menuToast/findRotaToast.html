@@ -26,13 +26,13 @@
                                 <div flex="65">
                                     <md-input-container layout-fill class="certainly-full">
 
-                                        <input type="text" ng-model="addCityName">
+                                        <input ng-keypress="$event.keyCode==13 ? addCityToNavigation(addCityName):null " type="text" ng-model="addCityName">
                                     </md-input-container>
                                 </div>
 
                                 <div flex="15">
 
-                                    <md-button ng-click="addCityToNavigation(addCityName)" id="rotaPlusIcon" md-ink-ripple
+                                    <md-button  ng-click="addCityToNavigation(addCityName)" id="rotaPlusIcon" md-ink-ripple
                                                md-whiteframe="2" class="md-fab md-mini">
                                         <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img"
                                                  aria-hidden="true">
