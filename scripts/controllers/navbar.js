@@ -360,7 +360,7 @@ app.controller("navbar", function ($scope, $googleMaps,$accordion, $timeout, $md
         });
 
 
-    }
+    };
 
 
     $scope.findGooglePOI = function () {
