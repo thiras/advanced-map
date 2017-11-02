@@ -20,13 +20,13 @@
 
                 <md-list id="findParcelToast">
                     <md-list-item>
-                       <md-input-container layout-fill>
+                       <md-input-container class="certainly-full" layout-fill>
                            <input type="text" ng-keyup="setScrtyCenterName()" ng-model="securtiyCenterName" placeholder="{{lang.menuToasts.security.findInsSecadress.placeholder1}}">
                        </md-input-container>
                     </md-list-item>
 
                     <md-list-item>
-                        <md-input-container layout-fill>
+                        <md-input-container class="certainly-full" layout-fill>
                             <md-select ng-model="securitySelectType" placeholder="{{lang.menu.menu11.paceholderSecType}}">
                                 <md-option ng-click="setSecurityCenterType(data.value)" ng-value="data.value" ng-repeat="(a,data) in securityType">{{data.text}}</md-option>
                             </md-select>
@@ -34,7 +34,7 @@
                     </md-list-item>
 
                     <md-list-item>
-                        <md-input-container layout-fill>
+                        <md-input-container class="certainly-full" layout-fill>
                             <md-select ng-model="secilenIl" placeholder="{{lang.menuToasts.general.provinceList}}">
                                 <md-select-header>
                                     <span> {{lang.menuToasts.general.provinces}} </span>
@@ -51,7 +51,7 @@
                     </md-list-item>
 
                     <md-list-item ng-if="isActiveIlce">
-                        <md-input-container layout-fill>
+                        <md-input-container class="certainly-full" layout-fill>
                             <md-select ng-model="secilenIlce" placeholder="{{lang.menuToasts.general.countylist}}">
                                 <md-select-header>
                                     <span> {{lang.menuToasts.general.counties}} </span>
@@ -66,7 +66,7 @@
 
 
                     <md-list-item ng-if="isActiveMahalle">
-                        <md-input-container layout-fill>
+                        <md-input-container class="certainly-full" layout-fill>
                             <md-select ng-model="secilenMahalle"
                                        placeholder="{{lang.menuToasts.general.neighborhoodlist}}">
                                 <md-select-header>

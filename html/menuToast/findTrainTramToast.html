@@ -21,7 +21,7 @@
 
                     <md-list>
                         <md-list-item>
-                            <md-input-container layout-fill>
+                            <md-input-container class="certainly-full" layout-fill>
                                 <md-select ng-model="secilenIl" placeholder="{{lang.menuToasts.general.provinceList}}">
                                     <md-select-header>
                                         <span> {{lang.menuToasts.general.provinces}} </span>
@@ -36,7 +36,7 @@
 
                         </md-list-item>
                         <md-list-item>
-                            <md-input-container layout-fill>
+                            <md-input-container class="certainly-full" layout-fill>
                                 <md-select ng-model="trainTypeName"
                                            placeholder="{{lang.menuToasts.transport.train.trainTypeName}}">
                                     <md-select-header>
@@ -55,7 +55,7 @@
 
 
                         <md-list-item>
-                            <md-input-container layout-fill>
+                            <md-input-container class="certainly-full" layout-fill>
                                 <md-select  ng-model="TrainLines"
                                            placeholder="{{lang.menuToasts.transport.train.lineplaceholder}}">
                                     <md-select-header>
@@ -71,7 +71,7 @@
                         </md-list-item>
 
                         <md-list-item>
-                            <md-input-container layout-fill>
+                            <md-input-container class="certainly-full" layout-fill>
                                 <md-select ng-model="departureStop"
                                            placeholder="{{lang.menuToasts.transport.train.departure}}">
                                     <md-select-header>
@@ -88,7 +88,7 @@
                         </md-list-item>
 
                         <md-list-item>
-                            <md-input-container layout-fill>
+                            <md-input-container class="certainly-full" layout-fill>
                                 <md-select ng-model="arriveStop"
                                            placeholder="{{lang.menuToasts.transport.train.arrival}}">
                                     <md-select-header>
@@ -105,7 +105,7 @@
                         </md-list-item>
 
                         <md-list-item>
-                            <md-input-container layout-fill>
+                            <md-input-container class="certainly-full" layout-fill>
                                 <md-switch ng-change="setnearesTramSwitch()" ng-model="nearesTramSwitch">{{nearesTramSwitch==true ?
                                     lang.menuToasts.transport.train.nearTrainStation1:lang.menuToasts.transport.train.nearTrainStation2}}
                                 </md-switch>
@@ -113,7 +113,7 @@
                         </md-list-item>
 
                         <md-list-item>
-                            <md-input-container layout-fill>
+                            <md-input-container class="certainly-full" layout-fill>
                                 <md-switch ng-change="setshowTramOnMap()" ng-model="showTramOnMap">{{showTramOnMap==true ?
                                     lang.menuToasts.transport.train.onlineTrain1:lang.menuToasts.transport.train.onlineTrain2}}
                                 </md-switch>

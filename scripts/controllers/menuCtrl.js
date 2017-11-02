@@ -1,4 +1,4 @@
-app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $timeout, $mdDialog, $leafletFonk,$mylocation,$googleMaps) {
+app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $timeout, $mdDialog, $leafletFonk,$mylocation,$googleMaps,$interval) {
     $scope.lang = $rootScope.lang;
     $scope.il = $sahtejson.il;
     $scope.ilce = $sahtejson.ilce;
@@ -1281,7 +1281,6 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     /* Google Maps API POI bas*/
     $scope.searchCircle = $rootScope.poi.google.searchCircle || false;
     $scope.poiGoogleResultItems = [];
-    $scope.placesMainType = $sahtejson.googlePOITypeMain;
     $scope.locShowInterval = false;
     $scope.poiRadius = $rootScope.poi.google.poiRadius || 500;
     $scope.googleSearchPOIRadius = function (){
@@ -1334,31 +1333,50 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     };
     $scope.poiClickMapActive = $rootScope.poi.google.poiClickMapActive || false;
     $scope.poiClickChange = function(){
-        debugger;
-        $rootScope.poi.google.poiClickMapActive=!$scope.poiClickMapActive;
-        if($rootScope.poi.google.locationActive==true && $rootScope.poi.google.poiClickMapActive==true){
-            $scope.poiLocActChange();
-            $scope.locationActive=false;
-            $rootScope.poi.google.locationActive=false;
-        }
-        if($rootScope.poi.google.poiClickMapActive==true){
-            if($scope.searchCircle==false){
-                $scope.searchCircle=L.circle([0,0], {radius: $scope.poiRadius,color:"#8bc34a"}).addTo($rootScope.leaflet);
-                $rootScope.poi.google.searchCircle=$scope.searchCircle;
-                $rootScope.leaflet.on("mousemove",$scope.poiCircleFollow);
-                $rootScope.leaflet.on("click",$scope.poiCircleClick);
+        var zoom = $rootScope.leaflet.getZoom();
+
+            if(zoom<=11){
+                debugger;
+                $rootScope.$emit("message", {
+                    status: "warning",
+                    header: "Zoom Seviyesi Çok Yüksek",
+                    content: "Çember İçerisinde Arama Yapabilmek İçin Harita Detaylarına Yakın Olmanız Gerekmektedir",
+                    time: "auto"
+                });
+                $rootScope.leaflet.setView($rootScope.leaflet.getCenter(),10);
             }
-        }else{
-            if($scope.searchCircle!==false){
-                $scope.searchCircle.remove();
-                $scope.searchCircle=false;
-                $rootScope.poi.google.searchCircle.remove();
-                $rootScope.poi.google.searchCircle=false;
-                $rootScope.leaflet.off("mousemove",$scope.poiCircleFollow);
-                $rootScope.leaflet.off("click",$scope.poiCircleClick);
+            $rootScope.poi.google.poiClickMapActive=!$scope.poiClickMapActive;
+            if($rootScope.poi.google.locationActive==true && $rootScope.poi.google.poiClickMapActive==true){
+                $scope.poiLocActChange();
+                $scope.locationActive=false;
+                $rootScope.poi.google.locationActive=false;
             }
-        }
+            if($rootScope.poi.google.poiClickMapActive==true){
+                if($scope.searchCircle==false){
+                    $scope.searchCircle=L.circle([0,0], {radius: $scope.poiRadius,color:"#8bc34a"}).addTo($rootScope.leaflet);
+                    $rootScope.poi.google.searchCircle=$scope.searchCircle;
+                    $rootScope.leaflet.on("mousemove",$scope.poiCircleFollow);
+                    $rootScope.leaflet.on("click",$scope.poiCircleClick);
+                }
+            }else{
+                if($scope.searchCircle!==false){
+                    $scope.searchCircle.remove();
+                    $scope.searchCircle=false;
+                    $rootScope.poi.google.searchCircle.remove();
+                    $rootScope.poi.google.searchCircle=false;
+                    $rootScope.leaflet.off("mousemove",$scope.poiCircleFollow);
+                    $rootScope.leaflet.off("click",$scope.poiCircleClick);
+                }
+            }
+
     };
+
+    $scope.googleStatusControl=[];
+    function removeInterval(a) {
+        for(i in a){
+            $interval.cancel(a[i]);
+        }
+    }
 
     $scope.poiCircleFollow = function (e) {
         var latlng = L.latLng(e.latlng.lat,e.latlng.lng);
@@ -1366,11 +1384,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             $scope.searchCircle.setLatLng(latlng);
         }
     };
-    $scope.clearInterval = function (a) {
-        window.clearInterval(a);
-        a=false;
-    };
-
+    var googleStatusControlNum = 0;
     $scope.poiGoogleSearcLoc = function (latlng) {
         if($scope.poiGoogleMainTypesValue!==false && $scope.poiGoogleSecTypesValue!==false){
             var point = $googleMaps.point(latlng.lat,latlng.lng);
@@ -1380,11 +1394,18 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
                 type:[$scope.poiGoogleSecTypesValue]
             };
             $googleMaps.search(request,"nearBy");
-            $scope.googleStatusControl = setInterval(function () {
+            $scope.googleStatusControl[$scope.googleStatusControl.length] = $interval(function () {
+                googleStatusControlNum++;
+                if(googleStatusControlNum==10){
+                    googleStatusControlNum=0;
+                    removeInterval($scope.googleStatusControl);
+
+                    console.log("googleStatusControl Durduruldu");
+                }
                 console.log("googleStatusControl Çalışıyor");
                 if($googleMaps.status==true && $scope.googleStatusControl!==false){
                     $scope.showPOIGoogle($googleMaps.result);
-                    $scope.clearInterval($scope.googleStatusControl);
+                    removeInterval($scope.googleStatusControl);
                 }
             },100);
 
@@ -1399,7 +1420,6 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
         }
     };
     $scope.poiCircleClick = function (e) {
-        debugger;
         if($scope.searchCircle!==false){
             $scope.poiGoogleSearcLoc(e.latlng);
         }
@@ -1452,7 +1472,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
     $scope.googleFilerPlaces = [];
     $scope.resultFindPlaceID = false;
-    $scope.resultPlaceIDInt = false;
+    $scope.resultPlaceIDInt = [];
     $scope.findPlaceFeature = false;
 
     $scope.loadGooglePlaces = function (filterText) {
@@ -1468,7 +1488,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             if(typeof item.value !=="undefined"){
                 //$scope.aktifGooglePalce={value:item.value,text:item.text};
                 $googleMaps.findPlaceId(item.value);
-                $scope.resultPlaceIDInt=setInterval(function () {
+                $scope.resultPlaceIDInt[$scope.resultPlaceIDInt.length]=$interval(function () {
                     console.log("resultPlaceIDInt Çalışıyor");
                     if($googleMaps.resultFindPlaceID!==false){
 
@@ -1491,7 +1511,7 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
                             $scope.googleQueryLocation.setLatLng(lokasyon);
                         }
                         $rootScope.leaflet.setView(lokasyon,15);
-                        window.clearInterval($scope.resultPlaceIDInt);
+                        removeInterval($scope.resultPlaceIDInt);
                     }
                 },50);
 
@@ -1562,13 +1582,14 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.poiGoogleMainTypes = $rootScope.poi.google.poiGoogleMainTypes || $sahtejson.googlePOITypeMain || [];
     $scope.poiGoogleMainTypesValue = $rootScope.poi.google.poiGoogleMainTypesValue ||  false;
     $scope.changePOISecTypes2 = function (id) {
-
+        if(id!=="0"){
         for(i in $scope.poiGoogleMainTypes){
             if($scope.poiGoogleMainTypes[i].value==id){
                 $scope.poiGoogleMainTypes[i].status=true;
                 $scope.poiGoogleSecTypeActive=true;
                 $rootScope.poi.google.poiGoogleSecTypeActive=true;
                 $scope.poiGoogleMainTypesValue=id;
+                $scope.poiGoogleSecTypesValue=false;
                 $rootScope.poi.google.poiGoogleMainTypesValue=id;
                 $scope.poiGoogleSecTypes = $sahtejson.googlePOITypesSec[id];
                 $rootScope.poi.google.poiGoogleSecTypes=$sahtejson.googlePOITypesSec[id];
@@ -1577,6 +1598,10 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
             }
         }
         $rootScope.poi.google.poiGoogleMainTypes =$scope.poiGoogleMainTypes;
+        }else{
+            $scope.poiGoogleMainTypesValue=false;
+            $scope.poiGoogleSecTypeActive=false;
+        }
     };
     $scope.poiGoogleSecTypeActive = $rootScope.poi.google.poiGoogleSecTypeActive || false;
     $scope.poiGoogleSecTypes = $rootScope.poi.google.poiGoogleSecTypes || [];

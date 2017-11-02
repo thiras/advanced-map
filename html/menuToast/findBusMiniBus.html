@@ -21,7 +21,7 @@
                 <md-content style="max-height: 45vh">
                     <md-list>
                         <md-list-item>
-                            <md-input-container layout-fill>
+                            <md-input-container class="certainly-full" layout-fill>
                                 <md-select ng-model="secilenIl" placeholder="{{lang.menuToasts.general.provinceList}}">
                                     <md-select-header>
                                         <span> {{lang.menuToasts.general.provinces}} </span>
@@ -37,7 +37,7 @@
 
                         </md-list-item>
                         <md-list-item>
-                            <md-input-container layout-fill>
+                            <md-input-container class="certainly-full" layout-fill>
                                 <md-select ng-model="autoCarTypeSelect" ng-change="setautoCarTypeSelect()"
                                            placeholder="{{lang.menuToasts.transport.busmini.autoCarTypeName}}">
                                     <md-select-header>
@@ -63,7 +63,7 @@
                             </md-autocomplete>
                         </md-list-item>
                         <md-list-item ng-if="busStopActive">
-                            <md-input-container layout-fill>
+                            <md-input-container class="certainly-full" layout-fill>
                                 <md-select ng-model="busStop"
                                            placeholder="{{lang.menuToasts.transport.busmini.pointShow}}">
                                     <md-select-header>
@@ -81,10 +81,12 @@
 
 
                         <md-list-item>
-                            <md-switch ng-change="setshowNearBusSwitch(showNearBusSwitch)" ng-model="showNearBusSwitch">
-                                {{showNearBusSwitch==true ?
-                                lang.menuToasts.transport.busmini.nearPoints1:lang.menuToasts.transport.busmini.nearPoints2}}
-                            </md-switch>
+                            <md-input-container class="certainly-full">
+                                <md-switch ng-change="setshowNearBusSwitch(showNearBusSwitch)" ng-model="showNearBusSwitch">
+                                    {{showNearBusSwitch==true ?
+                                    lang.menuToasts.transport.busmini.nearPoints1:lang.menuToasts.transport.busmini.nearPoints2}}
+                                </md-switch>
+                            </md-input-container>
                         </md-list-item>
 
                     </md-list>
