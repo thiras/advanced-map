@@ -383,7 +383,7 @@ app.controller("navbar", function ($scope, $googleMaps,$accordion, $timeout, $md
         $mdToast.show({
             hideDelay: 0,
             position: 'top right',
-            controller: 'menuCtrl',
+            controller: 'navigationCtrl',
             templateUrl: 'html/menuToast/findRotaToast.html',
         });
 

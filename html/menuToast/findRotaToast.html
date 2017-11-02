@@ -19,7 +19,54 @@
 
                 <md-list>
 
-                    <md-list-item layout-padding flex layout="row">
+                    <md-list-item  flex layout="row">
+
+                        <div flex="10">A</div>
+
+                        <div flex="75">
+                            <md-input-container layout-fill class="certainly-full">
+
+                                <input ng-keypress="$event.keyCode==13 ? addCityToNavigation(addCityName):null " type="text" ng-model="addCityName">
+                            </md-input-container>
+                        </div>
+                        <div flex="15">
+                            <md-button ng-click="addCityToNavigation(addCityName)"  md-ink-ripple>
+                                <md-icon class="mat-icon md-primary material-icons accordion-icons ng-binding" role="img"
+                                         aria-hidden="true">
+                                    add
+                                </md-icon>
+                            </md-button>
+                        </div>
+
+                    </md-list-item>
+
+
+                    <!--<md-list-item  flex layout="row">
+
+                        <div flex="10">A</div>
+
+                        <div flex="75">
+                            <md-input-container layout-fill class="certainly-full">
+
+                                <input ng-keypress="$event.keyCode==13 ? addCityToNavigation(addCityName):null " type="text" ng-model="addCityName">
+                            </md-input-container>
+                        </div>
+                        <div flex="15">
+
+                            <md-button  ng-click="addCityToNavigation(addCityName)" id="rotaPlusIcon" md-ink-ripple
+                                        md-whiteframe="2" class="md-fab md-mini">
+                                <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img"
+                                         aria-hidden="true">
+                                    add
+                                </md-icon>
+                            </md-button>
+
+                        </div>
+
+                    </md-list-item>-->
+
+
+                    <!--<md-list-item style="margin-left: 10px;" flex layout="row">
 
                                 <div flex="20">A</div>
 
@@ -42,10 +89,10 @@
 
                                 </div>
 
-                            </md-list-item>
+                            </md-list-item>-->
 
 
-                            <md-list-item layout-align="center center" layout-margin style="border:1px solid #fafafa"  flex layout="row"
+                            <md-list-item layout-align="center center"  style="border:1px solid #fafafa; margin-left: 10px;"  flex layout="row"
                                           ng-repeat="data in arrayPointCity">
 
                                 <div flex="20">{{$index+1}}</div>
@@ -64,34 +111,17 @@
                                     </md-button>
                                     <md-divider></md-divider>
                                 </div>
-
-
-
-
-
-                            <!--son-->
                     </md-list-item>
 
-                    <md-list-item layout-padding flex layout="row">
+                    <md-list-item  flex layout="row">
 
-                        <div flex="20">B</div>
+                        <div flex="10">B</div>
 
-                        <div flex="65">
+                        <div flex="90">
                             <md-input-container layout-fill class="certainly-full">
 
                                 <input type="text" ng-model="Bcity">
                             </md-input-container>
-                        </div>
-
-                        <div flex="15">
-
-                            <md-button  id="rotaPlusIcon" md-ink-ripple
-                                       md-whiteframe="2" class="md-fab md-mini">
-                                <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img"
-                                         aria-hidden="true">
-
-                                </md-icon>
-                            </md-button>
                         </div>
 
                     </md-list-item>
