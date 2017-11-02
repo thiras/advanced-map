@@ -74,10 +74,8 @@
                 </md-content>
             </md-dialog-content>
             <md-dialog-actions layout="row">
-                <span flex></span>
-
-
-                <md-button class="md-raised searchButton md-button md-ink-ripple md-button" ng-click="newMeasureLine()">
+                <span flex  layout-align-xs="center" layout-align-gt-xs="end" >
+                    <md-button class="md-raised searchButton md-button md-ink-ripple md-button" ng-click="newMeasureLine()">
                     <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">
                         dashboard
                     </md-icon>
@@ -88,6 +86,7 @@
                            style="margin-right:20px;">
                     {{lang.general.close}}
                 </md-button>
+                </span>
             </md-dialog-actions>
             <md-dialog-content ng-if="measureLines" layout-fill>
                 <md-list>
