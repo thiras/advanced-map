@@ -37,7 +37,7 @@
 
 
                         <md-list-item>
-                            <md-input-container style="margin: 0;">
+                            <md-input-container style="margin: 0;" class="certainly-full">
                                 <md-switch style="margin: 0;" ng-click="poiLocActChange();" ng-model="locationActive">Yakında Arama Özeliği {{poiGoogleNearestSrch ? "Açık":"Kapalı"}}</md-switch>
                             </md-input-container>
                         </md-list-item>
@@ -45,7 +45,7 @@
 
 
                         <md-list-item>
-                            <md-input-container style="margin: 0; margin-bottom: 15px;">
+                            <md-input-container style="margin: 0; margin-bottom: 15px;" class="certainly-full">
                                 <md-switch style="margin: 0;" ng-click="poiClickChange();" ng-model="poiClickMapActive">{{findOnClick ? "Ekranda Tıklayarak Bulma açık":"Ekranda Tıklayarak Bulma kapalı"}}</md-switch>
                             </md-input-container>
                         </md-list-item>
@@ -53,7 +53,7 @@
 
 
                         <md-list-item>
-                            <md-input-container layout-fill>
+                            <md-input-container layout-fill class="certainly-full">
                                 <input type="number" ng-keyup="googleSearchPOIRadius()" ng-model="poiRadius" placeholder="Arama Yarıçapı (m)">
                             </md-input-container>
                         </md-list-item>
@@ -61,7 +61,7 @@
 
 
                         <md-list-item>
-                            <md-input-container layout-fill>
+                            <md-input-container layout-fill class="certainly-full">
                                 <md-select ng-model="poiMainType"
                                            placeholder="POI Ana Türleri">
                                     <md-select-header>
@@ -76,7 +76,7 @@
                         </md-list-item>
 
                         <md-list-item>
-                            <md-input-container layout-fill ng-if="poiSecTypeActive">
+                            <md-input-container layout-fill ng-if="poiSecTypeActive" class="certainly-full">
                                 <md-select ng-model="poiSecType"
                                            placeholder="POI Alt Türleri">
                                     <md-select-header>

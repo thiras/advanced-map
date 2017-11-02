@@ -20,7 +20,7 @@
 
                 <md-list>
                     <md-list-item>
-                        <md-input-container layout-fill>
+                        <md-input-container layout-fill class="certainly-full">
                             <md-select ng-model="build"
                                        placeholder="{{lang.menuToasts.proprietaryBuild.mdselect1placeholder}}">
                                 <md-select-header>
@@ -34,7 +34,7 @@
 
                     <md-list-item>
 
-                        <md-input-container layout-fill>
+                        <md-input-container layout-fill class="certainly-full">
                             <md-select ng-model="secilenIl" placeholder="{{lang.menuToasts.general.provinceList}}">
                                 <md-select-header>
                                     <span> {{lang.menuToasts.general.provinces}} </span>
@@ -50,7 +50,7 @@
                     </md-list-item>
 
                     <md-list-item ng-if="isActiveIlce">
-                        <md-input-container layout-fill>
+                        <md-input-container layout-fill class="certainly-full">
                             <md-select ng-model="secilenIlce" placeholder="{{lang.menuToasts.general.countylist}}">
                                 <md-select-header>
                                     <span> {{lang.menuToasts.general.counties}} </span>
@@ -64,7 +64,7 @@
 
 
                     <md-list-item ng-if="isActiveMahalle">
-                        <md-input-container layout-fill>
+                        <md-input-container layout-fill class="certainly-full">
                             <md-select ng-model="secilenMahalle" placeholder="{{lang.menuToasts.general.neighborhoodlist}}">
                                 <md-select-header>
                                     <span> {{lang.menuToasts.general.neighborhoods}} </span>

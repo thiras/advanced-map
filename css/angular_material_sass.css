@@ -740,7 +740,8 @@ md-toast {
   md-toast form {
     margin-top: -62px;
     margin-left: -11px;
-    margin-right: -3px;
+    margin-right: -11px;
+    /*-3px eski değeri*/
     padding: 0; }
   md-toast .searchButton {
     background-color: #2196f3 !important; }
