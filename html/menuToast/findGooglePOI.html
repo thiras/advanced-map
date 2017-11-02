@@ -1,7 +1,7 @@
 <md-toast id="findbusandminibus">
-    <div class="md-toast-content" layout-padding>
+    <div class="md-toast-content" style="width: 100%;" layout-padding>
 
-        <form>
+        <form style="padding: 0;">
             <md-toolbar md-ink-ripple>
                 <div class="md-toolbar-tools">
                     <h2>
@@ -37,7 +37,9 @@
 
 
                         <md-list-item>
-                            <md-input-container style="margin: 0;" class="certainly-full">
+
+                            <md-input-container style="margin: 0; width: 100% !important;">
+
                                 <md-switch style="margin: 0;" ng-click="poiLocActChange();" ng-model="locationActive">Yakında Arama Özeliği {{poiGoogleNearestSrch ? "Açık":"Kapalı"}}</md-switch>
                             </md-input-container>
                         </md-list-item>
@@ -45,7 +47,9 @@
 
 
                         <md-list-item>
-                            <md-input-container style="margin: 0; margin-bottom: 15px;" class="certainly-full">
+
+                            <md-input-container style="margin: 0; margin-bottom: 15px;  width: 100% !important;">
+
                                 <md-switch style="margin: 0;" ng-click="poiClickChange();" ng-model="poiClickMapActive">{{findOnClick ? "Ekranda Tıklayarak Bulma açık":"Ekranda Tıklayarak Bulma kapalı"}}</md-switch>
                             </md-input-container>
                         </md-list-item>
@@ -53,37 +57,40 @@
 
 
                         <md-list-item>
-                            <md-input-container layout-fill class="certainly-full">
-                                <input type="number" ng-keyup="googleSearchPOIRadius()" ng-model="poiRadius" placeholder="Arama Yarıçapı (m)">
+
+                            <md-input-container layout-fill style=" width: 100% !important;">
+
+                               <input type="number" ng-keyup="googleSearchPOIRadius()" ng-model="poiRadius" placeholder="Arama Yarıçapı (m)">
                             </md-input-container>
                         </md-list-item>
 
 
 
                         <md-list-item>
-                            <md-input-container layout-fill class="certainly-full">
-                                <md-select ng-model="poiMainType"
-                                           placeholder="POI Ana Türleri">
-                                    <md-select-header>
+
+                            <md-input-container layout-fill style=" width: 100% !important;">
+                                <md-select ng-model="b" placeholder="POI Ana Türleri">
+
+                                  <md-select-header>
                                         <span>POI Ana Türü Seçiniz</span>
                                     </md-select-header>
-                                    <md-option ng-click="changePOISecTypes(deger.value);" ng-selected="deger.status" ng-value="deger.value"
-                                               ng-repeat="(ozellik, deger) in placesMainType">
+                                    <md-option ng-click="changePOISecTypes2(deger.value);" ng-selected="deger.status" ng-value="deger.value"
+                                               ng-repeat="(ozellik, deger) in poiGoogleMainTypes">
                                         {{deger.text}}
                                     </md-option>
                                 </md-select>
                             </md-input-container>
                         </md-list-item>
 
-                        <md-list-item>
-                            <md-input-container layout-fill ng-if="poiSecTypeActive" class="certainly-full">
-                                <md-select ng-model="poiSecType"
-                                           placeholder="POI Alt Türleri">
-                                    <md-select-header>
+        <md-list-item ng-if="poiGoogleSecTypeActive">
+                            <md-input-container layout-fill  style=" width: 100% !important;">
+                                <md-select ng-model="a"placeholder="POI Alt Türleri">
+
+                                  <md-select-header>
                                         <span>POI Alt Türleri</span>
                                     </md-select-header>
-                                    <md-option ng-click="changePOISec(deger.value);" ng-selected="deger.status" ng-value="deger.value"
-                                               ng-repeat="(ozellik, deger) in poiSecType">
+                                    <md-option ng-click="changePOISec2(deger.value);" ng-selected="deger.status" ng-value="deger.value"
+                                               ng-repeat="(ozellik, deger) in poiGoogleSecTypes">
                                         {{deger.text}}
                                     </md-option>
                                 </md-select>
@@ -103,6 +110,12 @@
                     </md-icon>
                     {{lang.general.search}}
                 </md-button>
+                <md-button class="md-raised searchButton md-button md-ink-ripple md-button" ng-click="searchPOIGoogleDelete()">
+                    <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">
+                        delete
+                    </md-icon>
+                    {{lang.general.delete}}
+                </md-button>
 
                 <md-button class="md-raised closeButton md-button md-ink-ripple md-button" ng-click="cancel()"
                            style="margin-right:20px;">
@@ -112,8 +125,8 @@
 
 
             <md-dialog-content ng-if="totalGooglePointsActive" layout-fill>
-                <md-list>
-                    <md-list-item style="padding: 12px;" ng-repeat="(i,obj) in totalGooglePoints | reverse">
+                <md-list style="overflow-y: scroll; max-height: 300px;">
+                    <md-list-item style="padding: 12px;margin-left: 10px;" ng-repeat="(i,obj) in totalGooglePoints | reverse">
                         <div flex="70">{{obj.name}}</div>
                         <div flex="15">
                             <md-button style="margin:0;" md-ink-ripple class="md-fab md-mini"

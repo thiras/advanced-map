@@ -40,7 +40,7 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
     };
     $rootScope.poi={
         database:{},
-        google:{},
+        google:{totalGooglePointsID:[],totalGooglePoints:[]},
         foursquare:{}
     };
     $rootScope.security = {};

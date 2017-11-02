@@ -71,7 +71,6 @@ app.service("$googleMaps", function ($rootScope) {
     this.resultFindPlaceID = false;
     this.findPlaceId = function (placeId) {
         this.geocoder.geocode({'placeId': placeId}, function(results, status) {
-            debugger;
             tis.resultFindPlaceID = false;
             if (status == 'OK') {
                 tis.resultFindPlaceID = results[0];
