@@ -1642,9 +1642,17 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
 
 
 
+        var kontrol=$scope.arrayPointCity.find(function (item) {
 
-        $scope.arrayPointCity.push(a);
+            return a==item;
+        });
 
+
+       if(!kontrol) {
+
+           $scope.arrayPointCity.push(a);
+           $scope.addCityName = "";
+       }
 
 
     }

@@ -1,4 +1,6 @@
 md-toast {
+
+
   z-index: 15;
   width: 390px;
   display: inline-flex;
@@ -37,7 +39,10 @@ md-toast {
     color: #7d7d7d !important;
   }
 
+.breakAll{
 
+  word-break: break-all;
+}
 
 }
 

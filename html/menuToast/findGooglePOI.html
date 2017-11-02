@@ -40,6 +40,7 @@
                             <md-input-container style="margin: 0; width: 100% !important;">
 
                                 <md-switch style="margin: 0;" ng-click="poiLocActChange();" ng-model="locationActive">Yakında Arama Özeliği {{locationActive==true ? "Açık":"Kapalı"}}</md-switch>
+
                             </md-input-container>
                         </md-list-item>
 
@@ -49,6 +50,7 @@
                             <md-input-container style="margin: 0; margin-bottom: 15px;  width: 100% !important;">
 
                                 <md-switch style="margin: 0;" ng-click="poiClickChange();" ng-model="poiClickMapActive">Ekranda Tıklayarak Bulma {{poiClickMapActive==true ? "Açık":"Kapalı"}}</md-switch>
+
                             </md-input-container>
                         </md-list-item>
 
@@ -58,6 +60,7 @@
                             <md-input-container layout-fill style=" width: 100% !important;">
 
                                 <input type="number" ng-keyup="googleSearchPOIRadius()" ng-model="poiRadius" placeholder="Arama Yarıçapı (m)">
+
                             </md-input-container>
                         </md-list-item>
 
@@ -68,6 +71,7 @@
                                 <md-select ng-model="b" placeholder="POI Ana Türleri">
 
                                     <md-select-header>
+
                                         <span>POI Ana Türü Seçiniz</span>
                                     </md-select-header>
                                     <md-option ng-click="changePOISecTypes2(deger.value);" ng-selected="deger.status" ng-value="deger.value"
@@ -82,6 +86,7 @@
                             <md-input-container layout-fill  style=" width: 100% !important;">
                                 <md-select ng-model="a"placeholder="POI Alt Türleri">
              <md-select-header>
+
                                         <span>POI Alt Türleri</span>
                                     </md-select-header>
                                     <md-option ng-click="changePOISec2(deger.value);" ng-selected="deger.status" ng-value="deger.value"

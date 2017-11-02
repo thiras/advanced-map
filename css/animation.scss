@@ -3,6 +3,22 @@
   opacity: 1;
 }
 
+md-toast{
+
+
+
+  .ng-leave{
+
+   left:0px;
+    transition: all .50s;
+    transition-delay: .15s;
+  }
+
+  .ng-leave-active{
+    height: 0;
+    left:-100%;
+  }
+}
 .ng-leave-active {
   opacity: 0;
   left:-10em;

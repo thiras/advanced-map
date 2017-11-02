@@ -26,13 +26,13 @@
                                 <div flex="65">
                                     <md-input-container layout-fill class="certainly-full">
 
-                                        <input type="text" ng-model="addCityName">
+                                        <input ng-keypress="$event.keyCode==13 ? addCityToNavigation(addCityName):null " type="text" ng-model="addCityName">
                                     </md-input-container>
                                 </div>
 
                                 <div flex="15">
 
-                                    <md-button ng-click="addCityToNavigation(addCityName)" id="rotaPlusIcon" md-ink-ripple
+                                    <md-button  ng-click="addCityToNavigation(addCityName)" id="rotaPlusIcon" md-ink-ripple
                                                md-whiteframe="2" class="md-fab md-mini">
                                         <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img"
                                                  aria-hidden="true">
@@ -45,13 +45,13 @@
                             </md-list-item>
 
 
-                            <md-list-item layout-align="center center"  flex layout="row"
+                            <md-list-item layout-align="center center" layout-margin style="border:1px solid #fafafa"  flex layout="row"
                                           ng-repeat="data in arrayPointCity">
 
                                 <div flex="20">{{$index+1}}</div>
 
                                 <div flex="65">
-                                    <md-input-container>
+                                    <md-input-container  class="certainly-full breakAll">
                                         {{data}}
                                     </md-input-container>
                                 </div>
