@@ -1,4 +1,4 @@
-app.controller("navigationCtrl", function ($scope) {
+app.controller("navigationCtrl", function ($scope,$mdToast) {
     /* araya şehir merkez ekleme baş*/
     $scope.arrayPointCity = [];
     $scope.addCityToNavigation = function (a) {
@@ -24,6 +24,16 @@ app.controller("navigationCtrl", function ($scope) {
         $scope.arrayPointCity.splice(i, 1);
 
     }
+
+
+    $scope.cancel = function () {
+        $mdToast.hide();
+        $timeout(function () {
+            angular.element(document.querySelector("#menus")).triggerHandler("click");
+        }, 10);
+
+
+    };
 
     /*araya şehir ekleme son*/
 
