@@ -1,5 +1,5 @@
 app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $timeout, $mdDialog, $leafletFonk,$mylocation,$googleMaps,$interval) {
-    $scope.lang = $rootScope.lang;
+    /*$scope.lang = $rootScope.lang;*/
     $scope.il = $sahtejson.il;
     $scope.ilce = $sahtejson.ilce;
     $scope.mahalle = $sahtejson.mahalle;
