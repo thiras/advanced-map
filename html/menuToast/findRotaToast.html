@@ -1,129 +1,100 @@
 <md-toast id="findInstByaddress" aria-label="find Inst">
     <div class="md-toast-content" layout-padding>
         <form>
+
             <md-toolbar md-ink-ripple>
                 <div class="md-toolbar-tools">
                     <h2>
-                        <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img"
-                                 aria-hidden="true">navigation
-                        </md-icon>
-                        <span class="md-subhead" style="color: #ffffff;">{{lang.menu.menu12.label}}</span></h2>
+                        <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">navigation</md-icon>
+                        <span class="md-subhead" style="color: #ffffff;">{{lang.menu.menu12.label}}</span>
+                    </h2>
                     <span flex></span>
                     <md-button class="md-icon-button" ng-click="cancel()">
-                        <md-icon style="padding: 7px;" md-svg-src="img/icons/cancel.svg"
-                                 aria-label="Close dialog"></md-icon>
+                        <md-icon style="padding: 7px;" md-svg-src="img/icons/cancel.svg" aria-label="Close dialog"></md-icon>
                     </md-button>
                 </div>
             </md-toolbar>
+
+
             <md-dialog-content layout-fill>
-
                 <md-list>
-
-                    <md-list-item  flex layout="row">
-
+                    <md-list-item style="margin-left: 15px;" flex layout="row">
                         <div flex="10">A</div>
-
                         <div flex="75">
-                            <md-input-container layout-fill class="certainly-full">
-
-                                <input ng-keypress="$event.keyCode==13 ? addCityToNavigation(addCityName):null " type="text" ng-model="addCityName">
-                            </md-input-container>
+                            <md-autocomplete ng-click="activeInput('start');" style="width:100%;"
+                                             md-selected-item-change="selectGooglePlace(item,'start')"
+                                             placeholder="Bir Yer Arayın"
+                                             md-items="item in navStations.start.placeResult"
+                                             md-search-text-change="loadGooglePlaces(navStations.start.filterText,'start')"
+                                             md-item-text="item.text"
+                                             md-no-cache="true"
+                                             md-search-text="navStations.start.filterText">
+                                <md-item-template>{{ item.text }}</md-item-template>
+                                <md-not-found>No items.</md-not-found>
+                            </md-autocomplete>
                         </div>
                         <div flex="15">
-                            <md-button ng-click="addCityToNavigation(addCityName)"  md-ink-ripple>
-                                <md-icon class="mat-icon md-primary material-icons accordion-icons ng-binding" role="img"
-                                         aria-hidden="true">
-                                    add
-                                </md-icon>
+                            <md-button ng-click="addCityToNavigation()" class="md-raised  md-warn md-button md-ink-ripple md-button">
+                                <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">add</md-icon>
                             </md-button>
                         </div>
-
                     </md-list-item>
 
 
-                    <!--<md-list-item  flex layout="row">
+                    <md-list-item layout-align="center center" style="margin-left: 30px;" flex
+                                  layout="row"
+                                  ng-repeat="data in arrayPointCity">
 
-                        <div flex="10">A</div>
+                        <div flex="10">{{$index+1}}</div>
 
                         <div flex="75">
-                            <md-input-container layout-fill class="certainly-full">
 
-                                <input ng-keypress="$event.keyCode==13 ? addCityToNavigation(addCityName):null " type="text" ng-model="addCityName">
-                            </md-input-container>
+                            <md-autocomplete ng-click="activeInput($index);" style="width:100%;"
+                                             md-selected-item-change="selectGooglePlace(item,$index)"
+                                             placeholder="Bir Yer Arayın"
+                                             md-items="item in navStations.waypoint[$index].placeResult"
+                                             md-search-text-change="loadGooglePlaces(navStations.waypoint[$index].filterText,$index)"
+                                             md-item-text="item.text"
+                                             md-no-cache="true"
+                                             md-search-text="navStations.waypoint[$index].filterText">
+                                <md-item-template>{{ item.text }}</md-item-template>
+                                <md-not-found>No items.</md-not-found>
+                            </md-autocomplete>
+
                         </div>
                         <div flex="15">
-
-                            <md-button  ng-click="addCityToNavigation(addCityName)" id="rotaPlusIcon" md-ink-ripple
-                                        md-whiteframe="2" class="md-fab md-mini">
-                                <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img"
+                            <md-button ng-click="removeCityToNavigation($index)"  md-ink-ripple>
+                                <md-icon class="mat-icon md-warn material-icons accordion-icons ng-binding" role="img"
                                          aria-hidden="true">
-                                    add
+                                    delete_forever
                                 </md-icon>
                             </md-button>
 
+                            <!--<md-button style="margin: 0; margin-left: 10px;" ng-click="addLocationToNavigation($index)" md-ink-ripple>
+                                <md-icon class="mat-icon md-primary material-icons accordion-icons ng-binding" role="img" aria-hidden="true">location_searching</md-icon>
+                            </md-button>
+
+                            <md-button style="margin: 0;" ng-click="addMarkerToNavigation($index)" md-ink-ripple>
+                                <md-icon class="mat-icon md-primary material-icons accordion-icons ng-binding" role="img" aria-hidden="true">add_location</md-icon>
+                            </md-button>-->
                         </div>
-
-                    </md-list-item>-->
-
-
-                    <!--<md-list-item style="margin-left: 10px;" flex layout="row">
-
-                                <div flex="20">A</div>
-
-                                <div flex="65">
-                                    <md-input-container layout-fill class="certainly-full">
-
-                                        <input ng-keypress="$event.keyCode==13 ? addCityToNavigation(addCityName):null " type="text" ng-model="addCityName">
-                                    </md-input-container>
-                                </div>
-
-                                <div flex="15">
-
-                                    <md-button  ng-click="addCityToNavigation(addCityName)" id="rotaPlusIcon" md-ink-ripple
-                                               md-whiteframe="2" class="md-fab md-mini">
-                                        <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img"
-                                                 aria-hidden="true">
-                                            add
-                                        </md-icon>
-                                    </md-button>
-
-                                </div>
-
-                            </md-list-item>-->
-
-
-                            <md-list-item layout-align="center center"  style="border:1px solid #fafafa; margin-left: 10px;"  flex layout="row"
-                                          ng-repeat="data in arrayPointCity">
-
-                                <div flex="20">{{$index+1}}</div>
-
-                                <div flex="65">
-                                    <md-input-container  class="certainly-full breakAll">
-                                        {{data}}
-                                    </md-input-container>
-                                </div>
-                                <div flex="15">
-                                    <md-button ng-click="removeCityToNavigation($index)"  md-ink-ripple>
-                                        <md-icon class="mat-icon md-warn material-icons accordion-icons ng-binding" role="img"
-                                                 aria-hidden="true">
-                                            delete_forever
-                                        </md-icon>
-                                    </md-button>
-                                    <md-divider></md-divider>
-                                </div>
                     </md-list-item>
 
                     <md-list-item  flex layout="row">
-
                         <div flex="10">B</div>
-
-                        <div flex="90">
-                            <md-input-container layout-fill class="certainly-full">
-
-                                <input type="text" ng-model="Bcity">
-                            </md-input-container>
+                        <div flex="80">
+                            <md-autocomplete ng-click="activeInput('finish');" style="width:100%;"
+                                             md-selected-item-change="selectGooglePlace(item,'finish')"
+                                             placeholder="Bir Yer Arayın"
+                                             md-items="item in navStations.finish.placeResult"
+                                             md-search-text-change="loadGooglePlaces(navStations.finish.filterText,'finish')"
+                                             md-item-text="item.text"
+                                             md-no-cache="true"
+                                             md-search-text="navStations.finish.filterText">
+                                <md-item-template>{{ item.text }}</md-item-template>
+                                <md-not-found>No items.</md-not-found>
+                            </md-autocomplete>
                         </div>
-
                     </md-list-item>
 
 
@@ -134,19 +105,21 @@
             <md-dialog-actions layout="row">
                 <span flex></span>
 
-                <md-button class="md-raised searchButton md-button md-ink-ripple md-button">
+                <md-button ng-click="showRoads();" class="md-raised searchButton md-button md-ink-ripple md-button">
                     <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">
                         search
                     </md-icon>
-                    {{lang.general.search}}
+                    Rotayı Göster
                 </md-button>
 
-                <md-button ng-click="moreRouter=!moreRouter"
-                           class="md-raised  md-warn md-button md-ink-ripple md-button">
-                    <md-icon ng-style="moreRouter ? {'transform': 'rotate(180deg)'}:{'transform': 'rotate(0deg)'}"
-                             class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">
-                        expand_more
-                    </md-icon>
+
+
+                <md-button ng-click="addLocationToNavigation()" class="md-raised  md-warn md-button md-ink-ripple md-button">
+                    <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">location_searching</md-icon>
+                </md-button>
+
+                <md-button ng-click="addMarkerToNavigation()" class="md-raised  md-warn md-button md-ink-ripple md-button">
+                    <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">add_location</md-icon>
                 </md-button>
 
                 <md-button class="md-raised closeButton md-button md-ink-ripple md-button" ng-click="cancel()"
