@@ -10,7 +10,7 @@ app.service("$getlang", function ($rootScope,$http) {
     })();
 
     $lang="tr";
-    $rootScope.browserLangugae = $lang;
+    $rootScope.browserLanguage = $lang;
 
     var $url = "scripts/languages/lang-" + $lang + ".json";
     return $http.get($url).then(function (a) {

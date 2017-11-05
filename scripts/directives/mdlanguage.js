@@ -5,11 +5,11 @@ app.directive("mdLanguage", function ($rootScope, $changelang, $timeout, $accord
         template: ' <md-button ng-if="activeLanguage" aria-label="Google Hangout" class="md-fab md-raised md-mini"><md-tooltip md-direction="left">{{lang.general.languages}}</md-tooltip>{{langFlag}}</md-button>',
         link: function ($scope, $el, $attr) {
 
-            var $supportLang = ["en", $rootScope.browserLangugae];
+            var $supportLang = ["en", $rootScope.browserLanguage];
             $scope.langFlag = $supportLang[0];
             var indis = true;
             $scope.activeLanguage = true;
-            if ($rootScope.browserLangugae == "en") {
+            if ($rootScope.browserLanguage == "en") {
                 $scope.activeLanguage = false;
             }
             $el.on("click", function () {

@@ -45,13 +45,8 @@ app.service("$googleMaps", function ($rootScope) {
 
     };
 
-    this.autocomplete = function (text,type) {
-        var options = {input:text};
-      /*  var typem = [];
-        if(type!==false){
-            options["type"]=[type];
-        }*/
-
+    this.autocomplete = function (text) {
+        var options = {input:text,language:$rootScope.browserLanguage};
         var service = new google.maps.places.AutocompleteService();
         service.getQueryPredictions(options, this.callBackPlaces);
     };
@@ -89,6 +84,31 @@ app.service("$googleMaps", function ($rootScope) {
             tis.status=true;
             tis.result=places;
         }
+    };
+
+    this.directionsService = new google.maps.DirectionsService;
+
+    this.directionResult = false;
+
+    this.directionsShow = function (start,finish,waypoint,type) {
+        type =type || 'DRIVING';
+        this.directionsService.route({
+            origin: start,
+            destination: finish,
+            waypoints: waypoint,
+            optimizeWaypoints: true,
+            travelMode: type
+        }, function(response, status) {
+            debugger;
+            var a = response;
+            if(status=="OK"){
+                tis.directionResult = response;
+            }else{
+                tis.directionResult = false;
+            }
+
+
+        });
     };
 
     return this;
