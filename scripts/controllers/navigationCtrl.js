@@ -333,4 +333,17 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
     }
 
 
+
+    $scope.cancel = function () {
+        $mdToast.hide();
+        $timeout(function () {
+            angular.element(document.querySelector("#menus")).triggerHandler("click");
+        }, 10);
+
+
+    };
+
+    /*araya şehir ekleme son*/
+
+
 });
