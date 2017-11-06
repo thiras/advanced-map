@@ -1,4 +1,4 @@
-app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$googleMaps,$leafletFonk,$timeout,$timeout,$interval) {
+app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$googleMaps,$leafletFonk,$timeout,$timeout,$interval,$mdToast) {
 
     $scope.feature = {
         start:false,
