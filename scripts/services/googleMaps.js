@@ -96,10 +96,11 @@ app.service("$googleMaps", function ($rootScope) {
             origin: start,
             destination: finish,
             waypoints: waypoint,
+            language:"tr",
+            unitSystem:google.maps.UnitSystem.METRIC,
             optimizeWaypoints: true,
             travelMode: type
         }, function(response, status) {
-            debugger;
             var a = response;
             if(status=="OK"){
                 tis.directionResult = response;
