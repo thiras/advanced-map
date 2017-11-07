@@ -1,11 +1,30 @@
-app.service("$mylocation", function ($rootScope) {
+app.service("$mylocation", function ($rootScope,$interval,$window) {
     var tis = this;
     this.location = false;
     this.feature = false;
     this.position = false;
     this.options = {radius:500,loop:true,panto:false,flyto:true,show:true,time:1000};
-    this.loopInterval=false;
+    this.loopInterval=[];
+    this.zonePoint = false;
+    this.semiCircle = false;
     this.request = 0;
+    this.pathLine = [];
+    this.pathLineFeature = false;
+
+    this.semiCircleDraw = function (latlng,obj) {
+        if(this.semiCircle!==false){
+            this.semiCircle.remove();
+        }
+        this.semiCircle = L.semiCircleMarker(latlng, {
+            radius:obj.radius,
+            startAngle:obj.startAngle,
+            stopAngle:obj.stopAngle,
+            weight:obj.weight,
+            fillColor:obj.fillColor,
+            color:obj.color
+        });
+        return this.semiCircle;
+    };
 
     this.setOptions = function (options) {
       for(i in options){
@@ -24,17 +43,19 @@ app.service("$mylocation", function ($rootScope) {
     };
 
     this.findMyLocation = function (options) {
+        this.hiddenLocation();
+        this.pathLine=[];
         this.setOptions(options);
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(getPosition);
             if(this.options.loop !==null && this.options.loop==true){
-               this.loopInterval = setInterval(function () {
+               this.loopInterval[this.loopInterval.length] = $interval(function () {
                    if(tis.options.loop==true){
                        tis.loopLocation();
                    }
-               },this.options.time)
+               },this.options.time);
             }else{
-                if(this.loopInterval!==false){
+                if(this.loopInterval.length>0){
                     this.removeInterval();
                 }
             }
@@ -50,9 +71,24 @@ app.service("$mylocation", function ($rootScope) {
         return tis.getLocation();
     };
 
+    this.nearLineLimit=function(position) {
+        var now ={lat:position.coords.latitude,lng:position.coords.longitude};
+
+        if(this.pathLine.length>0){
+            var last = this.pathLine[this.pathLine.length-1];
+            var distance = $rootScope.leaflet.distance(last,now);
+            if(distance>5){
+                this.pathLine.push(now);
+            }
+        }else{
+            this.pathLine.push(now);
+        }
+    };
+
     function getPosition(position) {
         tis.position=position;
         tis.setLocation(position.coords.latitude,position.coords.longitude);
+        tis.nearLineLimit(position);
     }
     
     this.setLocation = function (lat,lng) {
@@ -64,16 +100,28 @@ app.service("$mylocation", function ($rootScope) {
     };
 
     this.hiddenLocation=function(){
-        this.feature.remove();
-        this.feature=false;
-        this.removeInterval();
-        this.options.loop=false;
-
+        if(this.feature!==false){
+            this.feature.remove();
+            this.feature=false;
+            this.zonePoint.remove();
+            this.zonePoint=false;
+            this.semiCircle.remove();
+            this.semiCircle=false;
+            this.removeInterval();
+            this.options.loop=false;
+        }
+        if(this.pathLineFeature!==false){
+            this.pathLineFeature.remove();
+            this.pathLineFeature=false;
+            this.pathLine=[];
+        }
     };
 
     this.removeInterval = function () {
-        window.clearInterval(this.loopInterval);
-        this.loopInterval=false;
+        for(i in this.loopInterval){
+            $interval.cancel(this.loopInterval[i]);
+        }
+        this.loopInterval=[];
     };
 
     this.showLocation = function () {
@@ -82,15 +130,28 @@ app.service("$mylocation", function ($rootScope) {
         this.request++;
         if(this.feature==false){
             this.feature = L.circle(latlng,{radius:20});
+            this.zonePoint = L.circleMarker(latlng,{radius:3,color:this.options.color,fillOpacity:1});
+            this.semiCircle=this.semiCircleDraw(latlng, {
+                radius:50,
+                startAngle: -60,
+                stopAngle: 60,
+                weight:2,
+                fillColor:this.options.color,
+                color:"#999"
+            });
             this.feature.addTo($rootScope.leaflet);
+            this.zonePoint.addTo($rootScope.leaflet);
+            this.semiCircle.addTo($rootScope.leaflet);
             if(this.options.flyto==true){
-                $rootScope.leaflet.flyTo(latlng,16);
+                $rootScope.leaflet.setView(latlng,16);
             }
         }else{
             this.feature.setLatLng(latlng);
+            this.zonePoint.setLatLng(latlng);
+            this.semiCircle.setLatLng(latlng);
             this.options.flyto=false;
-            if(this.options.radius!==false){
-                this.feature.setRadius(this.options.radius);
+            if(this.pathLine.length>1 && this.options.line==true){
+                this.showPathLine();
             }
         }
         if(this.feature!==false && this.options.panto==true && this.options.flyto == false && this.request>3){
@@ -98,6 +159,20 @@ app.service("$mylocation", function ($rootScope) {
                 $rootScope.leaflet.panTo(latlng);
             }
         }
+
+        if(this.options.color!==null){
+            this.feature.setStyle({color:this.options.color});
+            this.zonePoint.setStyle({color:this.options.color});
+        }
+
+        if(this.options.radius!==null){
+            if(this.options.radius=="auto"){
+                this.feature.setRadius(parseInt(this.position.coords.accuracy));
+            }else{
+                this.feature.setRadius(parseInt(this.options.radius));
+            }
+        }
+
     };
 
     this.getLocation = function() {
@@ -107,9 +182,43 @@ app.service("$mylocation", function ($rootScope) {
     this.loopLocation = function () {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(getPosition);
-
         }
     };
+
+    this.showPathLine = function () {
+        if(this.pathLineFeature==false){
+            this.pathLineFeature = L.polyline(this.pathLine, {color: this.options.color,weight:5}).addTo($rootScope.leaflet);
+        }else{
+            this.pathLineFeature.setLatLngs(this.pathLine);
+        }
+
+    };
+
+    window.addEventListener('deviceorientation', function(e) {
+        debugger;
+
+        var tiltLR = e.gamma;
+        var tiltFB = e.beta;
+        var dir = e.alpha;
+        if(dir==null){dir=0;}
+        var aci = parseInt(dir);
+
+        aci=360-aci+180;
+        var start = aci-60;
+        var finish = start+120;
+
+        tis.semiCircle=tis.semiCircleDraw(tis.location, {
+            radius:50,
+            startAngle: start,
+            stopAngle: finish,
+            weight:2,
+            fillColor:tis.options.color,
+            color:"#999"
+        });
+        tis.semiCircle.addTo($rootScope.leaflet);
+
+
+    });
     
     return this;
 });
