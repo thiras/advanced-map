@@ -212,7 +212,7 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
             stopAngle: finish,
             weight:2,
             fillColor:tis.options.color,
-            color:"#999"
+            color:"#f00"
         });
         tis.semiCircle.addTo($rootScope.leaflet);
 
