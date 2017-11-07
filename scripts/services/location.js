@@ -72,7 +72,6 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
     };
 
     this.nearLineLimit=function(position) {
-        debugger;
         var now ={lat:position.coords.latitude,lng:position.coords.longitude};
 
         if(this.pathLine.length>0){
@@ -167,7 +166,6 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
         }
 
         if(this.options.radius!==null){
-            debugger;
             if(this.options.radius=="auto"){
                 this.feature.setRadius(parseInt(this.position.coords.accuracy));
             }else{
@@ -197,6 +195,7 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
     };
 
     window.addEventListener('deviceorientation', function(e) {
+        debugger;
 
         var tiltLR = e.gamma;
         var tiltFB = e.beta;
