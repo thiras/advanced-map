@@ -133,8 +133,8 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
             this.zonePoint = L.circleMarker(latlng,{radius:3,color:this.options.color,fillOpacity:1});
             this.semiCircle=this.semiCircleDraw(latlng, {
                 radius:50,
-                startAngle: 45,
-                stopAngle: 135,
+                startAngle: -60,
+                stopAngle: 60,
                 weight:2,
                 fillColor:this.options.color,
                 color:"#999"
@@ -203,13 +203,17 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
         if(dir==null){dir=0;}
         var aci = parseInt(dir);
         aci=aci%360;
+        aci=-1*aci;
         var start = aci-60;
-        var finish = aci+60;
+        if(start<0){
+
+        }
+        var finish = start+120;
 
         tis.semiCircle=tis.semiCircleDraw(tis.location, {
             radius:50,
-            startAngle: finish,
-            stopAngle: start,
+            startAngle: start,
+            stopAngle: finish,
             weight:2,
             fillColor:tis.options.color,
             color:"#999"
