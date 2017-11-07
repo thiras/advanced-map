@@ -194,21 +194,20 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
 
     };
 
-    alert("lokasyon başlıyor");
-
     window.addEventListener('deviceorientation', function(e) {
         debugger;
 
         var tiltLR = e.gamma;
         var tiltFB = e.beta;
         var dir = e.alpha;
+        if(dir==null){dir=0;}
         var aci = parseInt(dir);
         aci=aci%360;
         var start = aci-60;
         var finish = aci+60;
         alert(aci);
 
-        tis.semiCircle=tis.semiCircleDraw(latlng, {
+        tis.semiCircle=tis.semiCircleDraw(tis.location, {
             radius:50,
             startAngle: start,
             stopAngle: finish,
