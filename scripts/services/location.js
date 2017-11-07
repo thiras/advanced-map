@@ -203,7 +203,7 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
         if(dir==null){dir=0;}
         var aci = parseInt(dir);
 
-        aci=360-aci;
+        aci=360-aci+180;
         var start = aci-60;
         var finish = start+120;
         angular.element(document.getElementById("input_0")).val(aci+' , '+start+' , '+finish);
