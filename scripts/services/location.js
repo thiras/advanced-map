@@ -205,6 +205,7 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
         aci=aci%360;
         var start = aci-60;
         var finish = aci+60;
+        alert(aci);
 
         tis.semiCircle=tis.semiCircleDraw(latlng, {
             radius:50,
