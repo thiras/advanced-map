@@ -953,6 +953,12 @@ iframe {
   margin-left: -1.5em; }
 
 /* deneme sasslar için projede yoktur */
+.mdlocation {
+  position: fixed;
+  right: 1em;
+  bottom: 1em;
+  z-index: 21; }
+
 /*
 
  */
