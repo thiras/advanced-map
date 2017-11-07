@@ -206,7 +206,6 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
         aci=360-aci+180;
         var start = aci-60;
         var finish = start+120;
-        angular.element(document.getElementById("input_0")).val(aci+' , '+start+' , '+finish);
 
         tis.semiCircle=tis.semiCircleDraw(tis.location, {
             radius:50,
@@ -214,7 +213,7 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
             stopAngle: finish,
             weight:2,
             fillColor:tis.options.color,
-            color:"#f00"
+            color:"#999"
         });
         tis.semiCircle.addTo($rootScope.leaflet);
 
