@@ -203,11 +203,9 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
         if(dir==null){dir=0;}
         var aci = parseInt(dir);
         aci=aci%360;
-        aci=-1*aci;
+        aci=360-aci;
         var start = aci-60;
-        if(start<0){
-
-        }
+        start=-1*start;
         var finish = start+120;
 
         tis.semiCircle=tis.semiCircleDraw(tis.location, {
