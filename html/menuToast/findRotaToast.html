@@ -19,9 +19,9 @@
             <md-dialog-content layout-fill>
                 <md-list>
                     <md-list-item style="margin-left: 15px;" flex layout="row">
-                        <div flex="10">A</div>
-                        <div flex="75">
-                            <md-autocomplete ng-click="activeInput('start');" style="width:100%;"
+                        <div flex="10" ng-click="activeInput('start');"><span ng-style="activeInputName === 'start' ? { 'font-weight':'bold', color:'#f44336' } : { 'font-weight':'normal', color:'#2798f3' }">A</span></div>
+                        <div flex="75" ng-click="activeInput('start');">
+                            <md-autocomplete  style="width:100%;"
                                              md-selected-item-change="selectGooglePlace(item,'start')"
                                              placeholder="Bir Yer Arayın"
                                              md-items="item in navStations.start.placeResult"
@@ -43,13 +43,13 @@
 
                     <md-list-item layout-align="center center" style="margin-left: 30px;" flex
                                   layout="row"
-                                  ng-repeat="data in arrayPointCity">
+                                  ng-repeat="data in navStations.waypoint">
 
-                        <div flex="10">{{$index+1}}</div>
+                        <div flex="10" ng-click="activeInput($index);"><span ng-style="activeInputName === $index ? { 'font-weight':'bold', color:'#f44336' } : { 'font-weight':'normal', color:'#2798f3' }">{{$index+1}}</span></div>
 
-                        <div flex="75">
+                        <div flex="75" ng-click="activeInput($index);">
 
-                            <md-autocomplete ng-click="activeInput($index);" style="width:100%;"
+                            <md-autocomplete  style="width:100%;"
                                              md-selected-item-change="selectGooglePlace(item,$index)"
                                              placeholder="Bir Yer Arayın"
                                              md-items="item in navStations.waypoint[$index].placeResult"
@@ -81,9 +81,9 @@
                     </md-list-item>
 
                     <md-list-item  flex layout="row">
-                        <div flex="10">B</div>
-                        <div flex="80">
-                            <md-autocomplete ng-click="activeInput('finish');" style="width:100%;"
+                        <div flex="10" ng-click="activeInput('finish');"><span ng-style="activeInputName === 'finish' ? { 'font-weight':'bold', color:'#f44336' } : { 'font-weight':'normal', color:'#2798f3' }">B</span></div>
+                        <div flex="80" ng-click="activeInput('finish');">
+                            <md-autocomplete  style="width:100%;"
                                              md-selected-item-change="selectGooglePlace(item,'finish')"
                                              placeholder="Bir Yer Arayın"
                                              md-items="item in navStations.finish.placeResult"
@@ -107,9 +107,9 @@
 
                 <md-button ng-click="showRoads();" class="md-raised searchButton md-button md-ink-ripple md-button">
                     <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">
-                        search
+                        navigation
                     </md-icon>
-                    Rotayı Göster
+                    Navigasyonu Başlat
                 </md-button>
 
 

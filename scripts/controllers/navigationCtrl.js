@@ -5,6 +5,44 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
         waypoint:[],
         finish:false
     };
+    $scope.removeAllFeature = function (durum) {
+        debugger;
+        if(durum=="start" || durum=="all"){
+            if($scope.feature.start!==false){
+                $scope.feature.start.remove();
+                $scope.feature.start = false;
+            }
+        }
+
+        if(durum=="finish" || durum=="all"){
+            if($scope.feature.finish!==false){
+                $scope.feature.finish.remove();
+                $scope.feature.finish = false;
+            }
+        }
+
+        if(durum=="waypoint" || durum=="all"){
+            if($scope.feature.waypoint.length>0){
+                for(i in $scope.feature.waypoint){
+                    if($scope.feature.waypoint[i]!==false){
+                        $scope.feature.waypoint[i].remove();
+                        $scope.feature.waypoint.splice(i,1);
+                    }
+                }
+                $scope.feature.waypoint=[];
+            }
+        }
+        if(durum!=="start" && durum!=="finish" && durum!=="waypoint"){
+            durum=parseInt(durum);
+            if($scope.feature.waypoint[durum]!==false){
+                $scope.feature.waypoint[durum].remove();
+                $scope.feature.waypoint.splice(durum,1);
+            }
+        }
+
+
+
+    };
 
     $scope.navStations = {
         start:{status:false,placeResult:[],filterText:""},
@@ -28,6 +66,8 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
         }
     };
 
+
+
     $scope.changeNavStations=function(bilgi,konum,filterText) {
         bilgi.placeResult=[filterText];
         bilgi.filterText=filterText.text;
@@ -48,6 +88,9 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
             $scope.navStations.waypoint[konum]=bilgi;
         }
         $scope.addMarker(konum,poss,"add");
+        if($scope.navStations.start.status==true && $scope.navStations.finish.status==true){
+            $scope.showRoads();
+        }
     };
 
 
@@ -60,23 +103,60 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
     };
 
 
-    $scope.selectGooglePlace = function (filterText,ind) {
+    $scope.selectGooglePlace = function (filterText,konum) {
 
         if(typeof filterText !=="undefined"){
             if(typeof filterText.value !=="undefined"){
                 // bir yer seçmiş ise girer
                 $googleMaps.findPlaceId(filterText.value);
                 $timeout(function () {
-                    $scope.changeNavStations($googleMaps.resultFindPlaceID,ind,filterText);
+                    $scope.changeNavStations($googleMaps.resultFindPlaceID,konum,filterText);
                 },500);
             }else{
-                //herangi bir şey yazmış ise girer
-                $googleMaps.autocomplete(filterText);
 
+                if(filterText!==""){
+                    //herangi bir şey yazmış ise girer
+                    $googleMaps.autocomplete(filterText);
+                }else{
+
+                    $scope.removePath();
+                    $scope.removeAllFeature(konum);
+                    $scope.emptyStation(konum);
+                    $googleMaps.directionResult=false;
+
+                    if($scope.navStations.start.status==true && $scope.navStations.finish.status==true){
+                        $scope.showRoads();
+                    }
+
+                }
             }
         }else{
             //herangi bir şey yazmamış ise girer
+
         }
+    };
+
+    $scope.emptyStation = function (konum,removing) {
+        if(konum=="start" || konum=="finish"){
+            if(konum=="start"){
+                $scope.navStations.start={};
+                $scope.navStations.start={status:false,placeResult:[{value:"",text:""}],filterText:""};
+            }
+            if(konum=="finish"){
+                $scope.navStations.finish={};
+                $scope.navStations.finish={status:false,placeResult:[{value:"",text:""}],filterText:""};
+            }
+        }else{
+            if(konum!=="finish" && konum!=="start" ){
+                konum=parseInt(konum);
+                $scope.navStations.waypoint[konum]={};
+                $scope.navStations.waypoint[konum]={status:false,placeResult:[{value:"",text:""}],filterText:""};
+
+            }
+        }
+
+
+
     };
 
 
@@ -87,8 +167,29 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
         $scope.feature.waypoint.push(false);
     };
 
-    $scope.removeCityToNavigation = function (i) {
-        $scope.arrayPointCity.splice(i, 1);
+    $scope.removeCityToNavigation = function (konum) {
+        var dizi = [];
+        konum=parseInt(konum);
+        var i2=0;
+
+
+        $scope.removePath();
+        $scope.removeAllFeature(konum);
+        $scope.emptyStation(konum);
+
+        for(i in $scope.navStations.waypoint){
+            i=parseInt(i);
+            if(i!==konum){
+                dizi[i2]=$scope.navStations.waypoint[i];
+                i2++;
+            }
+        }
+
+        $scope.navStations.waypoint=dizi;
+        $googleMaps.directionResult=false;
+        if($scope.navStations.start.status==true && $scope.navStations.finish.status==true){
+            $scope.showRoads();
+        }
 
     };
 
@@ -123,6 +224,7 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
     };
 
     $scope.addLocationToInput = function (loc,konum) {
+        if(konum!==false || konum!=="false"){
         var a = turf.round(loc.lat,6)+','+turf.round(loc.lng,6);
         var bilgi={};
         bilgi["placeResult"]=[{value:a,text:a}];
@@ -143,6 +245,17 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
             $scope.navStations.waypoint[konum]=bilgi;
         }
         $scope.addMarker(konum,loc,"add");
+            if($scope.navStations.start.status==true && $scope.navStations.finish.status==true){
+                $scope.showRoads();
+            }
+        }else{
+            $rootScope.$emit("message", {
+                status: "warning",
+                header: "Aktif Merkez Yok",
+                content: "Lütfen A-B ve ya varsa ara noktalarınız arasında bir yeri aktif hale getiriniz.",
+                time: "auto"
+            });
+        }
     };
 
     $scope.activeInputName = false;
@@ -175,9 +288,10 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
             };
             $rootScope.leaflet.pm.enableDraw('Marker', options);
             $rootScope.leaflet.on('pm:create', function(e) {
+
                 var latlng = e.layer._latlng;
                 $rootScope.leaflet.pm.disableDraw('Marker');
-                $scope.addLocationToInput(latlng,konum);
+                $scope.addLocationToInput(latlng,$scope.activeInputName);
                 e.layer.remove();
 
             });
@@ -194,6 +308,7 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
 
 
     $scope.addMarker=function (konum,pos,status) {
+
       if(konum == "start" || konum=="finish"){
           if($scope.feature[konum]==false){
               $scope.feature[konum]=L.marker(pos).addTo($rootScope.leaflet);
@@ -210,15 +325,15 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
       }else{
           konum=parseInt(konum);
           if($scope.feature.waypoint[konum]==false){
-              $scope.feature[konum]=L.marker(pos).addTo($rootScope.leaflet);
+              $scope.feature.waypoint[konum]=L.marker(pos).addTo($rootScope.leaflet);
               $rootScope.leaflet.panTo(pos);
           }else{
               if(status=="add"){
-                  $scope.feature[konum].setLatLng(pos);
+                  $scope.feature.waypoint[konum].setLatLng(pos);
                   $rootScope.leaflet.panTo(pos);
               }else{
-                  $scope.feature[konum].remove();
-                  $scope.feature[konum]=false;
+                  $scope.feature.waypoint[konum].remove();
+                  $scope.feature.waypoint[konum]=false;
               }
           }
       }
@@ -226,6 +341,7 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
 
     $scope.showRoadsInterval = [];
     $scope.showRoads = function () {
+        $googleMaps.directionResult=false;
         var a = $scope.navStations;
         var start = false;
         var finish = false;
@@ -259,9 +375,9 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
             $googleMaps.directionsShow(start,finish,waypoints,'DRIVING');
             $scope.showRoadsInterval[$scope.showRoadsInterval.length] = $interval(function () {
                 if($googleMaps.directionResult!==false){
-                    removeInterval($googleMaps.directionResult);
                     var rota = $googleMaps.directionResult.routes;
                     $scope.showRoadsView(rota);
+                    removeInterval($scope.showRoadsInterval);
                 }
             },100);
 
@@ -296,7 +412,19 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
         return dizi;
     }
 
+    $scope.path = [];
+
+    $scope.removePath = function () {
+        if($scope.path.length>0){
+            for(i in $scope.path){
+                $scope.path[i].remove();
+            }
+            $scope.path=[];
+        }
+    };
+
     $scope.showRoadsView = function (routing) {
+        $scope.removePath();
         var yol = routing[0];
         var legs = yol.legs;
         for(i in legs){
@@ -307,12 +435,17 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
             var end_address = leg.end_address;
             var steps = leg.steps;
             for(j in steps){
-                var step = steps[i];
+                var step = steps[j];
                 if(typeof step.lat_lngs !== "undefined"){
                     var latlngs = googleLineToLeaflet(step.lat_lngs);
-                    var yol = L.polyline(latlngs, {color: '#00b3fd',weight:8}).addTo($rootScope.leaflet);
+                    var aramesafe = step.distance.text;
+                    var arazaman = step.duration.text;
+                    var bilgi = step.instructions;
+                    var table = '<table class="table"><tr><th>Mesafe</th><td>'+aramesafe+'</td></tr><tr><th>Süre</th><td>'+arazaman+'</td></tr><tr><th>Talimat</th><td>'+bilgi+'</td></tr></table>';
+                    var yolpolyline = L.polyline(latlngs, {color: '#00b3fd',weight:8}).bindPopup(table).addTo($rootScope.leaflet);
+                    $scope.path.push(yolpolyline);
                 }else{
-                    debugger;
+
                     var a = step;
                 }
             }
