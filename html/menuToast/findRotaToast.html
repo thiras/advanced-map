@@ -136,6 +136,24 @@
                 </md-list>
             </md-dialog-content>
 
+
+            <md-dialog-content ng-if="way.active" layout-fill>
+                <md-list>
+                    <md-list-item>
+                        <div flex="30">Mesafe</div>
+                        <div flex="30">Zaman</div>
+                        <div flex="40">Yöntem</div>
+                    </md-list-item>
+                </md-list>
+                <md-list>
+                    <md-list-item>
+                        <div flex="30">{{way.distance}}</div>
+                        <div flex="30">{{way.duration}}</div>
+                        <div flex="40">{{way.travelMode}}</div>
+                    </md-list-item>
+                </md-list>
+            </md-dialog-content>
+
         </form>
     </div>
 

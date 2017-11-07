@@ -312,11 +312,11 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
       if(konum == "start" || konum=="finish"){
           if($scope.feature[konum]==false){
               $scope.feature[konum]=L.marker(pos).addTo($rootScope.leaflet);
-              $rootScope.leaflet.panTo(pos);
+              //$rootScope.leaflet.panTo(pos);
           }else{
               if(status=="add"){
                   $scope.feature[konum].setLatLng(pos);
-                  $rootScope.leaflet.panTo(pos);
+                  //$rootScope.leaflet.panTo(pos);
               }else{
                   $scope.feature[konum].remove();
                   $scope.feature[konum]=false;
@@ -326,11 +326,11 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
           konum=parseInt(konum);
           if($scope.feature.waypoint[konum]==false){
               $scope.feature.waypoint[konum]=L.marker(pos).addTo($rootScope.leaflet);
-              $rootScope.leaflet.panTo(pos);
+              //$rootScope.leaflet.panTo(pos);
           }else{
               if(status=="add"){
                   $scope.feature.waypoint[konum].setLatLng(pos);
-                  $rootScope.leaflet.panTo(pos);
+                  //$rootScope.leaflet.panTo(pos);
               }else{
                   $scope.feature.waypoint[konum].remove();
                   $scope.feature.waypoint[konum]=false;
@@ -423,10 +423,17 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
         }
     };
 
+    $scope.way = {active:false,distance:0,duration:0,travelMode:"DRIVING"};
+
     $scope.showRoadsView = function (routing) {
+        debugger;
         $scope.removePath();
         var yol = routing[0];
         var legs = yol.legs;
+        var corner1 = L.latLng(yol.bounds.f.b,yol.bounds.b.b);
+        var corner2 = L.latLng(yol.bounds.f.f,yol.bounds.b.f);
+        var bounds = L.latLngBounds(corner1, corner2);
+
         for(i in legs){
             var leg = legs[i];
             var distance = leg.distance.text;
@@ -434,9 +441,13 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
             var start_address = leg.start_address;
             var end_address = leg.end_address;
             var steps = leg.steps;
+            if(legs.length){
+                $scope.way = {active:true,distance:distance,duration:duration,travelMode:"DRIVING"};
+            }
             for(j in steps){
                 var step = steps[j];
                 if(typeof step.lat_lngs !== "undefined"){
+
                     var latlngs = googleLineToLeaflet(step.lat_lngs);
                     var aramesafe = step.distance.text;
                     var arazaman = step.duration.text;
@@ -444,12 +455,14 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
                     var table = '<table class="table"><tr><th>Mesafe</th><td>'+aramesafe+'</td></tr><tr><th>Süre</th><td>'+arazaman+'</td></tr><tr><th>Talimat</th><td>'+bilgi+'</td></tr></table>';
                     var yolpolyline = L.polyline(latlngs, {color: '#00b3fd',weight:8}).bindPopup(table).addTo($rootScope.leaflet);
                     $scope.path.push(yolpolyline);
+
                 }else{
 
                     var a = step;
                 }
             }
         }
+        $rootScope.leaflet.flyToBounds(bounds);
 
     };
 
