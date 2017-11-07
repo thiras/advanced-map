@@ -194,6 +194,8 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
 
     };
 
+    alert("lokasyon başlıyor");
+
     window.addEventListener('deviceorientation', function(e) {
         debugger;
 
