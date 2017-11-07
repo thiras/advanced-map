@@ -196,7 +196,7 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
 
     };
 
-    $window.addEventListener('deviceorientation', function(e) {
+    window.addEventListener('deviceorientation', function(e) {
 
         var tiltLR = e.gamma;
         var tiltFB = e.beta;
