@@ -208,8 +208,8 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
 
         tis.semiCircle=tis.semiCircleDraw(tis.location, {
             radius:50,
-            startAngle: start,
-            stopAngle: finish,
+            startAngle: finish,
+            stopAngle: start,
             weight:2,
             fillColor:tis.options.color,
             color:"#999"
