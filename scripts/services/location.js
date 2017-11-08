@@ -194,31 +194,35 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
 
     };
 
-    window.addEventListener('deviceorientation', function(e) {
-        debugger;
+    if($window.DeviceOrientationEvent){
 
-        var tiltLR = e.gamma;
-        var tiltFB = e.beta;
-        var dir = e.alpha;
-        if(dir==null){dir=0;}
-        var aci = parseInt(dir);
+        window.addEventListener('deviceorientation', function(e) {
+            var tiltLR = e.gamma;
+            var tiltFB = e.beta;
+            var dir = e.alpha;
+            if(dir==null){dir=0;}
+            var aci = parseInt(dir);
 
-        aci=360-aci+180;
-        var start = aci-60;
-        var finish = start+120;
+            aci=360-aci+180;
+            var start = aci-60;
+            var finish = start+120;
 
-        tis.semiCircle=tis.semiCircleDraw(tis.location, {
-            radius:50,
-            startAngle: start,
-            stopAngle: finish,
-            weight:2,
-            fillColor:tis.options.color,
-            color:"#999"
+            tis.semiCircle=tis.semiCircleDraw(tis.location, {
+                radius:50,
+                startAngle: start,
+                stopAngle: finish,
+                weight:2,
+                fillColor:tis.options.color,
+                color:"#999"
+            });
+            tis.semiCircle.addTo($rootScope.leaflet);
+
+
         });
-        tis.semiCircle.addTo($rootScope.leaflet);
+
+    }
 
 
-    });
     
     return this;
 });
