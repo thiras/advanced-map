@@ -75,24 +75,29 @@ $md-iconBGColorHover: $clouds;
 }
 
 #searchbox {
-  top: 8px;
-  left: 8px;
+  top: 1em;
+  left: 1em;
   position: fixed;
   z-index: 60;
   overflow: hidden;
   padding:.2em;
   padding-left: 0;
   background: #ffffff;
+  border-radius:3px;
+
 
 
   md-icon {
+
+
     cursor: pointer;
     text-align: center;
     background: $white !important;
     color: $midnightblue;
     border: 0 !important;
     outline: 0 !important;
-    height: $searchTextHeight !important;
+    height:35px !important;
+    margin-top:2.5px;
     border-left: 1px solid $clouds !important;
     transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
     &:hover {
@@ -101,6 +106,11 @@ $md-iconBGColorHover: $clouds;
 
     }
 
+    &:nth-child(1){
+
+      margin-left: 2.5px;
+      border-left: 0 !important;
+    }
 
     md-menu-bar {
 
@@ -110,7 +120,7 @@ $md-iconBGColorHover: $clouds;
 
   md-input-container {
 
-    height: 30px !important;
+    height: $searchTextHeight !important;
     display: inline-block;
     padding: 0 !important;
     margin: 0 !important;
@@ -128,7 +138,7 @@ i {
 
   line-height: $searchTextHeight;
   position: relative;
-  color: $midnightblue;
+  color: #757575;
 }
 
 left-menu {
