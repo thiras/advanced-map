@@ -1,10 +1,22 @@
-app.controller("navbar", function ($scope, $googleMaps,$accordion, $timeout, $mdDialog, $rootScope, $mdToast, $mdSidenav, $sahtejson, $leafletFonk,$markers) {
+app.controller("navbar", function ($scope, $googleMaps, $accordion, $timeout, $mdDialog, $rootScope, $mdToast, $mdSidenav, $sahtejson, $leafletFonk, $markers, $window) {
 
-    $scope.menuJSON =$accordion.json;
+    $scope.menuJSON = $accordion.json;
 
     $rootScope.$on("updateAcordion", function (e, a) {
         $scope.menuJSON = a;
     });
+
+
+    $scope.optimizeHeight = function () {
+
+        $timeout(function () {
+            let parnt = document.querySelector(".md-toast-content");
+            let resHeight = $window.getComputedStyle(parnt, null).getPropertyValue("height");
+            document.querySelector("md-toast").style.height = resHeight;
+        },100)
+    };
+
+
     /*  menu acma ayar bas*/
     $scope.toggleLeft = buildToggler('left');
     $scope.toggleRight = buildToggler('right');
@@ -60,8 +72,8 @@ app.controller("navbar", function ($scope, $googleMaps,$accordion, $timeout, $md
         var boylam = 26.6342630982399;
         var enlem = 38.31461828182103;
         var latlng = L.latLng(enlem, boylam);
-        var icon  = $markers.getMarker("government",true);
-        var lokasyon = L.marker(latlng,{icon:icon}).bindPopup("Gülbahçe Mahallesi, İzmir Teknoloji Geliştirme Bölgesi İzmir Yüksek Teknoloji Enstitüsü, 35437 Urla/İzmir").addTo($rootScope.leaflet).openPopup();
+        var icon = $markers.getMarker("government", true);
+        var lokasyon = L.marker(latlng, {icon: icon}).bindPopup("Gülbahçe Mahallesi, İzmir Teknoloji Geliştirme Bölgesi İzmir Yüksek Teknoloji Enstitüsü, 35437 Urla/İzmir").addTo($rootScope.leaflet).openPopup();
         $rootScope.leaflet.flyTo(latlng, 16);
     };
 
@@ -85,6 +97,11 @@ app.controller("navbar", function ($scope, $googleMaps,$accordion, $timeout, $md
             controller: 'menuCtrl',
             templateUrl: 'html/menuToast/findParcellToast.html',
         });
+
+        $scope.optimizeHeight();
+        /*heighti içeriğe göre ayarlar mdToastı yeniden boyutlandırır*/
+
+
     };
     $scope.findParcelWithLocation = function () {
         $rootScope.$emit("closeNavbar", "closeNavbar");
@@ -108,13 +125,12 @@ app.controller("navbar", function ($scope, $googleMaps,$accordion, $timeout, $md
     $scope.findTaxiAtLocation = function () {
         $rootScope.$emit("closeNavbar", "closeNavbar");
         var boylam = 26.64590;
-        var enlem  = 38.32288;
+        var enlem = 38.32288;
         var latlng = L.latLng(enlem, boylam);
-        var icon  = $markers.getMarker("taxi",{});
-        var lokasyon = L.marker(latlng,{icon:icon}).bindPopup("Çiçek Taksi<br>Tel : 0232 233 34 98").addTo($rootScope.leaflet).openPopup();
+        var icon = $markers.getMarker("taxi", {});
+        var lokasyon = L.marker(latlng, {icon: icon}).bindPopup("Çiçek Taksi<br>Tel : 0232 233 34 98").addTo($rootScope.leaflet).openPopup();
         $rootScope.leaflet.flyTo(latlng, 16);
     };
-
 
 
     $scope.findPharmacyAtAdress = function () {
@@ -130,19 +146,19 @@ app.controller("navbar", function ($scope, $googleMaps,$accordion, $timeout, $md
 
         $rootScope.$emit("closeNavbar", "closeNavbar");
         var boylam = 26.642982;
-        var enlem  = 38.331103;
+        var enlem = 38.331103;
         var latlng = L.latLng(enlem, boylam);
-        var icon  = $markers.getMarker("pharmacy",true);
-        var lokasyon = L.marker(latlng,{icon:icon}).bindPopup("Yükselen Eczanesi<br>Tel : 0232 235 64 98").addTo($rootScope.leaflet).openPopup();
+        var icon = $markers.getMarker("pharmacy", true);
+        var lokasyon = L.marker(latlng, {icon: icon}).bindPopup("Yükselen Eczanesi<br>Tel : 0232 235 64 98").addTo($rootScope.leaflet).openPopup();
         $rootScope.leaflet.flyTo(latlng, 16);
     };
     $scope.findNearestSentinelPharmacy = function () {
         $rootScope.$emit("closeNavbar", "closeNavbar");
         var boylam = 26.65019;
-        var enlem  = 38.33670;
+        var enlem = 38.33670;
         var latlng = L.latLng(enlem, boylam);
-        var icon  = $markers.getMarker("pharmacyA",true);
-        var lokasyon = L.marker(latlng,{icon:icon}).bindPopup("Nida Eczanesi<br>Tel : 0232 233 34 98").addTo($rootScope.leaflet).openPopup();
+        var icon = $markers.getMarker("pharmacyA", true);
+        var lokasyon = L.marker(latlng, {icon: icon}).bindPopup("Nida Eczanesi<br>Tel : 0232 233 34 98").addTo($rootScope.leaflet).openPopup();
         $rootScope.leaflet.flyTo(latlng, 16);
     };
 
@@ -158,11 +174,6 @@ app.controller("navbar", function ($scope, $googleMaps,$accordion, $timeout, $md
         });
 
     }
-
-
-
-
-
 
 
     $scope.findBuildingLicence = function () {
@@ -245,10 +256,10 @@ app.controller("navbar", function ($scope, $googleMaps,$accordion, $timeout, $md
 
         $rootScope.$emit("closeNavbar", "closeNavbar");
         var boylam = 26.76466;
-        var enlem  = 38.32393;
+        var enlem = 38.32393;
         var latlng = L.latLng(enlem, boylam);
-        var icon  = $markers.getMarker("security",true);
-        var lokasyon = L.marker(latlng,{icon:icon}).bindPopup("Urla Emniyeti<br>Tel : 0232 233 34 98").addTo($rootScope.leaflet).openPopup();
+        var icon = $markers.getMarker("security", true);
+        var lokasyon = L.marker(latlng, {icon: icon}).bindPopup("Urla Emniyeti<br>Tel : 0232 233 34 98").addTo($rootScope.leaflet).openPopup();
         $rootScope.leaflet.flyTo(latlng, 16);
     };
 
@@ -256,10 +267,10 @@ app.controller("navbar", function ($scope, $googleMaps,$accordion, $timeout, $md
 
         $rootScope.$emit("closeNavbar", "closeNavbar");
         var boylam = 26.760292;
-        var enlem  = 38.32096;
+        var enlem = 38.32096;
         var latlng = L.latLng(enlem, boylam);
-        var icon  = $markers.getMarker("security",true);
-        var lokasyon = L.marker(latlng,{icon:icon}).bindPopup("Urla Nizamiyesi<br>Tel : 0232 233 34 98").addTo($rootScope.leaflet).openPopup();
+        var icon = $markers.getMarker("security", true);
+        var lokasyon = L.marker(latlng, {icon: icon}).bindPopup("Urla Nizamiyesi<br>Tel : 0232 233 34 98").addTo($rootScope.leaflet).openPopup();
         $rootScope.leaflet.flyTo(latlng, 16);
     };
 
@@ -282,23 +293,22 @@ app.controller("navbar", function ($scope, $googleMaps,$accordion, $timeout, $md
     $scope.findNearHospital = function () {
         $rootScope.$emit("closeNavbar", "closeNavbar");
         var boylam = 26.766986;
-        var enlem  = 38.32226;
+        var enlem = 38.32226;
         var latlng = L.latLng(enlem, boylam);
-        var icon  = $markers.getMarker("hospital",true);
-        var lokasyon = L.marker(latlng,{icon:icon}).bindPopup("Urla Hastanesi<br>Tel : 0232 233 34 98").addTo($rootScope.leaflet).openPopup();
+        var icon = $markers.getMarker("hospital", true);
+        var lokasyon = L.marker(latlng, {icon: icon}).bindPopup("Urla Hastanesi<br>Tel : 0232 233 34 98").addTo($rootScope.leaflet).openPopup();
         $rootScope.leaflet.flyTo(latlng, 16);
     };
 
     $scope.findNearPoliclinic = function () {
         $rootScope.$emit("closeNavbar", "closeNavbar");
         var boylam = 26.754283;
-        var enlem  = 38.323343;
+        var enlem = 38.323343;
         var latlng = L.latLng(enlem, boylam);
-        var icon  = $markers.getMarker("hospital",true);
-        var lokasyon = L.marker(latlng,{icon:icon}).bindPopup("Semt Polikliniği<br>Tel : 0232 233 34 98").addTo($rootScope.leaflet).openPopup();
+        var icon = $markers.getMarker("hospital", true);
+        var lokasyon = L.marker(latlng, {icon: icon}).bindPopup("Semt Polikliniği<br>Tel : 0232 233 34 98").addTo($rootScope.leaflet).openPopup();
         $rootScope.leaflet.flyTo(latlng, 16);
     };
-
 
 
     /* aile hekimi sorgula son prompt*/
@@ -377,7 +387,7 @@ app.controller("navbar", function ($scope, $googleMaps,$accordion, $timeout, $md
     };
 
 
-    $scope.openNavigationByAdress=function () {
+    $scope.openNavigationByAdress = function () {
 
         $rootScope.$emit("closeNavbar", "closeNavbar");
         $mdToast.show({

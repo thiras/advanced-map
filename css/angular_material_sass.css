@@ -742,6 +742,7 @@ label.radioLayers {
 
 md-toast {
   z-index: 15;
+  height: auto;
   width: 390px;
   display: inline-flex;
   max-height: 85vh;
@@ -785,7 +786,6 @@ md-toast#menuToasts, md-toast#findProprietary, md-toast#fndBldLsToast, md-toast#
   width: 100%;
   padding: 0;
   margin: 0;
-  height: 100%;
   z-index: 20; }
   md-toast#menuToasts .md-toast-content, md-toast#findProprietary .md-toast-content, md-toast#fndBldLsToast .md-toast-content, md-toast#calculatebymanuel .md-toast-content, md-toast#calculatearea .md-toast-content, md-toast#findInstByaddress .md-toast-content, md-toast#findSecByAddress .md-toast-content, md-toast#findMyDoctor .md-toast-content, md-toast#findbusandminibus .md-toast-content, md-toast#findTrainTram .md-toast-content, md-toast#findShipToast .md-toast-content, md-toast#aircrafttToast .md-toast-content {
     width: 400px;

@@ -40,7 +40,10 @@ app.controller("menuCtrl", function ($scope, $sahtejson, $rootScope, $mdToast, $
     $scope.locationActive = $rootScope.poi.google.locationActive || false;
     $rootScope.myLocation = {lat:0,lng:0};
 
+    /*mdToast set height*/
 
+
+    /*mdToast set height*/
 
     /* sağlık merkezileri için mdSelect adress yardımı ile*/
 
