@@ -101,14 +101,18 @@ $md-iconBGColorHover: $clouds;
     border-left: 1px solid $clouds !important;
     transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
     &:hover {
-      background-color: $md-iconBGColorHover !important;
+
+      i{
+
+        color:$midnightblue;
+      }
+      /*background-color: $md-iconBGColorHover !important;*/
 
 
     }
 
     &:nth-child(1){
-
-      margin-left: 2.5px;
+      margin-top:0;
       border-left: 0 !important;
     }
 

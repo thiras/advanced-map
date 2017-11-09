@@ -67,9 +67,11 @@
     border-left: 1px solid #ecf0f1 !important;
     transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1); }
     #searchbox md-icon:hover {
-      background-color: #ecf0f1 !important; }
+      /*background-color: $md-iconBGColorHover !important;*/ }
+      #searchbox md-icon:hover i {
+        color: #2c3e50; }
     #searchbox md-icon:nth-child(1) {
-      margin-left: 2.5px;
+      margin-top: 0;
       border-left: 0 !important; }
     #searchbox md-icon md-menu-bar {
       padding: 0; }
