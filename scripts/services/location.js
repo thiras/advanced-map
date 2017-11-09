@@ -199,41 +199,34 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
 
 
     window.addEventListener('deviceorientation', function(e) {
-        debugger;
-        if(tis.semiCircleActive==true){
 
-    if($window.DeviceOrientationEvent){
-
-        window.addEventListener('deviceorientation', function(e) {
-
+        if(tis.semiCircleActive==true) {
             var tiltLR = e.gamma;
             var tiltFB = e.beta;
             var dir = e.alpha;
-            if(dir==null){dir=0;}
+            if (dir == null) {
+                dir = 0;
+            }
             var aci = parseInt(dir);
 
-            aci=360-aci+180;
-            var start = aci-60;
-            var finish = start+120;
+            aci = 360 - aci + 180;
+            var start = aci - 60;
+            var finish = start + 120;
 
-            tis.semiCircle=tis.semiCircleDraw(tis.location, {
-                radius:50,
+            tis.semiCircle = tis.semiCircleDraw(tis.location, {
+                radius: 50,
                 startAngle: start,
                 stopAngle: finish,
-                weight:2,
-                fillColor:tis.options.color,
-                color:"#999"
+                weight: 2,
+                fillColor: tis.options.color,
+                color: "#999"
             });
             tis.semiCircle.addTo($rootScope.leaflet);
-
         }
-
-
-
 
         });
 
-    }
+
 
 
 

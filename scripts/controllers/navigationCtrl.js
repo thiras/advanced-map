@@ -426,7 +426,6 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
     $scope.way = {active:false,distance:0,duration:0,travelMode:"DRIVING"};
 
     $scope.showRoadsView = function (routing) {
-        debugger;
         $scope.removePath();
         var yol = routing[0];
         var legs = yol.legs;
