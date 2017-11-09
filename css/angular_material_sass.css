@@ -952,6 +952,12 @@ iframe {
     margin-top: 2px;
     color: #009688; }
 
+md-menu-bar md-menu > button:focus {
+  background: transparent; }
+
+md-menu-bar md-menu > button:active {
+  background: transparent; }
+
 #calculatebymanuel md-list {
   max-height: 65vh; }
 

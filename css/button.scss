@@ -21,3 +21,14 @@
     color:#009688;
   }
 }
+
+
+md-menu-bar md-menu > button:focus {
+
+  background:transparent;
+}
+
+md-menu-bar md-menu > button:active{
+
+  background: transparent;
+}
