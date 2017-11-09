@@ -25,7 +25,6 @@ app.factory("$leafletFonk",function ($rootScope,$fonks,$leftmenujson,$timeout,$w
     };
 
     this.createMap = function (lat, lng) {
-        debugger;
         $rootScope.L=L;
         $rootScope.leaflet = L.map('map', {zoomControl: false});
         $rootScope.leaflet.setView([lng, lat],7);
