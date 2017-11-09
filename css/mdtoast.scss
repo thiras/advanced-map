@@ -1,12 +1,11 @@
 md-toast {
-  display: flex;
   z-index: 15;
   height:100vh; /*sonradn oynama yapılacak*/
   width: 390px;
   display: inline-flex;
   max-height:85vh; /* max height verildi scrool olması için */
   overflow-y: auto;
-  background:#ffffff;
+  /*background:#EEEEEE;*/
   .md-toast-content {
     text-align: left;
     background: #ffffff;
@@ -63,7 +62,7 @@ md-toast#drawTool {
 md-toast#menuToasts {
 
   position: fixed;
-  top:58px;
+  top:70px;
   left:1em; /* 10px;*/
   max-width: 390px;
   width:100%;

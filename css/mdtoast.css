@@ -1,6 +1,5 @@
 @charset "UTF-8";
 md-toast {
-  display: flex;
   z-index: 15;
   height: 100vh;
   /*sonradn oynama yapılacak*/
@@ -9,7 +8,7 @@ md-toast {
   max-height: 85vh;
   /* max height verildi scrool olması için */
   overflow-y: auto;
-  background: #ffffff; }
+  /*background:#EEEEEE;*/ }
   md-toast .md-toast-content {
     text-align: left;
     background: #ffffff;
@@ -41,7 +40,7 @@ md-toast#drawTool .md-toast-content {
 
 md-toast#menuToasts, md-toast#findProprietary, md-toast#fndBldLsToast, md-toast#calculatebymanuel, md-toast#calculatearea, md-toast#findInstByaddress, md-toast#findSecByAddress, md-toast#findMyDoctor, md-toast#findbusandminibus, md-toast#findTrainTram, md-toast#findShipToast, md-toast#aircrafttToast {
   position: fixed;
-  top: 58px;
+  top: 70px;
   left: 1em;
   /* 10px;*/
   max-width: 390px;
