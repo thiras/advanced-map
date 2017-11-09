@@ -1,12 +1,12 @@
 md-toast {
-
-
+  display: flex;
   z-index: 15;
-  height:auto;
+  height:100vh; /*sonradn oynama yapılacak*/
   width: 390px;
   display: inline-flex;
   max-height:85vh; /* max height verildi scrool olması için */
   overflow-y: auto;
+  background:#ffffff;
   .md-toast-content {
     text-align: left;
     background: #ffffff;
