@@ -554,28 +554,10 @@ all-fab-dials {
   bottom: 0;
   left: 5em; }
 
-@media screen and (max-width: 360px) {
-  #searchbox {
-    left: 2px;
-    width: 98%; }
-    #searchbox md-icon {
-      width: 15%;
-      min-width: 40px; }
-
-  md-input-container {
-    width: calc(90% - 40px) !important;
-    overflow: hidden; }
-
-  md-toast {
-    width: 95% !important;
-    left: 9px !important; } }
-@media screen and (max-width: 400px) {
-  md-toast {
-    width: 95% !important;
-    left: 6px !important; } }
 @media screen and (max-width: 600px) {
   #searchbox {
-    width: calc(100% - 1em); }
+    left: 2.5%;
+    width: 95%; }
     #searchbox md-icon {
       width: 50px; }
     #searchbox md-input-container {
@@ -589,6 +571,25 @@ all-fab-dials {
     padding: 0;
     height: 25px !important;
     width: 35px !important; } }
+@media screen and (max-width: 400px) {
+  md-toast {
+    width: 95% !important;
+    left: 6px !important; } }
+@media screen and (max-width: 360px) {
+  #searchbox {
+    left: 2.5%;
+    width: 95%; }
+    #searchbox md-icon {
+      width: 15%;
+      min-width: 40px; }
+
+  md-input-container {
+    width: calc(90% - 40px);
+    overflow: hidden; }
+
+  md-toast {
+    width: 95% !important;
+    left: 9px !important; } }
 .certainly-full {
   width: 100% !important; }
 
@@ -967,8 +968,8 @@ md-menu-bar md-menu > button:active {
 /* deneme sasslar için projede yoktur */
 .mdlocation {
   position: fixed;
-  right: 1em;
-  bottom: 1em;
+  right: 0.25em;
+  bottom: 2em;
   z-index: 21; }
 
 /*
