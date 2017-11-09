@@ -11,19 +11,19 @@ app.directive("mdLocation",function ($mylocation) {
             $scope.num = 0;
             $scope.types = {
                 passive:{
-                    options : {loop:false,show:true,panto:false,flyto:true,line:false,color:"#999",radius:1},
+                    options : {loop:false,show:true,panto:false,flyto:true,line:false,color:"#999",radius:1,semiCircle:false},
                     icon:'location_disabled'
                 },
                 findme:{
-                    options : {loop:false,show:true,panto:false,flyto:true,line:false,color:"#2196f3",radius:30},
+                    options : {loop:false,show:true,panto:false,flyto:true,line:false,color:"#2196f3",radius:30,semiCircle:true},
                     icon:'my_location'
                 },
                 followme:{
-                    options : {loop:true,show:true,panto:true,flyto:true,line:false,color:"#8bc34a",radius:"auto"},
+                    options : {loop:true,show:true,panto:true,flyto:true,line:false,color:"#8bc34a",radius:"auto",semiCircle:true},
                     icon:"directions_walk"
                 },
                 trackme:{
-                    options : {loop:true,show:true,panto:true,flyto:true,line:true,color:"#ff9800",radius:"auto"},
+                    options : {loop:true,show:true,panto:true,flyto:true,line:true,color:"#ff9800",radius:"auto",semiCircle:true},
                     icon:"timeline"
                 }
             };

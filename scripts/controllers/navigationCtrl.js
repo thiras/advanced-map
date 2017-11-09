@@ -434,6 +434,7 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
         var bounds = L.latLngBounds(corner1, corner2);
 
         for(i in legs){
+            $scope.navPath.staus=true;
             var leg = legs[i];
             var distance = leg.distance.text;
             var duration = leg.duration.text;
@@ -453,6 +454,7 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
                     var bilgi = step.instructions;
                     var table = '<table class="table"><tr><th>Mesafe</th><td>'+aramesafe+'</td></tr><tr><th>Süre</th><td>'+arazaman+'</td></tr><tr><th>Talimat</th><td>'+bilgi+'</td></tr></table>';
                     var yolpolyline = L.polyline(latlngs, {color: '#00b3fd',weight:8}).bindPopup(table).addTo($rootScope.leaflet);
+                    yolpolyline.navigation = {status:false,distance:aramesafe,duration:arazaman,instructions:bilgi};
                     $scope.path.push(yolpolyline);
 
                 }else{
@@ -463,6 +465,22 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
         }
         $rootScope.leaflet.flyToBounds(bounds);
 
+    };
+
+
+    $scope.startNavigation = function () {
+        // $scope.path
+        if($scope.path.length>0){
+
+
+        }else{
+            $rootScope.$emit("message", {
+                status: "warning",
+                header: "Belirli Bir Yol Bulunamadı",
+                content: "Lütfen güzergahın bulunduğundan emin olunuz. Herangi bir belirlenmiş güzergaha rastalanamadı.",
+                time: "auto"
+            });
+        }
     };
 
 
