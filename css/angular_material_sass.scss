@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import "../node_modules/sass-autoprefixer/scss/prefixes";
+
 $clouds: #ecf0f1;
 $greensea: #16a085;
 $bgSearchColor: $clouds;
@@ -20,7 +21,7 @@ $searchTextBGColor: $clouds;
 $searchTextHeight: 40px;
 $searchTextPlaceHolderColor: #8a8a8a;
 $searchTextWidth: 240px !important;
-$iconEditColor:#D9B70D;
+$iconEditColor: #D9B70D;
 
 /*mixins */
 
@@ -33,7 +34,6 @@ $iconEditColor:#D9B70D;
 
 $md-iconBGColorHover: $clouds;
 
-
 /*.deneme{
 
   @include vp-align-content(strech);
@@ -41,8 +41,6 @@ $md-iconBGColorHover: $clouds;
   @include vp-display(flex);
 }*/
 * {
-
-
 
   @include vp-box-sizing(border-box);
   font-family: 'Roboto', sans-serif;
@@ -80,15 +78,13 @@ $md-iconBGColorHover: $clouds;
   position: fixed;
   z-index: 60;
   overflow: hidden;
-  padding:.2em;
+  padding: .2em;
   padding-left: 0;
   background: #ffffff;
-  border-radius:3px;
-
+  border-radius: 3px;
 
 
   md-icon {
-
 
     cursor: pointer;
     text-align: center;
@@ -96,29 +92,38 @@ $md-iconBGColorHover: $clouds;
     color: $midnightblue;
     border: 0 !important;
     outline: 0 !important;
-    height:35px !important;
-    margin-top:2.5px;
+    height: 35px !important;
+    margin-top: 2.5px;
     border-left: 1px solid $clouds !important;
     transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
     &:hover {
 
-      i{
+      i {
 
-        color:$midnightblue;
+        color: $midnightblue;
       }
       /*background-color: $md-iconBGColorHover !important;*/
 
-
     }
 
-    &:nth-child(1){
-      margin-top:0;
+    &:nth-child(1) {
+      margin-top: 0;
       border-left: 0 !important;
     }
 
     md-menu-bar {
 
       padding: 0;
+    }
+
+
+    i {
+
+      color: #757575;
+      &:nth-child(1){
+
+        margin-top:-1px !important;
+      }
     }
   }
 
@@ -138,13 +143,6 @@ $md-iconBGColorHover: $clouds;
 
 }
 
-i {
-
-  line-height: $searchTextHeight;
-  position: relative;
-  color: #757575;
-}
-
 left-menu {
 
   position: fixed;
@@ -153,15 +151,11 @@ left-menu {
   z-index: 2;
   border-radius: 5%;
 
-
-
-  #top1{
-
+  #top1 {
 
     transition-delay: 3s !important;
   }
 }
-
 
 right-top-menu {
 
@@ -209,11 +203,11 @@ md-sidenav {
 
 }
 
+#plus {
 
-#plus{
-
-  background:$white;
+  background: $white;
 }
+
 button.md-fab:not(#plus) {
 
   background: $white !important;
@@ -229,10 +223,9 @@ button.md-fab:not(#plus) {
 
 }
 
+.denemetoggle {
 
-.denemetoggle{
-
-  border:4px solid rebeccapurple;
+  border: 4px solid rebeccapurple;
 }
 
 md-tooltip {
@@ -275,7 +268,6 @@ grid destekliyorsa baslangıç
 
     grid-gap: 1em;
 
-
   }
 
   @for $a from 1 through 11 {
@@ -303,6 +295,7 @@ grid destekliyorsa baslangıç
   }
 
 }
+
 /*
 
 
@@ -315,23 +308,15 @@ grid destek son
 grid destek vermiyorsa baslangıc
  */
 
-
-
-
 @supports not (display: grid) {
-
 
   @for $a from 1 through 12 {
 
     .grid-#{$a} {
 
-
-
-
-      width:calc(100%/#{$a} - #{$a}*1em) ;
-      margin:1em;
+      width: calc(100% / #{$a} - #{$a} * 1em);
+      margin: 1em;
       display: inline-block;
-
 
       &:before {
 
@@ -349,9 +334,6 @@ grid destek vermiyorsa baslangıc
 
   }
 
-
-
-
 }
 
 /*
@@ -359,7 +341,6 @@ grid destek vermiyorsa baslangıc
 
 grid destek vermiyorsa son
  */
-
 
 drop-down-menu {
 
@@ -412,76 +393,69 @@ md-contextmenu {
 
 }
 
+.deneme {
 
-.deneme{
-
-  background:cadetblue;
+  background: cadetblue;
   color: #ffffff;
-  height:60px;
-  width:150px;
+  height: 60px;
+  width: 150px;
 
   position: absolute;
 
-  z-index:99;
-  top:150px;
-  left:150px;
+  z-index: 99;
+  top: 150px;
+  left: 150px;
 }
 
-md-custom-toast{
+md-custom-toast {
 
   position: fixed;
-  bottom:1em;
-  right:1em;
+  bottom: 1em;
+  right: 1em;
 
-
- width: 250px;
-  z-index:61;
-  background:#e91e63;
+  width: 250px;
+  z-index: 61;
+  background: #e91e63;
   color: $clouds;
-  line-height:1em;
+  line-height: 1em;
   transition: all 1s;
 
-
-  i{
+  i {
     cursor: pointer;
     position: relative;
-    top:-10px;
+    top: -10px;
     color: $clouds;
   }
 }
 
-.mdCustomToastHide{
+.mdCustomToastHide {
   opacity: 0.5;
 
-  bottom:-100px !important;
+  bottom: -100px !important;
 }
 
-
-.md-myfab{
-  z-index:21;
-  position:absolute;
-  left:0.3em;
-  height:45px;
-  width:45px;
-border-radius:100%;
+.md-myfab {
+  z-index: 21;
+  position: absolute;
+  left: 0.3em;
+  height: 45px;
+  width: 45px;
+  border-radius: 100%;
   bottom: 0.25em;
   outline: 0;
-border:1px dashed $clouds;
+  border: 1px dashed $clouds;
 
-  &>div{
-
+  & > div {
 
   }
 }
 
-all-fab-dials{
+all-fab-dials {
 
   position: absolute;
-bottom:0;
-left:5em;
+  bottom: 0;
+  left: 5em;
 }
-
-
 
 @import "mobile";
 
@@ -515,9 +489,6 @@ left:5em;
 @import "mdFabSpeedDial";
 @import "deneme";
 @import "mdlocation";
-
-
-
 
 /*
 
