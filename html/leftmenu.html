@@ -1,6 +1,7 @@
 <button  ng-click="showFabDials=!showFabDials" md-whiteframe="14"  fabmenuopendirective id="plus" class="md-mini md-fab md-myfab">
     <md-tooltip md-direction="up">{{lang.leftmenu.label}}</md-tooltip>
-    <md-icon wave md-svg-src="img/icons/plus.svg">+</md-icon>
+    <md-icon style="margin: 0" class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">add</md-icon>
+    <!--<md-icon wave md-svg-src="img/icons/plus.svg">+</md-icon>-->
 </button>
 <all-fab-dials layout="row" ng-if="showFabDials"  layout-align="center end">
     <div ng-repeat="fabdialjson in leftmenujson.layerBox"  ng-class="{' animated3 fadeInLeft':showFabDials}"  ng-controller="DemoCtrl as demo" layout="column" ng-cloak >        <div ng-class="{' animated3 fadeInLeft':showFabDials}" ng-if="fabdialjson.active" ng-controller="DemoCtrl as demo" layout="column" ng-cloak>

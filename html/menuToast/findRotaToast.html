@@ -1,6 +1,6 @@
 <md-toast id="findInstByaddress" aria-label="find Inst">
     <div class="md-toast-content" layout-padding>
-        <form>
+        <form style="padding: 0;">
 
             <md-toolbar md-ink-ripple>
                 <div class="md-toolbar-tools">
@@ -18,30 +18,30 @@
 
             <md-dialog-content layout-fill>
                 <md-list>
-                    <md-list-item style="margin-left: 15px;" flex layout="row">
+                    <md-list-item  style="margin-left: 15px;" flex layout="row">
                         <div flex="10" ng-click="activeInput('start');"><span ng-style="activeInputName === 'start' ? { 'font-weight':'bold', color:'#f44336' } : { 'font-weight':'normal', color:'#2798f3' }">A</span></div>
-                        <div flex="75" ng-click="activeInput('start');">
-                            <md-autocomplete  style="width:100%;"
-                                             md-selected-item-change="selectGooglePlace(item,'start')"
-                                             placeholder="Bir Yer Arayın"
-                                             md-items="item in navStations.start.placeResult"
-                                             md-search-text-change="loadGooglePlaces(navStations.start.filterText,'start')"
-                                             md-item-text="item.text"
-                                             md-no-cache="true"
-                                             md-search-text="navStations.start.filterText">
-                                <md-item-template>{{ item.text }}</md-item-template>
-                                <md-not-found>No items.</md-not-found>
-                            </md-autocomplete>
-                        </div>
-                        <div flex="15">
-                            <md-button ng-click="addCityToNavigation()" class="md-raised  md-warn md-button md-ink-ripple md-button">
-                                <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">add</md-icon>
-                            </md-button>
-                        </div>
+                            <div flex="75" ng-click="activeInput('start');">
+                                <md-autocomplete  style="width:100%;"
+                                                  md-selected-item-change="selectGooglePlace(item,'start')"
+                                                  placeholder="Bir Yer Arayın"
+                                                  md-items="item in navStations.start.placeResult"
+                                                  md-search-text-change="loadGooglePlaces(navStations.start.filterText,'start')"
+                                                  md-item-text="item.text"
+                                                  md-no-cache="true"
+                                                  md-search-text="navStations.start.filterText">
+                                    <md-item-template>{{ item.text }}</md-item-template>
+                                    <md-not-found>No items.</md-not-found>
+                                </md-autocomplete>
+                            </div>
+                            <div flex="15">
+                                <md-button ng-click="addCityToNavigation()" class="md-raised  md-warn md-button md-ink-ripple md-button">
+                                    <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">add</md-icon>
+                                </md-button>
+                            </div>
                     </md-list-item>
 
 
-                    <md-list-item layout-align="center center" style="margin-left: 30px;" flex
+                    <md-list-item  layout-align="center center" style="margin-left: 30px;" flex
                                   layout="row"
                                   ng-repeat="data in navStations.waypoint">
 
