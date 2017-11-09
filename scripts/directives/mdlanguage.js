@@ -2,7 +2,7 @@ app.directive("mdLanguage", function ($rootScope, $changelang, $timeout, $accord
     return {
 
         restrict: "E",
-        template: ' <md-button ng-if="activeLanguage" aria-label="Google Hangout" class="md-fab md-raised md-mini"><md-tooltip md-direction="left">{{lang.general.languages}}</md-tooltip>{{langFlag}}</md-button>',
+        templateUrl:'html/directives/mdlanguage.html',
         link: function ($scope, $el, $attr) {
 
             var $supportLang = ["en", $rootScope.browserLanguage];

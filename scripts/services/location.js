@@ -197,9 +197,15 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
     };
     this.semiCircleActive = false;
 
+
     window.addEventListener('deviceorientation', function(e) {
         debugger;
         if(tis.semiCircleActive==true){
+
+    if($window.DeviceOrientationEvent){
+
+        window.addEventListener('deviceorientation', function(e) {
+
             var tiltLR = e.gamma;
             var tiltFB = e.beta;
             var dir = e.alpha;
@@ -219,11 +225,18 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
                 color:"#999"
             });
             tis.semiCircle.addTo($rootScope.leaflet);
+
         }
 
 
 
-    });
+
+        });
+
+    }
+
+
+
     
     return this;
 });

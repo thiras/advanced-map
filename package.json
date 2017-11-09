@@ -22,5 +22,6 @@
   },
   "devDependencies": {
     "webpack-dev-server": "^2.7.1"
-  }
+  },
+  "keywords": []
 }
