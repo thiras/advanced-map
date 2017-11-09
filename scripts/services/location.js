@@ -132,25 +132,32 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
         if(this.feature==false){
             this.feature = L.circle(latlng,{radius:20});
             this.zonePoint = L.circleMarker(latlng,{radius:3,color:this.options.color,fillOpacity:1});
-            this.semiCircleActive=true;
-            this.semiCircle=this.semiCircleDraw(latlng, {
-                radius:50,
-                startAngle: -60,
-                stopAngle: 60,
-                weight:2,
-                fillColor:this.options.color,
-                color:"#999"
-            });
+
             this.feature.addTo($rootScope.leaflet);
             this.zonePoint.addTo($rootScope.leaflet);
-            this.semiCircle.addTo($rootScope.leaflet);
+            if(this.options.semiCircle==true && typeof this.options.semiCircle!=="undefined" && this.semiCircleActive==false){
+                debugger;
+                this.semiCircleActive=true;
+                this.semiCircle=this.semiCircleDraw(latlng, {
+                    radius:50,
+                    startAngle: -60,
+                    stopAngle: 60,
+                    weight:2,
+                    fillColor:this.options.color,
+                    color:"#999"
+                });
+                this.semiCircle.addTo($rootScope.leaflet);
+            }
+
             if(this.options.flyto==true){
                 $rootScope.leaflet.setView(latlng,16);
             }
         }else{
             this.feature.setLatLng(latlng);
             this.zonePoint.setLatLng(latlng);
-            this.semiCircle.setLatLng(latlng);
+            if(this.options.semiCircle==true && typeof this.options.semiCircle!=="undefined" && this.semiCircleActive==true){
+                this.semiCircle.setLatLng(latlng);
+            }
             this.options.flyto=false;
             if(this.pathLine.length>1 && this.options.line==true){
                 this.showPathLine();
@@ -169,7 +176,12 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
 
         if(this.options.radius!==null){
             if(this.options.radius=="auto"){
-                this.feature.setRadius(parseInt(this.position.coords.accuracy));
+                debugger;
+                var r = 250;
+                if(this.position.coords.accuracy<250){
+                    r = this.position.coords.accuracy;
+                }
+                this.feature.setRadius(parseInt(r));
             }else{
                 this.feature.setRadius(parseInt(this.options.radius));
             }
@@ -198,22 +210,21 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
     this.semiCircleActive = false;
 
 
-    window.addEventListener('deviceorientation', function(e) {
 
-        if(tis.semiCircleActive==true) {
-            var tiltLR = e.gamma;
-            var tiltFB = e.beta;
-            var dir = e.alpha;
-            if (dir == null) {
-                dir = 0;
-            }
-            var aci = parseInt(dir);
+    this.setMobileAngle = function (angles) {
+        var gamma = angles.gamma || 0;
+        var beta = angles.beta || 0;
+        var alpha = angles.alpha || 0;
+        this.semiCircleRedraw(alpha);
+    };
 
+    this.semiCircleRedraw = function (alpha) {
+        if(typeof this.options.semiCircle !=="undefined" && this.options.semiCircle==true){
+            var aci = parseInt(alpha);
             aci = 360 - aci + 180;
             var start = aci - 60;
             var finish = start + 120;
-
-            tis.semiCircle = tis.semiCircleDraw(tis.location, {
+            this.semiCircle = tis.semiCircleDraw(tis.location, {
                 radius: 50,
                 startAngle: start,
                 stopAngle: finish,
@@ -221,10 +232,11 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
                 fillColor: tis.options.color,
                 color: "#999"
             });
-            tis.semiCircle.addTo($rootScope.leaflet);
+            this.semiCircle.addTo($rootScope.leaflet);
         }
+    };
 
-        });
+
 
 
 
