@@ -2,9 +2,9 @@
     <i layout-padding class="material-icons">menus</i>
     <md-tooltip>{{lang.searchBox.btnMenuOnOff}}</md-tooltip>
 </md-icon>
-<md-input-container>
+<md-input-container md-no-float>
     <input required autocomplete="on" layout-padding ng-keypress="$event.keyCode==13 ? searchAdress(searchInput):null"
-           ng-model="searchInput" placeholder="{{lang.searchBox.inptSearchBox}}" class="searchtext" type="text">
+           ng-model="searchInput" placeholder="{{lang.searchBox.inptSearchBox}}"  class="searchtext" type="search">
 </md-input-container>
 
 

@@ -38,9 +38,9 @@ md-toast#drawTool .md-toast-content {
 md-toast#menuToasts, md-toast#findProprietary, md-toast#fndBldLsToast, md-toast#calculatebymanuel, md-toast#calculatearea, md-toast#findInstByaddress, md-toast#findSecByAddress, md-toast#findMyDoctor, md-toast#findbusandminibus, md-toast#findTrainTram, md-toast#findShipToast, md-toast#aircrafttToast {
   position: fixed;
   top: 58px;
-  left: 10px;
-  max-width: 390px;
-  /**/
+  left: 1em;
+          /* 10px;
+max-width: 390px; /**/
   width: 100%;
   padding: 0;
   margin: 0;

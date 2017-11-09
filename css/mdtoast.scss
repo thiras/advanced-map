@@ -62,8 +62,8 @@ md-toast#drawTool {
 md-toast#menuToasts {
 
   position: fixed;
-  top: 58px;
-  left: 10px;
+  top:58px;
+  left:1em; /* 10px;
   max-width: 390px; /**/
   width:100%;
   padding: 0;
