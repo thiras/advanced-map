@@ -48,7 +48,7 @@ md-sidenav {
 }
 @media screen and (max-width: 400px) {
 
-  md-toast{
+  md-toast:not(#drawTool){
     width:95% !important;
     left:6px !important;
 
@@ -77,7 +77,7 @@ md-sidenav {
 
   }
 
-  md-toast{
+  md-toast:not(#drawTool){
 
 
     width:95% !important;

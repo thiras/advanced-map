@@ -19,7 +19,7 @@
     height: 25px !important;
     width: 35px !important; } }
 @media screen and (max-width: 400px) {
-  md-toast {
+  md-toast:not(#drawTool) {
     width: 95% !important;
     left: 6px !important; } }
 @media screen and (max-width: 360px) {
@@ -34,7 +34,7 @@
     width: calc(90% - 40px);
     overflow: hidden; }
 
-  md-toast {
+  md-toast:not(#drawTool) {
     width: 95% !important;
     left: 9px !important; } }
 .certainly-full {

@@ -575,7 +575,7 @@ all-fab-dials {
     height: 25px !important;
     width: 35px !important; } }
 @media screen and (max-width: 400px) {
-  md-toast {
+  md-toast:not(#drawTool) {
     width: 95% !important;
     left: 6px !important; } }
 @media screen and (max-width: 360px) {
@@ -590,7 +590,7 @@ all-fab-dials {
     width: calc(90% - 40px);
     overflow: hidden; }
 
-  md-toast {
+  md-toast:not(#drawTool) {
     width: 95% !important;
     left: 9px !important; } }
 .certainly-full {
@@ -740,7 +740,7 @@ label.radioLayers {
   .vectorLayerName td {
     width: 22px; }
 
-md-toast {
+md-toast:not(#drawTool) {
   z-index: 15;
   height: 100vh;
   /*sonradn oynama yapılacak*/
@@ -750,34 +750,38 @@ md-toast {
   /* max height verildi scrool olması için */
   overflow-y: auto;
   /*background:#EEEEEE;*/ }
-  md-toast .md-toast-content {
+  md-toast:not(#drawTool) .md-toast-content {
     text-align: left;
     background: #ffffff;
     width: 100% !important;
     padding: 3px !important; }
-    md-toast .md-toast-content md-icon {
+    md-toast:not(#drawTool) .md-toast-content md-icon {
       outline: none;
       cursor: pointer; }
-  md-toast form {
+  md-toast:not(#drawTool) form {
     margin-top: -62px;
     margin-left: -11px;
     margin-right: -11px;
     /*-3px eski değeri*/
     padding: 0; }
-  md-toast .searchButton {
+  md-toast:not(#drawTool) .searchButton {
     background-color: #2196f3 !important; }
-    md-toast .searchButton md-icon {
+    md-toast:not(#drawTool) .searchButton md-icon {
       color: #f4f7fa !important; }
-  md-toast .closeButton {
+  md-toast:not(#drawTool) .closeButton {
     margin-right: 20px !important;
     background-color: #F5F5F5 !important;
     /*#dadada*/
     color: #7d7d7d !important; }
-  md-toast .breakAll {
+  md-toast:not(#drawTool) .breakAll {
     word-break: break-all; }
 
-md-toast#drawTool .md-toast-content {
-  color: #34495e; }
+md-toast#drawTool {
+  padding: 0; }
+  md-toast#drawTool .md-toast-content {
+    color: #fff;
+    /* #34495e;*/
+    height: 40px; }
 
 md-toast#menuToasts, md-toast#findProprietary, md-toast#fndBldLsToast, md-toast#calculatebymanuel, md-toast#calculatearea, md-toast#findInstByaddress, md-toast#findSecByAddress, md-toast#findMyDoctor, md-toast#findbusandminibus, md-toast#findTrainTram, md-toast#findShipToast, md-toast#aircrafttToast {
   position: fixed;

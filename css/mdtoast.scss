@@ -1,4 +1,4 @@
-md-toast {
+md-toast:not(#drawTool){
   z-index: 15;
   height:100vh; /*sonradn oynama yapılacak*/
   width: 390px;
@@ -49,11 +49,11 @@ md-toast {
 
 md-toast#drawTool {
 
-
-
+  padding:0;
 
   .md-toast-content {
-    color: #34495e;
+    color:#fff; /* #34495e;*/
+    height:40px;
 
   }
 
@@ -180,4 +180,5 @@ margin-left:3px;
 
   }
 }
+
 
