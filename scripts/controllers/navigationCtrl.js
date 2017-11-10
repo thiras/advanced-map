@@ -1,5 +1,5 @@
 app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$googleMaps,$leafletFonk,$timeout,$interval,$mdToast) {
-
+    $scope.rota = [];
     $scope.feature = {
         start:false,
         waypoint:[],
@@ -404,12 +404,17 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
     };
 
     $scope.turfPath = [];
-    function googleLineToLeaflet(a) {
+    function googleLineToLeaflet(a,durum,j) {
         var dizi = [];
         for(i in a){
             var nok = {lat:a[i].lat(),lng:a[i].lng()};
             dizi.push(nok);
-            $scope.turfPath.push([a[i].lng(),a[i].lat()]);
+            if(durum=="turfPath"){
+                $scope.turfPath.push([a[i].lng(),a[i].lat()]);
+            }
+            if(durum=="alternative"){
+                $scope.alternativeWays[j].push([a[i].lng(),a[i].lat()]);
+            }
         }
         return dizi;
     }
@@ -425,17 +430,61 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
         }
     };
 
-    $scope.way = {active:false,distance:0,duration:0,travelMode:"DRIVING"};
+    $scope.way = [];
+    $scope.wayActive=false;
+    $scope.alternativeWays=[];
+    $scope.alternativeRota = [];
+    $scope.showRoadsView = function (routing,secenek) {
+        $scope.way=[];
+        $scope.rota=routing;
+        if(routing.length>0){
+            $scope.wayActive=true;
+            var rekler = ["#00b3fd","#FF9800","#8bc34a","#f44336","#e91e63"];
+            var kalinlik = [8,6,4,2,1];
+            if(routing.length>=5){routing.length=5;}
+            for(var i=0; i<routing.length;i++){
+                var rota = routing[i];
+                var yolum = rota.overview_polyline;
 
-    $scope.showRoadsView = function (routing) {
+                var lega = rota.legs[0];
+                var distance = lega.distance.text;
+                var duration = lega.duration.text;
+                if(rota.legs.length>0){
+                    $scope.way.push({sira:i,color:rekler[i],active:true,distance:distance,duration:duration,travelMode:"DRIVING"});
+                }
+                $scope.alternativeWays[i]=[];
+                $scope.alternativeRota[i]=[];
+                var latlngs = googlePointDecode(yolum);
+                var yolpolyline2 = L.polyline(latlngs, {color: rekler[i],weight:kalinlik[i]}).addTo($rootScope.leaflet);
+                $scope.alternativeRota[i].push(yolpolyline2);
+            }
+            var corner1 = L.latLng(routing[0].bounds.f.b,routing[0].bounds.b.b);
+            var corner2 = L.latLng(routing[0].bounds.f.f,routing[0].bounds.b.f);
+            var bounds = L.latLngBounds(corner1, corner2);
+            $rootScope.leaflet.fitBounds(bounds);
+        }
+
+
+    };
+
+    $scope.removeAlternativeWays = function () {
+      for(i in $scope.alternativeRota){
+          $scope.alternativeRota[i][0].remove();
+      }
+    };
+
+    $scope.yolGoster = function (i) {
+        debugger;
+        var secenek = i || 0;
         $scope.removePath();
-        var yol = routing[0];
-        var legs = yol.legs;
-        var corner1 = L.latLng(yol.bounds.f.b,yol.bounds.b.b);
-        var corner2 = L.latLng(yol.bounds.f.f,yol.bounds.b.f);
-        var bounds = L.latLngBounds(corner1, corner2);
+        $scope.removeAlternativeWays();
+        var yol = $scope.rota[secenek];
+        $scope.rota=[];
+        $scope.rota[0]=yol;
         $scope.nearPointFindActive=false;
         $scope.turfPath = [];
+        var legs = yol.legs;
+        $scope.way=[];
         for(i in legs){
             var leg = legs[i];
             var distance = leg.distance.text;
@@ -443,13 +492,14 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
             var start_address = leg.start_address;
             var end_address = leg.end_address;
             var steps = leg.steps;
+
             if(legs.length){
-                $scope.way = {active:true,distance:distance,duration:duration,travelMode:"DRIVING"};
+                $scope.way.push({sira:0,color:"#00b3fd",active:true,distance:distance,duration:duration,travelMode:"DRIVING"});
             }
             for(j in steps){
                 var step = steps[j];
                 if(typeof step.lat_lngs !== "undefined"){
-                    var latlngs = googleLineToLeaflet(step.lat_lngs);
+                    var latlngs = googleLineToLeaflet(step.lat_lngs,"turfPath",0);
                     var aramesafe = step.distance.text;
                     var arazaman = step.duration.text;
                     var bilgi = step.instructions;
@@ -459,12 +509,11 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
                     $scope.path.push(yolpolyline);
 
                 }else{
-
                     var a = step;
                 }
             }
         }
-        $rootScope.leaflet.flyToBounds(bounds);
+        $scope.startNavigation();
 
     };
 
@@ -556,8 +605,9 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
     $scope.startNavigation = function () {
         debugger;
         if($scope.path.length>0){
-            var opt = {loop:true,show:true,panto:true,flyto:true,line:false,color:"#8bc34a",radius:"auto",semiCircle:true,time:200,snap:true,path:$scope.turfPath};
+            var opt = {loop:true,show:true,panto:true,flyto:true,line:false,color:"#8bc34a",radius:"auto",semiCircle:true,time:1000,snap:true,path:$scope.turfPath};
             $mylocation.findMyLocation(opt);
+            /*
             $scope.navInterval[$scope.navInterval.length] = $interval(function () {
 
                 if($mylocation.location!==false){
@@ -612,7 +662,7 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
                 }
 
             },opt.time);
-
+*/
         }else{
             $rootScope.$emit("message", {
                 status: "warning",
@@ -645,6 +695,41 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
 
 
     };
+
+    function googlePointDecode(encoded){
+
+        // array that holds the points
+
+        var points=[ ];
+        var index = 0, len = encoded.length;
+        var lat = 0, lng = 0;
+        while (index < len) {
+            var b, shift = 0, result = 0;
+            do {
+
+                b = encoded.charAt(index++).charCodeAt(0) - 63;//finds ascii                                                                                    //and substract it by 63
+                result |= (b & 0x1f) << shift;
+                shift += 5;
+            } while (b >= 0x20);
+
+
+            var dlat = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
+            lat += dlat;
+            shift = 0;
+            result = 0;
+            do {
+                b = encoded.charAt(index++).charCodeAt(0) - 63;
+                result |= (b & 0x1f) << shift;
+                shift += 5;
+            } while (b >= 0x20);
+            var dlng = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
+            lng += dlng;
+
+            points.push({lat:( lat / 1E5),lng:( lng / 1E5)})
+
+        }
+        return points
+    }
 
     /*araya şehir ekleme son*/
 

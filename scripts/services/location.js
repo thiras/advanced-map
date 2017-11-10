@@ -91,14 +91,23 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
         tis.setLocation(position.coords.latitude,position.coords.longitude);
         tis.nearLineLimit(position);
     }
+
+    this.seperateSnapWay = function () {
+
+    };
+
+    this.snapToWay = function (lat,lng,path) {
+        debugger;
+        var line = turf.lineString(path);
+        var pt = turf.point([parseFloat(lng),parseFloat(lat)]);
+        var snapped = turf.nearestPointOnLine(line, pt, {units: 'kilometers'});
+        snapped=snapped.geometry.coordinates;
+        return {lat:parseFloat(snapped[1]),lng:parseFloat(snapped[0])};
+    };
     
     this.setLocation = function (lat,lng) {
         if(this.options.snap==true && this.options.path.length>0){
-            var line = turf.lineString(this.options.path);
-            var pt = turf.point([parseFloat(lng),parseFloat(lat)]);
-            var snapped = turf.nearestPointOnLine(line, pt, {units: 'kilometers'});
-            snapped=snapped.geometry.coordinates;
-            this.location={lat:parseFloat(snapped[1]),lng:parseFloat(snapped[0])};
+            this.location=this.snapToWay(lat,lng,this.options.path);
 
         }else{
             this.location={lat:parseFloat(lat),lng:parseFloat(lng)};
