@@ -1,4 +1,4 @@
-app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$googleMaps,$leafletFonk,$timeout,$timeout,$interval,$mdToast) {
+app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$googleMaps,$leafletFonk,$timeout,$interval,$mdToast) {
 
     $scope.feature = {
         start:false,
@@ -500,7 +500,7 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
 
 
     $scope.splicePathActive = false;
-
+    $scope.sasd = false;
     $scope.splicePath = function (dizi,indis,aralik) {
         if($scope.splicePathActive==false){
             $scope.splicePathActive=true;
@@ -514,10 +514,25 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
             return {array:yenidizi,indis:yeniindis};
 
         }else{
+            debugger;
             var simdikidizi = $mylocation.options.path;
             var len2 = simdikidizi.length-1;
+            var len3 = len2-1;
             var sonNokta = simdikidizi[len2];
-            if(sonNokta[0]==$mylocation.location.lng && sonNokta[1]==$mylocation.location.lat){
+            var sononceNok = simdikidizi[len3];
+
+            var distance = turf.distance(turf.point(sonNokta), turf.point(sononceNok), {units: 'kilometers'});
+
+            var center = sonNokta;
+            var radius = distance;
+            var circle = turf.circle(center, radius, {steps: 36, units: 'kilometers'});
+            if($scope.sasd!==false){
+                $scope.sasd.remove();
+            }
+            $scope.sasd=$leafletFonk.showGeoJSON(circle,{color:"red"},true,false);
+            var control = turf.booleanPointInPolygon(turf.point([$mylocation.location.lng,$mylocation.location.lat]), circle);
+
+            if(control==true){
                 var len = dizi.length-1;
                 var start = indis-aralik;
                 var finish = indis+aralik;
