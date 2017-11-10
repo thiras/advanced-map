@@ -10,6 +10,7 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
     this.request = 0;
     this.pathLine = [];
     this.pathLineFeature = false;
+    this.snapPath = [];
 
     this.semiCircleDraw = function (latlng,obj) {
         if(this.semiCircle!==false){
@@ -90,9 +91,27 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
         tis.setLocation(position.coords.latitude,position.coords.longitude);
         tis.nearLineLimit(position);
     }
+
+    this.seperateSnapWay = function () {
+
+    };
+
+    this.snapToWay = function (lat,lng,path) {
+        debugger;
+        var line = turf.lineString(path);
+        var pt = turf.point([parseFloat(lng),parseFloat(lat)]);
+        var snapped = turf.nearestPointOnLine(line, pt, {units: 'kilometers'});
+        snapped=snapped.geometry.coordinates;
+        return {lat:parseFloat(snapped[1]),lng:parseFloat(snapped[0])};
+    };
     
     this.setLocation = function (lat,lng) {
-        this.location={lat:parseFloat(lat),lng:parseFloat(lng)};
+        if(this.options.snap==true && this.options.path.length>0){
+            this.location=this.snapToWay(lat,lng,this.options.path);
+
+        }else{
+            this.location={lat:parseFloat(lat),lng:parseFloat(lng)};
+        }
         $rootScope.location.myLocation = tis.location;
         if(this.options.show){
             this.showLocation();
@@ -103,19 +122,23 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
         if(this.feature!==false){
             this.feature.remove();
             this.feature=false;
+        }
+        if(this.zonePoint!==false){
             this.zonePoint.remove();
             this.zonePoint=false;
+        }
+        if(this.semiCircle!==false){
             this.semiCircle.remove();
             this.semiCircle=false;
             this.semiCircleActive=false;
-            this.removeInterval();
-            this.options.loop=false;
         }
         if(this.pathLineFeature!==false){
             this.pathLineFeature.remove();
             this.pathLineFeature=false;
             this.pathLine=[];
         }
+        this.removeInterval();
+        this.options.loop=false;
     };
 
     this.removeInterval = function () {
@@ -136,7 +159,7 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
             this.feature.addTo($rootScope.leaflet);
             this.zonePoint.addTo($rootScope.leaflet);
             if(this.options.semiCircle==true && typeof this.options.semiCircle!=="undefined" && this.semiCircleActive==false){
-                debugger;
+
                 this.semiCircleActive=true;
                 this.semiCircle=this.semiCircleDraw(latlng, {
                     radius:50,
@@ -176,7 +199,7 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
 
         if(this.options.radius!==null){
             if(this.options.radius=="auto"){
-                debugger;
+
                 var r = 250;
                 if(this.position.coords.accuracy<250){
                     r = this.position.coords.accuracy;

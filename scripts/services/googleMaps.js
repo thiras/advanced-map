@@ -99,6 +99,7 @@ app.service("$googleMaps", function ($rootScope) {
             language:"tr",
             unitSystem:google.maps.UnitSystem.METRIC,
             optimizeWaypoints: true,
+            provideRouteAlternatives:true,
             travelMode: type
         }, function(response, status) {
             var a = response;

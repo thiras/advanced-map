@@ -1,12 +1,11 @@
-app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$googleMaps,$leafletFonk,$timeout,$timeout,$interval,$mdToast) {
-
+app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$googleMaps,$leafletFonk,$timeout,$interval,$mdToast) {
+    $scope.rota = [];
     $scope.feature = {
         start:false,
         waypoint:[],
         finish:false
     };
     $scope.removeAllFeature = function (durum) {
-        debugger;
         if(durum=="start" || durum=="all"){
             if($scope.feature.start!==false){
                 $scope.feature.start.remove();
@@ -404,10 +403,18 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
         }
     };
 
-    function googleLineToLeaflet(a) {
+    $scope.turfPath = [];
+    function googleLineToLeaflet(a,durum,j) {
         var dizi = [];
         for(i in a){
-            dizi.push({lat:a[i].lat(),lng:a[i].lng()});
+            var nok = {lat:a[i].lat(),lng:a[i].lng()};
+            dizi.push(nok);
+            if(durum=="turfPath"){
+                $scope.turfPath.push([a[i].lng(),a[i].lat()]);
+            }
+            if(durum=="alternative"){
+                $scope.alternativeWays[j].push([a[i].lng(),a[i].lat()]);
+            }
         }
         return dizi;
     }
@@ -423,32 +430,76 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
         }
     };
 
-    $scope.way = {active:false,distance:0,duration:0,travelMode:"DRIVING"};
+    $scope.way = [];
+    $scope.wayActive=false;
+    $scope.alternativeWays=[];
+    $scope.alternativeRota = [];
+    $scope.showRoadsView = function (routing,secenek) {
+        $scope.way=[];
+        $scope.rota=routing;
+        if(routing.length>0){
+            $scope.wayActive=true;
+            var rekler = ["#00b3fd","#FF9800","#8bc34a","#f44336","#e91e63"];
+            var kalinlik = [8,6,4,2,1];
+            if(routing.length>=5){routing.length=5;}
+            for(var i=0; i<routing.length;i++){
+                var rota = routing[i];
+                var yolum = rota.overview_polyline;
 
-    $scope.showRoadsView = function (routing) {
+                var lega = rota.legs[0];
+                var distance = lega.distance.text;
+                var duration = lega.duration.text;
+                if(rota.legs.length>0){
+                    $scope.way.push({sira:i,color:rekler[i],active:true,distance:distance,duration:duration,travelMode:"DRIVING"});
+                }
+                $scope.alternativeWays[i]=[];
+                $scope.alternativeRota[i]=[];
+                var latlngs = googlePointDecode(yolum);
+                var yolpolyline2 = L.polyline(latlngs, {color: rekler[i],weight:kalinlik[i]}).addTo($rootScope.leaflet);
+                $scope.alternativeRota[i].push(yolpolyline2);
+            }
+            var corner1 = L.latLng(routing[0].bounds.f.b,routing[0].bounds.b.b);
+            var corner2 = L.latLng(routing[0].bounds.f.f,routing[0].bounds.b.f);
+            var bounds = L.latLngBounds(corner1, corner2);
+            $rootScope.leaflet.fitBounds(bounds);
+        }
+
+
+    };
+
+    $scope.removeAlternativeWays = function () {
+      for(i in $scope.alternativeRota){
+          $scope.alternativeRota[i][0].remove();
+      }
+    };
+
+    $scope.yolGoster = function (i) {
+        debugger;
+        var secenek = i || 0;
         $scope.removePath();
-        var yol = routing[0];
+        $scope.removeAlternativeWays();
+        var yol = $scope.rota[secenek];
+        $scope.rota=[];
+        $scope.rota[0]=yol;
+        $scope.nearPointFindActive=false;
+        $scope.turfPath = [];
         var legs = yol.legs;
-        var corner1 = L.latLng(yol.bounds.f.b,yol.bounds.b.b);
-        var corner2 = L.latLng(yol.bounds.f.f,yol.bounds.b.f);
-        var bounds = L.latLngBounds(corner1, corner2);
-
+        $scope.way=[];
         for(i in legs){
-            $scope.navPath.staus=true;
             var leg = legs[i];
             var distance = leg.distance.text;
             var duration = leg.duration.text;
             var start_address = leg.start_address;
             var end_address = leg.end_address;
             var steps = leg.steps;
+
             if(legs.length){
-                $scope.way = {active:true,distance:distance,duration:duration,travelMode:"DRIVING"};
+                $scope.way.push({sira:0,color:"#00b3fd",active:true,distance:distance,duration:duration,travelMode:"DRIVING"});
             }
             for(j in steps){
                 var step = steps[j];
                 if(typeof step.lat_lngs !== "undefined"){
-
-                    var latlngs = googleLineToLeaflet(step.lat_lngs);
+                    var latlngs = googleLineToLeaflet(step.lat_lngs,"turfPath",0);
                     var aramesafe = step.distance.text;
                     var arazaman = step.duration.text;
                     var bilgi = step.instructions;
@@ -458,21 +509,160 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
                     $scope.path.push(yolpolyline);
 
                 }else{
-
                     var a = step;
                 }
             }
         }
-        $rootScope.leaflet.flyToBounds(bounds);
+        $scope.startNavigation();
 
     };
 
 
+    $scope.nearPointFindActive = false;
+    $scope.nearPoint = false;
+    $scope.findNearPoint = function (loc) {
+        if($scope.nearPointFindActive==false){
+            $scope.nearPointFindActive=true;
+            var targetPoint = turf.point([loc.lng, loc.lat], {"marker-color": "#0F0"});
+            var arrayPointsTurf = [];
+            for(a in $scope.turfPath){
+                arrayPointsTurf.push(turf.point($scope.turfPath[a]));
+            }
+            var points = turf.featureCollection(arrayPointsTurf);
+            var nearest = turf.nearestPoint(targetPoint, points);
+            nearest=nearest.geometry.coordinates;
+            var indis = 0;
+            for(b in $scope.turfPath){
+                if(nearest[1]==$scope.turfPath[b][1] && nearest[0]==$scope.turfPath[b][0]){
+                    indis=b;
+                    indis=parseInt(indis);
+                    break;
+                }
+            }
+            var nextindis = indis+1;
+            $scope.nearPoint = {location :nearest,indis:indis,nextindis:nextindis};
+
+        }
+        return $scope.nearPoint;
+
+    };
+
+
+    $scope.splicePathActive = false;
+    $scope.sasd = false;
+    $scope.splicePath = function (dizi,indis,aralik) {
+        if($scope.splicePathActive==false){
+            $scope.splicePathActive=true;
+            var len = dizi.length-1;
+            var start = indis-aralik;
+            var finish = indis+aralik;
+            if(start<=0){start=0;}
+            if(finish>=len){finish=len;}
+            var yenidizi =dizi.slice(start,finish);
+            var yeniindis = indis+1;
+            return {array:yenidizi,indis:yeniindis};
+
+        }else{
+            debugger;
+            var simdikidizi = $mylocation.options.path;
+            var len2 = simdikidizi.length-1;
+            var len3 = len2-1;
+            var sonNokta = simdikidizi[len2];
+            var sononceNok = simdikidizi[len3];
+
+            var distance = turf.distance(turf.point(sonNokta), turf.point(sononceNok), {units: 'kilometers'});
+
+            var center = sonNokta;
+            var radius = distance;
+            var circle = turf.circle(center, radius, {steps: 36, units: 'kilometers'});
+            if($scope.sasd!==false){
+                $scope.sasd.remove();
+            }
+            $scope.sasd=$leafletFonk.showGeoJSON(circle,{color:"red"},true,false);
+            var control = turf.booleanPointInPolygon(turf.point([$mylocation.location.lng,$mylocation.location.lat]), circle);
+
+            if(control==true){
+                var len = dizi.length-1;
+                var start = indis-aralik;
+                var finish = indis+aralik;
+                if(start<=0){start=0;}
+                if(finish>=len){finish=len;}
+                var yenidizi =dizi.slice(start,finish);
+                var yeniindis = indis+1;
+                return {array:yenidizi,indis:yeniindis};
+            }else{
+                return {array:$mylocation.options.path,indis:indis};
+            }
+        }
+
+
+    };
+    $scope.navInterval = [];
+    $scope.navProp = {
+        status:false,hiz:0,dogrultu:0,ortalamahiz:0,
+        toplammesafe:0,toplamzaman:0,arazaman:0,
+        aramesafe:0,track:[],snap:[],p1:0,p2:0,t1:0,t2:0,request:0,pathi:0};
     $scope.startNavigation = function () {
-        // $scope.path
+        debugger;
         if($scope.path.length>0){
+            var opt = {loop:true,show:true,panto:true,flyto:true,line:false,color:"#8bc34a",radius:"auto",semiCircle:true,time:1000,snap:true,path:$scope.turfPath};
+            $mylocation.findMyLocation(opt);
+            /*
+            $scope.navInterval[$scope.navInterval.length] = $interval(function () {
+
+                if($mylocation.location!==false){
+
+                    var nearP = $scope.findNearPoint($mylocation.location);
+                    var newPath = $scope.splicePath($scope.turfPath,nearP.indis,5);
+                    $scope.nearPoint.indis=newPath.indis;
+                    $mylocation.options.path = newPath.array;
+                    $scope.navProp.status=true;
+                    var nokta = $mylocation.location;
+                    var position = $mylocation.position;
+                    if($scope.navProp.request%2==0){
+                        $scope.navProp.p1=nokta;
+                        $scope.navProp.t1 = position.timestamp;
+                    }else{
+                        $scope.navProp.p2=nokta;
+                        $scope.navProp.t2 = position.timestamp;
+                    }
+                    $scope.navProp.request++;
+                    if($scope.navProp.p1.lat==$scope.navProp.p2.lat && $scope.navProp.p1.lng==$scope.navProp.p2.lng){
+                        $scope.navProp.track.push(nokta);
+                        $scope.navProp.request++;
+                        //if($scope.navProp.request>1){
+                        if(true){
+                            var turfP1 = turf.point([$scope.navProp.p1.lng,$scope.navProp.p1.lat]);
+                            var turfP2 = turf.point([$scope.navProp.p2.lng, $scope.navProp.p2.lat]);
+                            if(turfP1.geometry.coordinates[0]==turfP2.geometry.coordinates[0] && turfP1.geometry.coordinates[1]==turfP2.geometry.coordinates[1]){
+                                var dogrultu=0;
+                                var aramesafe=0;
+                            }else{
+                                var dogrultu = turf.bearing(turfP1,turfP2);
+                                var aramesafe = turf.distance(turfP1,turfP2, "kilometers");
+                            }
+
+                            $scope.navProp.dogrultu=dogrultu;
+                            $scope.navProp.aramesafe=aramesafe;
+                            $scope.navProp.arazaman = Math.abs($scope.navProp.t2-$scope.navProp.t1);
+                            $scope.navProp.toplamzaman +=$scope.navProp.arazaman;
+                            $scope.navProp.toplammesafe +=$scope.navProp.aramesafe;
+                            $scope.navProp.ortalamahiz =$scope.navProp.toplammesafe/$scope.navProp.toplamzaman;
+                            var sn = $scope.navProp.arazaman/1000;
+                            var metre =$scope.navProp.aramesafe/1000;
+                            $scope.navProp.hiz = aramesafe/$scope.navProp.arazaman;
+                            angular.element(document.getElementById("input_0")).val("m : "+metre+', s :'+sn);
 
 
+                        }
+                    }
+
+
+
+                }
+
+            },opt.time);
+*/
         }else{
             $rootScope.$emit("message", {
                 status: "warning",
@@ -505,6 +695,41 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
 
 
     };
+
+    function googlePointDecode(encoded){
+
+        // array that holds the points
+
+        var points=[ ];
+        var index = 0, len = encoded.length;
+        var lat = 0, lng = 0;
+        while (index < len) {
+            var b, shift = 0, result = 0;
+            do {
+
+                b = encoded.charAt(index++).charCodeAt(0) - 63;//finds ascii                                                                                    //and substract it by 63
+                result |= (b & 0x1f) << shift;
+                shift += 5;
+            } while (b >= 0x20);
+
+
+            var dlat = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
+            lat += dlat;
+            shift = 0;
+            result = 0;
+            do {
+                b = encoded.charAt(index++).charCodeAt(0) - 63;
+                result |= (b & 0x1f) << shift;
+                shift += 5;
+            } while (b >= 0x20);
+            var dlng = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
+            lng += dlng;
+
+            points.push({lat:( lat / 1E5),lng:( lng / 1E5)})
+
+        }
+        return points
+    }
 
     /*araya şehir ekleme son*/
 
