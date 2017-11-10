@@ -6,7 +6,6 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
         finish:false
     };
     $scope.removeAllFeature = function (durum) {
-        debugger;
         if(durum=="start" || durum=="all"){
             if($scope.feature.start!==false){
                 $scope.feature.start.remove();
@@ -404,10 +403,13 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
         }
     };
 
+    $scope.turfPath = [];
     function googleLineToLeaflet(a) {
         var dizi = [];
         for(i in a){
-            dizi.push({lat:a[i].lat(),lng:a[i].lng()});
+            var nok = {lat:a[i].lat(),lng:a[i].lng()};
+            dizi.push(nok);
+            $scope.turfPath.push([a[i].lng(),a[i].lat()]);
         }
         return dizi;
     }
@@ -432,9 +434,9 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
         var corner1 = L.latLng(yol.bounds.f.b,yol.bounds.b.b);
         var corner2 = L.latLng(yol.bounds.f.f,yol.bounds.b.f);
         var bounds = L.latLngBounds(corner1, corner2);
-
+        $scope.nearPointFindActive=false;
+        $scope.turfPath = [];
         for(i in legs){
-            $scope.navPath.staus=true;
             var leg = legs[i];
             var distance = leg.distance.text;
             var duration = leg.duration.text;
@@ -447,7 +449,6 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
             for(j in steps){
                 var step = steps[j];
                 if(typeof step.lat_lngs !== "undefined"){
-
                     var latlngs = googleLineToLeaflet(step.lat_lngs);
                     var aramesafe = step.distance.text;
                     var arazaman = step.duration.text;
@@ -468,10 +469,134 @@ app.controller("navigationCtrl", function ($scope,$rootScope,$mylocation,$google
     };
 
 
-    $scope.startNavigation = function () {
-        // $scope.path
-        if($scope.path.length>0){
+    $scope.nearPointFindActive = false;
+    $scope.nearPoint = false;
+    $scope.findNearPoint = function (loc) {
+        if($scope.nearPointFindActive==false){
+            $scope.nearPointFindActive=true;
+            var targetPoint = turf.point([loc.lng, loc.lat], {"marker-color": "#0F0"});
+            var arrayPointsTurf = [];
+            for(a in $scope.turfPath){
+                arrayPointsTurf.push(turf.point($scope.turfPath[a]));
+            }
+            var points = turf.featureCollection(arrayPointsTurf);
+            var nearest = turf.nearestPoint(targetPoint, points);
+            nearest=nearest.geometry.coordinates;
+            var indis = 0;
+            for(b in $scope.turfPath){
+                if(nearest[1]==$scope.turfPath[b][1] && nearest[0]==$scope.turfPath[b][0]){
+                    indis=b;
+                    indis=parseInt(indis);
+                    break;
+                }
+            }
+            var nextindis = indis+1;
+            $scope.nearPoint = {location :nearest,indis:indis,nextindis:nextindis};
 
+        }
+        return $scope.nearPoint;
+
+    };
+
+
+    $scope.splicePathActive = false;
+
+    $scope.splicePath = function (dizi,indis,aralik) {
+        if($scope.splicePathActive==false){
+            $scope.splicePathActive=true;
+            var len = dizi.length-1;
+            var start = indis-aralik;
+            var finish = indis+aralik;
+            if(start<=0){start=0;}
+            if(finish>=len){finish=len;}
+            var yenidizi =dizi.slice(start,finish);
+            var yeniindis = indis+1;
+            return {array:yenidizi,indis:yeniindis};
+
+        }else{
+            var simdikidizi = $mylocation.options.path;
+            var len2 = simdikidizi.length-1;
+            var sonNokta = simdikidizi[len2];
+            if(sonNokta[0]==$mylocation.location.lng && sonNokta[1]==$mylocation.location.lat){
+                var len = dizi.length-1;
+                var start = indis-aralik;
+                var finish = indis+aralik;
+                if(start<=0){start=0;}
+                if(finish>=len){finish=len;}
+                var yenidizi =dizi.slice(start,finish);
+                var yeniindis = indis+1;
+                return {array:yenidizi,indis:yeniindis};
+            }else{
+                return {array:$mylocation.options.path,indis:indis};
+            }
+        }
+
+
+    };
+    $scope.navInterval = [];
+    $scope.navProp = {
+        status:false,hiz:0,dogrultu:0,ortalamahiz:0,
+        toplammesafe:0,toplamzaman:0,arazaman:0,
+        aramesafe:0,track:[],snap:[],p1:0,p2:0,t1:0,t2:0,request:0,pathi:0};
+    $scope.startNavigation = function () {
+        debugger;
+        if($scope.path.length>0){
+            var opt = {loop:true,show:true,panto:true,flyto:true,line:false,color:"#8bc34a",radius:"auto",semiCircle:true,time:200,snap:true,path:$scope.turfPath};
+            $mylocation.findMyLocation(opt);
+            $scope.navInterval[$scope.navInterval.length] = $interval(function () {
+
+                if($mylocation.location!==false){
+
+                    var nearP = $scope.findNearPoint($mylocation.location);
+                    var newPath = $scope.splicePath($scope.turfPath,nearP.indis,5);
+                    $scope.nearPoint.indis=newPath.indis;
+                    $mylocation.options.path = newPath.array;
+                    $scope.navProp.status=true;
+                    var nokta = $mylocation.location;
+                    var position = $mylocation.position;
+                    if($scope.navProp.request%2==0){
+                        $scope.navProp.p1=nokta;
+                        $scope.navProp.t1 = position.timestamp;
+                    }else{
+                        $scope.navProp.p2=nokta;
+                        $scope.navProp.t2 = position.timestamp;
+                    }
+                    $scope.navProp.request++;
+                    if($scope.navProp.p1.lat==$scope.navProp.p2.lat && $scope.navProp.p1.lng==$scope.navProp.p2.lng){
+                        $scope.navProp.track.push(nokta);
+                        $scope.navProp.request++;
+                        //if($scope.navProp.request>1){
+                        if(true){
+                            var turfP1 = turf.point([$scope.navProp.p1.lng,$scope.navProp.p1.lat]);
+                            var turfP2 = turf.point([$scope.navProp.p2.lng, $scope.navProp.p2.lat]);
+                            if(turfP1.geometry.coordinates[0]==turfP2.geometry.coordinates[0] && turfP1.geometry.coordinates[1]==turfP2.geometry.coordinates[1]){
+                                var dogrultu=0;
+                                var aramesafe=0;
+                            }else{
+                                var dogrultu = turf.bearing(turfP1,turfP2);
+                                var aramesafe = turf.distance(turfP1,turfP2, "kilometers");
+                            }
+
+                            $scope.navProp.dogrultu=dogrultu;
+                            $scope.navProp.aramesafe=aramesafe;
+                            $scope.navProp.arazaman = Math.abs($scope.navProp.t2-$scope.navProp.t1);
+                            $scope.navProp.toplamzaman +=$scope.navProp.arazaman;
+                            $scope.navProp.toplammesafe +=$scope.navProp.aramesafe;
+                            $scope.navProp.ortalamahiz =$scope.navProp.toplammesafe/$scope.navProp.toplamzaman;
+                            var sn = $scope.navProp.arazaman/1000;
+                            var metre =$scope.navProp.aramesafe/1000;
+                            $scope.navProp.hiz = aramesafe/$scope.navProp.arazaman;
+                            angular.element(document.getElementById("input_0")).val("m : "+metre+', s :'+sn);
+
+
+                        }
+                    }
+
+
+
+                }
+
+            },opt.time);
 
         }else{
             $rootScope.$emit("message", {
