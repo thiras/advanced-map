@@ -235,7 +235,7 @@ app.service("$mylocation", function ($rootScope,$interval,$window) {
     this.semiCircleRedraw = function (alpha) {
         if(typeof this.options.semiCircle !=="undefined" && this.options.semiCircle==true){
             var aci = parseInt(alpha);
-            aci = 360 - aci + 180;
+            aci = 360 - aci;
             var start = aci - 60;
             var finish = start + 120;
             this.semiCircle = tis.semiCircleDraw(tis.location, {
