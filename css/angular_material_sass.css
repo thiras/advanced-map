@@ -631,7 +631,9 @@ md-toast .ng-leave-active {
     opacity: .1;
     transform: scale(5); } }
 .slideLeft {
-  left: -18em !important; }
+  left: -22em !important;
+  height: 50px !important;
+  overflow: hidden !important; }
 
 ::-webkit-scrollbar {
   width: .75em; }
