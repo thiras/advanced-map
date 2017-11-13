@@ -1,0 +1,11 @@
+
+@for $a from 1 through 10 {
+
+  .padding-#{$a}{
+
+
+  padding:#{$a}em;
+
+}
+
+}

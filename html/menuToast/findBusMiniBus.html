@@ -1,14 +1,14 @@
-<md-toast id="findbusandminibus">
+<md-toast id="findbusandminibus" layout="column">
     <div class="md-toast-content" layout-padding>
 
         <form>
             <md-toolbar md-ink-ripple>
-                <div class="md-toolbar-tools">
+                <div  class="md-toolbar-tools padding-2">
                     <h2>
                         <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img"
                                  aria-hidden="true">directions_bus
                         </md-icon>
-                        <span class="md-subhead"
+                        <span layout-padding  class="md-subhead"
                               style="color: #ffffff;">{{lang.menuToasts.transport.busmini.label}}</span>
                     </h2>
                     <span flex></span>
@@ -51,8 +51,7 @@
                             </md-input-container>
                         </md-list-item>
                         <md-list-item>
-                            <md-autocomplete md-selected-item-change="selectNewBusLine()" layout-fill
-                                             placeholder="{{lang.menuToasts.transport.busmini.lineNumberName}}"
+                            <md-autocomplete md-floating-label="{{lang.menuToasts.transport.busmini.lineNumberName}}" md-selected-item-change="selectNewBusLine()" layout-fill
                                              md-selected-item="selectedLineNumber"
                                              md-search-text="searchText" md-items="item in queryLineNumber(searchText)"
                                              md-item-text="item">

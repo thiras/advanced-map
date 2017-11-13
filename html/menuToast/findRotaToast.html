@@ -1,4 +1,4 @@
-<md-toast id="findInstByaddress" aria-label="find Inst">
+<md-toast id="findInstByaddress" layout="column" aria-label="find Inst">
     <div class="md-toast-content" layout-padding>
         <form style="padding: 0;">
 
@@ -9,6 +9,7 @@
                         <span class="md-subhead" style="color: #ffffff;">{{lang.menu.menu12.label}}</span>
                     </h2>
                     <span flex></span>
+                   <md-toggle-toast></md-toggle-toast>
                     <md-button class="md-icon-button" ng-click="cancel()">
                         <md-icon style="padding: 7px;" md-svg-src="img/icons/cancel.svg" aria-label="Close dialog"></md-icon>
                     </md-button>
