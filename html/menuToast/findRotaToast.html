@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <md-toast id="findInstByaddress" layout="column" aria-label="find Inst">
+=======
+<md-toast style="margin-top: 1em;" id="findInstByaddress" aria-label="find Inst">
+>>>>>>> 270a2f3133fc36c319260f9e439d96bfe394968b
     <div class="md-toast-content" layout-padding>
         <form style="padding: 0;">
 
@@ -106,15 +110,6 @@
             <md-dialog-actions layout="row">
                 <span flex></span>
 
-                <md-button ng-click="startNavigation();" class="md-raised searchButton md-button md-ink-ripple md-button">
-                    <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">
-                        navigation
-                    </md-icon>
-                    Navigasyonu Başlat
-                </md-button>
-
-
-
                 <md-button ng-click="addLocationToNavigation()" class="md-raised  md-warn md-button md-ink-ripple md-button">
                     <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">location_searching</md-icon>
                 </md-button>
@@ -138,19 +133,26 @@
             </md-dialog-content>
 
 
-            <md-dialog-content ng-if="way.active" layout-fill>
+            <md-dialog-content ng-if="wayActive" layout-fill >
                 <md-list>
                     <md-list-item>
-                        <div flex="30">Mesafe</div>
-                        <div flex="30">Zaman</div>
-                        <div flex="40">Yöntem</div>
+                        <div flex="35">Mesafe</div>
+                        <div flex="35">Zaman</div>
+                        <div flex="30"> </div>
                     </md-list-item>
                 </md-list>
-                <md-list>
+                <md-list style="padding-left: 15px;" ng-repeat= "(ozellik, deger) in way">
                     <md-list-item>
-                        <div flex="30">{{way.distance}}</div>
-                        <div flex="30">{{way.duration}}</div>
-                        <div flex="40">{{way.travelMode}}</div>
+                        <div flex="35">{{deger.distance}}</div>
+                        <div flex="35">{{deger.duration}}</div>
+                        <div flex="30">
+                            <md-button style="background-color: {{deger.color}} !important;" ng-click="yolGoster(deger.sira);" class="md-raised searchButton md-button md-ink-ripple md-button">
+                                <md-icon class="mat-icon material-icons accordion-icons ng-binding" role="img" aria-hidden="true">
+                                    navigation
+                                </md-icon>
+                                Git
+                            </md-button>
+                        </div>
                     </md-list-item>
                 </md-list>
             </md-dialog-content>
