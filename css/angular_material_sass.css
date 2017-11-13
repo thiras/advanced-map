@@ -631,6 +631,7 @@ md-toast .ng-leave-active {
     opacity: .1;
     transform: scale(5); } }
 .slideLeft {
+  transition: left .3s !important;
   left: -22em !important;
   height: 50px !important;
   overflow: hidden !important; }
