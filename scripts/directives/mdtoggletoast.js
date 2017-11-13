@@ -14,7 +14,6 @@ app.directive("mdToggleToast", function () {
                 let toast = document.querySelector("md-toast");
 
                 $scope.transfrm = status == true ? angles[0] : angles[1];
-
                 toast.classList.toggle("slideLeft");
 
 

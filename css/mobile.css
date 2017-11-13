@@ -19,10 +19,14 @@
     height: 25px !important;
     width: 35px !important; } }
 @media screen and (max-width: 400px) {
-  md-toast:not(#drawTool) {
+  md-toast:not(#drawTool, .slideLeft) {
     width: 95% !important;
     left: 6px !important; } }
 @media screen and (max-width: 360px) {
+  .slideLeft {
+    left: -15.5em !important;
+    height: 45px !important; }
+
   #searchbox {
     left: 2.5%;
     width: 95%; }
@@ -34,7 +38,7 @@
     width: calc(90% - 40px);
     overflow: hidden; }
 
-  md-toast:not(#drawTool) {
+  md-toast:not(#drawTool, .slideLeft) {
     width: 95% !important;
     left: 9px !important; } }
 .certainly-full {
