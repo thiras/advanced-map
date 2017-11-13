@@ -2,6 +2,9 @@
   md-sidenav {
     max-width: 425px !important; } }
 @media screen and (max-width: 600px) {
+  .slideLeft {
+    height: 48px !important; }
+
   #searchbox {
     left: 2.5%;
     width: 95%; }
@@ -19,6 +22,9 @@
     height: 25px !important;
     width: 35px !important; } }
 @media screen and (max-width: 400px) {
+  .slideLeft {
+    height: 48px !important; }
+
   md-toast:not(#drawTool, .slideLeft) {
     width: 95% !important;
     left: 6px !important; } }

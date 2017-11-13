@@ -1,61 +1,59 @@
 .ng-leave {
-  transition:  .45s cubic-bezier(0.4, 0, 0.2, 1) all;
+  transition: .45s cubic-bezier(0.4, 0, 0.2, 1) all;
   opacity: 1;
 }
 
-md-toast{
+md-toast {
 
+  .ng-leave {
 
-
-  .ng-leave{
-
-   left:0px;
+    left: 0px;
     transition: all .50s;
     transition-delay: .15s;
   }
 
-  .ng-leave-active{
+  .ng-leave-active {
     height: 0;
-    left:-100%;
+    left: -100%;
   }
 }
+
 .ng-leave-active {
   opacity: 0;
-  left:-10em;
+  left: -10em;
 }
-.ripple-effect{
 
-  transition:all ease-out 0.5s;
+.ripple-effect {
 
-  background:radial-gradient(rgba(0,0,0,.4),rgba(0,0,0,.2));
+  transition: all ease-out 0.5s;
+
+  background: radial-gradient(rgba(0, 0, 0, .4), rgba(0, 0, 0, .2));
   position: absolute;
   padding: 1em;
   height: 15px;
   width: 15px;
-  border-radius:100%;
-  animation-name:myanime;
-  animation-duration:0.5s;
-
+  border-radius: 100%;
+  animation-name: myanime;
+  animation-duration: 0.5s;
 
 }
 
-
-
 @keyframes myanime {
   0% {
-    opactiy:0;
-    transform:scale(0.1);}
+    opactiy: 0;
+    transform: scale(0.1);
+  }
   100% {
-    opacity:.1; transform:scale(5);
+    opacity: .1;
+    transform: scale(5);
   }
 
 }
 
-.slideLeft{
-transition:left .3s !important;
-  left:-22em !important;
-  height:50px !important;
+.slideLeft {
+  transition: left .3s !important;
+  left: -22em !important;
+  height: 48px !important;
   overflow: hidden !important;
-
 
 }

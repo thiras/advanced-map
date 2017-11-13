@@ -7,6 +7,10 @@ md-sidenav {
 
 @media screen and (max-width: 600px) {
 
+  .slideLeft{
+
+    height:48px !important;
+  }
   #searchbox {
 
     left: 2.5%;
@@ -47,6 +51,10 @@ md-sidenav {
 
 }
 @media screen and (max-width: 400px) {
+  .slideLeft{
+
+    height:48px !important;
+  }
 
   md-toast:not(#drawTool,.slideLeft){
 

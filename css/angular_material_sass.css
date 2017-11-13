@@ -591,7 +591,7 @@ md-toast .ng-leave-active {
 .slideLeft {
   transition: left .3s !important;
   left: -22em !important;
-  height: 50px !important;
+  height: 48px !important;
   overflow: hidden !important; }
 
 ::-webkit-scrollbar {
@@ -753,7 +753,8 @@ md-toast#menuToasts, md-toast#findProprietary, md-toast#fndBldLsToast, md-toast#
   left: 1em;
   /* 10px;*/
   max-width: 390px;
-  width: 100%;
+  width: 90%;
+  /*eski değer 100%*/
   padding: 0;
   margin: 0;
   z-index: 20; }
@@ -979,6 +980,9 @@ md-menu-bar md-menu > button:active {
   md-sidenav {
     max-width: 425px !important; } }
 @media screen and (max-width: 600px) {
+  .slideLeft {
+    height: 48px !important; }
+
   #searchbox {
     left: 2.5%;
     width: 95%; }
@@ -996,6 +1000,9 @@ md-menu-bar md-menu > button:active {
     height: 25px !important;
     width: 35px !important; } }
 @media screen and (max-width: 400px) {
+  .slideLeft {
+    height: 48px !important; }
+
   md-toast:not(#drawTool, .slideLeft) {
     width: 95% !important;
     left: 6px !important; } }

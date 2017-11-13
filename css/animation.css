@@ -35,7 +35,7 @@ md-toast .ng-leave-active {
 .slideLeft {
   transition: left .3s !important;
   left: -22em !important;
-  height: 50px !important;
+  height: 48px !important;
   overflow: hidden !important; }
 
 /*# sourceMappingURL=animation.css.map */
