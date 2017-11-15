@@ -37,18 +37,18 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
         buildOwnerName: "",
         buildConstName: ""
     };
-    $rootScope.poi={
-        database:{},
-        google:{totalGooglePointsID:[],totalGooglePoints:[]},
-        foursquare:{}
+    $rootScope.poi = {
+        database: {},
+        google: {totalGooglePointsID: [], totalGooglePoints: []},
+        foursquare: {}
     };
     $rootScope.security = {};
     $rootScope.health = {};
     $rootScope.transport = {
-        shipType:[],
+        shipType: [],
         shipTypeSelect: "",
-        shipLines:[],
-        aircraft:{}
+        shipLines: [],
+        aircraft: {}
     };
     document.querySelector('title').innerText = $rootScope.lang.general.title;
     $rootScope.parcell = {
@@ -57,7 +57,7 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
         parcellSearchResults: false
     };
     $rootScope.location = {};
-    $rootScope.mobileAngle = {alpha:0,beta:0,gamma:0};
+    $rootScope.mobileAngle = {alpha: 0, beta: 0, gamma: 0};
     $showFabDials = false;
     $scope.contextMenuShow = 0;
     $scope.mouseX = 0 + "px";
@@ -204,9 +204,10 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
     });
 
 
-    window.addEventListener('deviceorientation', function(e) {
-        $rootScope.mobileAngle = {alpha:e.alpha,beta:e.beta,gamma:e.gamma};
+    window.addEventListener('deviceorientation', function (e) {
+        $rootScope.mobileAngle = {alpha: e.alpha, beta: e.beta, gamma: e.gamma};
         $mylocation.setMobileAngle($rootScope.mobileAngle);
 
     });
+
 });

@@ -35,7 +35,7 @@
 </left-menu>
 <leaflet ng-click="contextMenuShow=0" right-click="openrightmenu()" data-lat="35" data-lng="30" zoom="12"
          id="map"></leaflet>
-<md-contextmenu ng-if="contextMenuShow" ng-style="{'left':mouseX,'top':mouseY}">
+<md-contextmenu ng-if="contextMenuShow" ng-style="{'left':mouseX,'top':mouseY}" ng-controller="menuRightClick">
     <md-menu-bar>
         <md-menu>
             <button style="opacity: 0" id="rightMenuOpen" id="openMenu" class="md-button md-raised md-default"
@@ -43,6 +43,12 @@
                 menu aç
             </button>
             <md-menu-content>
+                <md-menu-item ng-click="print()">
+                    <md-button>Ekranı yazdır</md-button>
+                </md-menu-item>
+                <md-menu-item ng-click="openRota()">
+                    <md-button>Navigasyonu aç</md-button>
+                </md-menu-item>
                 <md-menu-item>
                     <md-menu>
                         <md-button ng-click="$mdOpenMenu()">En Yakın</md-button>
@@ -112,6 +118,7 @@
 <script src="scripts/controllers/customdialog.js"></script>
 <script src="scripts/controllers/findBusMiniBus.js"></script>
 <script src="scripts/controllers/navigationCtrl.js"></script>
+<script src="scripts/controllers/menu.js"></script>
 <script src="scripts/filters/reverse.js"></script>
 <script src="scripts/sockets/autobahn.js"></script>
 <script src="scripts/configs/fabdial.js"></script>
