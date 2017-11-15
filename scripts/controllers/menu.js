@@ -1,4 +1,4 @@
-app.controller("menuRightClick", function ($scope, $window,$timeout,$mdMenu) {
+app.controller("menuRightClick", function ($scope, $window,$timeout,$mdMenu,$rootScope,$mdToast) {
 
     $scope.print = function () {
 
@@ -20,6 +20,15 @@ app.controller("menuRightClick", function ($scope, $window,$timeout,$mdMenu) {
 
 
 
+    }
+
+    $scope.openRota=function () {
+        $mdToast.show({
+            hideDelay: 0,
+            position: 'top right',
+            controller: 'navigationCtrl',
+            templateUrl: 'html/menuToast/findRotaToast.html',
+        });
     }
 
 });
