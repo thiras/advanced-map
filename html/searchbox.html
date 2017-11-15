@@ -3,8 +3,23 @@
     <md-tooltip>{{lang.searchBox.btnMenuOnOff}}</md-tooltip>
 </md-icon>
 <md-input-container md-no-float>
-    <input required autocomplete="on" layout-padding ng-keypress="$event.keyCode==13 ? searchAdress(searchInput):null"
+    <input required autocomplete="on" list="searchReasult" layout-padding ng-keyup="searchBox(searchInput,false);" ng-keypress="$event.keyCode==13 ? searchBox(searchInput,true):null"
            ng-model="searchInput" placeholder="{{lang.searchBox.inptSearchBox}}"  class="searchtext" type="search">
+    <datalist onchange="searchBox();" id="searchReasult">
+
+    </datalist>
+
+    <!--<md-autocomplete  style="width:100%; height: 40px; border:none;"
+                      md-selected-item-change="selectGooglePlace(item,'start')"
+                      md-items="item in navStations.start.placeResult"
+                      md-search-text-change="loadGooglePlaces(navStations.start.filterText,'start')"
+                      md-item-text="item.text"
+                      md-no-cache="1"
+                      md-search-text="navStations.start.filterText" md-floating-label = "Bir Yer Arayın"
+    >
+        <md-item-template>{{ item.text }}</md-item-template>
+        <md-not-found>No items.</md-not-found>
+    </md-autocomplete>-->
 </md-input-container>
 
 

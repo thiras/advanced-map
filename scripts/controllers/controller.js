@@ -1,4 +1,4 @@
-app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav, $rootScope, $window, $storage, $leftmenujson, $leafletFonk, $getlang, $mdDialog,$mylocation) {
+app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav, $rootScope, $window, $storage, $leftmenujson, $leafletFonk, $getlang, $mdDialog,$mylocation,$searchbox) {
     var lang = await $getlang;
     $rootScope.lang = lang.data;
     $rootScope.adress = {
@@ -74,12 +74,8 @@ app.controller("controller", async function ($scope, $http, $timeout, $mdSidenav
     $scope.mapType = "default";
     $scope.opacity = 1;
 
-    $scope.searchAdress = function (data) {
-
-
-        $rootScope.leaflet.flyTo(L.latLng(data.split(",")[0], data.split(",")[1]), 10);
-
-
+    $scope.searchBox = function (data,show) {
+        $searchbox.search(data,show);
     };
 
     $leafletFonk.createMap(35.3540039, 38.891032);
