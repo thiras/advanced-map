@@ -26,11 +26,11 @@ app.service("$searchbox", function ($rootScope,$googleMaps,$interval) {
                             var boylam = son.geometry.location.lng();
                             var latlng = L.latLng(enlem,boylam);
                             if(tis.searchMarker==false){
-                                tis.searchMarker=L.marker(latlng).bindPopup(tis.selectResult.text+'<br>'+adress+'<br>Enlem : '+enlem+'<br>Boylam : '+boylam).addTo($rootScope.leaflet);
+                                tis.searchMarker=L.marker(latlng).bindPopup('Adres : '+tis.selectResult.text+'<br>'+adress+'<br>Enlem : '+enlem+'<br>Boylam : '+boylam).addTo($rootScope.leaflet);
                                 $rootScope.leaflet.flyTo(latlng,15);
                             }else{
                                 tis.searchMarker.setLatLng(latlng);
-                                tis.searchMarker.setPopupContent(tis.selectResult.text+'<br>'+adress+'<br>Enlem : '+enlem+'<br>Boylam : '+boylam);
+                                tis.searchMarker.setPopupContent('Adres : '+tis.selectResult.text+'<br>'+adress+'<br>Enlem : '+enlem+'<br>Boylam : '+boylam);
                                 $rootScope.leaflet.flyTo(latlng,15);
                             }
                             removeInmterval(tis.showInterval);
